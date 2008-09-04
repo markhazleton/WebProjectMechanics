@@ -1,5 +1,5 @@
 Public Class mhDataCon
-    Dim sSQL As String = ("")
+    Dim sSQL As String = String.Empty
 
     Private Function GetNavigationDataTable(ByVal sSortBy As String, ByVal CompanyID As String, ByVal GroupID As Integer) As DataTable
         Dim strSQL As String

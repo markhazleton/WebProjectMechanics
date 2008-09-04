@@ -6,6 +6,21 @@ Public Class mhConfig
         '  in the page lifecycle, BEFORE the session object is complete. 
         'Return HttpContext.Current.Session.Item("SiteDB").ToString
     End Function
+    Public Shared ReadOnly Property Use404Processing() As Boolean
+        Get
+            Dim bReturn As Boolean = False
+            If IsNothing(WebConfigurationManager.AppSettings.Item("Use404Processing")) Then
+                bReturn = False
+            Else
+                If (WebConfigurationManager.AppSettings.Item("Use404Processing").ToString = "1") Then
+                    bReturn = True
+                Else
+                    bReturn = False
+                End If
+            End If
+            Return bReturn
+        End Get
+    End Property
     Public Shared ReadOnly Property mhWebHome() As String
         Get
             If IsNothing(WebConfigurationManager.AppSettings.Item("mhWebHome")) Then

@@ -1,4 +1,4 @@
-Public Class GoogleSitemapGenerator
+Public Class mhXMLSitemap
     Private writer As XmlTextWriter
     Private mySiteMap As New mhSiteMap("MODIFIED", HttpContext.Current.Session)
 
