@@ -17,15 +17,6 @@ Public Class mhSession
         End Set
     End Property
 
-    'Public Property SingleSiteGallery() As Boolean
-    '    Get
-    '        Return mhUTIL.GetDBBoolean(mySession.Item("SingleSiteGallery"))
-    '    End Get
-    '    Set(ByVal value As Boolean)
-    '        mySession.Item("SingleSiteGallery") = value
-    '    End Set
-    'End Property
-
     Public Property CurrentPageID() As String
         Get
             Return mhUTIL.GetDBString(mySession.Item("CurrentPageID"))

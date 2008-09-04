@@ -304,11 +304,7 @@ Public Class mhSiteFile
         Dim sReturn As New StringBuilder("")
         Dim sPageURL As String = ("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
-            Else
-                sPageURL = myrow.DisplayURL
-            End If
+            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Article" Then
                 If myrow.PageID = PageID Then
                     If myrow.ArticleID = ArticleID Then
@@ -335,11 +331,7 @@ Public Class mhSiteFile
         Dim sPageURL As String = (String.Empty)
         For Each myrow As mhSiteMapRow In SiteMapRows
             If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
-                If UseBreadCrumbURL Then
-                    sPageURL = myrow.BreadCrumbURL
-                Else
-                    sPageURL = myrow.DisplayURL
-                End If
+                sPageURL = GetSiteMapRowURL(myrow)
                 If (myrow.ParentPageID = ParentPageID And ParentPageID <> String.Empty) Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""menuitem selected"">")
@@ -372,11 +364,7 @@ Public Class mhSiteFile
         Else
             For Each myrow As mhSiteMapRow In SiteMapRows
                 If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
-                    If UseBreadCrumbURL Then
-                        sPageURL = myrow.BreadCrumbURL
-                    Else
-                        sPageURL = myrow.DisplayURL
-                    End If
+                    sPageURL = GetSiteMapRowURL(myrow)
                     If (myrow.ParentPageID = ParentPageID) Then
                         If myrow.PageID = PageID Then
                             sReturn.Append("<li class=""menuitem selected"">")
@@ -405,11 +393,7 @@ Public Class mhSiteFile
         Dim sReturn As New StringBuilder("")
         Dim sPageURL As String = ("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
-            Else
-                sPageURL = myrow.DisplayURL
-            End If
+            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Page" Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
@@ -465,11 +449,7 @@ Public Class mhSiteFile
         Dim sPageName As String = (String.Empty)
         Dim sReturn As New StringBuilder(String.Empty)
         For Each myrow As mhSiteMapRow In SiteMapRows
-            If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
-            Else
-                sPageURL = myrow.DisplayURL
-            End If
+            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
@@ -499,11 +479,7 @@ Public Class mhSiteFile
         Dim sReturn As New StringBuilder(String.Empty)
         If ParentPageID <> String.Empty Then
             For Each myrow As mhSiteMapRow In SiteMapRows
-                If UseBreadCrumbURL Then
-                    sPageURL = myrow.BreadCrumbURL
-                Else
-                    sPageURL = myrow.DisplayURL
-                End If
+                sPageURL = GetSiteMapRowURL(myrow)
                 If (myrow.RecordSource = "Category" Or myrow.RecordSource = "Page") Then
                     If (myrow.ParentPageID = ParentPageID) Then
                         If myrow.PageID = PageID Then
@@ -535,16 +511,26 @@ Public Class mhSiteFile
         End If
         Return sReturn.ToString
     End Function
-    Public Function BuildSiteCategoryGroupList(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer, ByVal GroupDescription As String) As String
-        Dim sPageURL As String = ("")
-        Dim sPageName As String = ("")
-        Dim sReturn As New StringBuilder("")
-        For Each myrow As mhSiteMapRow In SiteMapRows
+    Public Function GetSiteMapRowURL(ByVal myrow As mhSiteMapRow) As String
+        Dim sPageURL As String = String.Empty
+        If mhConfig.Use404Processing Then
             If UseBreadCrumbURL Then
                 sPageURL = myrow.BreadCrumbURL
             Else
                 sPageURL = myrow.DisplayURL
             End If
+        Else
+            Return myrow.TransferURL
+        End If
+
+        Return sPageURL
+    End Function
+    Public Function BuildSiteCategoryGroupList(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer, ByVal GroupDescription As String) As String
+        Dim sPageURL As String = ("")
+        Dim sPageName As String = ("")
+        Dim sReturn As New StringBuilder("")
+        For Each myrow As mhSiteMapRow In SiteMapRows
+            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.SiteCategoryGroupName = GroupName) Then
                 If (myrow.ParentPageID = ParentPageID) Or (Level = 1 And myrow.ParentPageID = "") Then
                     If myrow.PageID = PageID Then
@@ -581,11 +567,7 @@ Public Class mhSiteFile
         Dim sPageName As String = ("")
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
-            Else
-                sPageURL = myrow.DisplayURL
-            End If
+            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.SiteCategoryGroupName = GroupName) Then
                 If (myrow.ParentPageID = ParentPageID) Or (Level = 1 And myrow.ParentPageID = "") Then
                     If myrow.PageID = PageID Then
@@ -621,11 +603,7 @@ Public Class mhSiteFile
         Dim sPageName As String = ("")
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
-            Else
-                sPageURL = myrow.DisplayURL
-            End If
+            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.RecordSource = "Category" And myrow.SiteCategoryGroupName = GroupName) Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
