@@ -1,0 +1,50 @@
+<%@ Master EnableViewState="true" Language="VB" %>
+<%@ Import Namespace="PMGEN" %>
+<%@ Import Namespace="EW.Web" %>
+<%@ Register NameSpace="PMGEN" TagPrefix="PMGEN" %>
+<script runat="server">
+	Dim isExport As Boolean = false
+	Public sTemp As New String("<h1>Default from aspmaker/masterpage.master</h1>~~CurrentPageName~~<br/>~~MainContent~~<br/>")
+
+	' *************************
+	' *  Handler for Export
+	' *************************
+
+    Public Sub SetExport(ByVal value As Boolean)
+        isExport = value
+    End Sub
+
+    ' *************************
+    ' *  Handler for Page Load
+    ' *************************
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+    if not mhuser.IsAdmin() then
+      Session("Login_Link") = Request.RawUrl
+      response.redirect("/mhweb/login/login.aspx")
+    end if
+    End Sub
+</script>
+<%
+    Dim mySiteMap As New mhSiteMap(Session)
+    Dim mySiteTheme As New mhSiteTheme(mySiteMap, False, "MHADMIN")
+    If mySiteTheme.sbSiteTemplate.Length > 0 Then
+        mySiteMap.BuildTemplate(mySiteTheme.sbSiteTemplate)
+        mySiteTheme.sbSiteTemplate.Replace("~~RightContent~~", mySiteMap.mySession.RightContent)
+        mySiteTheme.sbSiteTemplate.Replace("</he" & "ad>", mySiteMap.mySession.AddHTMLHead & "</he" & "ad>")
+        sTemp = mySiteTheme.sbSiteTemplate.ToString
+        mySiteMap.mySession.RightContent = ""
+        mySiteMap.mySession.AddHTMLHead = ""
+    End If
+    Response.Write(sTemp.Substring(0, sTemp.IndexOf("~~MainContent~~") - 1))
+%>
+<br />
+<div class="mhweb_admin">
+<form id="form1" runat="server">
+<asp:ContentPlaceHolder ID="Content" Runat="server" />
+</form>
+<br />
+<br />
+<br clear="all" />
+</div>
+<%=sTemp.substring(sTemp.IndexOf("~~MainContent~~") +15,sTemp.Length - (sTemp.IndexOf("~~MainContent~~") +15 ) )%>
