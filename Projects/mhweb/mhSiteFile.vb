@@ -302,17 +302,15 @@ Public Class mhSiteFile
     End Function
     Public Function BuildPageArticle(ByVal PageID As String, ByVal ArticleID As String) As String
         Dim sReturn As New StringBuilder("")
-        Dim sPageURL As String = ("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Article" Then
                 If myrow.PageID = PageID Then
                     If myrow.ArticleID = ArticleID Then
                         sReturn.Append("<li class=""selected"">")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, True, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, True))
                     Else
                         sReturn.Append("<li>")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, False, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, False))
                     End If
                     sReturn.Append("</li>" & vbCrLf)
                 End If
@@ -328,17 +326,15 @@ Public Class mhSiteFile
     Public Function BuildLinkListBySibling(ByVal PageID As String, ByVal ParentPageID As String, ByVal SiteCategoryID As String) As String
         Dim sReturn As New StringBuilder(String.Empty)
         Dim sParentPageName As String = String.Empty
-        Dim sPageURL As String = (String.Empty)
         For Each myrow As mhSiteMapRow In SiteMapRows
             If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
-                sPageURL = GetSiteMapRowURL(myrow)
                 If (myrow.ParentPageID = ParentPageID And ParentPageID <> String.Empty) Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""menuitem selected"">")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, True, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, True))
                     Else
                         sReturn.Append("<li class=""menuitem"">")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, False, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, False))
                     End If
                     sReturn.Append("</li>" & vbCrLf)
                 End If
@@ -357,21 +353,19 @@ Public Class mhSiteFile
     Public Function BuildLinkListByParent(ByVal PageID As String, ByVal ParentPageID As String, ByVal SiteCategoryID As String) As String
         Dim sReturn As New StringBuilder("")
         Dim sParentPageName As String = String.Empty
-        Dim sPageURL As String = String.Empty
 
         If ParentPageID = String.Empty And SiteCategoryID = String.Empty Then
             sReturn.Append("<li><strong>NO Parent, No Category</strong></li>")
         Else
             For Each myrow As mhSiteMapRow In SiteMapRows
                 If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
-                    sPageURL = GetSiteMapRowURL(myrow)
                     If (myrow.ParentPageID = ParentPageID) Then
                         If myrow.PageID = PageID Then
                             sReturn.Append("<li class=""menuitem selected"">")
-                            sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, True, myrow.PageID))
+                            sReturn.Append(BuildNaviagtionLink(myrow, True))
                         Else
                             sReturn.Append("<li class=""menuitem"">")
-                            sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, False, myrow.PageID))
+                            sReturn.Append(BuildNaviagtionLink(myrow, False))
                         End If
                         sReturn.Append("</li>" & vbCrLf)
                     End If
@@ -391,17 +385,15 @@ Public Class mhSiteFile
 
     Public Function BuildMenuChild(ByVal PageID As String, ByVal ParentPageID As String, ByVal DefaultParentPageID As String) As String
         Dim sReturn As New StringBuilder("")
-        Dim sPageURL As String = ("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Page" Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""selected"">")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, True, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, True))
                     Else
                         sReturn.Append("<li>")
-                        sReturn.Append(BuildNaviagtionLink(sPageURL, myrow.PageName, myrow.PageDescription, False, myrow.PageID))
+                        sReturn.Append(BuildNaviagtionLink(myrow, False))
                     End If
                     sReturn.Append("</li>" & vbCrLf)
                 End If
@@ -445,20 +437,18 @@ Public Class mhSiteFile
         Return sReturn.ToString
     End Function
     Private Function yuiBuildLineItemList(ByVal ParentPageID As String, ByVal ListClass As String, ByVal PageID As String) As String
-        Dim sPageURL As String = (String.Empty)
         Dim sPageName As String = (String.Empty)
         Dim sReturn As New StringBuilder(String.Empty)
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""yuimenuitem selected"">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel selected"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel selected"))
                         sReturn.Append("</li>" & vbCrLf)
                     Else
                         sReturn.Append("<li class=""yuimenuitem "">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel"))
                         sReturn.Append("</li>" & vbCrLf)
                     End If
                 End If
@@ -474,20 +464,18 @@ Public Class mhSiteFile
         Return sReturn.ToString
     End Function
     Public Function yuiBuildPageList(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer) As String
-        Dim sPageURL As String = (String.Empty)
         Dim sPageName As String = (String.Empty)
         Dim sReturn As New StringBuilder(String.Empty)
         If ParentPageID <> String.Empty Then
             For Each myrow As mhSiteMapRow In SiteMapRows
-                sPageURL = GetSiteMapRowURL(myrow)
                 If (myrow.RecordSource = "Category" Or myrow.RecordSource = "Page") Then
                     If (myrow.ParentPageID = ParentPageID) Then
                         If myrow.PageID = PageID Then
                             sReturn.Append("<li class=""yuimenuitem selected"">")
-                            sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel selected"))
+                            sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel selected"))
                         Else
                             sReturn.Append("<li class=""yuimenuitem "">")
-                            sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel"))
+                            sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel"))
                         End If
                         sReturn.Append(yuiBuildPageList(myrow.PageID, myrow.PageName, PageID, Level + 1))
                         sReturn.Append("</li>" & vbCrLf)
@@ -511,34 +499,29 @@ Public Class mhSiteFile
         End If
         Return sReturn.ToString
     End Function
-    Public Function GetSiteMapRowURL(ByVal myrow As mhSiteMapRow) As String
-        Dim sPageURL As String = String.Empty
+    Public Function GetSiteMapRowURL(ByRef myrow As mhSiteMapRow) As String
         If mhConfig.Use404Processing Then
             If UseBreadCrumbURL Then
-                sPageURL = myrow.BreadCrumbURL
+                Return myrow.BreadCrumbURL
             Else
-                sPageURL = myrow.DisplayURL
+                Return myrow.DisplayURL
             End If
         Else
             Return myrow.TransferURL
         End If
-
-        Return sPageURL
     End Function
     Public Function BuildSiteCategoryGroupList(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer, ByVal GroupDescription As String) As String
-        Dim sPageURL As String = ("")
         Dim sPageName As String = ("")
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.SiteCategoryGroupName = GroupName) Then
                 If (myrow.ParentPageID = ParentPageID) Or (Level = 1 And myrow.ParentPageID = "") Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""menuitem selected"">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "menuitemlabel selected"))
+                        sReturn.Append(BuildClassLink(myrow, "menuitemlabel selected"))
                     Else
                         sReturn.Append("<li class=""menuitem "">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "menuitemlabel"))
+                        sReturn.Append(BuildClassLink(myrow, "menuitemlabel"))
                     End If
                     sReturn.Append("</li>" & vbCrLf)
                 End If
@@ -563,19 +546,17 @@ Public Class mhSiteFile
 
 
     Public Function yuiBuildSiteCategoryGroupList(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer) As String
-        Dim sPageURL As String = ("")
         Dim sPageName As String = ("")
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.SiteCategoryGroupName = GroupName) Then
                 If (myrow.ParentPageID = ParentPageID) Or (Level = 1 And myrow.ParentPageID = "") Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""yuimenuitem selected"">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel selected"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel selected"))
                     Else
                         sReturn.Append("<li class=""yuimenuitem "">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenuitemlabel"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenuitemlabel"))
                     End If
                     sReturn.Append(yuiBuildSiteCategoryGroupList(myrow.PageID, GroupName, PageID, Level + 1))
                     sReturn.Append("</li>" & vbCrLf)
@@ -599,19 +580,17 @@ Public Class mhSiteFile
         Return sReturn.ToString
     End Function
     Public Function yuiBuildSiteCategoryGroupBar(ByVal ParentPageID As String, ByVal GroupName As String, ByVal PageID As String, ByVal Level As Integer) As String
-        Dim sPageURL As String = ("")
         Dim sPageName As String = ("")
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
-            sPageURL = GetSiteMapRowURL(myrow)
             If (myrow.RecordSource = "Category" And myrow.SiteCategoryGroupName = GroupName) Then
                 If myrow.ParentPageID = ParentPageID Then
                     If myrow.PageID = PageID Then
                         sReturn.Append("<li class=""yuimenubaritem  selected"">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenubaritemlabel selected"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenubaritemlabel selected"))
                     Else
                         sReturn.Append("<li class=""yuimenubaritem  "">")
-                        sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenubaritemlabel"))
+                        sReturn.Append(BuildClassLink(myrow, "yuimenubaritemlabel"))
                     End If
                     sReturn.Append(yuiBuildSiteCategoryGroupList(myrow.PageID, GroupName, PageID, Level + 1))
                     sReturn.Append("</li>" & vbCrLf)
@@ -622,7 +601,7 @@ Public Class mhSiteFile
             End If
             If "CAT-" & myrow.SiteCategoryID = ParentPageID And myrow.RecordSource = "Page" Then
                 sReturn.Append("<li class=""yuimenubaritem "">")
-                sReturn.Append(BuildClassLink(sPageURL, myrow.PageName, myrow.PageDescription, "yuimenubaritemlabel"))
+                sReturn.Append(BuildClassLink(myrow, "yuimenubaritemlabel"))
                 sReturn.Append("</li>" & vbCrLf)
             End If
         Next
@@ -639,11 +618,8 @@ Public Class mhSiteFile
         End If
         Return sReturn.ToString
     End Function
-    Private Function BuildClassLink(ByVal LinkURL As String, ByVal LinkText As String, ByVal LinkTitle As String, ByVal LinkClass As String) As String
-        Dim sLinkText As String = ("")
-        sLinkText = ("<a class=""" & LinkClass & """ href=""" & LinkURL & """>" & LinkText & "</a>")
-        Return sLinkText
-    End Function
+
+
     Public Function yuiBuildPageTree(ByVal ParentID As String, ByVal intLevel As Double, ByVal PageName As String) As String
         Dim sReturn As New StringBuilder("")
         For Each myRow As mhSiteMapRow In SiteMapRows
@@ -652,11 +628,11 @@ Public Class mhSiteFile
                     If intLevel = 0 Then
                         PageName = myRow.PageName
                         sReturn.Append("<li class=""yuimenubaritem"">")
-                        sReturn.Append(BuildClassLink(myRow.BreadCrumbURL, myRow.PageName, myRow.PageDescription, "yuimenubaritemlabel"))
+                        sReturn.Append(BuildClassLink(myRow, "yuimenubaritemlabel"))
                         sReturn.Append(yuiBuildPageTree(myRow.PageID, intLevel + 1, myRow.PageName) & "</li>" & vbCrLf)
                     Else
                         sReturn.Append("<li class=""yuimenuitem"">")
-                        sReturn.Append(BuildClassLink(myRow.BreadCrumbURL, myRow.PageName, myRow.PageDescription, "yuimenuitemlabel"))
+                        sReturn.Append(BuildClassLink(myRow, "yuimenuitemlabel"))
                         sReturn.Append(yuiBuildPageTree(myRow.PageID, intLevel + 1, myRow.PageName) & "</li>" & vbCrLf)
                     End If
                 End If
@@ -672,11 +648,20 @@ Public Class mhSiteFile
         End If
         Return sReturn.ToString
     End Function
-    Private Function BuildNaviagtionLink(ByVal LinkURL As String, ByVal LinkText As String, ByVal LinkTitle As String, ByVal IsSelected As Boolean, ByVal pageID As String) As String
-        If (IsSelected) Then
-            Return ("<a class=""selected"" href=""" & LinkURL & """><span class=""selected"">" & LinkText & "</span></a>")
+
+    Private Function BuildClassLink(ByRef myRow As mhSiteMapRow, ByVal LinkClass As String) As String
+        If LinkClass = String.Empty Then
+            Return ("<a href=""" & GetSiteMapRowURL(myRow) & """><span>" & myRow.PageName & "</span></a>")
         Else
-            Return ("<a href=""" & LinkURL & """><span>" & LinkText & "</span></a>")
+            Return ("<a class=""" & LinkClass & """ href=""" & GetSiteMapRowURL(myRow) & """><span>" & myRow.PageName & "</span></a>")
+        End If
+    End Function
+
+    Private Function BuildNaviagtionLink(ByRef myRow As mhSiteMapRow, ByVal IsSelected As Boolean) As String
+        If (IsSelected) Then
+            Return BuildClassLink(myRow, "selected")
+        Else
+            Return BuildClassLink(myRow, "")
         End If
     End Function
     Public Function BuildPageTree(ByVal ParentID As String, ByVal intLevel As Double, ByVal sULClassName As String) As String
@@ -685,7 +670,7 @@ Public Class mhSiteFile
             If myRow.RecordSource = "Page" Then
                 If ParentID = myRow.ParentPageID Then
                     sReturn.Append("<li>")
-                    sReturn.Append(BuildNaviagtionLink(myRow.BreadCrumbURL, myRow.PageName, myRow.PageDescription, False, myRow.PageID))
+                    sReturn.Append(BuildNaviagtionLink(myRow, False))
                     sReturn.Append(BuildPageTree(myRow.PageID, intLevel + 1, sULClassName) & "</li>" & vbCrLf)
                 End If
             End If
@@ -856,11 +841,11 @@ Public Class mhSiteFile
     Public Function ReplaceTags(ByRef sbContent As StringBuilder) As Boolean
         sbContent.Replace("~~SiteURL~~", Me.SiteURL)
         sbContent.Replace("~~SiteCompanyName~~", Me.CompanyName)
-        sbContent.Replace("~~SiteTagLine~~", Me.SiteDescription)
-        sbContent.Replace("<sitemap>", Me.PageStructure)
-        sbContent.Replace("<sitetree>", Me.TreeHTML)
+        sbContent.Replace("~~SiteDescription~~", Me.SiteDescription)
+        sbContent.Replace("~~SiteKeywords~~", Me.SiteKeywords)
+        sbContent.Replace("~~SiteMap~~", Me.PageStructure)
+        sbContent.Replace("~~SiteTree~~", Me.TreeHTML)
         sbContent.Replace("~~SiteCity~~", Me.SiteCity)
-        sbContent.Replace("~~sitecity~~", Me.SiteCity)
         sbContent.Replace("~~SiteCityDash~~", mhUTIL.FormatPageNameForURL(Me.SiteCity))
         sbContent.Replace("~~SiteCityNoSpace~~", Replace(Me.SiteCity, " ", ""))
         sbContent.Replace("~~SiteState~~", Me.SiteState)

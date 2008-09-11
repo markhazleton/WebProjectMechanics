@@ -104,7 +104,6 @@ Public Class mhSiteMap
         End Try
     End Sub
     Public Function BuildTemplate(ByRef sbContent As StringBuilder) As Boolean
-
         Me.ReplaceLinkTags(sbContent)
         sbContent.Replace("~~PageAdmin~~", GetPageAdmin())
         sbContent.Replace("~~UserOptions~~", Me.GetUserOptions())
@@ -126,23 +125,23 @@ Public Class mhSiteMap
         sbContent.Replace("~~TopMenu~~", Me.mySiteFile.BuildMenuChild(Me.CurrentMapRow.MainMenuPageID, "", ""))
         sbContent.Replace("~~SubTree~~", Me.mySiteFile.BuildPageTree(Me.CurrentMapRow.PageID, 0, "topmenu"))
         sbContent.Replace("~~MainSubTree~~", Me.mySiteFile.BuildPageTree(Me.CurrentMapRow.MainMenuPageID, 0, "topmenu"))
-        'sbContent.Replace("~~SubMenu~~", Me.mySiteFile.BuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.MainMenuPageID, Me.CurrentMapRow.MainMenuPageID))
         sbContent.Replace("~~MainSubMenu~~", Me.mySiteFile.BuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.MainMenuPageID, Me.CurrentMapRow.MainMenuPageID))
         sbContent.Replace("~~2ndMenu~~", Me.mySiteFile.BuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.MainMenuPageID, Me.CurrentMapRow.MainMenuPageID))
         sbContent.Replace("~~3rdMenu~~", Me.mySiteFile.BuildLinkMenu(3, Me.CurrentMapRow.PageID, "~~LINKS~~", Me.CurrentMapRow))
+
         ' YUI Menu Options
         'sbContent.Replace("~~yuiTopMenu~~", Me.mySiteFile.yuiBuildMenuChild(Me.CurrentMapRow.MainMenuPageID, String.Empty, String.Empty, "yuiTopMenu"))
         'sbContent.Replace("~~yuiMainSubMenu~~", Me.mySiteFile.yuiBuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.MainMenuPageID, Me.CurrentMapRow.MainMenuPageID, "yuiMainSubMenu"))
-
         sbContent.Replace("~~yuiMainTree~~", Me.mySiteFile.yuiBuildPageTree("", 0, "top"))
         sbContent.Replace("~~yuiSubMenu~~", Me.mySiteFile.yuiBuildPageList(Me.CurrentMapRow.MainMenuPageID, Me.CurrentMapRow.MainMenuPageName, Me.CurrentMapRow.PageID, 0))
-
         sbContent.Replace("~~yuiChildrenMenu~~", Me.mySiteFile.yuiBuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.PageID, Me.CurrentMapRow.PageID, "yuiChildrenMenu"))
         sbContent.Replace("~~yuiSiblingMenu~~", Me.mySiteFile.yuiBuildMenuChild(Me.CurrentMapRow.PageID, Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.ParentPageID, "yuiSiblingMenu"))
+
         ' Alternate Menu Options
         sbContent.Replace("~~ParentMenu~~", Me.mySiteFile.BuildLinkListByParent(Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.SiteCategoryID))
         sbContent.Replace("~~ChildrenMenu~~", Me.mySiteFile.BuildLinkListByParent(Me.CurrentMapRow.PageID, Me.CurrentMapRow.PageID, Me.CurrentMapRow.SiteCategoryID))
         sbContent.Replace("~~SiblingMenu~~", Me.mySiteFile.BuildLinkListBySibling(Me.CurrentMapRow.PageID, Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.SiteCategoryID))
+
         ' Replace Site Cateogry Tags
         For Each myGroup As mhSiteGroup In Me.mySiteFile.SiteGroupRows
             If (InStr(1, UCase(myGroup.SiteCategoryGroupNM), "TOP") > 0) Then
@@ -401,7 +400,6 @@ Public Class mhSiteMap
                     Dim mystream As Stream = response.GetResponseStream()
                     Dim xmlreader As New XmlTextReader(mystream)
                     myXmlDoc.Load(xmlreader)
-                    '                    myXmlDoc.Load(sURL)
                     myXmlDoc.Save(path)
                 Else
                     myXmlDoc.Load(path)
@@ -417,9 +415,9 @@ Public Class mhSiteMap
         End Try
         Try
             If sXSLTPath = "" Then
-                strXslFile = (mhConfig.mhWebConfigFolder & "style\rss_title.xsl")
+                strXslFile = (mhConfig.mhWebHome & "style\rss_title.xsl")
             Else
-                strXslFile = mhConfig.mhWebConfigFolder & "style\" & sXSLTPath
+                strXslFile = mhConfig.mhWebHome & "style\" & sXSLTPath
             End If
             myXslDoc.Load(strXslFile)
             myXslDoc.Transform(myXmlDoc, Nothing, myStringWriter)
@@ -461,8 +459,8 @@ Public Class mhSiteMap
             ResetSessionVariables()
         End If
         Me.SetListPage(HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING"), HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), HttpContext.Current.Request.ServerVariables.Item("URL"))
-        mhUTIL.AccessLog(Me.CurrentMapRow.DisplayURL, Me.CurrentMapRow.TransferURL)
-        mhfio.SaveHTML(Me.CurrentMapRow.DisplayURL, myHTML.ToString)
+        '  mhUTIL.AccessLog(Me.CurrentMapRow.DisplayURL, Me.CurrentMapRow.TransferURL)
+        '  mhfio.SaveHTML(Me.CurrentMapRow.DisplayURL, myHTML.ToString)
 
         Return myHTML.ToString
     End Function
@@ -677,7 +675,7 @@ Public Class mhSiteMap
         Dim bReturn As Boolean = False
         For Each myrow As mhSiteMapRow In mySiteFile.SiteMapRows
             If myrow.PageID = sPageID And myrow.ArticleID = sArticleID And myrow.RecordSource = sRecordSource Then
-                Me.UpdateCurrentPageRow(Me.CurrentMapRow, myrow)
+                Me.CurrentMapRow.UpdatePageRow(myrow)
                 For Each bcRow As mhBreadCrumbRow In CurrentMapRow.BreadCrumbRows
                     If bcRow.MenuLevelNBR = 1 Then
                         SetMainPage(bcRow.PageID, bcRow.PageName)
@@ -719,7 +717,7 @@ Public Class mhSiteMap
                 If (myrow.ActiveFL Or mhUser.IsAdmin()) Then
                     If (bStrict) Then
                         LinkURL = myrow.TransferURL
-                        Me.UpdateCurrentPageRow(Me.CurrentMapRow, myrow)
+                        Me.CurrentMapRow.UpdatePageRow(myrow)
 
                         For Each bcRow As mhBreadCrumbRow In CurrentMapRow.BreadCrumbRows
                             If bcRow.MenuLevelNBR = 1 Then
@@ -755,8 +753,6 @@ Public Class mhSiteMap
         Return LinkURL
     End Function
 
-
-
     Private Function CheckForMatch(ByVal pageName As String, ByVal urlName As String) As Boolean
         Dim bMatch As Boolean = False
         ' To Make this Easier, let's ignore case and spaces and apmersands and dashes
@@ -785,28 +781,6 @@ Public Class mhSiteMap
             bMatch = False
         End If
         Return bMatch
-    End Function
-    Public Function UpdateCurrentPageRow(ByRef CurrentPageRow As mhSiteMapRow, ByRef FoundPageRow As mhSiteMapRow) As Boolean
-        CurrentPageRow.ModifiedDate = FoundPageRow.ModifiedDate
-        CurrentPageRow.ActiveFL = FoundPageRow.ActiveFL
-        CurrentPageRow.RecordSource = FoundPageRow.RecordSource
-        CurrentPageRow.PageID = FoundPageRow.PageID
-        CurrentPageRow.ParentPageID = FoundPageRow.ParentPageID
-        CurrentPageRow.ArticleID = FoundPageRow.ArticleID
-        CurrentPageRow.PageName = FoundPageRow.PageName
-        CurrentPageRow.PageTitle = FoundPageRow.PageTitle
-        CurrentPageRow.PageKeywords = FoundPageRow.PageKeywords
-        CurrentPageRow.PageDescription = FoundPageRow.PageDescription
-        CurrentPageRow.BreadCrumbHTML = FoundPageRow.BreadCrumbHTML
-        CurrentPageRow.LevelNBR = FoundPageRow.LevelNBR
-        CurrentPageRow.BreadCrumbRows = FoundPageRow.BreadCrumbRows
-        CurrentPageRow.PageTypeCD = FoundPageRow.PageTypeCD
-        CurrentPageRow.DisplayURL = FoundPageRow.DisplayURL
-        CurrentPageRow.TransferURL = FoundPageRow.TransferURL
-        CurrentPageRow.SiteCategoryID = FoundPageRow.SiteCategoryID
-        CurrentPageRow.SiteCategoryName = FoundPageRow.SiteCategoryName
-        CurrentPageRow.SiteCategoryGroupName = FoundPageRow.SiteCategoryGroupName
-        Return True
     End Function
     Public Function getXMLTransform(ByVal XMLFilePath As String, ByVal XSLFilePath As String) As String
         Dim myXmlDoc As XmlDocument = New XmlDocument()

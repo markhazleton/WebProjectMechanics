@@ -71,7 +71,7 @@
     <Compile Include="HGBRSSFeedTools.vb" />
     <Compile Include="mhHttpModule.vb" />
     <Compile Include="mhImage.vb" />
-    <Compile Include="GoogleSitemapGenerator.vb" />
+    <Compile Include="mhXMLSitemap.vb" />
     <Compile Include="mhAdmin.vb" />
     <Compile Include="mhArticle.vb" />
     <Compile Include="mhBlog.vb" />
