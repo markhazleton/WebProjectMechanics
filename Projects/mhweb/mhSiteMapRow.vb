@@ -263,6 +263,38 @@ Public Class mhSiteMapRow
         End Set
     End Property
 
+    Public Function UpdatePageRow(ByRef FoundPageRow As mhSiteMapRow) As Boolean
+        Me.ModifiedDate = FoundPageRow.ModifiedDate
+        Me.ActiveFL = FoundPageRow.ActiveFL
+        Me.RecordSource = FoundPageRow.RecordSource
+        Me.PageID = FoundPageRow.PageID
+        Me.ParentPageID = FoundPageRow.ParentPageID
+        Me.ArticleID = FoundPageRow.ArticleID
+        Me.PageName = FoundPageRow.PageName
+        Me.PageTitle = FoundPageRow.PageTitle
+        Me.PageKeywords = FoundPageRow.PageKeywords
+        Me.PageDescription = FoundPageRow.PageDescription
+        Me.BreadCrumbHTML = FoundPageRow.BreadCrumbHTML
+        Me.LevelNBR = FoundPageRow.LevelNBR
+        Me.BreadCrumbRows = FoundPageRow.BreadCrumbRows
+        Me.PageTypeCD = FoundPageRow.PageTypeCD
+        Me.DisplayURL = FoundPageRow.DisplayURL
+        Me.TransferURL = FoundPageRow.TransferURL
+        Me.SiteCategoryID = FoundPageRow.SiteCategoryID
+        Me.SiteCategoryName = FoundPageRow.SiteCategoryName
+        Me.SiteCategoryGroupName = FoundPageRow.SiteCategoryGroupName
+        Return True
+    End Function
+
+    Public Function BuildClassLink(ByVal LinkClass As String, ByRef UseBreadcrumbURL As Boolean) As String
+        If UseBreadcrumbURL Then
+            Return ("<a class=""" & LinkClass & """ href=""" & Me.BreadCrumbURL & """>" & Me.PageName & "</a>")
+        Else
+            Return ("<a class=""" & LinkClass & """ href=""" & Me.DisplayURL & """>" & Me.PageName & "</a>")
+        End If
+    End Function
+
+
 End Class
 
 Public Class mhSiteMapRows

@@ -42,4 +42,5 @@ Public Class mhPageAliasRows
             Me.Add(myPageAlias)
         Next
     End Sub
+
 End Class
