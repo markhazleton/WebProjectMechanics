@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>~~SiteCompanyName~~ - Administration</title>
+  <meta name="Description" content="MHADMIN" />
+  <meta name="Language" content="en" />
+  <link rel="stylesheet" type="text/css" href="/yui/build/reset-fonts-grids/reset-fonts-grids.css" />
+  <link rel="stylesheet" type="text/css" href="/yui/build/base/base.css" />
+  <link rel="stylesheet" type="text/css" href="/util/skins/MHADMIN/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="/util/skins/MHADMIN/sinorcaish-mhadmin.css" />
+  <link rel="stylesheet" type="text/css" href="/util/skins/MHADMIN/PMGEN.css" />
+  <link rel="stylesheet" type="text/css" href="/yui/build/menu/assets/skins/mhadmin/menu.css" />
+
+    <script type='text/javascript' src='/util/skins/MHADMIN/common.js'></script>
+	<script type='text/javascript' src='/util/skins/MHADMIN/css.js'></script>
+	<script type='text/javascript' src='/util/skins/MHADMIN/standardista-table-sorting.js'></script>
+
+    <script type="text/javascript" src="/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="/yui/build/container/container_core.js"></script>
+    <script type="text/javascript" src="/yui/build/menu/menu.js"></script>
+    <script type="text/javascript" src="/yui/build/utilities/utilities.js"></script>
+    <script type="text/javascript">
+      YAHOO.util.Event.onContentReady("mhadminmenu", function () {
+        var oMenuBar = new YAHOO.widget.MenuBar("mhadminmenu", { autosubmenudisplay: true, hidedelay: 750, lazyload: true });
+        oMenuBar.render();
+        });
+     </script>
+</head>
+<body class="yui-skin-sam" >
+<!-- For non-visual or non-stylesheet-capable user agents -->
+<div id="mainlink"><a href="#main">Skip to main content.</a></div>
+<div id="doc3" class="yui-t7">
+<!-- ======== Header ======================================================================================== -->
+<div id="hd">
+  <div class="yui-ge">
+  <div class="yui-u first left highlight">~~SiteCompanyName~~ -  Administration</div>
+  <div class="yui-u right">
+    <span class="hidden">Useful links:</span>
+    <a href="/mhweb/admin/admin.aspx">Admin Home</a> |
+    <a href="/">Back To Site</a>
+  </div>
+  </div>
+
+  <div id="mhadminmenu" class="yuimenubar yuimenubarnav">
+   <div class="bd">
+	  <ul class="first-of-type">
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/mhweb/admin/admin.aspx"> Administration </a>
+		  <div id="Div1" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/SiteMapReport.aspx?ReportID=NavigationAdmin">Navigation</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/SiteMapReport.aspx?ReportID=LinkAdmin">Link</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/SiteMapReport.aspx?ReportID=ParameterAdmin">Parameter</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/SiteMapReport.aspx?ReportID=ImageAdmin">Image</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/company_list.aspx">Company</a>
+		  <div id="CompanyList" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/company_add.aspx">Company Add</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/contact_list.aspx">Contact List</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/contact_add.aspx">Contact Add</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/site_switch.aspx">Change Company</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/page_list.aspx">Page</a>
+		  <div id="PageList" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/page_add.aspx">Page Add</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/pageimage_list.aspx">Page Image</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/mhPageOrder.aspx">Page Order</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/article_list.aspx">Article</a>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/mhweb/admin/AdminLink.aspx">Link</a>
+		  <div id="LinkList" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/link_list.aspx">Link List</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/link_add.aspx">Link Add</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/sitetemplate_list.aspx">Template</a>
+		  <div id="TemplateList" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/sitetemplate_add.aspx">Template Add</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/skin_switch.aspx">Template Switch</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/image_list.aspx">Image</a>
+		  <div id="ImageList" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+			     <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/pageimage_list.aspx">Page Image</a></li>
+			     <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/browse_images.aspx">Browse Image</a></li>
+			     <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/FileAdmin.aspx"> File Admin </a></li>
+			     <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/pageimage_list.aspx">Image Page Assignment</a></li>
+			     <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/mhweb/admin/mhMissingPageImage.aspx">Missing Page Image</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/SiteCategoryType_list.aspx">Site Category Type</a>
+		  <div id="SiteType" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/SiteCategoryGroup_list.aspx">Category Group List</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/SiteCategory_list.aspx">Site Category List</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/SiteLink_list.aspx">Site Category Link List</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+      <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="/aspmaker/companysiteparameter_list.aspx?cmd=resetall">Site Parameter</a>
+		  <div id="SiteParameter" class="yuimenu">
+		    <div class="bd">
+			   <ul>
+				<li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/companysiteparameter_list.aspx?cmd=resetall">Site Parameter List</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/siteparametertype_list.aspx?cmd=resetall">Parameter Type</a></li>
+				  <li class="yuimenuitem"><a class="yuimenuitemlabel" href="/aspmaker/siteparametertype_add.aspx">Parameter Type Add</a></li>
+				</ul>
+		    </div>
+		  </div>
+		</li>
+
+     </ul>
+   </div>
+  </div>
+</div>
+<!-- ======== Main Content =================================================================================== -->
+<div id="bd">
+  <div id="yui-main">
+    <div class="yui-b">
+        ~~MainContent~~
+    </div>
+  </div>
+</div>
+<!-- ======== Footer ======================================================================================== -->
+<div id="ft">
+<div class="yui-ge">
+  <div class="yui-u first">
+    Copyright &copy; 2004&ndash;~~Year~~, Project Mechanics LLC.  All rights reserved.
+    <span class="notprinted">
+      <a href="/">Terms of Use</a>.
+      <a href="/">Privacy Policy</a>.
+    </span>
+    <br />
+    This web site is maintained by
+    <a href="mailto:mark.hazleton@projectmechanics.com">Mark Hazleton</a>.
+    Last modified: 10th Feburary, 2008.
+	 <br/>
+  </div>
+  <div class="yui-u right" >
+  <img src="/util/skins/MHADMIN/projectmechanics-ws.gif" alt="Project Mechanics Web Services" align="right" />
+  </div>
+</div>
+</div>
+</div>
+</body></html>

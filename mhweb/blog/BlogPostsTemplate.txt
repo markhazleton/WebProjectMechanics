@@ -1,0 +1,7 @@
+
+<div class="blog-entry" id="post-~~PostID~~">
+  <div class="blog-name">
+    <a href="~~PostURL~~" title="~~PostName~~">~~PostName~~</a>
+    <div class="blog-date">~~PostDate~~</div>
+  </div>
+</div>

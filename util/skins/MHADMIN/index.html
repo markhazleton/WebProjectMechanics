@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>Table Sorter Proof of Concept</title>
+
+		<link rel="stylesheet" href="style.css" type="text/css" />
+
+		<script type='text/javascript' src='common.js'></script>
+		<script type='text/javascript' src='css.js'></script>
+		<script type='text/javascript' src='standardista-table-sorting.js'></script>
+	</head>
+	<body>
+		<table class='sortable'>
+			<thead>
+				<tr>
+					<td></td>
+					<th colspan='2'>Name</th>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<th>Forename</th>
+					<th>Surname</th>
+					<th>Number</th>
+					<th>Price</th>
+					<th>IP Address</th>
+					<th>Scientific</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th class='numeric'>385</th>
+					<th class='numeric'>$160.91</th>
+					<td></td>
+					<td></td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>21/01/2006</td>
+					<td>Neil</td>
+					<td>Crosby</td>
+					<td class='numeric'>123</td>
+					<td class='numeric'>$1.96</td>
+					<td>192.168.1.1</td>
+					<td>-12E2</td>
+				</tr>
+				<tr class='odd'>
+					<td>01/02/2006</td>
+					<td>Becca</td>
+					<td>Courtley</td>
+					<td class='numeric'>122</td>
+					<td class='numeric'>$23.95</td>
+					<td>192.167.2.1</td>
+					<td>12E2</td>
+				</tr>
+				<tr>
+					<td>17/11/2004</td>
+					<td>David</td>
+					<td>Freidman</td>
+					<td class='numeric'>048</td>
+					<td class='numeric'>$14.00</td>
+					<td>192.168.2.1</td>
+					<td>13e-2</td>
+				</tr>
+				<tr class='odd'>
+					<td>17/10/2004</td>
+					<td>Sylvia</td>
+					<td>Tyler</td>
+					<td class='numeric'>43</td>
+					<td class='numeric'>$104.00</td>
+					<td>192.168.2.17</td>
+					<td>12.1e2</td>
+				</tr>
+				<tr>
+					<td>17/11/2005</td>
+					<td>Carl</td>
+					<td>Conway</td>
+					<td class='numeric'>49</td>
+					<td class='numeric'>$17.00</td>
+					<td>192.168.02.13</td>
+					<td>12e3</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class='sortable autostripe'>
+			<thead>
+				<tr>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+					<th>Heading</th>
+				</tr>
+			</thead>
+			<tbody>
+				<script>
+					for (var i=0; i < 100; i++) {
+
+						var number = Math.round(Math.random()*1000);
+
+						var day   = (1 + Math.round(Math.random()*30));
+						if (day < 10) {
+							day = '0' + day;
+						}
+						var month = (1 + Math.round(Math.random()*11));
+						if (month < 10) {
+							month = '0' + month;
+						}
+						var year  = (1990 + Math.round(Math.random()*16));
+
+						var pennies = (1 + Math.round(Math.random()*99));
+						if (pennies < 10) {
+							pennies = '0' + pennies;
+						}
+
+						var pounds = (1 + Math.round(Math.random()*1500));
+
+						var date = day + '/' + month + '/' + year;
+
+						document.write("<tr>");
+						document.write("<td>"+number+"</td>");
+						document.write("<td>"+date+"</td>");
+						document.write("<td>$"+pounds+'.'+pennies+"</td>");
+						document.write("<td>"+number+"</td>");
+						document.write("<td>"+date+"</td>");
+						document.write("<td>$"+pounds+'.'+pennies+"</td>");
+						document.write("<td>"+number+"</td>");
+						document.write("<td>"+date+"</td>");
+						document.write("</tr>");
+					}
+				</script>
+			</tbody>
+		</table>
+
+	</body>
+</html>

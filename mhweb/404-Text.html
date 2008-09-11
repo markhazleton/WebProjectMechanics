@@ -1,0 +1,82 @@
+<script language="Javascript"><!--
+var tl=new Array(
+
+"Searching for lost page that you requested  . . . . .  .   .    .     .",
+"<RequestURL> sounds like a great page. . .",
+"Hang-on, I think I found something. . . . .",
+"<RequestBrowser>",
+"oops, that is your browser, back to searching . . . . . . . ",
+"<UserHostAddress>",
+"nope, you again, hmmmm . . .. . .",
+"I fear that the file you wanted is . . . . . . no more.",
+"I'm terribly sorry about this.",
+"I really wanted to show you the page . . . .",
+"You have gone to the effort of visiting me ",
+"Asking for some great content to entertain or inform",
+"and then it doesn't even exist!",
+"So what do I do now?!",
+"I mean, I really don't even know you.",
+"How should I know what you wanted from me?",
+"You honestly think I can *guess*",
+"what someone I don't even *know*",
+"wants to find here?",
+"*sigh*",
+"Man, I'm so depressed I could just cry.",
+"And then where would we be, I ask you?",
+"It's not pretty when a web server cries.",
+"And where do you get off telling me what to show anyway?",
+"Just because I'm a web server,",
+"and possibly a manic depressive one at that?",
+"Why does that give you the right to tell me what to do?",
+"Huh?",
+"I'm so depressed...",
+"There is no original ideas left. . .",
+"In fact, this script was stolen from http://www.acm.uiuc.edu/ ",
+"I'm not even clever enought to come up",
+"with my own 404 message",
+"I think I'll crawl off into the trash can and decompose.",
+"I mean, I'm gonna be obsolete in what, two weeks anyway?",
+"What kind of a life is that?",
+"I'm really sorry to burden you with all this,",
+"I mean, it's not your job to listen to my problems,",
+"and I guess it is my job to go and fetch web pages for you.",
+"But I couldn't get this one.",
+"I'm so sorry.",
+"Believe me!",
+"Maybe I could interest you in another page?",
+"I have a list of pages below."
+);
+var speed=60;
+var index=0; text_pos=0;
+var str_length=tl[0].length;
+var contents, row;
+
+function type_text()
+{
+  contents='';
+  row=Math.max(0,index-7);
+  while(row<index)
+    contents += tl[row++] + '\r\n';
+  document.forms[0].elements[0].value = contents + tl[index].substring(0,text_pos) + "_";
+  if(text_pos++==str_length)
+  {
+    text_pos=0;
+    index++;
+    if(index!=tl.length)
+    {
+      str_length=tl[index].length;
+      setTimeout("type_text()",1500);
+    }
+  } else
+    setTimeout("type_text()",speed);
+
+}
+
+
+  window.onload = function(){
+	type_text();
+}
+
+
+
+//--></script>
