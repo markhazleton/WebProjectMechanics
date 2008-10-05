@@ -124,7 +124,7 @@ Partial Class mhweb_catalog_Browse_Images
         If sReturnID = "" Then
             ' Create New Image Record
             Dim myNewRow As New mhImageRow()
-            myNewRow.ImageFileName = sImageFileName
+            myNewRow.ImageFileName = Replace(sImageFileName, "\", "/")
             myNewRow.ImageName = sImageFileName
             myNewRow.ImageComment = "Image Record Created by Browse-Images"
             myNewRow.CompanyID = mySiteMap.mySession.CompanyID
