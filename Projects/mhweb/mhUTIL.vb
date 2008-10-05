@@ -1,4 +1,32 @@
 Public Class mhUTIL
+    Public Shared Function CheckForMatch(ByVal StringOne As String, ByVal StringTwo As String) As Boolean
+        Dim bMatch As Boolean = False
+        ' To Make this Easier, let's ignore case and spaces and apmersands and dashes
+        StringOne = LCase(StringOne)
+        StringOne = Replace(StringOne, "/", "")
+        StringOne = Replace(StringOne, ".html", "")
+        StringOne = Replace(StringOne, ".htm", "")
+        StringOne = Replace(StringOne, "&amp;", "&")
+        StringOne = Replace(StringOne, "%20", "")
+        StringOne = Replace(StringOne, "-", "")
+        StringOne = Replace(StringOne, " ", "")
+        StringOne = Replace(StringOne, mhConfig.DefaultExtension, "")
+        StringTwo = LCase(StringTwo)
+        StringTwo = Replace(StringTwo, "/", "")
+        StringTwo = Replace(StringTwo, ".html", "")
+        StringTwo = Replace(StringTwo, ".htm", "")
+        StringTwo = Replace(StringTwo, "%20", "")
+        StringTwo = Replace(StringTwo, " ", "")
+        StringTwo = Replace(StringTwo, "&amp;", "&")
+        StringTwo = Replace(StringTwo, "-", "")
+        StringTwo = Replace(StringTwo, mhConfig.DefaultExtension, "")
+        If (StringOne = StringTwo) Then
+            bMatch = True
+        Else
+            bMatch = False
+        End If
+        Return bMatch
+    End Function
     Public Shared Function ConvertRichTextToHTML(ByVal sTextToCovert As String) As String
         Dim sbReturn As New StringBuilder(HttpContext.Current.Server.HtmlEncode(sTextToCovert))
         sbReturn.Replace("'", "&#39;")
@@ -578,6 +606,13 @@ Public Class mhUTIL
         Return bValid
     End Function
 
+    Public Shared Function Build301Redirect(ByVal sNewURL As String) As Boolean
+        HttpContext.Current.Response.Status = "301 Moved Permanently"
+        HttpContext.Current.Response.AddHeader("Location", sNewURL)
+        Return True
+    End Function
+
+
     'Public Shared Function DisplayCurrentPage() As String
     '    Dim sbReturn As New StringBuilder("<h1>Current Settings</h1>")
     '    sbReturn.Append("<strong>CurrentPageID:</strong> " & System.Web.HttpContext.Current.Session.Item("CurrentPageID").ToString & "</br>")
@@ -686,5 +721,7 @@ Public Class cdsnetFormActionModifier
         Dim yaz As Byte() = System.Text.UTF8Encoding.UTF8.GetBytes(s)
         _sink.Write(yaz, 0, yaz.Length)
     End Sub
+
+
 End Class
 

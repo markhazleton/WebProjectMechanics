@@ -192,10 +192,10 @@ Public Class mhLinkDirectory
         ECHO("</div>")
         ECHO("<div class=""yui-u "" >")
         ECHO("<ul>")
-        ECHO("<li><span class=""highlight-one"">Global Site Link</span></li>")
-        ECHO("<li><span class=""highlight-two"">Site Link</span></li>")
-        ECHO("<li><span class=""highlight-three"">Global Link</span></li>")
-        ECHO("<li><span class=""highlight-four"">Page Link</span></li>")
+        ECHO("<li><span class=""highlight-one"">Site Type (Content appears on every page)</span></li>")
+        ECHO("<li><span class=""highlight-two"">Site Cateogry (Content appears only for a single category)</span></li>")
+        ECHO("<li><span class=""highlight-three"">Company (Content appears on every page)</span></li>")
+        ECHO("<li><span class=""highlight-four"">Page (Content appears on single page)</span></li>")
         ECHO("</ul>")
         ECHO("</div>")
         ECHO("</div>")
@@ -525,7 +525,7 @@ Public Class mhLinkDirectory
         For Each myLink As mhSiteLinkRow In Me.mySitemap.mySiteFile.SiteLinkRows
             If myLink.LinkCategoryID = CurrentCID Then
                 If myLink.LinkSource = "SiteLink" Then
-                    If myLink.LinkCompanyID = "" Then
+                    If myLink.PageID = String.Empty Then
                         sbLinks.Append("<li><span class=""highlight-one"">" & myLink.LinkRank & " - " & myLink.LinkTitle & "</span>")
                     Else
                         sbLinks.Append("<li><span class=""highlight-two"">" & myLink.LinkRank & " - " & myLink.LinkTitle & "</span>")
@@ -534,7 +534,7 @@ Public Class mhLinkDirectory
                     sbLinks.Append("| <a href=""/aspmaker/SiteLink_delete.aspx?id=" & myLink.LinkID & "&cid=" & RequestCID & """> Delete</a> ")
                     sbLinks.Append("| <a href=""/aspmaker/SiteLink_add.aspx?id=" & myLink.LinkID & """>Copy</a> ]</li>")
                 Else
-                    If myLink.PageID = "" Then
+                    If myLink.PageID = String.Empty Then
                         sbLinks.Append("<li><span class=""highlight-three"">" & myLink.LinkRank & " - " & myLink.LinkTitle & "</span>")
                     Else
                         sbLinks.Append("<li><span class=""highlight-four"">" & myLink.LinkRank & " - " & myLink.LinkTitle & "</span>")

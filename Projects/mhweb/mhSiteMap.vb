@@ -152,10 +152,11 @@ Public Class mhSiteMap
                 sbContent.Replace("~~" & myGroup.SiteCategoryGroupNM & "~~", Me.mySiteFile.BuildSiteCategoryGroupList(String.Empty, myGroup.SiteCategoryGroupNM, Me.CurrentMapRow.PageID, 1, myGroup.SiteCategoryGroupDS))
             End If
         Next
-        ' Replace Site Parameter Tags
-        For Each mySiteParameter As mhSiteParameter In Me.mySiteFile.SiteParameterList
-            sbContent.Replace("~~" & mySiteParameter.SiteParameterTypeNM & "~~", mySiteParameter.ParameterValue)
-        Next
+
+        If Not (Me.mySiteFile.SiteParameterList.ReplaceSiteParameterTags(sbContent)) Then
+            mhUTIL.AuditLog("Error With ReplaceSiteParameterTags", "mhSiteMap.BuildTemplate(sbContent)")
+        End If
+
         ' Replace Company Tags
         Me.mySiteFile.ReplaceTags(sbContent)
         sbContent.Replace("~~debug~~", Me.mySession.GetSessionDebug())
@@ -415,9 +416,9 @@ Public Class mhSiteMap
         End Try
         Try
             If sXSLTPath = "" Then
-                strXslFile = (mhConfig.mhWebHome & "style\rss_title.xsl")
+                strXslFile = HttpContext.Current.Server.MapPath((mhConfig.mhWebHome & "style/rss_title.xsl"))
             Else
-                strXslFile = mhConfig.mhWebHome & "style\" & sXSLTPath
+                strXslFile = HttpContext.Current.Server.MapPath((mhConfig.mhWebHome & "style/" & sXSLTPath))
             End If
             myXslDoc.Load(strXslFile)
             myXslDoc.Transform(myXmlDoc, Nothing, myStringWriter)
@@ -554,11 +555,15 @@ Public Class mhSiteMap
         Dim sTransferURL As String = ""
         Dim sRedirectURL As String = ""
         ResetCurrentRow()
-        RawURL = Replace(RawURL, "/mhweb/404.aspx?404;", "")
+
         QueryString = Replace(QueryString, ":80", "")
         sTransferURL = GetTransferURL(QueryString)
         If sTransferURL = "" Then
             sRedirectURL = GetRedirectURL(QueryString)
+            If (sRedirectURL = String.Empty) Then
+                sRedirectURL = mySiteFile.PageAliasRows.LookupTargetURL(RawURL)
+            End If
+
             If (sRedirectURL = "") Then
                 If (UCase(Right(QueryString, 4)) = "HTML" Or _
                     UCase(Right(QueryString, 4)) = ".HTM") Then
@@ -594,7 +599,7 @@ Public Class mhSiteMap
                     End If
                 End If
             Else
-                Build301Redirect(sRedirectURL)
+                mhUTIL.Build301Redirect(sRedirectURL)
                 bReturn = False
             End If
         Else
@@ -608,11 +613,6 @@ Public Class mhSiteMap
             CurrentMapRow.TransferURL = sTransferURL
         End If
     End Sub
-    Private Function Build301Redirect(ByVal sNewURL As String) As Boolean
-        HttpContext.Current.Response.Status = "301 Moved Permanently"
-        HttpContext.Current.Response.AddHeader("Location", sNewURL)
-        Return True
-    End Function
     Private Function BuildErrorMessage() As String
         Dim item As Object
         Dim strReturn As String = ""
@@ -711,7 +711,7 @@ Public Class mhSiteMap
                         urlName = Left(urlName, indexc - 1)
                     End If
                 End If
-                bMatch = CheckForMatch(urlName, myrow.DisplayURL)
+                bMatch = mhUTIL.CheckForMatch(urlName, myrow.DisplayURL)
             End If
             If (bMatch) Then
                 If (myrow.ActiveFL Or mhUser.IsAdmin()) Then
@@ -737,51 +737,10 @@ Public Class mhSiteMap
                 Exit For
             End If
         Next
-        If Not bStrict And Not bMatch Then
-            LinkURL = GetPageAliasURL(urlName)
-        End If
-        Return LinkURL
-    End Function
-    Private Function GetPageAliasURL(ByVal urlName As String) As String
-        Dim LinkURL As String = String.Empty
-        For Each myPageAlias As mhPageAlias In mySiteFile.PageAliasRows
-            If (CheckForMatch(urlName, myPageAlias.PageURL)) Then
-                LinkURL = myPageAlias.TransferURL
-                Exit For
-            End If
-        Next
+     
         Return LinkURL
     End Function
 
-    Private Function CheckForMatch(ByVal pageName As String, ByVal urlName As String) As Boolean
-        Dim bMatch As Boolean = False
-        ' To Make this Easier, let's ignore case and spaces and apmersands and dashes
-        urlName = LCase(urlName)
-        urlName = Replace(urlName, "/", "")
-        urlName = Replace(urlName, ".html", "")
-        urlName = Replace(urlName, ".htm", "")
-        urlName = Replace(urlName, "&amp;", "&")
-        urlName = Replace(urlName, "%20", "")
-        urlName = Replace(urlName, "-", "")
-        urlName = Replace(urlName, " ", "")
-
-        urlName = Replace(urlName, mhConfig.DefaultExtension, "")
-        pageName = LCase(pageName)
-        pageName = Replace(pageName, "/", "")
-        pageName = Replace(pageName, ".html", "")
-        pageName = Replace(pageName, ".htm", "")
-        pageName = Replace(pageName, "%20", "")
-        pageName = Replace(pageName, " ", "")
-        pageName = Replace(pageName, "&amp;", "&")
-        pageName = Replace(pageName, "-", "")
-        pageName = Replace(pageName, mhConfig.DefaultExtension, "")
-        If (urlName = pageName) Then
-            bMatch = True
-        Else
-            bMatch = False
-        End If
-        Return bMatch
-    End Function
     Public Function getXMLTransform(ByVal XMLFilePath As String, ByVal XSLFilePath As String) As String
         Dim myXmlDoc As XmlDocument = New XmlDocument()
         Dim myXslDoc As XslCompiledTransform = New XslCompiledTransform()
