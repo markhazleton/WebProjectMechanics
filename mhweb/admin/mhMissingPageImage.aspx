@@ -134,9 +134,12 @@
         Dim sReturn As String = ""
         Dim strSQL As String = "SELECT Image.ImageID, Image.ImageName, Image.ImageThumbFileName, Image.ImageFileName FROM [Image] LEFT JOIN PageImage ON Image.ImageID = PageImage.ImageID WHERE (((PageImage.PageImageID) Is Null)) and companyid=" & mySiteMap.mySession.CompanyID & " order by Image.ImageName "
         For Each myrow As DataRow In mhDB.GetDataTable(strSQL, "GetImageList").Rows
-            sReturn = sReturn & "<SPAN class=""thumb""><a href=""" & mySiteMap.mySiteFile.SiteGallery & myrow.Item(3) & _
-            """><img src=""/mhweb/catalog/ImageResize.aspx?h=150&img=" & mySiteMap.mySiteFile.SiteGallery & myrow.Item(3) & """ alt=""" & myrow.Item(1) & _
-            " (" & myrow.Item(0) & ") ""></a><br /><a href=""mhMissingPageImage.aspx?DEL=" & myrow.Item(0) & """>DEL</a>&nbsp;&nbsp;"
+            'sReturn = sReturn & "<SPAN class=""thumb""><a href=""" & mySiteMap.mySiteFile.SiteGallery & myrow.Item(3) & _
+            '"""><img src=""/mhweb/catalog/ImageResize.aspx?h=150&img=" & mySiteMap.mySiteFile.SiteGallery & myrow.Item(3) & """ alt=""" & myrow.Item(1) & _
+            '" (" & myrow.Item(0) & ") ""></a><br /><a href=""mhMissingPageImage.aspx?DEL=" & myrow.Item(0) & """>DEL</a>&nbsp;&nbsp;"
+            'sReturn = sReturn & "<label for=""ImageCheckBox""><input type=""CHECKBOX"" name=""ImageCheckBox"" value=""" & myrow.Item(0) & """ id=""ImageCheckBox" & myrow.Item(0) & """>" & myrow.Item(1) & "</label><br /></SPAN>"
+            sReturn = sReturn & "<SPAN class=""thumb""><img src=""/mhweb/catalog/ImageResize.aspx?h=150&img=" & mySiteMap.mySiteFile.SiteGallery & myrow.Item(3) & """ alt=""" & myrow.Item(1) & _
+            " (" & myrow.Item(0) & ") ""><br/>"
             sReturn = sReturn & "<label for=""ImageCheckBox""><input type=""CHECKBOX"" name=""ImageCheckBox"" value=""" & myrow.Item(0) & """ id=""ImageCheckBox" & myrow.Item(0) & """>" & myrow.Item(1) & "</label><br /></SPAN>"
         Next
         Return sReturn

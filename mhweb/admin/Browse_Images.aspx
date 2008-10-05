@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
     <table>
       <tr>
-        <td valign="top" width="230">
-          <asp:Panel id="pnlThumbs" runat="server" height="700px" scrollbars="vertical" width="220px" borderstyle="Inset"  ></asp:Panel>
+        <td valign="top" style="width: 515px">
+          <asp:Panel id="pnlThumbs" runat="server" height="700px" scrollbars="vertical" width="500px" borderstyle="Inset"  ></asp:Panel>
         </td>
           <td valign="top">
 <div id="ewTable">
@@ -67,7 +67,9 @@
   <td class="ewTableHeader" style="width: 125px" valign="top">Image File</td>
   <td class="ewTableRow" style="width: 571px"><asp:textbox id="lblImageFileName" visible="TRUE" runat="server" Width="550px" /></td>
 </tr>
-
+<tr><td colspan="2">
+<asp:Image ID="imgMain" runat="server" BorderStyle="Inset" BorderWidth="2px" ImageUrl="~/images/spacer.gif"   />
+</td></tr>
 
 </table>
 <br /><br /><center>
@@ -76,9 +78,6 @@
     <asp:label runat="server" id="Results" text="sdf"></asp:label>
 </center>
 </div>
-</td>
-<td valign="top" style="width: 451px">
-<asp:Image ID="imgMain" runat="server" BorderStyle="Inset" BorderWidth="2px" ImageUrl="~/images/spacer.gif"   />
 </td>
 </tr>
 </table>

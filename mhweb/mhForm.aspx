@@ -8,7 +8,7 @@
     Private Sub Page_Load(ByVal s As System.Object, ByVal e As System.EventArgs)
         Dim mySiteMap As New mhSiteMap(Session)
         Dim landing_page As String = String.Empty
-        Dim host_url As String
+
         Dim filename As String
         Dim req_method As String
         Dim value As String = String.Empty
@@ -22,7 +22,6 @@
         Dim subject As New String(String.Empty)
         Dim sMyHeaderRow As New String("<tr>")
         Dim sMyDataRow As New String("<tr>")
-        On Error Resume Next
         req_method = Request.ServerVariables("REQUEST_METHOD")
         If (req_method = "POST") Then
             Dim loop1 As Integer
@@ -81,39 +80,49 @@
         End If
 
         If Not (bErr) Then
-            host_url = Request.ServerVariables("HTTP_HOST")
-            filename = mhConfig.mhWebConfigFolder & "form\mhForm_" & Replace(Replace(Replace(dtNow.ToString("U"), " ", "-"), ",", ""), ":", "-") & ".html"
-            mhfio.CreateFile(filename, sOutFile)
             
             'create the mail message
             Dim mail As New MailMessage()
 
             'set the addresses
-            mail.From = New MailAddress(mySiteMap.mySiteFile.FromEmail)
-            mail.To.Add(mySiteMap.mySiteFile.FromEmail)
+            If mySiteMap.mySiteFile.FromEmail <> String.Empty Then
+                mail.From = New MailAddress(mySiteMap.mySiteFile.FromEmail)
+                mail.To.Add(mySiteMap.mySiteFile.FromEmail)
+                mail.Bcc.Add("mark.hazleton@projectmechanics.com")
+            Else
+                mail.From = New MailAddress("mark.hazleton@projectmechanics.com")
+                mail.To.Add("mark.hazleton@projectmechanics.com")
+            End If
 
             'set the content
-            mail.Subject = "Website Form from " & host_url & " :" & subject
+            mail.Subject = "Website Form from " & Request.ServerVariables("HTTP_HOST") & " :" & subject
             mail.Body = sOutFile
             mail.IsBodyHtml = True
 
-            'send the message
-            Dim smtp As New SmtpClient("relay-hosting.secureserver.net")
-            smtp.Send(mail)
-           
+            ' Save Copy of Email 
+            filename = mhConfig.mhWebConfigFolder & "form\" & Replace(Replace(Replace(mySiteMap.mySiteFile.CompanyName & "-" & Format(dtNow, "yyyy:MM:dd:HH:mm:ss"), " ", "-"), ",", ""), ":", "-") & ".html"
+            mhfio.CreateFile(filename, sOutFile & "<br/><br/><hr/>Sent to:" & mySiteMap.mySiteFile.FromEmail & "<br/>")
             Response.Write(sOutFile)
 
-            If (landing_page <> "") Then
-                Response.Redirect("http://" & host_url & "/" & landing_page)
-            Else
-                Response.Redirect("http://" & host_url)
-            End If
+            'send the message
+            Try
+                Dim smtp As New SmtpClient("relay-hosting.secureserver.net")
+                smtp.Send(mail)
+            Catch ex As Exception
+                mhUTIL.AuditLog("mhForm-Error Sending Email -(" & filename & ") " & ex.ToString, "mhForm.aspx - PageLoad")
+            End Try
         Else
-        Response.Write(errStr)
+            mhUTIL.AuditLog("mhForm-Error - " & errStr, "mhForm.aspx - PageLoad")
+        End If
+
+        If (landing_page <> "") Then
+            Response.Redirect("http://" & Request.ServerVariables("HTTP_HOST") & "/" & landing_page)
+        Else
+            Response.Redirect("http://" & Request.ServerVariables("HTTP_HOST"))
         End If
     End Sub
 
-    Function FormatTableCell(ByVal cell_value As String) As String
+    Function FormatTableCell(ByVal cell_value) As String
         Return "<td>" & cell_value & "</td>"
     End Function
     Function FormatVariableLine(ByVal var_name As String, ByVal var_value As String) As String
