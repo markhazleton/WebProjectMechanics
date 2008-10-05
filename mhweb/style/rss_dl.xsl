@@ -2,11 +2,18 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html" omit-xml-declaration="yes" indent="yes"/>
 <xsl:template match="*">
-<div class="leftnav">
-<strong><xsl:value-of select="*[local-name()='channel']/*[local-name()='title']"/></strong>
-<div class="blog-posts">
+<div class="rss_dl">
+<h2>
+<a>
+<xsl:attribute name="href">
+<xsl:value-of select="link"/>
+</xsl:attribute>
+
+<xsl:value-of select="*[local-name()='channel']/*[local-name()='title']"/>
+</a></h2>
+<dl>
   <xsl:for-each select="//*[local-name()='item']">
-  <div class="blog-title">
+  <dt>
     <a >
       <xsl:attribute name="href">
       <xsl:value-of select="*[local-name()='link']"/>
@@ -16,12 +23,12 @@
       </xsl:attribute>
       <xsl:value-of select="*[local-name()='title']"/>
     </a>
-</div>
-<div class="blog-body">
+</dt>
+<dd>
       <xsl:value-of select="*[local-name()='description']" disable-output-escaping="yes"/>
-</div>
+</dd>
   </xsl:for-each>
-</div>
+</dl>
 </div>
 </xsl:template>
 <xsl:template match="/">
