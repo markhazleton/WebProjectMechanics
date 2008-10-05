@@ -27,7 +27,7 @@ Public Class mhRssFeed
           "webmaster@" & Replace(HttpContext.Current.Request.ServerVariables("SERVER_NAME"), "http://", ""))
         ItemCount = 0
         For Each myrow As mhSiteMapRow In mySiteMap.mySiteFile.SiteMapRows
-            If ItemCount < 100 And myrow.RecordSource = "Page" And myrow.ActiveFL Then
+            If ItemCount < 100 And myrow.RecordSource = "Page" And myrow.ActiveFL And LCase(Left(myrow.DisplayURL, 4)) <> "http" Then
                 WriteItem(myrow.PageName, "http://" & mySiteMap.mySiteFile.SiteURL & myrow.BreadCrumbURL, myrow.PageDescription, "mark.hazleton@projectmechanics.com", myrow.ModifiedDate)
                 ItemCount = ItemCount + 1
             End If

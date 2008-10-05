@@ -325,6 +325,7 @@ Public Class mhSiteMapRows
             If Trim(sTransferURL) = String.Empty Then
                 sTransferURL = MySiteRow.PageFileName
             End If
+
             ' Check for Recursive Parent
             If (MySiteRow.PageID = MySiteRow.ParentPageID And MySiteRow.ParentPageID <> "") Then
                 MySiteRow.ParentPageID = ""
@@ -396,7 +397,7 @@ Public Class mhSiteMapRows
                 BuildParentBreadcrumbs(myRow.BreadCrumbRows, myRow.ParentPageID, LevelCount)
             End If
             myRow.BreadCrumbRows.Add(GetBreadcrumbRow(myRow, LevelCount))
-            Dim myFullPathURL As New StringBuilder("")
+            Dim myFullPathURL As New StringBuilder(String.Empty)
             For Each BCrow As mhBreadCrumbRow In myRow.BreadCrumbRows
                 If BCrow.LevelNBR < LevelCount Then
                     BCrow.MenuLevelNBR = (LevelCount - BCrow.LevelNBR)
@@ -407,7 +408,12 @@ Public Class mhSiteMapRows
                 End If
             Next
             myFullPathURL.Append(myRow.DisplayURL)
-            myRow.BreadCrumbURL = myFullPathURL.ToString
+            If LCase(Left(myRow.PageFileName, 4)) <> "http" Then
+                myRow.BreadCrumbURL = myFullPathURL.ToString
+            Else
+                myRow.BreadCrumbURL = myRow.PageFileName
+            End If
+            sBreadCrumbHTML = sBreadCrumbHTML & "<li><strong>" & myRow.PageName & "</strong></li>"
             myRow.BreadCrumbHTML = "<ul><li><a href=""/"">" & mhUTIL.FormatPageNameForURL(CompanyName) & "</a></li>" & sBreadCrumbHTML & "</ul>"
             myRow.LevelNBR = LevelCount
             ' Reset Variables

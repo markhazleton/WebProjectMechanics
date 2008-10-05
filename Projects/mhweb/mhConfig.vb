@@ -23,8 +23,11 @@ Public Class mhConfig
     End Property
     Public Shared ReadOnly Property mhWebHome() As String
         Get
+            ' Return HttpContext.Current.Server.MapPath("~/mhweb/")
+            ' And _
+            ' Not (mhfio.IsValidPath(WebConfigurationManager.AppSettings.Item("mhWebHome").ToString))
             If IsNothing(WebConfigurationManager.AppSettings.Item("mhWebHome")) Then
-                Return HttpContext.Current.Server.MapPath("~/mhweb/")
+                Return "/mhweb/"
             Else
                 Return WebConfigurationManager.AppSettings.Item("mhWebHome").ToString
             End If

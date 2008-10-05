@@ -84,7 +84,6 @@ End Class
 
 Public Class mhSiteParameterList
     Inherits List(Of mhSiteParameter)
-
     Public Function PopulateParameterTypeList(ByVal CompanyID As String) As Boolean
         Try
             For Each myrow As DataRow In mhDataCon.GetSiteParameterList(CompanyID).Rows
@@ -103,7 +102,12 @@ Public Class mhSiteParameterList
         Catch ex As Exception
             mhUTIL.AuditLog("Error on mhSiteParameterList.PopulateParameterTypeList", ex.ToString)
         End Try
-
+    End Function
+    Public Function ReplaceSiteParameterTags(ByRef sbContent As StringBuilder) As Boolean
+        For Each mySiteParameter As mhSiteParameter In Me
+            sbContent.Replace("~~" & mySiteParameter.SiteParameterTypeNM & "~~", mySiteParameter.ParameterValue)
+        Next
+        Return True
     End Function
 
 

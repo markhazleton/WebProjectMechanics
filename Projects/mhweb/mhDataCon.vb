@@ -157,18 +157,6 @@ Public Class mhDataCon
           "FROM LinkCategory ", "mhDataCon.GetLinkCategoryList")
     End Function
     Public Shared Function GetSiteParameterList(ByVal CompanyID As String) As DataTable
-        'Return mhDB.GetDataTable("SELECT CompanySiteParameter.CompanySiteParameterID,   " & _
-        '                "CompanySiteParameter.CompanyID,   " & _
-        '                "CompanySiteParameter.SiteParameterTypeID,   " & _
-        '                "CompanySiteParameter.SortOrder,   " & _
-        '                "CompanySiteParameter.ParameterValue,   " & _
-        '                "SiteParameterType.SiteParameterTypeNM,   " & _
-        '                "SiteParameterType.SiteParameterTypeDS,   " & _
-        '                "SiteParameterType.SiteParameterTypeOrder,   " & _
-        '                "SiteParameterType.SiteParameterTemplate   " & _
-        '                "FROM SiteParameterType   " & _
-        '                "LEFT JOIN CompanySiteParameter ON SiteParameterType.[SiteParameterTypeID] = CompanySiteParameter.[SiteParameterTypeID]   " & _
-        '                "WHERE CompanySiteParameter.CompanyID = " & CompanyID & ";", "mhDataCon.GetSiteParameterList")
         Return mhDB.GetDataTable("SELECT CompanySiteParameter.CompanySiteParameterID,  " & _
                         "CompanySiteParameter.CompanyID,  " & _
                         "CompanySiteParameter.SiteParameterTypeID,  " & _
@@ -195,10 +183,6 @@ Public Class mhDataCon
                         "SiteParameterType.SiteParameterTemplate " & _
                         "        FROM(SiteParameterType) " & _
                         "order by 2 desc,4 asc", "mhDataCon.GetSiteParameterList")
-
-
-
-
     End Function
 
     'Public Shared Function GetPageLinkList(ByVal PageID As String) As DataTable
@@ -246,7 +230,7 @@ Public Class mhDataCon
         Return mhDB.GetDataTable(strSQL, "GetImageList")
     End Function
     Public Shared Function GetPageAliasList(ByVal CompanyID As String) As DataTable
-        Dim strSQL As String = ("SELECT PageURL, TargetURL, AliasType from PageAlias where [CompanyID]=" & CompanyID & " ")
+        Dim strSQL As String = ("SELECT PageAliasID, PageURL, TargetURL, AliasType from PageAlias where [CompanyID]=" & CompanyID & " ")
         Return mhDB.GetDataTable(strSQL, "GetPageAliasList")
     End Function
     Public Shared Function GetUnlinkedImageList(ByVal CompanyID As String) As DataTable
