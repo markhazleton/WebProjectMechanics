@@ -6,6 +6,7 @@
     <table class="sortable autostripe ">
       <thead>
         <tr>
+          <th>Thumbnail</th>
           <th>Image Name</th>
           <th>Description</th>
           <th>Title</th>
@@ -20,13 +21,16 @@
       <xsl:for-each select="mhSiteFile/ImageRows/mhImageRow">
         <xsl:sort select="ImageFileName"/>
         <tr>
+          <td>
+          <img>
+          <xsl:attribute name="src">
+          /mhweb/catalog/ImageResize.aspx?w=75&amp;img=<xsl:value-of select="../../SiteGallery"/><xsl:value-of select="ImageFileName"/>
+          </xsl:attribute>
+          </img>
+          </td>
           <td class="left">
             <a>
-              <xsl:attribute name="href">/aspmaker/image_edit.aspx?ImageID=<xsl:value-of select="ImageID"/></xsl:attribute>
-              <xsl:value-of select="ImageName"/>
-            </a><br/>
-            <a>
-              <xsl:attribute name="href">/mhweb/admin/browse_images.aspx?ImageID=<xsl:value-of select="ImageID"/></xsl:attribute>
+              <xsl:attribute name="href">/mhweb/admin/mhimageedit.aspx?a=<xsl:value-of select="ImageID"/></xsl:attribute>
               <xsl:value-of select="ImageName"/>
             </a>
           </td>
@@ -62,6 +66,6 @@
   </xsl:template>
 </xsl:stylesheet><!-- Stylus Studio meta-information - (c) 2004-2007. Progress Software Corporation. All rights reserved.
 <metaInformation>
-<scenarios ><scenario default="yes" name="Scenario1" userelativepaths="yes" externalpreview="no" url="..\index\InksLakeLiving.com-site-file.xml" htmlbaseurl="" outputurl="" processortype="internal" useresolver="yes" profilemode="0" profiledepth="" profilelength="" urlprofilexml="" commandline="" additionalpath="" additionalclasspath="" postprocessortype="none" postprocesscommandline="" postprocessadditionalpath="" postprocessgeneratedext="" validateoutput="no" validator="internal" customvalidator=""/></scenarios><MapperMetaTag><MapperInfo srcSchemaPathIsRelative="yes" srcSchemaInterpretAsXML="no" destSchemaPath="" destSchemaRoot="" destSchemaPathIsRelative="yes" destSchemaInterpretAsXML="no"/><MapperBlockPosition></MapperBlockPosition><TemplateContext></TemplateContext><MapperFilter side="source"></MapperFilter></MapperMetaTag>
+<scenarios ><scenario default="yes" name="Scenario1" userelativepaths="yes" externalpreview="no" url="..\..\access_db\index\Samuel Lynne Galleries -site-file.xml" htmlbaseurl="" outputurl="" processortype="internal" useresolver="yes" profilemode="0" profiledepth="" profilelength="" urlprofilexml="" commandline="" additionalpath="" additionalclasspath="" postprocessortype="none" postprocesscommandline="" postprocessadditionalpath="" postprocessgeneratedext="" validateoutput="no" validator="internal" customvalidator=""/></scenarios><MapperMetaTag><MapperInfo srcSchemaPathIsRelative="yes" srcSchemaInterpretAsXML="no" destSchemaPath="" destSchemaRoot="" destSchemaPathIsRelative="yes" destSchemaInterpretAsXML="no"/><MapperBlockPosition></MapperBlockPosition><TemplateContext></TemplateContext><MapperFilter side="source"></MapperFilter></MapperMetaTag>
 </metaInformation>
 -->

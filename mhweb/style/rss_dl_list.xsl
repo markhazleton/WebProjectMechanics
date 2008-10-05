@@ -37,12 +37,6 @@
     <Q:if test="position() &lt; 10">
       <Q:attribute name='accesskey'><Q:value-of select="position()" /></Q:attribute>
     </Q:if>
-
-<img>
-<Q:attribute name="src">
-<Q:value-of select="m1Image/url"/>
-</Q:attribute>
-</img><br/>
     <Q:choose>
       <Q:when test="not(title) or title = ''" ><em>(No title)</em></Q:when>
       <Q:otherwise		><Q:value-of select="title"/></Q:otherwise>

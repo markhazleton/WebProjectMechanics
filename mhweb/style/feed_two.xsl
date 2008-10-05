@@ -3,7 +3,8 @@
   <xsl:output method="html" omit-xml-declaration="yes" indent="no"/>
   <xsl:template match="atom:feed">
     <div class="rightnav">
-    <strong><xsl:value-of select="atom:title"/></strong>
+      <strong>5 From <xsl:value-of select="atom:title"/></strong>
+
       <xsl:apply-templates select="atom:entry"/>
     </div>
   </xsl:template>
@@ -27,8 +28,20 @@
             </xsl:otherwise>
           </xsl:choose>
         </div>
+        <div class="blog-body">
+          <xsl:call-template name="outputContent"/>
+        </div>
+        <div class="blog-date">Posted:
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="substring(atom:published,1,10)"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="substring(atom:published,12,5)"/>
+          <xsl:text> </xsl:text>
+        </div>
+        <br/>
+        <hr/>
       </div>
-      </xsl:if>
+    </xsl:if>
   </xsl:template>
   <xsl:template name="outputTitle">
     <xsl:choose>
