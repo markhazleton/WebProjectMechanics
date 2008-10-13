@@ -1,54 +1,84 @@
 Public Class mhDataCon
     Dim sSQL As String = String.Empty
 
-    Private Function GetNavigationDataTable(ByVal sSortBy As String, ByVal CompanyID As String, ByVal GroupID As Integer) As DataTable
-        Dim strSQL As String
-        ' Default to Guest if Group does not exist
-        strSQL = "SELECT Page.PageID, " & _
-                       "Page.PageName, " & _
-                        "Page.PageDescription, " & _
-                       " Page.ParentPageID, " & _
-                       "0," & _
-                       "Page.PageKeywords, " & _
-                       "pagetype.PageFileName, " & _
-                       "Page.PageFileName, " & _
-                       "Page.ModifiedDT, " & _
-                       "Page.Active " & _
-                  "FROM Page, pagetype  "
+    'Private Function GetNavigationDataTable(ByVal sSortBy As String, ByVal CompanyID As String, ByVal GroupID As Integer) As DataTable
+    '    Dim strSQL As String
+    '    ' Default to Guest if Group does not exist
+    '    strSQL = "SELECT Page.PageID, " & _
+    '                   "Page.PageName, " & _
+    '                    "Page.PageDescription, " & _
+    '                   " Page.ParentPageID, " & _
+    '                   "0," & _
+    '                   "Page.PageKeywords, " & _
+    '                   "pagetype.PageFileName, " & _
+    '                   "Page.PageFileName, " & _
+    '                   "Page.ModifiedDT, " & _
+    '                   "Page.Active " & _
+    '              "FROM Page, pagetype  "
 
-        If (mhSession.GetUserRoleFilterMenu()) Then
-            strSQL = strSQL & " , PageRole where Page.PageID = PageRole.PageID and PageRole.RoleID =" & mhSession.GetUserRoleID() & " and Page.PageTypeID = pagetype.PageTypeID  AND Page.GroupID >= " & GroupID & " "
-        Else
-            strSQL = strSQL & " WHERE Page.PageTypeID = pagetype.PageTypeID  AND Page.GroupID >= " & GroupID & " "
-        End If
-        ' Hide inactive pages for everyone but Admin
-        If Not (mhUser.IsAdmin()) Then
-            strSQL = strSQL & " AND Page.Active <> 0 "
-        End If
-        ' Limit pages to the Company of the User
-        If (CStr(CompanyID) <> "") Then
-            strSQL = strSQL & " AND Page.CompanyID =" & CompanyID & " "
-        Else
-            If (CompanyID <> "") Then
-                strSQL = strSQL & " AND ( Page.CompanyID =" & CompanyID & " ) "
-            End If
-        End If
-        ' Order results by PageOrder
-        Select Case sSortBy
-            Case "ORDER"
-                strSQL = strSQL & "ORDER BY [Page].[PageOrder], [Page].[PageName],'99' "
-            Case "MODIFIED"
-                strSQL = strSQL & "ORDER BY [Page].[ModifiedDT] DESC "
-            Case "NAME"
-                strSQL = strSQL & "ORDER BY [Page].[PageName] ASC "
-            Case "PARENT"
-                strSQL = strSQL & "ORDER BY [Page].[ParentPageID] ASC "
-            Case Else
-                strSQL = strSQL & "ORDER BY [Page].[PageOrder], [Page].[PageName],'99' "
-        End Select
-        Return mhDB.GetDataTable(strSQL, "GetNavigationDataTable")
-    End Function
+    '    If (mhSession.GetUserRoleFilterMenu()) Then
+    '        strSQL = strSQL & " , PageRole where Page.PageID = PageRole.PageID and PageRole.RoleID =" & mhSession.GetUserRoleID() & " and Page.PageTypeID = pagetype.PageTypeID  AND Page.GroupID >= " & GroupID & " "
+    '    Else
+    '        strSQL = strSQL & " WHERE Page.PageTypeID = pagetype.PageTypeID  AND Page.GroupID >= " & GroupID & " "
+    '    End If
+    '    ' Hide inactive pages for everyone but Admin
+    '    If Not (mhUser.IsAdmin()) Then
+    '        strSQL = strSQL & " AND Page.Active <> 0 "
+    '    End If
+    '    ' Limit pages to the Company of the User
+    '    If (CStr(CompanyID) <> "") Then
+    '        strSQL = strSQL & " AND Page.CompanyID =" & CompanyID & " "
+    '    Else
+    '        If (CompanyID <> "") Then
+    '            strSQL = strSQL & " AND ( Page.CompanyID =" & CompanyID & " ) "
+    '        End If
+    '    End If
+    '    ' Order results by PageOrder
+    '    Select Case sSortBy
+    '        Case "ORDER"
+    '            strSQL = strSQL & "ORDER BY [Page].[PageOrder], [Page].[PageName],'99' "
+    '        Case "MODIFIED"
+    '            strSQL = strSQL & "ORDER BY [Page].[ModifiedDT] DESC "
+    '        Case "NAME"
+    '            strSQL = strSQL & "ORDER BY [Page].[PageName] ASC "
+    '        Case "PARENT"
+    '            strSQL = strSQL & "ORDER BY [Page].[ParentPageID] ASC "
+    '        Case Else
+    '            strSQL = strSQL & "ORDER BY [Page].[PageOrder], [Page].[PageName],'99' "
+    '    End Select
+    '    Return mhDB.GetDataTable(strSQL, "GetNavigationDataTable")
+    'End Function
     '********************************************************************************
+    Public Shared Function GetCompanyData(ByVal CompanyID As String) As DataTable
+        Return mhDB.GetDataTable((("SELECT Company.CompanyID,  " & _
+                            "Company.CompanyName,  " & _
+                            "Company.GalleryFolder,  " & _
+                            "Company.SiteURL,  " & _
+                            "Company.SiteTitle,  " & _
+                            "Company.SiteTemplate,  " & _
+                            "Company.DefaultSiteTemplate,  " & _
+                            "Company.HomePageID,  " & _
+                            "Company.DefaultArticleID,  " & _
+                            "Company.ActiveFL,  " & _
+                            "Company.UseBreadCrumbURL,  " & _
+                            "Company.SiteCategoryTypeID,  " & _
+                            "Company.SingleSiteGallery,  " & _
+                            "Company.DefaultPaymentTerms,  " & _
+                            "Company.DefaultInvoiceDescription,  " & _
+                            "Company.City,  " & _
+                            "Company.StateOrProvince,  " & _
+                            "Company.PostalCode,  " & _
+                            "Company.Country,  " & _
+                            "Company.FromEmail, " & _
+                            "Company.SMTP, " & _
+                            "Company.Component, " & _
+                            "SiteCategoryType.SiteCategoryTypeNM,  " & _
+                            "SiteCategoryType.SiteCategoryTypeDS,  " & _
+                            "SiteCategoryType.DefaultSiteCategoryID   " & _
+                            "FROM SiteCategoryType " & _
+                            "RIGHT JOIN Company ON SiteCategoryType.[SiteCategoryTypeID] = Company.[SiteCategoryTypeID] " & _
+                           "WHERE Company.CompanyID=" & CompanyID & " ")), "GetCompanyData")
+    End Function
     Public Shared Function GetSiteGroupList(ByVal CompanyID As String) As DataTable
         Return mhDB.GetDataTable(("SELECT " & _
                  "SiteCategoryGroup.[SiteCategoryGroupID], " & _

@@ -140,6 +140,10 @@ Public Class mhSiteMap
         ' Alternate Menu Options
         sbContent.Replace("~~ParentMenu~~", Me.mySiteFile.BuildLinkListByParent(Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.SiteCategoryID))
         sbContent.Replace("~~ChildrenMenu~~", Me.mySiteFile.BuildLinkListByParent(Me.CurrentMapRow.PageID, Me.CurrentMapRow.PageID, Me.CurrentMapRow.SiteCategoryID))
+        '<Jonathan's Changes>
+        'This is a new tag I wanted to combine the breadcrumb menu with the children menu
+        sbContent.Replace("~~BreadCrumbChildren~~", Me.mySiteFile.BreadCrumbWithChildren(Me.CurrentMapRow.BreadCrumbHTML, Me.CurrentMapRow.PageID, Me.CurrentMapRow.PageID, Me.CurrentMapRow.SiteCategoryID))
+        '</Jonathan's Changes>
         sbContent.Replace("~~SiblingMenu~~", Me.mySiteFile.BuildLinkListBySibling(Me.CurrentMapRow.PageID, Me.CurrentMapRow.ParentPageID, Me.CurrentMapRow.SiteCategoryID))
 
         ' Replace Site Cateogry Tags
@@ -432,13 +436,13 @@ Public Class mhSiteMap
         If mhUser.IsAdmin() Then
             Select Case Me.CurrentMapRow.RecordSource
                 Case "Page"
-                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_edit.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Page Properties</a> | <a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx"">Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
+                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_edit.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Page Properties</a> | <a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
                 Case "Article"
-                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_edit.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Page Properties</a> | <a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx"">Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
+                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_edit.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Page Properties</a> | <a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
                 Case "Category"
                     sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "SiteCategory_edit.aspx?SiteCategoryID=" & Replace(Me.CurrentMapRow.PageID, "CAT-", "") & """>Page Properties</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
                 Case Else
-                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx"">Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
+                    sReturn = ("<div class=""mhAdmin""><a href=""" & mhConfig.mhASPMakerGen & "page_add.aspx?PageID=" & Me.CurrentMapRow.PageID & """>Add Page</a> | <a href=""" & mhConfig.mhASPMakerGen & "article_add.aspx"">Add Article</a> | <a href=""" & mhConfig.mhWebHome & "admin/admin.aspx"">Admin</a></div>")
             End Select
         End If
         Return sReturn

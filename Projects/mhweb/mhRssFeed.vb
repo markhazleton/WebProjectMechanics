@@ -19,6 +19,7 @@ Public Class mhRssFeed
         writer.WriteStartElement("rss")
         writer.WriteAttributeString("version", "2.0")
         Dim mySiteMap As New mhSiteMap("MODIFIED", HttpContext.Current.Session)
+        Dim mySBDescription As New StringBuilder(String.Empty)
 
         WriteStartChannel(mySiteMap.mySiteFile.CompanyName & " Menu", _
           "http://" & mySiteMap.mySiteFile.SiteURL, _
@@ -27,8 +28,11 @@ Public Class mhRssFeed
           "webmaster@" & Replace(HttpContext.Current.Request.ServerVariables("SERVER_NAME"), "http://", ""))
         ItemCount = 0
         For Each myrow As mhSiteMapRow In mySiteMap.mySiteFile.SiteMapRows
-            If ItemCount < 100 And myrow.RecordSource = "Page" And myrow.ActiveFL And LCase(Left(myrow.DisplayURL, 4)) <> "http" Then
-                WriteItem(myrow.PageName, "http://" & mySiteMap.mySiteFile.SiteURL & myrow.BreadCrumbURL, myrow.PageDescription, "mark.hazleton@projectmechanics.com", myrow.ModifiedDate)
+            mySBDescription.Length = 0
+            mySBDescription.Append(myrow.PageDescription)
+            mySiteMap.BuildTemplate(mySBDescription)
+            If ItemCount < 100 And (myrow.RecordSource = "Page" Or myrow.RecordSource = "Category") And myrow.ActiveFL And LCase(Left(myrow.DisplayURL, 4)) <> "http" Then
+                WriteItem(myrow.PageName, "http://" & mySiteMap.mySiteFile.SiteURL & myrow.BreadCrumbURL, mySBDescription.ToString, mySiteMap.mySiteFile.FromEmail, myrow.ModifiedDate)
                 ItemCount = ItemCount + 1
             End If
         Next
@@ -37,7 +41,7 @@ Public Class mhRssFeed
         writer.WriteEndDocument()
     End Sub
 
-    Public Sub WriteRSSBlogDocument(ByVal sPageID As String, ByVal CompanyID As String, ByVal CurrentPageName As String, ByVal CurrentPageDescription As String, ByVal CompanyName As String)
+    Public Sub WriteRSSBlogDocument(ByVal TimeScope As String)
         writer.WriteStartDocument()
         writer.WriteStartElement("rss")
         writer.WriteAttributeString("version", "2.0")
@@ -51,6 +55,7 @@ Public Class mhRssFeed
                        "Page.PageFileName, " & _
                        "Page.CompanyID, " & _
                        "Article.StartDT, " & _
+                       "Article.EndDT, " & _
                        "Article.ArticleBody, " & _
                        "Article.Title, " & _
                        "Article.Description, " & _
@@ -59,25 +64,27 @@ Public Class mhRssFeed
                  " FROM Page, pagetype, article,contact " & _
                 " WHERE Page.PageTypeID = pagetype.PageTypeID " & _
                   " AND Page.Active = TRUE and Page.GroupID = 4 " & _
-                  " AND Page.CompanyID = " & CompanyID & _
-                  " AND Page.PageID=" & sPageID & " " & _
+                  " AND Page.CompanyID = " & mySiteMap.mySession.CompanyID & _
+                  " AND Page.PageID=" & mySiteMap.CurrentMapRow.PageID & " " & _
                   " AND Page.PageID=Article.PageID " & _
                   " AND Article.ContactID = Contact.ContactID " & _
                  " ORDER BY Article.StartDT DESC ")
 
-        WriteStartChannel(CurrentPageName, _
+        WriteStartChannel(mySiteMap.CurrentMapRow.PageName, _
                               "http://" & HttpContext.Current.Request.ServerVariables("SERVER_NAME") & _
-                                   mhUTIL.FormatPageNameURL(CurrentPageName), _
-                              CurrentPageDescription, _
-                              "Copyright &copy; " & CompanyName & ", 1999-" & Year(Now()), _
-                              "Mark.Hazleton@projectmechanics.com")
+                                   mhUTIL.FormatPageNameURL(mySiteMap.CurrentMapRow.PageName), _
+                              mySiteMap.CurrentMapRow.PageDescription, _
+                              "Copyright &copy; " & mySiteMap.mySiteFile.CompanyName & ", 1999-" & Year(Now()), _
+                              mySiteMap.mySiteFile.FromEmail)
         For Each myrow As DataRow In mhDB.GetDataTable(sSQL, "WriteRSSBlogDocument").Rows
-            WriteItem(myrow.Item("Title").ToString, _
-            "http://" & HttpContext.Current.Request.ServerVariables("SERVER_NAME") & _
-              mhUTIL.FormatPageNameURL(myrow.Item("Title").ToString), _
-            myrow.Item("Description").ToString, _
-            myrow.Item("EMail").ToString, _
-            mhUTIL.GetDBDate(myrow.Item("StartDT")))
+            If ValidForTimeScope(TimeScope, mhUTIL.GetDBDate(myrow.Item("StartDT")), mhUTIL.GetDBDate(myrow.Item("EndDT"))) Then
+                WriteItem(myrow.Item("Title").ToString, _
+                "http://" & HttpContext.Current.Request.ServerVariables("SERVER_NAME") & _
+                  mhUTIL.FormatPageNameURL(myrow.Item("Title").ToString), _
+                myrow.Item("Description").ToString, _
+                myrow.Item("EMail").ToString, _
+                mhUTIL.GetDBDate(myrow.Item("StartDT")))
+            End If
         Next
         writer.WriteEndElement()
         writer.WriteEndDocument()
@@ -87,6 +94,22 @@ Public Class mhRssFeed
         writer.Close()
     End Sub
 
+    Private Function ValidForTimeScope(ByVal TimeScope As String, ByVal StartDT As Date, ByVal EndDT As Date) As Boolean
+        Dim bReturn As Boolean = False
+        Select Case UCase(TimeScope)
+            Case "UPCOMING"
+                If StartDT > Now() Or EndDT > Now() Then
+                    bReturn = True
+                End If
+            Case "PAST"
+                If StartDT < Now() And EndDT < Now() Then
+                    bReturn = True
+                End If
+            Case Else
+                bReturn = True
+        End Select
+        Return bReturn
+    End Function
     Public Sub WriteStartChannel(ByVal title As String, ByVal link As String, ByVal description As String, ByVal copyright As String, ByVal webMaster As String)
         writer.WriteStartElement("channel")
         writer.WriteElementString("title", title)
@@ -94,7 +117,7 @@ Public Class mhRssFeed
         writer.WriteElementString("description", description)
         writer.WriteElementString("language", "en-us")
         writer.WriteElementString("copyright", copyright)
-        writer.WriteElementString("generator", "MHWEB RSS Feed Generator v0.8")
+        writer.WriteElementString("generator", "WPM RSS Feed Generator v0.9")
         writer.WriteElementString("webMaster", webMaster)
         writer.WriteElementString("lastBuildDate", DateTime.Now.ToString("r"))
         writer.WriteElementString("ttl", "20")
@@ -109,7 +132,7 @@ Public Class mhRssFeed
         writer.WriteCData(description)
         writer.WriteEndElement()
         writer.WriteElementString("author", author)
-        writer.WriteElementString("pubDate", publishedDate.ToString("r"))
+        writer.WriteElementString("pubDate", String.Format("{0:d}", publishedDate))
         writer.WriteEndElement()
     End Sub
 

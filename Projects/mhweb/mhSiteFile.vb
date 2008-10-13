@@ -2,8 +2,8 @@ Public Class mhSiteFile
     Public ImageRows As mhImageRows
     Public ArticleRows As mhArticleRows
     Public PageAliasRows As mhPageAliasRows
-
     Private _SiteMapRows As New mhSiteMapRows
+
     Public Property SiteMapRows() As mhSiteMapRows
         Get
             Return _SiteMapRows
@@ -383,6 +383,42 @@ Public Class mhSiteFile
         Return sReturn.ToString
     End Function
 
+    'This is a combination of a bread crumb menu with a children menu
+    '<TODO> I imagine I should create subfunctions rather than copy/paste code
+    Public Function BreadCrumbWithChildren(ByVal BreadCrumb As String, ByVal PageID As String, ByVal ParentPageID As String, ByVal SiteCategoryID As String) As String
+        Dim sReturn As New StringBuilder("")
+        Dim sParentPageName As String = String.Empty
+
+        If ParentPageID = String.Empty And SiteCategoryID = String.Empty Then
+            sReturn.Append("<li><strong>NO Parent, No Category</strong></li>")
+        Else
+            For Each myrow As mhSiteMapRow In SiteMapRows
+                If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
+                    If (myrow.ParentPageID = ParentPageID) Then
+                        If myrow.PageID = PageID Then
+                            sReturn.Append("<li class=""menuitem selected"">")
+                            sReturn.Append(BuildNaviagtionLink(myrow, True))
+                        Else
+                            sReturn.Append("<li class=""menuitem"">")
+                            sReturn.Append(BuildNaviagtionLink(myrow, False))
+                        End If
+                        sReturn.Append("</li>" & vbCrLf)
+                    End If
+                    If (myrow.PageID = PageID) Then
+                        sParentPageName = myrow.PageName
+                    End If
+                End If
+            Next
+        End If
+
+        If BreadCrumb Is Nothing Then
+            Return sReturn.ToString
+        Else
+            Return BreadCrumb.Substring(0, BreadCrumb.LastIndexOf("</ul>")) & "<ul>" & sReturn.ToString & "</ul></ul>"
+        End If
+
+    End Function
+
     Public Function BuildMenuChild(ByVal PageID As String, ByVal ParentPageID As String, ByVal DefaultParentPageID As String) As String
         Dim sReturn As New StringBuilder("")
         For Each myrow As mhSiteMapRow In SiteMapRows
@@ -745,39 +781,8 @@ Public Class mhSiteFile
         Return ReturnString
     End Function
     Public Function GetCompanyValues(ByVal ReqCompanyID As String, ByVal SiteDB As String) As Boolean
-        Dim strSQL As String
         If CInt(ReqCompanyID) > 0 Then
-            strSQL = ("SELECT Company.CompanyID,  " & _
-                            "Company.CompanyName,  " & _
-                            "Company.GalleryFolder,  " & _
-                            "Company.SiteURL,  " & _
-                            "Company.SiteTitle,  " & _
-                            "Company.SiteTemplate,  " & _
-                            "Company.DefaultSiteTemplate,  " & _
-                            "Company.HomePageID,  " & _
-                            "Company.DefaultArticleID,  " & _
-                            "Company.ActiveFL,  " & _
-                            "Company.UseBreadCrumbURL,  " & _
-                            "Company.SiteCategoryTypeID,  " & _
-                            "Company.SingleSiteGallery,  " & _
-                            "Company.DefaultPaymentTerms,  " & _
-                            "Company.DefaultInvoiceDescription,  " & _
-                            "Company.City,  " & _
-                            "Company.StateOrProvince,  " & _
-                            "Company.PostalCode,  " & _
-                            "Company.Country,  " & _
-                            "Company.FromEmail, " & _
-                            "Company.SMTP, " & _
-                            "Company.Component, " & _
-                            "SiteCategoryType.SiteCategoryTypeNM,  " & _
-                            "SiteCategoryType.SiteCategoryTypeDS,  " & _
-                            "SiteCategoryType.DefaultSiteCategoryID   " & _
-                            "FROM SiteCategoryType " & _
-                            "RIGHT JOIN Company ON SiteCategoryType.[SiteCategoryTypeID] = Company.[SiteCategoryTypeID] " & _
-                           "WHERE Company.CompanyID=" & ReqCompanyID & " ")
-
-            Dim mydt As System.Data.DataTable = mhDB.GetDataTable(strSQL, "GetCompanyValues")
-            For Each myrow As DataRow In mydt.Rows
+            For Each myrow As DataRow In mhDataCon.GetCompanyData(ReqCompanyID).Rows
                 Me.CompanyName = mhUTIL.GetDBString(myrow("CompanyName"))
                 Me.SiteGallery = mhUTIL.GetDBString(myrow("GalleryFolder"))
                 Me.SiteURL = mhUTIL.GetDBString(myrow("SiteURL"))

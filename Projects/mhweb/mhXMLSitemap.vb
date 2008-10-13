@@ -12,10 +12,11 @@ Public Class mhXMLSitemap
     End Sub
     Public Sub WriteSitemapDocument()
         writer.WriteStartDocument()
+        writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='/mhweb/style/sitemap.xsl'")
         writer.WriteStartElement("urlset")
-        writer.WriteAttributeString("xmlns", "http://www.google.com/schemas/sitemap/0.84")
-        writer.WriteAttributeString("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-        writer.WriteAttributeString("xsi:schemaLocation", "http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd")
+        writer.WriteAttributeString("xmlns", "http://www.google.com/schemas/sitemap/0.9")
+        '   writer.WriteAttributeString("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
+        '   writer.WriteAttributeString("xsi:schemaLocation", "http://www.google.com/schemas/sitemap/0.9 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd")
 
         For Each myrow As mhSiteMapRow In mySiteMap.mySiteFile.SiteMapRows
             If myrow.ActiveFL Then
@@ -40,6 +41,13 @@ Public Class mhXMLSitemap
     Public Sub WriteItem(ByVal sPageName As String, ByVal link As String, ByVal description As String, ByVal author As String, ByVal publishedDate As DateTime, ByVal sPageKeywords As String)
         writer.WriteStartElement("url")
         writer.WriteElementString("loc", link)
+        If publishedDate > Now().AddDays(-30) Then
+            writer.WriteElementString("changefreq", "daily")
+            writer.WriteElementString("priority", "0.9")
+        Else
+            writer.WriteElementString("changefreq", "monthly")
+            writer.WriteElementString("priority", "0.4")
+        End If
         writer.WriteElementString("lastmod", _
           ZeroPad(Year(publishedDate).ToString, 4) & "-" & ZeroPad(Month(publishedDate).ToString, 2) & "-" & ZeroPad(Day(publishedDate).ToString, 2))
         writer.WriteEndElement()

@@ -30,6 +30,7 @@ Public Class mhDB
             Dim command As System.Data.OleDb.OleDbCommand = New System.Data.OleDb.OleDbCommand(sSQL, RecConn)
             Dim dataAdapter As System.Data.OleDb.OleDbDataAdapter = New System.Data.OleDb.OleDbDataAdapter(command)
             dataAdapter.Fill(dataTable)
+            mhUTIL.SQLAudit(sSQL, "SQL LOG on mhDB.GetDataTable - " & sTableName)
         Catch ex As Exception
             mhUTIL.SQLAudit(sSQL, "Error on mhDB.GetDataTable - " & sTableName & " (" & ex.Message & ")")
             mhUTIL.AuditLog("Error on mhDB.GetDataTable - " & sTableName, ex.ToString)
