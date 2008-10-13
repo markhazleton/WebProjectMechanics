@@ -372,7 +372,7 @@ Public Class mhSiteMapRows
             End If
 
             If MySiteRow.PageTypeCD = "NO FILE NAME" Then
-                MySiteRow.TransferURL = "/default.aspx"
+                MySiteRow.TransferURL = MySiteRow.PageFileName
                 MySiteRow.DisplayURL = MySiteRow.PageFileName
                 MySiteRow.BreadCrumbHTML = MySiteRow.PageFileName
             Else
@@ -391,35 +391,45 @@ Public Class mhSiteMapRows
     End Function
     Public Function BuildBreadcrumbRows(ByVal CompanyName As String) As Boolean
         Dim LevelCount As Integer = 1
-        Dim sBreadCrumbHTML As String = String.Empty
         For Each myRow As mhSiteMapRow In Me
-            If Trim(myRow.ParentPageID) <> String.Empty Then
-                BuildParentBreadcrumbs(myRow.BreadCrumbRows, myRow.ParentPageID, LevelCount)
+            'I made a change so it's possible the BreadCrumURL might already be filled, so I check to make sure that is not the case
+            'Then, I copied the code to generate the bread crumb to a function as I'll use it in another place
+            If (myRow.BreadCrumbURL = String.Empty Or myRow.BreadCrumbURL = "") Then
+                GenerateBreadcrumRow(myRow, LevelCount)
             End If
-            myRow.BreadCrumbRows.Add(GetBreadcrumbRow(myRow, LevelCount))
+            ' Reset Variables
+            LevelCount = 1
+        Next
+        Return True
+    End Function
+
+    'The function to generate the breadcrumb for a row
+    Private Function GenerateBreadcrumRow(ByVal myrow As mhSiteMapRow, ByVal levelCount As Integer) As Boolean
+        Dim sBreadCrumbHTML As String = String.Empty
+        If Trim(myrow.ParentPageID) <> String.Empty Then
+            BuildParentBreadcrumbs(myrow.BreadCrumbRows, myrow.ParentPageID, levelCount)
+        End If
+        myrow.BreadCrumbRows.Add(GetBreadcrumbRow(myrow, levelCount))
             Dim myFullPathURL As New StringBuilder(String.Empty)
-            For Each BCrow As mhBreadCrumbRow In myRow.BreadCrumbRows
-                If BCrow.LevelNBR < LevelCount Then
-                    BCrow.MenuLevelNBR = (LevelCount - BCrow.LevelNBR)
+        For Each BCrow As mhBreadCrumbRow In myrow.BreadCrumbRows
+            If BCrow.LevelNBR < levelCount Then
+                BCrow.MenuLevelNBR = (levelCount - BCrow.LevelNBR)
                     sBreadCrumbHTML = "<li><a href=""" & BCrow.DisplayURL & """ title=""" & BCrow.PageDescription & """>" & BCrow.PageName & "</a></li>" & sBreadCrumbHTML
                     myFullPathURL.Insert(0, "/" & mhUTIL.FormatPageNameForURL(BCrow.PageName))
                 Else
-                    BCrow.MenuLevelNBR = LevelCount
+                BCrow.MenuLevelNBR = levelCount
                 End If
             Next
-            myFullPathURL.Append(myRow.DisplayURL)
-            If LCase(Left(myRow.PageFileName, 4)) <> "http" Then
-                myRow.BreadCrumbURL = myFullPathURL.ToString
+        myFullPathURL.Append(myrow.DisplayURL)
+        If LCase(Left(myrow.PageFileName, 4)) <> "http" Then
+            myrow.BreadCrumbURL = myFullPathURL.ToString
             Else
-                myRow.BreadCrumbURL = myRow.PageFileName
+            myrow.BreadCrumbURL = myrow.PageFileName
             End If
-            sBreadCrumbHTML = sBreadCrumbHTML & "<li><strong>" & myRow.PageName & "</strong></li>"
-            myRow.BreadCrumbHTML = "<ul><li><a href=""/"">" & mhUTIL.FormatPageNameForURL(CompanyName) & "</a></li>" & sBreadCrumbHTML & "</ul>"
-            myRow.LevelNBR = LevelCount
-            ' Reset Variables
-            LevelCount = 1
-            sBreadCrumbHTML = ""
-        Next
+        sBreadCrumbHTML = sBreadCrumbHTML & "<li><strong>" & myrow.PageName & "</strong></li>"
+        myrow.BreadCrumbHTML = "<ul>" & sBreadCrumbHTML & "</ul>"
+        myrow.LevelNBR = levelCount
+
         Return True
     End Function
     Private Function GetBreadcrumbRow(ByVal myrow As mhSiteMapRow, ByVal LevelNBR As Integer) As mhBreadCrumbRow
@@ -438,6 +448,11 @@ Public Class mhSiteMapRows
             If LevelCount < 10 Then
                 If myrow.RecordSource = "Page" Or myrow.RecordSource = "Category" Then
                     If myrow.PageID = pageID Then
+                        'It turns out it's possible for a child's bread crumbs to be generated before it's parents.
+                        'So, if I run across a parent that doesn't yet have a bread crumb, I generate it.
+                        If (myrow.BreadCrumbURL = String.Empty Or myrow.BreadCrumbURL = "") Then
+                            GenerateBreadcrumRow(myrow, LevelCount)
+                        End If
                         BreadCrumbRows.Add(GetBreadcrumbRow(myrow, LevelCount))
                         LevelCount = LevelCount + 1
                         If Trim(myrow.ParentPageID) <> "" Then

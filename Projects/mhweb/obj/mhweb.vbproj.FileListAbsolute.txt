@@ -17,8 +17,10 @@ C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\Project
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\bin\Debug\mhweb.dll.config
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\bin\Debug\mhweb.dll
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\bin\Debug\mhweb.pdb
+C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\bin\Debug\mhweb.xml
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\mhweb.Resources.resources
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\mhweb.vbproj.GenerateResource.Cache
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\mhweb.dll
+C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\mhweb.xml
 C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\Projects\mhweb\obj\Debug\mhweb.pdb
