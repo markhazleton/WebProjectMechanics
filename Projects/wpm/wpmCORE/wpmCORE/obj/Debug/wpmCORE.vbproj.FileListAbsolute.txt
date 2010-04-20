@@ -1,0 +1,3 @@
+C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\ResolveAssemblyReference.cache
+C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.Resources.resources
+C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.vbproj.GenerateResource.Cache
