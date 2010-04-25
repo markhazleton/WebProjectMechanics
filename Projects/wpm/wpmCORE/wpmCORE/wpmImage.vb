@@ -226,7 +226,7 @@ Public Class wpmImage
         Try
             wpmDB.RunInsertSQL(mySQL, "CreateImage-" & Me.ImageFileName)
         Catch ex As Exception
-            wpmUTIL.SQLAudit(mySQL, ex.ToString)
+            wpmLog.SQLAudit(mySQL, ex.ToString)
         End Try
         Return ""
     End Function
@@ -274,7 +274,7 @@ Public Class wpmImage
                     result = True
                 End If
             Catch ex As Exception
-                wpmUTIL.SQLAudit("wpmImage.updateImage", ex.ToString)
+                wpmLog.SQLAudit("wpmImage.updateImage", ex.ToString)
             Finally
                 connection.Close()
                 connection = Nothing
@@ -299,7 +299,7 @@ Public Class wpmImage
                     result = True
                 End If
             Catch ex As Exception
-                wpmUTIL.SQLAudit("wpmImage.updateImagePath", ex.ToString)
+                wpmLog.SQLAudit("wpmImage.updateImagePath", ex.ToString)
             Finally
                 connection.Close()
                 connection = Nothing
@@ -317,7 +317,7 @@ Public Class wpmImage
                 result = True
             End If
         Catch ex As Exception
-            wpmUTIL.SQLAudit("Error on wpmImage.DeleteImage-pageimage", ex.ToString)
+            wpmLog.SQLAudit("Error on wpmImage.DeleteImage-pageimage", ex.ToString)
         End Try
         Try
             Dim command As New OleDbCommand("delete from image where imageid=" & ReqImageID)
@@ -325,7 +325,7 @@ Public Class wpmImage
                 result = True
             End If
         Catch ex As Exception
-            wpmUTIL.SQLAudit("Error on wpmImage.DeleteImage-image", ex.ToString)
+            wpmLog.SQLAudit("Error on wpmImage.DeleteImage-image", ex.ToString)
         End Try
         connection.Close()
         connection = Nothing

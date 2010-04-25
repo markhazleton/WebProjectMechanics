@@ -31,8 +31,8 @@ Public Class wpmDB
             Dim dataAdapter As System.Data.OleDb.OleDbDataAdapter = New System.Data.OleDb.OleDbDataAdapter(command)
             dataAdapter.Fill(dataTable)
         Catch ex As Exception
-            wpmUTIL.SQLAudit(sSQL, "Error on mhDB.GetDataTable - " & sTableName & " (" & ex.Message & ")")
-            wpmUTIL.AuditLog("Error on mhDB.GetDataTable - " & sTableName, ex.ToString)
+            wpmLog.SQLAudit(sSQL, "Error on mhDB.GetDataTable - " & sTableName & " (" & ex.Message & ")")
+            wpmLog.AuditLog("Error on mhDB.GetDataTable - " & sTableName, ex.ToString)
         Finally
             RecConn.Close()
             RecConn = Nothing
@@ -49,8 +49,8 @@ Public Class wpmDB
             Dim command As System.Data.OleDb.OleDbCommand = New System.Data.OleDb.OleDbCommand(sSQL, RecConn)
             iRowsAffected = command.ExecuteNonQuery()
         Catch ex As Exception
-            wpmUTIL.SQLAudit(sSQL, "RunInsertSQL - " & sTableName)
-            wpmUTIL.AuditLog("ERROR ON INSERT", ex.ToString)
+            wpmLog.SQLAudit(sSQL, "RunInsertSQL - " & sTableName)
+            wpmLog.AuditLog("ERROR ON INSERT", ex.ToString)
         Finally
             RecConn.Close()
             RecConn = Nothing
@@ -68,8 +68,8 @@ Public Class wpmDB
             Dim command As System.Data.OleDb.OleDbCommand = New System.Data.OleDb.OleDbCommand(sSQL, RecConn)
             iRowsAffected = command.ExecuteNonQuery()
         Catch ex As Exception
-            wpmUTIL.SQLAudit(sTableName & " - error on update", sSQL)
-            wpmUTIL.AuditLog("ERROR ON UPDATE", ex.ToString)
+            wpmLog.SQLAudit(sTableName & " - error on update", sSQL)
+            wpmLog.AuditLog("ERROR ON UPDATE", ex.ToString)
         Finally
             RecConn.Close()
             RecConn = Nothing
@@ -86,7 +86,7 @@ Public Class wpmDB
             Dim command As System.Data.OleDb.OleDbCommand = New System.Data.OleDb.OleDbCommand(sSQL, RecConn)
             iRowsAffected = command.ExecuteNonQuery()
         Catch ex As Exception
-            Call wpmUTIL.SQLAudit(sTableName & " - ERRROR ON DELETE - " & sSQL, ex.ToString)
+            Call wpmLog.SQLAudit(sTableName & " - ERRROR ON DELETE - " & sSQL, ex.ToString)
         Finally
             RecConn.Close()
             RecConn = Nothing

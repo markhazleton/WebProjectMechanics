@@ -52,13 +52,13 @@ Partial Class wpm_wpmImageEdit
             mySQL = ("delete from pageimage where imageid=" & ReqImageID)
             wpmDB.RunDeleteSQL(mySQL, "PageImage by Image")
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on DeleteImage-pageimage", ex.ToString)
+            wpmLog.AuditLog("Error on DeleteImage-pageimage", ex.ToString)
         End Try
         Try
             mySQL = ("delete from [image] where [image].[imageid]=" & ReqImageID)
             wpmDB.RunDeleteSQL(mySQL, "Image by ImageID")
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on DeleteImage-image", ex.ToString)
+            wpmLog.AuditLog("Error on DeleteImage-image", ex.ToString)
         End Try
 
         Return result

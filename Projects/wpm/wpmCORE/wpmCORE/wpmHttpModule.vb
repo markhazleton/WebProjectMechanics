@@ -31,11 +31,11 @@ Public Class wpmHttpModule
         Dim context As HttpContext = application.Context
         Dim url As String = context.Request.Url.ToString()
         If url.Contains("://www.") AndAlso App.Config.RemoveWWW Then
-            wpmUTIL.AccessLog("Remove WWW", url.ToString())
+            wpmLog.AccessLog("Remove WWW", url.ToString())
             RemoveWww(context)
         End If
         If Not url.Contains("://www.") AndAlso Not App.Config.RemoveWWW Then
-            wpmUTIL.AccessLog("Add WWW", url.ToString())
+            wpmLog.AccessLog("Add WWW", url.ToString())
             AddWww(context)
         End If
     End Sub

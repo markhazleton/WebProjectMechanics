@@ -14,7 +14,7 @@ Public Class ConfigurationBase
                 MakeXML(ConfigFilePath)
                 myDoc.Load(ConfigFilePath)
             Catch ex As Exception
-                wpmUTIL.WriteLog("Can't Create Config File: " & ConfigFilePath, ex.ToString, HttpContext.Current.Server.MapPath("error.csv"))
+                wpmLog.ErrorLog("Can't Create Config File: " & ConfigFilePath, ex.ToString)
             End Try
         End Try
     End Sub
@@ -67,11 +67,11 @@ Public Class ConfigurationBase
                 Else
                     myConfig.Item(0).InnerText = ConfigValue
                 End If
-                wpmUTIL.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
+                wpmLog.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
                 myDoc.Save(ConfigFilePath())
                 HttpContext.Current.Application(ConfigName) = ConfigValue
             Catch ex As Exception
-                wpmUTIL.WriteLog("ErrorSetting Value: " & ConfigFilePath, ex.ToString, HttpContext.Current.Server.MapPath("error.csv"))
+                wpmLog.ErrorLog("ErrorSetting Value: " & ConfigFilePath, ex.ToString)
             End Try
         End If
     End Sub
@@ -154,7 +154,7 @@ End Class
 '            Else
 '                myConfig.Item(0).InnerText = ConfigValue
 '            End If
-'            wpmUTIL.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
+'            wpmLog.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
 '            myDoc.Save(ConfigFilePath())
 '            HttpContext.Current.Application(ConfigName) = ConfigValue
 '        End If
@@ -225,7 +225,7 @@ End Class
 '    '            Else
 '    '                myConfig.Item(0).InnerText = ConfigValue
 '    '            End If
-'    '            wpmUTIL.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
+'    '            wpmLog.AuditLog("Change Site Config:" & ConfigName, ConfigValue)
 '    '            myDoc.Save(ConfigFilePath())
 '    '            HttpContext.Current.Application(ConfigName) = ConfigValue
 '    '        End If

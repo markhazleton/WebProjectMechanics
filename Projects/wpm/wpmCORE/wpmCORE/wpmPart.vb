@@ -209,7 +209,7 @@ Public Class wpmPartList
             Next
         Catch ex As Exception
             bReturn = False
-            wpmUTIL.AuditLog("ERROR ON wpmSiteLinkRows.PopulateSiteLinkRows-Cateogry()", ex.ToString)
+            wpmLog.AuditLog("ERROR ON wpmSiteLinkRows.PopulateSiteLinkRows-Cateogry()", ex.ToString)
         End Try
         Return bReturn
     End Function
@@ -240,7 +240,7 @@ Public Class wpmPartList
             Next
         Catch innerex As Exception
             bReturn = False
-            wpmUTIL.AuditLog("ERROR ON wpmSiteLinkRows.PopulateSiteLinkRows()", innerex.ToString)
+            wpmLog.AuditLog("ERROR ON wpmSiteLinkRows.PopulateSiteLinkRows()", innerex.ToString)
         End Try
         Return bReturn
     End Function

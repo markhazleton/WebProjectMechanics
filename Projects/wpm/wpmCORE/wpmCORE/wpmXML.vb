@@ -101,8 +101,8 @@ Public Class wpmXML
                 myXslDoc.Load(_xsltFileName)
                 myXslDoc.Transform(Me, Nothing, myStringWriter)
             Catch ex As Exception
-                wpmUTIL.WriteLog("Problem processing XSL/XML - (" & _xsltFileName & ") - ", "xml url (" & xmlURL & ")", App.Config.ConfigFolderPath & "\log\xml.csv")
-                wpmUTIL.AuditLog("Problem processing XSL/XML - (" & _xsltFileName & ") - " & ex.ToString, "wpmXML.getXMLTransform")
+                wpmLog.XMLLog("Problem processing XSL/XML - (" & _xsltFileName & ") - ", "xml url (" & xmlURL & ")")
+                wpmLog.AuditLog("Problem processing XSL/XML - (" & _xsltFileName & ") - " & ex.ToString, "wpmXML.getXMLTransform")
             End Try
         End If
         Return myStringBuilder.ToString()
@@ -119,10 +119,10 @@ Public Class wpmXML
                     If wpmFileIO.IsValidPath(HttpContext.Current.Server.MapPath((templatePath & "xsl/" & xsltPath))) Then
                         _xsltFileName = HttpContext.Current.Server.MapPath((templatePath & "xsl/" & xsltPath))
                     ElseIf wpmFileIO.IsValidPath(HttpContext.Current.Server.MapPath((App.Config.wpmWebHome() & "style/" & xsltPath))) Then
-                        wpmUTIL.WriteLog("Problem Finding XSL 1 - (" & HttpContext.Current.Server.MapPath(templatePath & "xsl/" & xsltPath) & ") - ", "xml url (" & xmlURL & ")", App.Config.ConfigFolderPath & "\log\xml.csv")
+                        wpmLog.XMLLog("Problem Finding XSL 1 - (" & HttpContext.Current.Server.MapPath(templatePath & "xsl/" & xsltPath) & ") - ", "xml url (" & xmlURL & ")")
                         _xsltFileName = HttpContext.Current.Server.MapPath((App.Config.wpmWebHome() & "style/" & xsltPath))
                     Else
-                        wpmUTIL.WriteLog("Problem Finding XSL 2 - (" & HttpContext.Current.Server.MapPath(templatePath & "xsl/" & xsltPath) & ") - ", "xml url (" & xmlURL & ")", App.Config.ConfigFolderPath & "\log\xml.csv")
+                        wpmLog.XMLLog("Problem Finding XSL 2 - (" & HttpContext.Current.Server.MapPath(templatePath & "xsl/" & xsltPath) & ") - ", "xml url (" & xmlURL & ")")
                         _xsltFileName = HttpContext.Current.Server.MapPath((App.Config.wpmWebHome() & "style/rss_title.xsl"))
                     End If
                 End If
@@ -132,8 +132,8 @@ Public Class wpmXML
                 myXslDoc.Load(_xsltFileName)
                 myXslDoc.Transform(Me, Nothing, myStringWriter)
             Catch ex As Exception
-                wpmUTIL.WriteLog("Problem processing XSL/XML - (" & _xsltFileName & ") - ", "xml url (" & xmlURL & ")", App.Config.ConfigFolderPath & "log\xml.csv")
-                wpmUTIL.AuditLog("Problem processing XSL/XML - (" & _xsltFileName & ") - " & ex.Message.ToString, "wpmXML.getXMLTransform")
+                wpmLog.XMLLog("Problem processing XSL/XML - (" & _xsltFileName & ") - ", "xml url (" & xmlURL & ")")
+                wpmLog.AuditLog("Problem processing XSL/XML - (" & _xsltFileName & ") - " & ex.Message.ToString, "wpmXML.getXMLTransform")
             End Try
         End If
         Return myStringBuilder.ToString()
@@ -159,11 +159,11 @@ Public Class wpmXML
                 Me.Load(path)
             End If
         Catch url_ex As Exception
-            wpmUTIL.AuditLog("URL Exception", url_ex.Message & " - on " & xmlURL)
+            wpmLog.AuditLog("URL Exception", url_ex.Message & " - on " & xmlURL)
             Try
                 Me.Load(path)
             Catch ex As Exception
-                wpmUTIL.AuditLog("Problem getting XML Feed - (" & path & ") - " & ex.ToString, "wpmXML.GetXLMFromURL")
+                wpmLog.AuditLog("Problem getting XML Feed - (" & path & ") - " & ex.ToString, "wpmXML.GetXLMFromURL")
                 bReturn = False
             End Try
         End Try
@@ -177,15 +177,15 @@ Public Class wpmXML
     '    Try
     '        Me.Load(XMLFilePath)
     '    Catch ex As Exception
-    '        wpmUTIL.AuditLog("URL Exception", ex.Message & " - on " & XMLFilePath)
-    '        wpmUTIL.AuditLog("Problem getting XML Feed - (" & XMLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
+    '        wpmLog.AuditLog("URL Exception", ex.Message & " - on " & XMLFilePath)
+    '        wpmLog.AuditLog("Problem getting XML Feed - (" & XMLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
     '    End Try
 
     '    Try
     '        myXslDoc.Load(XSLFilePath)
     '        myXslDoc.Transform(Me, Nothing, myStringWriter)
     '    Catch ex As Exception
-    '        wpmUTIL.AuditLog("Problem processing XSL/XML - (" & XSLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
+    '        wpmLog.AuditLog("Problem processing XSL/XML - (" & XSLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
     '    End Try
     '    Return myStringBuilder.ToString()
     'End Function

@@ -52,7 +52,7 @@ Public Class wpmSiteGroupList
             Next
         Catch ex As Exception
             bReturn = False
-            wpmUTIL.AuditLog("ERROR ON wpmSiteGroupList.PopulateSiteGroupList", ex.ToString)
+            wpmLog.AuditLog("ERROR ON wpmSiteGroupList.PopulateSiteGroupList", ex.ToString)
         End Try
         Return bReturn
     End Function

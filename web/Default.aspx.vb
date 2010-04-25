@@ -14,7 +14,7 @@
             End If
         End If
         If App.Config.FullLoggingOn Then
-            wpmUTIL.AccessLog("Default Page", Request.ServerVariables.Item("QUERY_STRING"))
+            wpmLog.AccessLog("Default Page", Request.ServerVariables.Item("QUERY_STRING"))
         End If
         pageActiveSite.UseDefaultTemplate = True
         pageActiveSite.WriteCurrentLocation()
