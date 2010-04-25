@@ -315,22 +315,25 @@ Public Class wpmSession
         GetSiteHomePageID = CStr(System.Web.HttpContext.Current.Session.Item("SiteHomePageID"))
     End Function
     Private Function GetConfig() As Boolean
-        CompanyID = App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).CompanyID
-        SiteDB = App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).SQLDBConnString
-        If CompanyID = String.Empty Then
-            If Not IsNothing(wpmConfig.wpmConfigFile) Then
-                Dim SiteConfig As wpmSiteSettings = wpmSiteSettings.Load(wpmConfig.wpmConfigFile)
-                CompanyID = (SiteConfig.wpmSite.CompanyID.ToString)
-                SiteDB = (SiteConfig.wpmSite.SQLDBConnString.ToString)
-                App.SiteList.AddSite(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", ""), CompanyID, SiteDB)
-                Return True
+        Try
+            CompanyID = App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).CompanyID
+            SiteDB = App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).SQLDBConnString
+            If CompanyID = String.Empty Then
+                If Not IsNothing(wpmConfig.wpmConfigFile) Then
+                    Dim SiteConfig As wpmSiteSettings = wpmSiteSettings.Load(wpmConfig.wpmConfigFile)
+                    CompanyID = (SiteConfig.wpmSite.CompanyID.ToString)
+                    SiteDB = (SiteConfig.wpmSite.SQLDBConnString.ToString)
+                    App.SiteList.AddSite(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", ""), CompanyID, SiteDB)
+                    Return True
+                Else
+                    Return False
+                End If
             Else
-                Return False
+                Return True
             End If
-        Else
-            Return True
-        End If
-
+        Catch ex As Exception
+            wpmUTIL.AuditLog(ex.ToString, "GetConfig")
+        End Try
     End Function
 
     Public Function GetSessionDebug() As String

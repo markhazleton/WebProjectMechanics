@@ -3,6 +3,6 @@
   <wpmSite>
     <DomainName>localhost</DomainName>
     <CompanyID>31</CompanyID>
-    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\hosting\codeplexwpm\access_db\wpm-demo.mdb;</SQLDBConnString>
+    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\hosting\codeplexwpm\web\access_db\wpm-demo.mdb;</SQLDBConnString>
   </wpmSite>
 </ArrayOfWpmSite>

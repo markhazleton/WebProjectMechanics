@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <CachingEnabled>True</CachingEnabled>
-  <Use404Processing>True</Use404Processing>
+  <CachingEnabled>False</CachingEnabled>
+  <Use404Processing>False</Use404Processing>
   <FullLoggingOn>True</FullLoggingOn>
   <wpmHome>/wpm/</wpmHome>
   <AuditLogFile>/access_db/log/auditlog.csv</AuditLogFile>
