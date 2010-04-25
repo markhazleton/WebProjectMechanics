@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+wpmCORE
+</name>
+</assembly>
+<members>
+<member name="M:wpmCORE.wpmHttpModule.AddWww(System.Web.HttpContext)">
+	<summary>
+ Adds the www subdomain to the request and redirects.
+ </summary>
+</member><member name="M:wpmCORE.wpmHttpModule.RemoveWww(System.Web.HttpContext)">
+	<summary>
+ Removes the www subdomain from the request and redirects.
+ </summary>
+</member><member name="M:wpmCORE.wpmHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
+	<summary>
+ Sends permanent redirection headers (301)
+ </summary>
+</member><member name="M:wpmCORE.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the wpmXML class
+ </summary>
+</member><member name="M:wpmCORE.wpmRssTools.wpmRSS.#ctor(System.String)">
+	<summary>
+ Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
+ </summary>
+	<param name="feedurl"></param>
+</member>
+</members>
+</doc>
