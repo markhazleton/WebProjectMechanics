@@ -532,7 +532,7 @@ Public Class wpmLocationList
             ' Check for Recursive Parent
             If (MySiteRow.PageID = MySiteRow.ParentPageID And MySiteRow.ParentPageID <> "") Then
                 MySiteRow.ParentPageID = ""
-                wpmUTIL.AuditLog("PageID=ParentPageID (" & MySiteRow.PageName & " - " & MySiteRow.PageID & ") ", "wpmSiteMapRow.PopulateSiteMapCol")
+                wpmLog.AuditLog("PageID=ParentPageID (" & MySiteRow.PageName & " - " & MySiteRow.PageID & ") ", "wpmSiteMapRow.PopulateSiteMapCol")
             End If
 
             Select Case MySiteRow.RecordSource

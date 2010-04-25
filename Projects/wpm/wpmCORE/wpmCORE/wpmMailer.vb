@@ -119,7 +119,7 @@ Public Class wpmMailer
         '        .Send(mymessage)
         '    End With
         'Catch ex As Exception
-        '    wpmUTIL.AuditLog("mhMailer.SendMail Error", ex.ToString)
+        '    wpmLog.AuditLog("mhMailer.SendMail Error", ex.ToString)
         'Finally
 
         'End Try

@@ -5,7 +5,7 @@ Public Class wpmUser
         Dim bProcessLogin As Boolean = False
         If GetContact(sUserName, sPassword, mySession) Then
             UpdateUserOptions(mySession.ContactID(), mySession)
-            wpmUTIL.AccessLog("wpmUser.ProcessLogin", "LOGIN - " & sUserName)
+            wpmLog.AccessLog("wpmUser.ProcessLogin", "LOGIN - " & sUserName)
             Return True
         End If
     End Function

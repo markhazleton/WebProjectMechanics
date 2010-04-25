@@ -638,7 +638,7 @@ Public Class wpmDataCon
                 sbList.Append(">" & myValue & "</option>")
             End While
         Catch
-            wpmUTIL.AuditLog("DB ERROR - mhwcm.GetDropDownList", mySQL)
+            wpmLog.AuditLog("DB ERROR - mhwcm.GetDropDownList", mySQL)
         End Try
         sbList.Append("</SELECT>")
         Return sbList.ToString

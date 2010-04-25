@@ -73,7 +73,7 @@ Public Class wpmPartGroupList
                 Me.Add(MyLinkCategory)
             Next
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on mhLinkCategoryList.New(ByVal CompanyID As String)", ex.ToString)
+            wpmLog.AuditLog("Error on mhLinkCategoryList.New(ByVal CompanyID As String)", ex.ToString)
         End Try
     End Sub
 
@@ -325,7 +325,7 @@ Public Class wpmLinkDirectory
             If myCatrow.ParentID = ParentID Then
                 dReturn = dReturn + myCatrow.LinkCount
                 If myCatrow.ID = myCatrow.ParentID Then
-                    wpmUTIL.AuditLog("Category Parent same as Self - " & myCatrow.ID & " - " & myCatrow.Description, "wpmPartGroup.ChildCategoryLinkCount")
+                    wpmLog.AuditLog("Category Parent same as Self - " & myCatrow.ID & " - " & myCatrow.Description, "wpmPartGroup.ChildCategoryLinkCount")
                 Else
                     dReturn = dReturn + ChildCategoryLinkCount(myCatrow.ID)
                 End If
@@ -916,7 +916,7 @@ Public Class wpmLinkDirectory
             connection.Close()
             myLink.LinkID = newLinkID
         Catch ex As Exception
-            wpmUTIL.AuditLog(Command.CommandText.ToString, "ERROR CreateLink")
+            wpmLog.AuditLog(Command.CommandText.ToString, "ERROR CreateLink")
             Return False
         End Try
         Return True

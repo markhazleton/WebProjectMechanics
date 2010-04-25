@@ -52,13 +52,13 @@ Partial Class wpm_MissingPageImage
             mySQL = ("delete from pageimage where imageid=" & ReqImageID)
             wpmDB.RunDeleteSQL(mySQL, "PageImage by Image")
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on DeleteImage-pageimage", ex.ToString)
+            wpmLog.AuditLog("Error on DeleteImage-pageimage", ex.ToString)
         End Try
         Try
             mySQL = ("delete from [image] where [image].[imageid]=" & ReqImageID)
             wpmDB.RunDeleteSQL(mySQL, "Image by ImageID")
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on DeleteImage-image", ex.ToString)
+            wpmLog.AuditLog("Error on DeleteImage-image", ex.ToString)
         End Try
         Return result
     End Function
@@ -73,7 +73,7 @@ Partial Class wpm_MissingPageImage
 
         sPageID = wpmUTIL.GetDBString(Request.Form.GetValues("x_PageID")(0))
         If sPageID = String.Empty Then
-            wpmUTIL.AuditLog("No PageID Received", "wpmMissingPageImage.ProcessForm")
+            wpmLog.AuditLog("No PageID Received", "wpmMissingPageImage.ProcessForm")
             iPageID = 0
         Else
             iPageID = CInt(sPageID)
@@ -150,7 +150,7 @@ Partial Class wpm_MissingPageImage
 
             If sNewImagePath <> String.Empty Then
                 ' If wpmFileIO.MoveFile(HttpContext.Current.Server.MapPath(pageActiveSite.SiteGallery & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))), sNewPagePath & "/" & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))) Then
-                wpmUTIL.WriteLog(sNewImagePath, sCurImagePath, HttpContext.Current.Server.MapPath("~/access_db/log/PageImage_Issues.csv"))
+                wpmLog.ErrorLog(sNewImagePath, sCurImagePath)
             End If
 
 

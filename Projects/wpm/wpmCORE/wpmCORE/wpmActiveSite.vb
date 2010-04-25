@@ -51,13 +51,13 @@ Public Class wpmActiveSite
                 Try
                     HttpContext.Current.Application(SiteMapName) = SiteProfile
                 Catch ex As Exception
-                    wpmUTIL.AuditLog("Error When updating Application variable (" & SiteMapName & ") - " & ex.ToString, "wpmActiveSite.LoadSiteProfile")
+                    wpmLog.AuditLog("Error When updating Application variable (" & SiteMapName & ") - " & ex.ToString, "wpmActiveSite.LoadSiteProfile")
                 End Try
             Else
                 Try
                     SiteProfile = CType(HttpContext.Current.Application(SiteMapName), wpmSiteProfile)
                 Catch ex As Exception
-                    wpmUTIL.AuditLog("Error when reading Application variable (" & SiteMapName & ") - " & ex.ToString, "wpmSiteFile.LoadSiteProfile")
+                    wpmLog.AuditLog("Error when reading Application variable (" & SiteMapName & ") - " & ex.ToString, "wpmSiteFile.LoadSiteProfile")
                 End Try
             End If
         Else
@@ -153,7 +153,7 @@ Public Class wpmActiveSite
         sbContent.Replace("~~SiteTitle~~", Me.GetSiteTitle())
 
         If Not (Me.SiteProfile.SiteParameterList.ReplaceSiteParameterTags(sbContent, Me.CurrentLocation)) Then
-            wpmUTIL.AuditLog("Error With ReplaceSiteParameterTags", "wpmSiteMap.BuildTemplate(sbContent)")
+            wpmLog.AuditLog("Error With ReplaceSiteParameterTags", "wpmSiteMap.BuildTemplate(sbContent)")
         End If
 
         sbContent.Replace("~~PageAdmin~~", GetPageAdmin())
@@ -262,7 +262,7 @@ Public Class wpmActiveSite
                                     Dim mySB As New StringBuilder(myrow.LinkURL)
                                     If mySB.ToString.Contains("~~") Then
                                         If Not (Me.SiteProfile.SiteParameterList.ReplaceSiteParameterTags(mySB, Me.CurrentLocation)) Then
-                                            wpmUTIL.AuditLog("Error With ReplaceSiteParameterTags", "wpmSiteMap.ReplaceLinks-XML")
+                                            wpmLog.AuditLog("Error With ReplaceSiteParameterTags", "wpmSiteMap.ReplaceLinks-XML")
                                         End If
                                         mySB.Replace("~~PageKeywords~~", Me.GetPageKeywords.Replace(" ", "+"))
 
@@ -373,7 +373,7 @@ Public Class wpmActiveSite
         Dim mySearchKeyword As String = GetProperty("searchfield", String.Empty)
 
         If mySearchKeyword <> String.Empty Then
-            wpmUTIL.SearchLog(mySearchKeyword, "KeywordSearch")
+            wpmLog.SearchLog(mySearchKeyword, "KeywordSearch")
             myReturn.Replace("~~SearchReturn~~", Me.LocationList.FindLocationsByKeyword(mySearchKeyword))
         Else
             myReturn.Replace("~~SearchReturn~~", String.Empty)
@@ -492,25 +492,25 @@ Public Class wpmActiveSite
                 gen.Close()
             Case Else
                 If CurrentLocation.TransferURL Is Nothing Then
-                    wpmUTIL.AuditLog("Current Location Empty", "Redirect to ADMIN")
+                    wpmLog.AuditLog("Current Location Empty", "Redirect to ADMIN")
                     If Me.DefaultArticleID = String.Empty And Me.SiteHomePageID = String.Empty And SiteProfile.SiteCategoryTypeID = String.Empty Then
                         If HttpContext.Current.Request.RawUrl <> Me.SiteProfile.SiteURL Then
                             If Me.SiteProfile.SiteURL Is Nothing Then
-                                wpmUTIL.AuditLog("SiteURL is nothing", "Redirect to debug")
+                                wpmLog.AuditLog("SiteURL is nothing", "Redirect to debug")
                                 response.Redirect("~/wpm/debug.aspx", True)
                             Else
                                 If App.Config.FullLoggingOn Then
-                                    wpmUTIL.AuditLog("301-Redirect", Me.SiteProfile.SiteURL)
+                                    wpmLog.AuditLog("301-Redirect", Me.SiteProfile.SiteURL)
                                 End If
                                 wpmUTIL.Build301Redirect(Me.SiteProfile.SiteURL)
                             End If
                         Else
-                            wpmUTIL.AuditLog("Missing Key Site Components", "Redirect to debug")
+                            wpmLog.AuditLog("Missing Key Site Components", "Redirect to debug")
                             response.Redirect("~/wpm/debug.aspx", True)
                         End If
                     Else
                         If Me.SiteHomePageID = String.Empty Then
-                            wpmUTIL.AuditLog("SiteHomePageID Missing", "Redirect to debug")
+                            wpmLog.AuditLog("SiteHomePageID Missing", "Redirect to debug")
                             response.Redirect("~/wpm/debug.aspx", True)
                         Else
                             SetCurrentPageID(Me.SiteHomePageID)
@@ -549,7 +549,7 @@ Public Class wpmActiveSite
         End If
         Me.SetListPage(HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING"), HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), HttpContext.Current.Request.ServerVariables.Item("URL"))
         If App.Config.FullLoggingOn() Then
-            wpmUTIL.AccessLog(Me.CurrentLocation.DisplayURL, Me.CurrentLocation.TransferURL)
+            wpmLog.AccessLog(Me.CurrentLocation.DisplayURL, Me.CurrentLocation.TransferURL)
             wpmFileIO.SaveHTML(Me.CurrentLocation.DisplayURL, myHTML.ToString)
         End If
         Return myHTML.ToString

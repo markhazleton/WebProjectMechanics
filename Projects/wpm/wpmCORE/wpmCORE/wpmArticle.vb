@@ -326,7 +326,7 @@ Public Class wpmArticle
                     result = True
                 End If
             Catch ex As Exception
-                wpmUTIL.AuditLog("mhArticle.updateArticleBody", ex.ToString)
+                wpmLog.AuditLog("mhArticle.updateArticleBody", ex.ToString)
             Finally
                 connection.Close()
                 connection = Nothing

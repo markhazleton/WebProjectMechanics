@@ -64,7 +64,7 @@ Public Class wpmFileIO
             End Using
             bReturn = True
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error with mhFIO.CreateFile - " & path, ex.ToString)
+            wpmLog.AuditLog("Error with mhFIO.CreateFile - " & path, ex.ToString)
         End Try
         Return bReturn
     End Function
@@ -98,7 +98,7 @@ Public Class wpmFileIO
             bReturn = True
         Catch E As Exception
             ' Let the user know what went wrong.
-            wpmUTIL.AuditLog("Error Reading Text File", path)
+            wpmLog.AuditLog("Error Reading Text File", path)
         End Try
         Return bReturn
     End Function
@@ -110,7 +110,7 @@ Public Class wpmFileIO
             End Using
         Catch ex As Exception
             bReturn = False
-            wpmUTIL.AuditLog("Error Reading File", path)
+            wpmLog.AuditLog("Error Reading File", path)
         End Try
         Return bReturn
     End Function
@@ -138,7 +138,7 @@ Public Class wpmFileIO
             IO.Directory.Move(fromPath, toPath)
             bReturn = False
         Catch ex As Exception
-            wpmUTIL.AuditLog(ex.ToString, "mhFIO.MoveFile from (" & fromPath & ") to (" & toPath & ") ")
+            wpmLog.AuditLog(ex.ToString, "mhFIO.MoveFile from (" & fromPath & ") to (" & toPath & ") ")
         Finally
             bReturn = True
         End Try
@@ -296,7 +296,7 @@ Public Class wpmFileIO
         sPath = Replace(sPath, "//", "/")
         If Not IsValidPath(sPath) Then
             sPath = ""
-            wpmUTIL.AuditLog("Invalid File - " & sPath, sCallingProcess)
+            wpmLog.AuditLog("Invalid File - " & sPath, sCallingProcess)
         End If
         Return sPath
     End Function
@@ -306,7 +306,7 @@ Public Class wpmFileIO
         sPath = Replace(sPath, "//", "/")
         If Not IsValidPath(sPath) Then
             sPath = ""
-            wpmUTIL.AuditLog("Invalid File - " & sPath, sCallingProcess)
+            wpmLog.AuditLog("Invalid File - " & sPath, sCallingProcess)
         End If
         Return sPath
     End Function

@@ -171,7 +171,7 @@ Public Class wpmSession
         Try
             myPageHistory = CType(mySession("PageHistory"), wpmPageHistoryList)
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error when reading Session variable (PageHisotry) - " & ex.ToString, "wpmSession.New")
+            wpmLog.AuditLog("Error when reading Session variable (PageHisotry) - " & ex.ToString, "wpmSession.New")
         End Try
         If myPageHistory Is Nothing Then
             myPageHistory = New wpmPageHistoryList
@@ -214,7 +214,7 @@ Public Class wpmSession
                 CurrentArticleID = ""
             End If
         Catch ex As Exception
-            wpmUTIL.AuditLog("Problem checking parameters - " & ex.ToString, "wpmSession.CheckcommandParameters")
+            wpmLog.AuditLog("Problem checking parameters - " & ex.ToString, "wpmSession.CheckcommandParameters")
         End Try
     End Sub
     Public Shared Function GetSiteDB() As String
@@ -332,7 +332,7 @@ Public Class wpmSession
                 Return True
             End If
         Catch ex As Exception
-            wpmUTIL.AuditLog(ex.ToString, "GetConfig")
+            wpmLog.AuditLog(ex.ToString, "GetConfig")
         End Try
     End Function
 
@@ -430,7 +430,7 @@ End Class
         If Me.Count = 0 Then
             If Not IsNothing(HttpContext.Current.Request.UrlReferrer) Then
                 If Not HttpContext.Current.Request.UrlReferrer.AbsoluteUri.Contains(HttpContext.Current.Request.Url.Host) Then
-                    wpmUTIL.WriteLog("Referrer", HttpContext.Current.Request.UrlReferrer.AbsoluteUri, App.Config.ConfigFolderPath + "log\SiteRefer.csv")
+                    wpmLog.SiteReferLog("Referrer", HttpContext.Current.Request.UrlReferrer.AbsoluteUri)
                 End If
             End If
         End If

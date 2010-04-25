@@ -125,7 +125,7 @@ Partial Class wpm_admin_ReadLogFile
             bReturn = True
         Catch E As Exception
             ' Let the user know what went wrong.
-            wpmUTIL.AuditLog("Error Reading Text File", path)
+            wpmLog.AuditLog("Error Reading Text File", path)
         End Try
         Return bReturn
     End Function

@@ -839,7 +839,7 @@ Public Class wpmSiteProfile
                     Dim ViewWriter As New System.Xml.Serialization.XmlSerializer(GetType(wpmSiteProfile))
                     ViewWriter.Serialize(sw, Me)
                 Catch ex As Exception
-                    wpmUTIL.AuditLog("Error Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
+                    wpmLog.AuditLog("Error Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
                     bReturn = False
                 Finally
                     sw.Flush()
@@ -847,7 +847,7 @@ Public Class wpmSiteProfile
                 End Try
             End Using
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error Before Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
+            wpmLog.AuditLog("Error Before Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
             bReturn = False
         End Try
         Return bReturn

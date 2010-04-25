@@ -158,7 +158,7 @@ Public Class wpmSiteParameter
             'mhDB.RunInsertSQL(strSQL, "createSiteTypeParameter-" & Me.ImageFileName)
         Catch ex As Exception
             bReturn = False
-            wpmUTIL.SQLAudit(strSQL, ex.ToString)
+            wpmLog.SQLAudit(strSQL, ex.ToString)
         End Try
         Return bReturn
     End Function
@@ -193,7 +193,7 @@ Public Class wpmSiteParameterList
                 Me.Add(mySiteParameter)
             Next
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on PopulateParameterTypeList.GetSiteParameterList", ex.ToString)
+            wpmLog.AuditLog("Error on PopulateParameterTypeList.GetSiteParameterList", ex.ToString)
         End Try
         Try
             For Each myrow As DataRow In wpmDataCon.GetCompanySiteTypeParameterList(CompanyID, SiteCategoryTypeID).Rows
@@ -212,7 +212,7 @@ Public Class wpmSiteParameterList
                 Me.Add(mySiteParameter)
             Next
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on PopulateParameterTypeList.GetCompanySiteTypeParameterList", ex.ToString)
+            wpmLog.AuditLog("Error on PopulateParameterTypeList.GetCompanySiteTypeParameterList", ex.ToString)
         End Try
         Try
             For Each myrow As DataRow In wpmDataCon.GetParameterTypeList(CompanyID, SiteCategoryTypeID).Rows
@@ -231,7 +231,7 @@ Public Class wpmSiteParameterList
                 Me.Add(mySiteParameter)
             Next
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error on PopulateParameterTypeList.GetParameterTypeList", ex.ToString)
+            wpmLog.AuditLog("Error on PopulateParameterTypeList.GetParameterTypeList", ex.ToString)
         End Try
     End Function
 

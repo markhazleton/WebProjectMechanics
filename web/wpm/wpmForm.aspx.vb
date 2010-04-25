@@ -104,10 +104,10 @@ Partial Class wpm_wpmForm
                     Dim smtp As New SmtpClient("relay-hosting.secureserver.net")
                     smtp.Send(mail)
                 Catch ex As Exception
-                    wpmUTIL.AuditLog("wpmForm-Error Sending Email -(" & filename & ") " & ex.ToString, "wpmForm.aspx - PageLoad")
+                    wpmLog.AuditLog("wpmForm-Error Sending Email -(" & filename & ") " & ex.ToString, "wpmForm.aspx - PageLoad")
                 End Try
             Else
-                wpmUTIL.AuditLog("wpmForm-Error - " & errStr, "wpmForm.aspx - PageLoad")
+                wpmLog.AuditLog("wpmForm-Error - " & errStr, "wpmForm.aspx - PageLoad")
             End If
 
             If (landing_page <> "") Then
@@ -140,7 +140,7 @@ Partial Class wpm_wpmForm
                 myPageHistory = New wpmPageHistoryList
             End If
         Catch ex As Exception
-            wpmUTIL.AuditLog("Error when reading Session variable (PageHisotry) - " & ex.ToString, "wpmForm.New")
+            wpmLog.AuditLog("Error when reading Session variable (PageHisotry) - " & ex.ToString, "wpmForm.New")
             myPageHistory = New wpmPageHistoryList
         End Try
         Return myPageHistory

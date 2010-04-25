@@ -96,6 +96,7 @@
     <Compile Include="wpmImage.vb" />
     <Compile Include="wpmImageList.vb" />
     <Compile Include="wpmLocation.vb" />
+    <Compile Include="wpmLog.vb" />
     <Compile Include="wpmMailer.vb" />
     <Compile Include="wpmMasterPage.vb">
       <SubType>ASPXCodeBehind</SubType>

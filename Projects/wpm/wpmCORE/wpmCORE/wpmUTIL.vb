@@ -94,7 +94,6 @@ Public Class wpmUTIL
     Public Shared Function RemoveTags(ByVal sContent As String) As String
         Return System.Text.RegularExpressions.Regex.Replace(sContent, "~~(.|\n)+?~~", "")
     End Function
-
     Public Shared Function FormatNameForURL(ByVal Name As String) As String
         Name = (Replace(Name.ToLower, " ", "-"))
         Name = Replace(Name, "(", "-")
@@ -174,66 +173,6 @@ Public Class wpmUTIL
     Public Shared Function LeadingZero(ByRef pStrValue As String) As String
         If Len(CStr(pStrValue)) < 2 Then pStrValue = "0" & pStrValue
         Return pStrValue
-    End Function
-    ' ****************************************************************************
-    Public Shared Function SearchLog(ByVal accessMessage As String, ByVal accessProcess As String) As Boolean
-        If App.Config.FullLoggingOn() Then
-            Return WriteLog(accessProcess, accessMessage, App.Config.ConfigFolderPath & "log\SearchLog.csv")
-        Else
-            Return False
-        End If
-    End Function
-    ' ****************************************************************************
-    Public Shared Function AccessLog(ByVal accessMessage As String, ByVal accessProcess As String) As Boolean
-        If App.Config.FullLoggingOn() Then
-            Return WriteLog(accessProcess, accessMessage, App.Config.AccessLogFile)
-        Else
-            Return False
-        End If
-    End Function
-    '********************************************************************************
-    Public Shared Function DownloadLog(ByVal frmName As String, ByVal frmEmail As String, ByVal DownloadFile As String) As Boolean
-        If App.Config.FullLoggingOn Then
-            Return WriteLog(DownloadFile & """,""" & frmName, frmEmail, App.Config.ConfigFolderPath & "log\DownloadLog.csv")
-        Else
-            Return False
-        End If
-    End Function
-    '********************************************************************************
-    Public Shared Function AuditLog(ByVal AuditMessage As String, ByVal AuditProcess As String) As Boolean
-        Return WriteLog(AuditProcess, AuditMessage, App.Config.AuditLogFile)
-    End Function
-    '********************************************************************************
-    Public Shared Function SQLAudit(ByVal strSQL As String, ByVal pageID As String) As Boolean
-        Return WriteLog(strSQL, pageID, App.Config.SQLLogFile)
-    End Function
-    '********************************************************************************
-    Public Shared Function WriteLog(ByVal MessageOne As String, ByVal MessageTwo As String, ByVal LogFileName As String) As Boolean
-        Dim sQuoteComma As String = (""",""")
-        Dim sQuote As String = ("""")
-        MessageOne = ApplyHTMLFormatting(GetStringValue(MessageOne))
-        MessageTwo = ApplyHTMLFormatting(GetStringValue(MessageTwo))
-        Try
-            Using sw As New StreamWriter(LogFileName, True)
-                Try
-                    sw.WriteLine( _
-                           sQuote & _
-                           HttpContext.Current.Request.Url.Host.ToString & sQuoteComma & _
-                           DateTime.Now.ToShortDateString & sQuoteComma & _
-                           DateTime.Now.ToLongTimeString & sQuoteComma & _
-                           MessageOne & sQuoteComma & _
-                           MessageTwo & sQuote)
-                Catch
-                    ' Do Nothing
-                Finally
-                    sw.Flush()
-                    sw.Close()
-                End Try
-            End Using
-        Catch
-            ' do nothing
-        End Try
-        Return True
     End Function
 
     Public Shared Function fncGetDayOrdinal(ByVal intDay As Integer) As String

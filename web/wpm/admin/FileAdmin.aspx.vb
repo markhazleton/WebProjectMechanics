@@ -45,7 +45,7 @@ Partial Class wpm_file_admin
             Next
             mySB.Append("</ul>")
         Catch ex As Exception
-            wpmUTIL.AuditLog(ex.ToString, "ProcessGalleryFiles - FileAdmin.aspx")
+            wpmLog.AuditLog(ex.ToString, "ProcessGalleryFiles - FileAdmin.aspx")
             myReturn = False
         End Try
         Return myReturn
