@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<MHSiteSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <mhSite>
-    <CompanyID>31</CompanyID>
-    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Mark Hazleton\My Documents\WebProjectMechanics\wpm\wpmweb\access_db\wpm-demo.mdb;</SQLDBConnString>
-    <SingleSiteGallery>TRUE</SingleSiteGallery>
-  </mhSite>
-</MHSiteSettings>
