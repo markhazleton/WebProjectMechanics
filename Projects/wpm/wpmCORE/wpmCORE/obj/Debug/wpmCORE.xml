@@ -18,15 +18,15 @@ wpmCORE
 	<summary>
  Sends permanent redirection headers (301)
  </summary>
-</member><member name="M:wpmCORE.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
-	<summary>
- Initializes a new instance of the wpmXML class
- </summary>
 </member><member name="M:wpmCORE.wpmRssTools.wpmRSS.#ctor(System.String)">
 	<summary>
  Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
  </summary>
 	<param name="feedurl"></param>
+</member><member name="M:wpmCORE.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the wpmXML class
+ </summary>
 </member>
 </members>
 </doc>
