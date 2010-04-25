@@ -7,3 +7,12 @@ C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.vbproj.Genera
 C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.dll
 C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.xml
 C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.pdb
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCORE.dll
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCORE.pdb
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCORE.xml
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\ResolveAssemblyReference.cache
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.Resources.resources
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.vbproj.GenerateResource.Cache
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.dll
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.xml
+C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.pdb
