@@ -9,6 +9,7 @@ Public Class App
     Public Shared SiteList As wpmSiteList
     Shared Sub New()
         Config = New wpmFileConfig()
+        SiteList = LoadSiteList()
     End Sub
     Private Shared Function LoadSiteList() As wpmSiteList
         Dim mySiteList As wpmSiteList

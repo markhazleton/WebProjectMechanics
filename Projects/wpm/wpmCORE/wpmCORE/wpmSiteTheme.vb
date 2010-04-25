@@ -40,15 +40,10 @@ Public Class wpmSiteTheme
             wpmFileIO.ReadFile(sPath, myStringBuilder)
         Else
             sPath = App.Config.ConfigFolderPath & "gen\" & wpmUTIL.FormatNameForURL(CompanyName & "-Template-" & SiteTemplatePrefix & ".html")
-            If wpmUser.IsAdmin Or wpmUser.IsEditor Then
-                bTemplateFromDB = True
-            ElseIf wpmFileIO.FileExists(sPath) Then
-                bTemplateFromDB = False
-                If Not wpmFileIO.ReadFile(sPath, myStringBuilder) Then
-                    bTemplateFromDB = True
+            If Not (wpmUser.IsAdmin Or wpmUser.IsEditor) Or (wpmFileIO.FileExists(sPath)) Then
+                If wpmFileIO.ReadFile(sPath, myStringBuilder) Then
+                    bTemplateFromDB = False
                 End If
-            Else
-                bTemplateFromDB = True
             End If
             If bTemplateFromDB Then
                 Dim strSQL As String = ("SELECT SiteTemplate.Top, SiteTemplate.Bottom FROM SiteTemplate " & _
@@ -59,9 +54,21 @@ Public Class wpmSiteTheme
                     myStringBuilder.Append(row.Item("Bottom"))
                     myStringBuilder.Append("</body></html>")
                 Next
-                wpmFileIO.SaveTemplateFile(myStringBuilder.ToString, sPath)
+                SaveTemplateFile(myStringBuilder.ToString, sPath)
             End If
         End If
         Return myStringBuilder
+    End Function
+    Public Shared Function SaveTemplateFile(ByVal sTemplate As String, ByVal sPath As String) As Boolean
+        Dim bReturn As Boolean = True
+        Try
+            If Not (wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "gen\")) Then
+                wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "gen\")
+            End If
+            wpmFileIO.CreateFile(sPath, sTemplate)
+        Catch ex As Exception
+            bReturn = False
+        End Try
+        Return bReturn
     End Function
 End Class
