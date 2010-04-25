@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWpmSite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wpmSite>
+    <DomainName>localhost</DomainName>
+    <CompanyID>31</CompanyID>
+    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\hosting\codeplexwpm\access_db\wpm-demo.mdb;</SQLDBConnString>
+  </wpmSite>
+</ArrayOfWpmSite>
