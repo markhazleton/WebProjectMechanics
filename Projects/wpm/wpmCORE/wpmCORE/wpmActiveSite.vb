@@ -550,10 +550,12 @@ Public Class wpmActiveSite
         Me.SetListPage(HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING"), HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), HttpContext.Current.Request.ServerVariables.Item("URL"))
         If App.Config.FullLoggingOn() Then
             wpmLog.AccessLog(Me.CurrentLocation.DisplayURL, Me.CurrentLocation.TransferURL)
-            wpmFileIO.SaveHTML(Me.CurrentLocation.DisplayURL, myHTML.ToString)
+            wpmBuildHTML.SaveHTML(Me.CurrentLocation.DisplayURL, myHTML.ToString)
         End If
         Return myHTML.ToString
     End Function
+
+
     Public Function GetBlogPageHTML() As String
         Dim sbBlogTemplate As New StringBuilder
         If (Me.CurrentArticleID = String.Empty) Then

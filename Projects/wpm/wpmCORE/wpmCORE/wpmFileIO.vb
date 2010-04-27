@@ -1,21 +1,7 @@
 Imports System.Web
 
 Public Class wpmFileIO
-    Public Shared Function SaveHTML(ByVal sPageName As String, ByVal sContent As String) As Boolean
-        Dim sPath As String = App.Config.ConfigFolderPath & "\html\"
-        Dim bReturn As Boolean = False
-        If Trim(sPageName) <> "" Then
-            If (wpmFileIO.VerifyFolderExists(sPath)) Then
-                If App.Config.DefaultExtension = String.Empty Then
-                    sPath = sPath & sPageName & ".html"
-                Else
-                    sPath = sPath & sPageName
-                End If
-                bReturn = wpmFileIO.CreateFile(sPath, sContent)
-            End If
-        End If
-        Return bReturn
-    End Function
+   
 
     Public Shared Function SavePageFile(ByVal sPageName As String, ByVal sContent As String, ByVal RawURL As String) As Boolean
         Dim sPath As String = App.Config.ConfigFolderPath & "\gen\"
