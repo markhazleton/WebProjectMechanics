@@ -52,6 +52,7 @@ Imports System.Xml.Serialization
         For Each mySite As wpmSite In Me.FindAll(AddressOf FindSiteByDomain)
             FoundSite.CompanyID = mySite.CompanyID
             FoundSite.SQLDBConnString = mySite.SQLDBConnString
+            FoundSite.AccessDatabasePath = mySite.AccessDatabasePath
         Next
         Return FoundSite
     End Function
@@ -70,6 +71,7 @@ End Class
 Public Class wpmSite
     Public DomainName As String
     Public CompanyID As String
+    Public AccessDatabasePath As String = String.Empty
     Public SQLDBConnString As String = String.Empty
 End Class
 

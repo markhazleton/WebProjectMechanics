@@ -6,7 +6,11 @@ wpmCORE
 </name>
 </assembly>
 <members>
-<member name="M:wpmCORE.wpmHttpModule.AddWww(System.Web.HttpContext)">
+<member name="M:wpmCORE.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the wpmXML class
+ </summary>
+</member><member name="M:wpmCORE.wpmHttpModule.AddWww(System.Web.HttpContext)">
 	<summary>
  Adds the www subdomain to the request and redirects.
  </summary>
@@ -23,10 +27,6 @@ wpmCORE
  Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
  </summary>
 	<param name="feedurl"></param>
-</member><member name="M:wpmCORE.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
-	<summary>
- Initializes a new instance of the wpmXML class
- </summary>
 </member>
 </members>
 </doc>

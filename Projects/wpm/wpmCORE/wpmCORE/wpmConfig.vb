@@ -38,6 +38,7 @@ Public Class App
 
 End Class
 Public Class wpmConfig
+    Public Shared mySite As wpmSite
     Public Shared ReadOnly Property wpmConfigFile() As String
         Get
             If Not IsNothing(WebConfigurationManager.AppSettings.Item("wpmConfigFolder")) Then
@@ -49,7 +50,14 @@ Public Class wpmConfig
     End Property
     Public Shared ReadOnly Property ConnStr() As String
         Get
-            Return App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).SQLDBConnString
+            mySite = App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", ""))
+            If mySite.AccessDatabasePath.Trim <> String.Empty Then
+                Return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & HttpContext.Current.Server.MapPath(mySite.AccessDatabasePath) & ";"
+            Else
+                Return mySite.SQLDBConnString
+                'Return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\SVN-work\wpm\web\access_db\wpm-demo.mdb;"
+                ' Return App.SiteList.GetSiteByDomain(Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")).SQLDBConnString ' 
+            End If
         End Get
     End Property
 
