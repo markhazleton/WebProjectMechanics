@@ -87,11 +87,13 @@
     <Compile Include="wpmActiveSite.vb" />
     <Compile Include="wpmAdmin.vb" />
     <Compile Include="wpmArticle.vb" />
+    <Compile Include="wpmBuildHTML.vb" />
     <Compile Include="wpmConfig.vb" />
     <Compile Include="wpmConfigBase.vb" />
     <Compile Include="wpmDataCon.vb" />
     <Compile Include="wpmDB.vb" />
     <Compile Include="wpmFileIO.vb" />
+    <Compile Include="wpmForm.vb" />
     <Compile Include="wpmHttpModule.vb" />
     <Compile Include="wpmImage.vb" />
     <Compile Include="wpmImageList.vb" />

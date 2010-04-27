@@ -30,8 +30,33 @@ Public Class wpmLog
         End Try
     End Function
     Private Shared Function GetLogFilePath(ByVal LogFileName As String) As String
+        Dim sQuoteComma As String = (""",""")
+        Dim sQuote As String = ("""")
         If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "log") Then
             wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "log")
+        End If
+
+        If Not wpmFileIO.FileExists(App.Config.ConfigFolderPath & "log\" & LogFileName) Then
+            Try
+                Using sw As New StreamWriter(App.Config.ConfigFolderPath & "log\" & LogFileName, True)
+                    Try
+                        sw.WriteLine( _
+                               sQuote & _
+                               "HostName" & sQuoteComma & _
+                               "Date" & sQuoteComma & _
+                               "Time" & sQuoteComma & _
+                               "MessageOne" & sQuoteComma & _
+                               "MessageTwo" & sQuote)
+                    Catch
+                        ' Do Nothing
+                    Finally
+                        sw.Flush()
+                        sw.Close()
+                    End Try
+                End Using
+            Catch
+                ' do nothing
+            End Try
         End If
         Return App.Config.ConfigFolderPath & "log\" & LogFileName
     End Function
@@ -94,11 +119,11 @@ Public Class wpmLog
     End Function
     '********************************************************************************
     Public Shared Function AuditLog(ByVal AuditMessage As String, ByVal AuditProcess As String) As Boolean
-        Return WriteLog(AuditProcess, AuditMessage, GetLogFilePath("AccessLog.csv"))
+        Return WriteLog(AuditProcess, AuditMessage, GetLogFilePath("AuditLog.csv"))
     End Function
     '********************************************************************************
     Public Shared Function SQLAudit(ByVal strSQL As String, ByVal pageID As String) As Boolean
-        Return WriteLog(strSQL, pageID, App.Config.SQLLogFile)
+        Return WriteLog(strSQL, pageID, GetLogFilePath("SQLLog.csv"))
     End Function
 
 End Class

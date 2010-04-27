@@ -6,6 +6,8 @@ Partial Class wpm_admin_ReadLogFile
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             file_DatabindListbox(Server.MapPath(App.Config.ConfigFolder & "log/"), ".csv")
+            GridView1.AllowSorting = False
+            GridView1.AllowPaging = False
         End If
     End Sub
     Private Sub GetCSVTable(ByVal myCSV As String)
@@ -132,6 +134,12 @@ Partial Class wpm_admin_ReadLogFile
 
     Protected Sub btnSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSubmit.Click
         'GetCSVTable(myFileListBox.SelectedValue)
+        GridView1.DataSource = FetchFromCSVFileLong(myFileListBox.SelectedValue)
+        GridView1.DataBind()
+    End Sub
+
+
+    Protected Sub GridView1_Sorting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSortEventArgs) Handles GridView1.Sorting
         GridView1.DataSource = FetchFromCSVFileLong(myFileListBox.SelectedValue)
         GridView1.DataBind()
     End Sub
