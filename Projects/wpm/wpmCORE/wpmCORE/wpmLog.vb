@@ -9,7 +9,6 @@ Public Class wpmLog
         MessageTwo = wpmUTIL.ApplyHTMLFormatting(wpmUTIL.GetStringValue(MessageTwo))
         System.Web.HttpContext.Current.Application.Lock()
         Try
-
             Using sw As New StreamWriter(LogFileName, True)
                 Try
                     sw.WriteLine( _

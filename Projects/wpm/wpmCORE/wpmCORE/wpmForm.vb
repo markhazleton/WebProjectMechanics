@@ -36,5 +36,13 @@ Public Class wpmForm
         mysb.Append("</table></br><hr/>")
         Return mysb.ToString
     End Function
-
+    Public Function GetFormFilePath(ByVal HTMLFileName As String) As String
+        If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "form") Then
+            wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "form")
+        End If
+        If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "form\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")) Then
+            wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "form\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", ""))
+        End If
+        Return App.Config.ConfigFolderPath & "form\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "") & "\" & HTMLFileName
+    End Function
 End Class

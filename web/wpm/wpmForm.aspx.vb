@@ -6,6 +6,7 @@ Partial Class wpm_wpmForm
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim landing_page As String = String.Empty
         Dim myForm As New wpmForm
+
         ' If IsPostBack Then
         Dim filename As String
         Dim req_method As String
@@ -95,8 +96,8 @@ Partial Class wpm_wpmForm
                 mail.Body = sOutFile
                 mail.IsBodyHtml = True
 
-                ' Save Copy of Email 
-                filename = App.Config.ConfigFolderPath & "form\" & Replace(Replace(Replace(pageActiveSite.CompanyName & "-" & Format(dtNow, "yyyy:MM:dd:HH:mm:ss"), " ", "-"), ",", ""), ":", "-") & ".html"
+                ' Save Copy of Email
+                filename = myForm.GetFormFilePath(Replace(Replace(Replace(pageActiveSite.CompanyName & "-" & Format(dtNow, "yyyy:MM:dd:HH:mm:ss"), " ", "-"), ",", ""), ":", "-") & ".html")
                 wpmFileIO.CreateFile(filename, sOutFile & "<br/><br/><hr/>Sent to:" & pageActiveSite.FromEmail & "<br/>")
                 Response.Write(sOutFile)
 
