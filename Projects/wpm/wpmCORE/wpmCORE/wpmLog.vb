@@ -7,7 +7,9 @@ Public Class wpmLog
         Dim sQuote As String = ("""")
         MessageOne = wpmUTIL.ApplyHTMLFormatting(wpmUTIL.GetStringValue(MessageOne))
         MessageTwo = wpmUTIL.ApplyHTMLFormatting(wpmUTIL.GetStringValue(MessageTwo))
+        System.Web.HttpContext.Current.Application.Lock()
         Try
+
             Using sw As New StreamWriter(LogFileName, True)
                 Try
                     sw.WriteLine( _
@@ -28,6 +30,8 @@ Public Class wpmLog
         Catch
             WriteLog = False
         End Try
+        System.Web.HttpContext.Current.Application.UnLock()
+
     End Function
     Private Shared Function GetLogFilePath(ByVal LogFileName As String) As String
         Dim sQuoteComma As String = (""",""")

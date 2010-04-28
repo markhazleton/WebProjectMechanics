@@ -48,6 +48,7 @@ Imports System.Xml.Serialization
         Dim FoundSite As New wpmSite
         FoundSite.CompanyID = String.Empty
         FoundSite.SQLDBConnString = String.Empty
+        FoundSite.AccessDatabasePath = String.Empty
         SearchDomain = inDomain
         For Each mySite As wpmSite In Me.FindAll(AddressOf FindSiteByDomain)
             FoundSite.CompanyID = mySite.CompanyID
