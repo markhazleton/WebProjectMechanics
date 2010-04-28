@@ -169,29 +169,11 @@ Public Class wpmXML
         End Try
         Return bReturn
     End Function
-    'Private Function getXMLTransform(ByVal XMLFilePath As String, ByVal XSLFilePath As String) As String
-    '    Dim myXslDoc As XslCompiledTransform = New XslCompiledTransform()
-    '    Dim myStringBuilder As StringBuilder = New StringBuilder()
-    '    Dim myStringWriter As StringWriter = New StringWriter(myStringBuilder)
-
-    '    Try
-    '        Me.Load(XMLFilePath)
-    '    Catch ex As Exception
-    '        wpmLog.AuditLog("URL Exception", ex.Message & " - on " & XMLFilePath)
-    '        wpmLog.AuditLog("Problem getting XML Feed - (" & XMLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
-    '    End Try
-
-    '    Try
-    '        myXslDoc.Load(XSLFilePath)
-    '        myXslDoc.Transform(Me, Nothing, myStringWriter)
-    '    Catch ex As Exception
-    '        wpmLog.AuditLog("Problem processing XSL/XML - (" & XSLFilePath & ") - " & ex.ToString, "wpmSiteMap.getXMLTransform")
-    '    End Try
-    '    Return myStringBuilder.ToString()
-    'End Function
     Private Function getXMLFileName() As String
+        If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "xml") Then
+            wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "xml")
+        End If
         If FeedName <> String.Empty And filePrefix <> String.Empty Then
-            '            _xmlFileName = App.Config.ConfigFolderPath & "xml\" & filePrefix & "-" & FeedName & ".xml"
             _xmlFileName = App.Config.ConfigFolderPath & "xml\" & wpmUTIL.RemoveInvalidCharacters(Me.xmlURL) & ".xml"
         End If
         Return _xmlFileName

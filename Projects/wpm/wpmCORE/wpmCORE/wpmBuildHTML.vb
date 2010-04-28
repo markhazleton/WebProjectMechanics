@@ -8,7 +8,6 @@ Public Class wpmBuildHTML
         If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "html\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "")) Then
             wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "html\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", ""))
         End If
-
         Return App.Config.ConfigFolderPath & "html\" & Replace(HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), "www.", "") & "\" & HTMLFileName
     End Function
     Public Shared Function SaveHTML(ByVal sPageName As String, ByVal sContent As String) As Boolean
@@ -24,6 +23,4 @@ Public Class wpmBuildHTML
         End If
         Return bReturn
     End Function
-
-
 End Class

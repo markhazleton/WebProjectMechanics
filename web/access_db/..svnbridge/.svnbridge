@@ -3,4 +3,9 @@ log
 </Value></Property><Property><Name>svn:ignore</Name><Value>gen
 log
 html
+</Value></Property><Property><Name>svn:ignore</Name><Value>gen
+html
+index
+log
+xml
 </Value></Property></Properties></ItemProperties>

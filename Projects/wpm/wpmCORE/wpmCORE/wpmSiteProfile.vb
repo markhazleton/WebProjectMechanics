@@ -1,3 +1,5 @@
+Imports System.Web
+
 Public Class wpmSiteProfile
     Public SiteImageList As wpmSiteImageList
     Public ArticleList As wpmArticleList
@@ -246,7 +248,7 @@ Public Class wpmSiteProfile
         SiteImageList = New wpmSiteImageList(CompanyID)
         PageAliasList = New wpmPageAliasList(CompanyID)
         If App.Config.FullLoggingOn() Or wpmUser.IsAdmin Then
-            SaveSiteMapFile(App.Config.ConfigFolderPath & "\index\" & Me.CompanyName & "-site-file.xml")
+            SaveSiteMapFile()
         End If
 
     End Sub
@@ -830,16 +832,23 @@ Public Class wpmSiteProfile
             Return False
         End If
     End Function
-    Private Function SaveSiteMapFile(ByRef SiteMapFilePath As String) As Boolean
-        SiteMapFilePath = Replace(SiteMapFilePath, "\\", "\")
+    Private Function GetIndexFilePath() As String
+        If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "index") Then
+            wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "index")
+        End If
+        Return Replace(App.Config.ConfigFolderPath & "\index\" & Me.CompanyName & "-site-file.xml", "\\", "\")
+    End Function
+
+    Private Function SaveSiteMapFile() As Boolean
         Dim bReturn As Boolean = True
+        HttpContext.Current.Application.Lock()
         Try
-            Using sw As New System.IO.StreamWriter(SiteMapFilePath, False)
+            Using sw As New System.IO.StreamWriter(GetIndexFilePath(), False)
                 Try
                     Dim ViewWriter As New System.Xml.Serialization.XmlSerializer(GetType(wpmSiteProfile))
                     ViewWriter.Serialize(sw, Me)
                 Catch ex As Exception
-                    wpmLog.AuditLog("Error Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
+                    wpmLog.AuditLog("Error Saving File - " & ex.ToString, "wpmSiteProfile.SaveSiteMapFile")
                     bReturn = False
                 Finally
                     sw.Flush()
@@ -847,12 +856,12 @@ Public Class wpmSiteProfile
                 End Try
             End Using
         Catch ex As Exception
-            wpmLog.AuditLog("Error Before Saving File (" & SiteMapFilePath & ") - " & ex.ToString, "wpmSiteFile.SaveSiteMapFile")
+            wpmLog.AuditLog("Error Before Saving File  - " & ex.ToString, "wpmSiteProfile.SaveSiteMapFile")
             bReturn = False
         End Try
+        HttpContext.Current.Application.UnLock()
         Return bReturn
     End Function
-
 #End Region
 
 End Class
