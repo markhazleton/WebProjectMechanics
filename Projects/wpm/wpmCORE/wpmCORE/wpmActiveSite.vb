@@ -487,7 +487,7 @@ Public Class wpmActiveSite
                 response.Write(GetHTML(SiteProfile.SiteDescription & SiteProfile.TreeHTML.ToString, False, Session.SiteTemplatePrefix))
             Case "SITEMAP.XML"
                 response.ContentType = "text/xml"
-                Dim gen As wpmXMLSitemap = New wpmXMLSitemap(response.Output)
+                Dim gen As wpmXmlSiteMap = New wpmXmlSiteMap(response.Output)
                 gen.WriteSitemapDocument()
                 gen.Close()
             Case Else

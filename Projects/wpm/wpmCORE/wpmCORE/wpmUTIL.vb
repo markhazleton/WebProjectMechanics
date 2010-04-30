@@ -549,83 +549,83 @@ Public Class wpmUTIL
     End Function
 End Class
 
-Public Class cdsnetFormActionModifier
-    Inherits Stream
-    Private _sink As Stream
-    Private _position As Long
-    Private _url As String
-    Public Sub New(ByVal sink As Stream, ByVal url As String)
-        _sink = sink
-        _url = "$1" + url + "$3"
-    End Sub
+'Public Class cdsnetFormActionModifier
+'    Inherits Stream
+'    Private _sink As Stream
+'    Private _position As Long
+'    Private _url As String
+'    Public Sub New(ByVal sink As Stream, ByVal url As String)
+'        _sink = sink
+'        _url = "$1" + url + "$3"
+'    End Sub
 
-    Public Overloads Overrides ReadOnly Property CanRead() As Boolean
-        Get
-            Return True
-        End Get
-    End Property
+'    Public Overloads Overrides ReadOnly Property CanRead() As Boolean
+'        Get
+'            Return True
+'        End Get
+'    End Property
 
-    Public Overloads Overrides ReadOnly Property CanSeek() As Boolean
-        Get
-            Return True
-        End Get
-    End Property
+'    Public Overloads Overrides ReadOnly Property CanSeek() As Boolean
+'        Get
+'            Return True
+'        End Get
+'    End Property
 
-    Public Overloads Overrides ReadOnly Property CanWrite() As Boolean
-        Get
-            Return True
-        End Get
-    End Property
+'    Public Overloads Overrides ReadOnly Property CanWrite() As Boolean
+'        Get
+'            Return True
+'        End Get
+'    End Property
 
-    Public Overloads Overrides ReadOnly Property Length() As Long
-        Get
-            Return 0
-        End Get
-    End Property
+'    Public Overloads Overrides ReadOnly Property Length() As Long
+'        Get
+'            Return 0
+'        End Get
+'    End Property
 
-    Public Overloads Overrides Property Position() As Long
-        Get
-            Return _position
-        End Get
-        Set(ByVal value As Long)
-            _position = value
-        End Set
-    End Property
+'    Public Overloads Overrides Property Position() As Long
+'        Get
+'            Return _position
+'        End Get
+'        Set(ByVal value As Long)
+'            _position = value
+'        End Set
+'    End Property
 
-    Public Overloads Overrides Function Seek(ByVal offset As Long, ByVal direction As System.IO.SeekOrigin) As Long
-        Return _sink.Seek(offset, direction)
-    End Function
+'    Public Overloads Overrides Function Seek(ByVal offset As Long, ByVal direction As System.IO.SeekOrigin) As Long
+'        Return _sink.Seek(offset, direction)
+'    End Function
 
-    Public Overloads Overrides Sub SetLength(ByVal length As Long)
-        _sink.SetLength(length)
-    End Sub
+'    Public Overloads Overrides Sub SetLength(ByVal length As Long)
+'        _sink.SetLength(length)
+'    End Sub
 
-    Public Overloads Overrides Sub Close()
-        _sink.Close()
-    End Sub
+'    Public Overloads Overrides Sub Close()
+'        _sink.Close()
+'    End Sub
 
-    Public Overloads Overrides Sub Flush()
-        _sink.Flush()
-    End Sub
+'    Public Overloads Overrides Sub Flush()
+'        _sink.Flush()
+'    End Sub
 
-    Public Overloads Overrides Function Read(ByVal buffer As Byte(), ByVal offset As Integer, ByVal count As Integer) As Integer
-        Return _sink.Read(buffer, offset, count)
-    End Function
+'    Public Overloads Overrides Function Read(ByVal buffer As Byte(), ByVal offset As Integer, ByVal count As Integer) As Integer
+'        Return _sink.Read(buffer, offset, count)
+'    End Function
 
-    Public Overloads Overrides Sub Write(ByVal buffer As Byte(), ByVal offset As Integer, ByVal count As Integer)
-        Dim s As String = System.Text.UTF8Encoding.UTF8.GetString(buffer, offset, count)
-        Dim reg As New Regex("(<form.*action="")([^""]*)(""[^>]*>)", RegexOptions.IgnoreCase)
-        Dim m As Match = reg.Match(s)
-        If m.Success Then
-            Dim form As String = reg.Replace(m.Value, _url)
-            Dim iform As Integer = m.Index
-            Dim lform As Integer = m.Length
-            s = s.Substring(0, iform) + form + s.Substring(iform + lform)
-        End If
-        Dim yaz As Byte() = System.Text.UTF8Encoding.UTF8.GetBytes(s)
-        _sink.Write(yaz, 0, yaz.Length)
-    End Sub
+'    Public Overloads Overrides Sub Write(ByVal buffer As Byte(), ByVal offset As Integer, ByVal count As Integer)
+'        Dim s As String = System.Text.UTF8Encoding.UTF8.GetString(buffer, offset, count)
+'        Dim reg As New Regex("(<form.*action="")([^""]*)(""[^>]*>)", RegexOptions.IgnoreCase)
+'        Dim m As Match = reg.Match(s)
+'        If m.Success Then
+'            Dim form As String = reg.Replace(m.Value, _url)
+'            Dim iform As Integer = m.Index
+'            Dim lform As Integer = m.Length
+'            s = s.Substring(0, iform) + form + s.Substring(iform + lform)
+'        End If
+'        Dim yaz As Byte() = System.Text.UTF8Encoding.UTF8.GetBytes(s)
+'        _sink.Write(yaz, 0, yaz.Length)
+'    End Sub
 
 
-End Class
+'End Class
 

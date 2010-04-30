@@ -69,8 +69,6 @@ Partial Class wpm_MissingPageImage
         Dim iPageImagePostion As Integer
         Dim iPageID As Integer
         Dim sPageID As String
-        Dim myImage As wpmImage
-
         sPageID = wpmUTIL.GetDBString(Request.Form.GetValues("x_PageID")(0))
         If sPageID = String.Empty Then
             wpmLog.AuditLog("No PageID Received", "wpmMissingPageImage.ProcessForm")
@@ -88,10 +86,6 @@ Partial Class wpm_MissingPageImage
                     sSQL = "INSERT INTO PageImage ( PageID, ImageID, PageImagePosition ) " & _
                                           "SELECT " & iPageID & "," & Item & " ," & iPageImagePostion & ";"
                     wpmDB.RunInsertSQL(sSQL, "wpmMissingPageImage.ProcessForm")
-
-                    ' myImage = New wpmImage(Item)
-                    ' myImage.ImageFileName = ""
-                    ' myImage.updateImage()
                 Next
             End If
         End If
@@ -152,9 +146,8 @@ Partial Class wpm_MissingPageImage
                 ' If wpmFileIO.MoveFile(HttpContext.Current.Server.MapPath(pageActiveSite.SiteGallery & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))), sNewPagePath & "/" & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))) Then
                 wpmLog.ErrorLog(sNewImagePath, sCurImagePath)
             End If
-
-
         Next
+        Return True
     End Function
 
 

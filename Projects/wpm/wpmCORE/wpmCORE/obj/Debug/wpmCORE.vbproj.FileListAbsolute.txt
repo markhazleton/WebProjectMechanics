@@ -25,3 +25,13 @@ C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.vbproj.Gen
 C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.dll
 C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.xml
 C:\hosting\codeplexwpm\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCORE.pdb
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCore.dll
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCore.pdb
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\bin\Debug\wpmCore.xml
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\ResolveAssemblyReference.cache
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCore.Resources.resources
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\ResGen.read.1.tlog
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\ResGen.write.1.tlog
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCore.dll
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCore.xml
+C:\SVN\Projects\wpm\wpmCORE\wpmCORE\obj\Debug\wpmCore.pdb

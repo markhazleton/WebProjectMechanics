@@ -1,19 +1,19 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "..\web\", "{E94D4B7F-9BDE-4D92-AF42-EF312B688155}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "..\web", "{E94D4B7F-9BDE-4D92-AF42-EF312B688155}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{F430A215-F269-4941-A4FC-DCFC3C0BA0D4}|wpmCORE.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/web"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\hosting\codeplexwpm\web\"
+		Debug.AspNetCompiler.PhysicalPath = "..\web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\web\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/web"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\hosting\codeplexwpm\web\"
+		Release.AspNetCompiler.PhysicalPath = "..\web\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\web\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
@@ -23,7 +23,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "..\web\", "{E94D4B7F
 		VWDVirtualPath = "/"
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wpmCORE", "wpm\wpmCORE\wpmCORE\wpmCORE.vbproj", "{F430A215-F269-4941-A4FC-DCFC3C0BA0D4}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wpmCore", "wpm\wpmCORE\wpmCORE\wpmCore.vbproj", "{F430A215-F269-4941-A4FC-DCFC3C0BA0D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5914D76E-0CB6-4558-8AB3-9F67FFD6A84B}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
