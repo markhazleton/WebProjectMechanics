@@ -15,7 +15,6 @@ Partial Class wpm_wpmForm
         Dim bErr As Boolean = False
         Dim errStr As String = String.Empty
         Dim bEmpty As Boolean = False
-        Dim dtNow As Date = System.DateTime.Now()
         Dim sOutFile As String = String.Empty
         Dim iFieldCount As Integer = 0
         Dim subject As New String(String.Empty)
@@ -34,7 +33,7 @@ Partial Class wpm_wpmForm
             arr1 = coll.AllKeys
             value = ""
 
-            sOutFile = sOutFile & myForm.FormatVariableLine("Date", dtNow.ToString("U"))
+            sOutFile = sOutFile & myForm.FormatVariableLine("Date", System.DateTime.Now().ToString("U"))
             For loop1 = 0 To arr1.GetUpperBound(0)
                 bEmpty = False
                 key = arr1(loop1)
@@ -97,9 +96,7 @@ Partial Class wpm_wpmForm
                 mail.IsBodyHtml = True
 
                 ' Save Copy of Email
-                filename = myForm.GetFormFilePath(Replace(Replace(Replace(pageActiveSite.CompanyName & "-" & Format(dtNow, "yyyy:MM:dd:HH:mm:ss"), " ", "-"), ",", ""), ":", "-") & ".html")
-                wpmFileIO.CreateFile(filename, sOutFile & "<br/><br/><hr/>Sent to:" & pageActiveSite.FromEmail & "<br/>")
-                Response.Write(sOutFile)
+                myForm.SaveMailToFile(pageActiveSite, sOutFile)
 
                 'send the message
                 Try
