@@ -36,6 +36,11 @@ Public Class wpmForm
         mysb.Append("</table></br><hr/>")
         Return mysb.ToString
     End Function
+    Public Function SaveMailToFile(ByRef pageActiveSite As wpmActiveSite, ByRef sOutFile As String) As Boolean
+        Dim filename As String = GetFormFilePath(Replace(Replace(Replace(pageActiveSite.CompanyName & "-" & Format(System.DateTime.Now(), "yyyy:MM:dd:HH:mm:ss"), " ", "-"), ",", ""), ":", "-") & ".html")
+        wpmFileIO.CreateFile(filename, sOutFile & "<br/><br/><hr/>Sent to:" & pageActiveSite.FromEmail & "<br/>")
+
+    End Function
     Public Function GetFormFilePath(ByVal HTMLFileName As String) As String
         If Not wpmFileIO.VerifyFolderExists(App.Config.ConfigFolderPath & "form") Then
             wpmFileIO.CreateFolder(App.Config.ConfigFolderPath & "form")
