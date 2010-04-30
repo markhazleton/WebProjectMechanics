@@ -4,12 +4,11 @@ Imports System.Web
 Imports System.Xml
 
 
-Public Class App
-    Public Shared Config As wpmFileConfig
-    Public Shared SiteList As wpmSiteList
-    Shared Sub New()
-        Config = New wpmFileConfig()
-        SiteList = LoadSiteList()
+Public NotInheritable Class App
+    Public Shared Config As wpmFileConfig = New wpmFileConfig()
+    Public Shared SiteList As wpmSiteList = LoadSiteList()
+    Private Sub New()
+
     End Sub
     Private Shared Function LoadSiteList() As wpmSiteList
         Dim mySiteList As wpmSiteList

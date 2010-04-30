@@ -174,8 +174,9 @@ End Class
 
 Public Class wpmSiteParameterList
     Inherits List(Of wpmSiteParameter)
-    Public Function PopulateParameterTypeList(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
-      
+
+
+    Private Function PopulateParameterTypeListSite(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
         Try
             For Each myrow As DataRow In wpmDataCon.GetSiteParameterList(CompanyID, SiteCategoryTypeID).Rows
                 Dim mySiteParameter As New wpmSiteParameter
@@ -195,6 +196,9 @@ Public Class wpmSiteParameterList
         Catch ex As Exception
             wpmLog.AuditLog("Error on PopulateParameterTypeList.GetSiteParameterList", ex.ToString)
         End Try
+        Return True
+    End Function
+    Private Function PopulateParameterTypeListCompanySite(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
         Try
             For Each myrow As DataRow In wpmDataCon.GetCompanySiteTypeParameterList(CompanyID, SiteCategoryTypeID).Rows
                 Dim mySiteParameter As New wpmSiteParameter
@@ -214,6 +218,8 @@ Public Class wpmSiteParameterList
         Catch ex As Exception
             wpmLog.AuditLog("Error on PopulateParameterTypeList.GetCompanySiteTypeParameterList", ex.ToString)
         End Try
+    End Function
+    Private Function PopulateParameterTypeListDefault(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
         Try
             For Each myrow As DataRow In wpmDataCon.GetParameterTypeList(CompanyID, SiteCategoryTypeID).Rows
                 Dim mySiteParameter As New wpmSiteParameter
@@ -233,6 +239,13 @@ Public Class wpmSiteParameterList
         Catch ex As Exception
             wpmLog.AuditLog("Error on PopulateParameterTypeList.GetParameterTypeList", ex.ToString)
         End Try
+    End Function
+
+    Public Function PopulateParameterTypeList(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
+        PopulateParameterTypeListSite(CompanyID, SiteCategoryTypeID)
+        PopulateParameterTypeListCompanySite(CompanyID, SiteCategoryTypeID)
+        PopulateParameterTypeListDefault(CompanyID, SiteCategoryTypeID)
+ 
     End Function
 
     Public Function ReplaceSiteParameterTags(ByRef sbContent As StringBuilder, ByRef mySiteMapRow As wpmLocation) As Boolean

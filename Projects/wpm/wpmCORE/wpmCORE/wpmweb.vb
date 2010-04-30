@@ -7,14 +7,14 @@ Public Enum wpmSortDirection
 End Enum
 
 Public Class wpmHTML
-    Public Shared Sub WriteTableCell(ByRef bCellIsTitle As Boolean, ByRef sContents As Object)
+    Public Shared Sub WriteTableCell(ByRef bCellIsTitle As Boolean, ByRef sContents As String)
         HttpContext.Current.Response.Write(vbTab & "<td valign=""top"">")
         If bCellIsTitle Then HttpContext.Current.Response.Write("<strong>")
         HttpContext.Current.Response.Write(sContents)
         If bCellIsTitle Then HttpContext.Current.Response.Write("</strong>")
         HttpContext.Current.Response.Write("</td>" & vbCrLf)
     End Sub
-    Public Shared Sub WriteTableCellWidth(ByRef bCellIsTitle As Boolean, ByRef sContents As Object, ByRef sWidth As String)
+    Public Shared Sub WriteTableCellWidth(ByRef bCellIsTitle As Boolean, ByRef sContents As String, ByRef sWidth As String)
         HttpContext.Current.Response.Write(vbTab & "<td valign=""top"" width=" & sWidth & ">")
         If bCellIsTitle Then HttpContext.Current.Response.Write("<strong>")
         HttpContext.Current.Response.Write(sContents)

@@ -8,10 +8,10 @@ Partial Class wpm_wpmForm
         Dim myForm As New wpmForm
 
         ' If IsPostBack Then
-        Dim filename As String
+        Dim filename As String = String.Empty
         Dim req_method As String
         Dim value As String = String.Empty
-        Dim key As String
+        Dim key As String = String.Empty
         Dim bErr As Boolean = False
         Dim errStr As String = String.Empty
         Dim bEmpty As Boolean = False
