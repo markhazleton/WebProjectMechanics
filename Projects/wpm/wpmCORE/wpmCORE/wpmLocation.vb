@@ -116,7 +116,11 @@ Public Class wpmLocation
     Private _DisplayURL As String
     Public Property DisplayURL() As String
         Get
-            Return _DisplayURL
+            If App.Config.Use404Processing Then
+                Return _DisplayURL
+            Else
+                Return _TransferURL
+            End If
         End Get
         Set(ByVal value As String)
             _DisplayURL = (value.ToLower)

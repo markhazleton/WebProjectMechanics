@@ -5,6 +5,7 @@ Public Class wpmSession
     Private mySession As System.Web.SessionState.HttpSessionState
     Private myPageHistory As wpmPageHistoryList
     Private _siteGallery As String
+    Private _SessionTracker As wpmSessionTracker
 
 #End Region
 #Region "Public Properties"
@@ -176,7 +177,6 @@ Public Class wpmSession
         If myPageHistory Is Nothing Then
             myPageHistory = New wpmPageHistoryList
         End If
-
         Return True
     End Function
     Public Function AddPageHistory(ByVal PageName As String) As Boolean
