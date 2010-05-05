@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <CachingEnabled>False</CachingEnabled>
+  <CachingEnabled>True</CachingEnabled>
   <Use404Processing>False</Use404Processing>
   <FullLoggingOn>True</FullLoggingOn>
   <wpmHome>/wpm/</wpmHome>
