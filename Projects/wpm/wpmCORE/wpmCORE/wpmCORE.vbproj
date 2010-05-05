@@ -110,7 +110,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="wpmSessionTracker.vb" />
-    <Compile Include="wpmSessionTrackerPage.vb" />
     <Compile Include="wpmActiveSite.vb" />
     <Compile Include="wpmAdmin.vb" />
     <Compile Include="wpmArticle.vb" />

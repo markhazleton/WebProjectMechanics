@@ -12,7 +12,8 @@ Public Class wpmSessionTracker
     Private _sessionReferrer As String
     Private _sessionURL As String
     Private _browser As HttpBrowserCapabilities
-    Private _pages As New ArrayList()
+    Private _pageHistory As New wpmPageHistoryList
+
 
     Public Sub New()
         'HttpContext.Current allows us to gain access to all 
@@ -43,13 +44,12 @@ Public Class wpmSessionTracker
     'add the page to the member arraylist 
     Public Sub AddPage(ByVal pageName As String)
         'create a new page tracker item 
-        Dim pti As New wpmSessionTrackerPage()
+        Dim pti As New wpmPageHistory
         pti.PageName = pageName
         'set a time stamp
-        pti.Time = Now
-
+        pti.ViewTime = Now
         'add the page tracker item to the array list
-        _pages.Add(pti)
+        _pageHistory.Add(pti)
     End Sub
 
     'increment the visit count and save in a cookie
@@ -157,26 +157,26 @@ Public Class wpmSessionTracker
         Dim body As New StringBuilder(String.Empty)
 
         body.Append("<br><table style='font-size:8pt; font-family:Verdana;'>")
-        If Not IsNothing(Pages) Then
-            Dim pti As wpmSessionTrackerPage
+        If Not IsNothing(PageHistory) Then
+            Dim pti As wpmPageHistory
             Dim lastPage As String = ""
-            body.Append("<tr><td><b>Visited Pages Count:</b></td><td>" & Pages.Count & "</td></tr>" & vbCrLf)
+            body.Append("<tr><td><b>Visited Pages Count:</b></td><td>" & PageHistory.Count & "</td></tr>" & vbCrLf)
             'line
             body.Append("<tr height=1 bgcolor=#CCCCCC><td></td><td></td></tr>" & vbCrLf)
             body.Append("<tr><td><b>Visited Pages</b></td><td><b>Elapsed Time</b></td></tr>" & vbCrLf)
             'line
             body.Append("<tr height=1 bgcolor=#CCCCCC><td></td><td></td></tr>" & vbCrLf)
 
-            For Each pti In Pages
+            For Each pti In PageHistory
                 If first Then
-                    FirstTime = pti.Time
+                    FirstTime = pti.ViewTime
                     first = False
                 Else
-                    ElapsedTime = pti.Time.Subtract(PreviousTime)
+                    ElapsedTime = pti.ViewTime.Subtract(PreviousTime)
                     body.Append("<tr><td>" & lastPage & "</td><td>&nbsp;&nbsp;" & ElapsedTime.ToString.Substring(0, 8) & "</td></tr>" & vbCrLf)
                 End If
                 lastPage = pti.PageName
-                PreviousTime = pti.Time
+                PreviousTime = pti.ViewTime
             Next
             body.Append("<tr><td>" & lastPage & "</td><td></td></tr>" & vbCrLf)
             ElapsedTime = PreviousTime.Subtract(FirstTime)
@@ -244,9 +244,9 @@ Public Class wpmSessionTracker
     End Property
 
     'Pages - array list
-    ReadOnly Property Pages() As ArrayList
+    ReadOnly Property PageHistory() As wpmPageHistoryList
         Get
-            Return _pages
+            Return _pageHistory
         End Get
     End Property
 
