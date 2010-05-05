@@ -110,7 +110,7 @@ ul.MenuBarVertical a.MenuBarItemHover, ul.MenuBarVertical a.MenuBarItemSubmenuHo
 /* Menu items that have a submenu have the class designation MenuBarItemSubmenu and are set to use a background image positioned on the far left (95%) and centered vertically (50%) */
 ul.MenuBarVertical a.MenuBarItemSubmenu
 {
-	background-image: url(SpryMenuBarRight.gif);
+	background-image: url(/wpmgen/images/SpryMenuBarRight.gif);
 	background-repeat: no-repeat;
 	background-position: 95% 50%;
 }
@@ -118,7 +118,7 @@ ul.MenuBarVertical a.MenuBarItemSubmenu
 /* Menu items that are open with submenus have the class designation MenuBarItemSubmenuHover and are set to use a "hover" background image positioned on the far left (95%) and centered vertically (50%) */
 ul.MenuBarVertical a.MenuBarItemSubmenuHover
 {
-	background-image: url(SpryMenuBarRightHover.gif);
+	background-image: url(/wpmgen/images/SpryMenuBarRightHover.gif);
 	background-repeat: no-repeat;
 	background-position: 95% 50%;
 }
