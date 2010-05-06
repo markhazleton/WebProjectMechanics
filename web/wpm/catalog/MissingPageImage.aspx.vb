@@ -4,7 +4,7 @@ Imports System.Xml
 Imports System.IO
 Imports System.Data.OleDb
 
-Partial Class wpm_MissingPageImage
+Partial Class MissingPageImage
     Inherits AspNetMaker7_WPMGen
     '
     ' ASP.NET Page_Load event
@@ -17,20 +17,20 @@ Partial Class wpm_MissingPageImage
         Response.Cache.SetCacheability(HttpCacheability.NoCache)
 
         mySiteMap = New wpmActiveSite(Session)
-        Session("ListPageURL") = ("~/wpm/admin/wpmMissingPageImage.aspx")
+        Session("ListPageURL") = ("~/wpm/catalog/MissingPageImage.aspx")
         Dim myLinkDirectory As New wpmLinkDirectory(mySiteMap)
         Dim myContents As New StringBuilder
         Dim myAdminForm As New StringBuilder
-        wpmFileIO.ReadTextFile(HttpContext.Current.Server.MapPath("/wpm/admin/MissingPageImage.text"), myContents)
+        wpmFileIO.ReadTextFile(HttpContext.Current.Server.MapPath("/wpm/catalog/MissingPageImage.text"), myContents)
         If GetProperty("DEL", "") <> "" Then
             DeleteImage(GetProperty("DEL", ""))
         End If
 
         If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
             ProcessForm()
-            Response.Redirect("/wpm/admin/wpmMissingPageImage.aspx")
+            Response.Redirect("/wpm/catalog/wpmMissingPageImage.aspx")
         Else
-            myAdminForm.Append("<form name=""frmPageImage"" method=""post"" action=""/wpm/admin/wpmMissingPageImage.aspx"">")
+            myAdminForm.Append("<form name=""frmPageImage"" method=""post"" action=""/wpm/catalog/MissingPageImage.aspx"">")
             myAdminForm.Append(GetPageList(mySiteMap.CurrentPageID, True))
             myAdminForm.Append("<input type=""submit"" value=""Add Checked to Page""><hr/>")
             myAdminForm.Append("<input type=""button"" onclick=""SetAllCheckBoxes('frmPageImage', 'ImageCheckBox', true);"" value=""Check All"">&nbsp;&nbsp;")
@@ -69,6 +69,8 @@ Partial Class wpm_MissingPageImage
         Dim iPageImagePostion As Integer
         Dim iPageID As Integer
         Dim sPageID As String
+        Dim myImage As wpmImage
+
         sPageID = wpmUTIL.GetDBString(Request.Form.GetValues("x_PageID")(0))
         If sPageID = String.Empty Then
             wpmLog.AuditLog("No PageID Received", "wpmMissingPageImage.ProcessForm")
@@ -86,6 +88,10 @@ Partial Class wpm_MissingPageImage
                     sSQL = "INSERT INTO PageImage ( PageID, ImageID, PageImagePosition ) " & _
                                           "SELECT " & iPageID & "," & Item & " ," & iPageImagePostion & ";"
                     wpmDB.RunInsertSQL(sSQL, "wpmMissingPageImage.ProcessForm")
+
+                    ' myImage = New wpmImage(Item)
+                    ' myImage.ImageFileName = ""
+                    ' myImage.updateImage()
                 Next
             End If
         End If
@@ -146,8 +152,9 @@ Partial Class wpm_MissingPageImage
                 ' If wpmFileIO.MoveFile(HttpContext.Current.Server.MapPath(pageActiveSite.SiteGallery & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))), sNewPagePath & "/" & wpmUTIL.GetDBString(myRow.Item("ImageFileName"))) Then
                 wpmLog.ErrorLog(sNewImagePath, sCurImagePath)
             End If
+
+
         Next
-        Return True
     End Function
 
 
