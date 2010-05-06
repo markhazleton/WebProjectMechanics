@@ -1,4 +1,5 @@
 <%@ Page Language="VB" MasterPageFile="masterpage.master" ValidateRequest="false" AutoEventWireup="false" CodeFile="CompanySiteParameter_list.aspx.vb" Inherits="CompanySiteParameter_list" CodeFileBaseClass="AspNetMaker7_WPMGen" %>
+<%@ Register TagPrefix="WPMGen" TagName="MasterTable_SiteParameterType" Src="SiteParameterType_master.ascx" %>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
 <% If CompanySiteParameter.Export = "" Then %>
 <script type="text/javascript">
@@ -81,6 +82,17 @@ var ew_DHTMLEditors = [];
 </script>
 <% End If %>
 <% If CompanySiteParameter.Export = "" Then %>
+<%
+gsMasterReturnUrl = "SiteParameterType_list.aspx"
+If CompanySiteParameter_list.sDbMasterFilter <> "" AndAlso CompanySiteParameter.CurrentMasterTable = "SiteParameterType" Then
+	If CompanySiteParameter_list.bMasterRecordExists Then
+		If CompanySiteParameter.CurrentMasterTable = CompanySiteParameter.TableVar Then gsMasterReturnUrl = gsMasterReturnUrl & "?" & EW_TABLE_SHOW_MASTER & "="
+%>
+<WPMGen:MasterTable_SiteParameterType id="MasterTable_SiteParameterType" runat="server" />
+<%
+	End If
+End If
+%>
 <% End If %>
 <%
 If CompanySiteParameter.CurrentAction = "gridadd" Then CompanySiteParameter.CurrentFilter = "0=1"

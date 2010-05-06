@@ -63,6 +63,16 @@ Partial Class CompanySiteParameter_delete
 			End Set	
 		End Property
 
+		' CompanySiteParameter
+		Public Property SiteParameterType() As cSiteParameterType
+			Get				
+				Return ParentPage.SiteParameterType
+			End Get
+			Set(ByVal v As cSiteParameterType)
+				ParentPage.SiteParameterType = v	
+			End Set	
+		End Property
+
 		'
 		'  Constructor
 		'  - init objects
@@ -80,6 +90,7 @@ Partial Class CompanySiteParameter_delete
 
 			' Initialize table object
 			CompanySiteParameter = New cCompanySiteParameter(Me)
+			SiteParameterType = New cSiteParameterType(Me)
 
 			' Connect to database
 			Conn = New cConnection()
@@ -126,6 +137,7 @@ Partial Class CompanySiteParameter_delete
 			' Close connection
 			Conn.Dispose()
 			CompanySiteParameter.Dispose()
+			SiteParameterType.Dispose()
 
 			' Go to URL if specified
 			If url <> "" Then

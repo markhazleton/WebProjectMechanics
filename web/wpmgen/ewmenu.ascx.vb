@@ -21,7 +21,7 @@ Partial Class ewmenu
 
 			' Generate menu items
 			RootMenu.AddMenuItem(28, "Administration", "", -1, "", True)
-            RootMenu.AddMenuItem(25, "Home", "/wpm/admin", 28, "", True)
+			RootMenu.AddMenuItem(25, "Home", "/wpm/admin", 28, "", True)
 			RootMenu.AddMenuItem(29, "Report", "", 28, "", True)
 			RootMenu.AddMenuItem(37, "Navigation Report", "/wpm/admin/wpmSiteReport.aspx?ReportID=NavigationAdmin", 29, "", True)
 			RootMenu.AddMenuItem(38, "Link Report", "/wpm/admin/wpmSiteReport.aspx?ReportID=LinkAdmin", 29, "", True)
@@ -38,9 +38,7 @@ Partial Class ewmenu
 			RootMenu.AddMenuItem(12, "Message", "zMessage_list.aspx", 42, "", true)
 			RootMenu.AddMenuItem(6, "Group", "Group_list.aspx", 42, "", true)
 			RootMenu.AddMenuItem(17, "Page Type", "PageType_list.aspx", 42, "", true)
-            RootMenu.AddMenuItem(10, "Link Rank", "LinkRank_list.aspx", 42, "", True)
-            RootMenu.AddMenuItem(60, "Application Admin", "/wpm/admin/ApplicationAdmin.aspx", 28, "", True)
-            RootMenu.AddMenuItem(61, "Log Files", "/wpm/admin/ReadLogFile.aspx", 28, "", True)
+			RootMenu.AddMenuItem(10, "Link Rank", "LinkRank_list.aspx", 42, "", true)
 			RootMenu.AddMenuItem(26, "Location", "", -1, "", True)
 			RootMenu.AddMenuItem(13, "Site Location", "zPage_list.aspx", 26, "", true)
 			RootMenu.AddMenuItem(34, "Site Types", "", 26, "", True)
@@ -61,6 +59,8 @@ Partial Class ewmenu
 			RootMenu.AddMenuItem(32, "Images|Graphics", "", -1, "", True)
 			RootMenu.AddMenuItem(7, "Image", "Image_list.aspx", 32, "", true)
 			RootMenu.AddMenuItem(15, "Page Image", "PageImage_list.aspx", 32, "", true)
+			RootMenu.AddMenuItem(44, "Browse Images", "/wpm/catalog/browse_images.aspx", 32, "", True)
+			RootMenu.AddMenuItem(45, "Missing Page Image", "/wpm/catalog/wpmMissingPageImage.aspx", 32, "", True)
 			RootMenu.AddMenuItem(33, "Site Parameter", "", -1, "", True)
 			RootMenu.AddMenuItem(23, "Parameter Type", "SiteParameterType_list.aspx", 33, "", true)
 			RootMenu.AddMenuItem(4, "Site Type Parameter", "CompanySiteTypeParameter_list.aspx?cmd=resetall", 33, "", true)
