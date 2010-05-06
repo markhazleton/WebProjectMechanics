@@ -2,7 +2,7 @@ Imports System.IO
 Imports System.Drawing
 Imports System.Drawing.Bitmap
 Imports System.Drawing.Drawing2D
-Partial Class wpm_catalog_Browse_Images
+Partial Class BrowseImages
     Inherits AspNetMaker7_WPMGen
     Implements IImageRow
     Dim myImagePresenter As wpmImagePresenter
@@ -66,7 +66,7 @@ Partial Class wpm_catalog_Browse_Images
         Return True
     End Function
     Private Function BuildThumbnailList(ByRef myImageRows As wpmSiteImageList, ByRef sReqImageID As String, ByRef sReqSubFolder As String) As Boolean
-        Dim mySB As New StringBuilder("<a href=""/wpm/catalog/browse_images.aspx"">View Folder List</a>")
+        Dim mySB As New StringBuilder("<a href=""/wpm/catalog/BrowseImages.aspx"">View Folder List</a>")
         Dim myRelPath As New String(String.Empty)
         Dim myPath As New String(String.Empty)
         Dim filename As New String("")
@@ -78,7 +78,7 @@ Partial Class wpm_catalog_Browse_Images
             For i As Integer = 0 To files.Length - 1
                 Dim myImageFile As New Bitmap(files(i).ToString())
                 filename = Replace(files(i).ToString, Server.MapPath("/" & pageActiveSite.SiteGallery), "")
-                mySB.Append("<li><a href=""/wpm/catalog/browse_images.aspx?ImageID=" & CheckForImage(filename, myImageRows, sReqImageID) & """>" & _
+                mySB.Append("<li><a href=""/wpm/catalog/BrowseImages.aspx?ImageID=" & CheckForImage(filename, myImageRows, sReqImageID) & """>" & _
                             filename & "</a></li>")
             Next
             mySB.Append("</ul><br/>")
@@ -91,14 +91,14 @@ Partial Class wpm_catalog_Browse_Images
             myPath = myFolders(y).ToString
             myRelPath = Replace(myFolders(y).ToString, Server.MapPath(Session("SiteGallery") & "image/"), "")
             If sReqSubFolder = String.Empty Then
-                mySB.Append("<hr><a href=""/wpm/catalog/browse_images.aspx?SubFolder=" & myRelPath & """>" & myRelPath & "</a>")
+                mySB.Append("<hr><a href=""/wpm/catalog/BrowseImages.aspx?SubFolder=" & myRelPath & """>" & myRelPath & "</a>")
             Else
                 If sReqSubFolder = myRelPath Then
                     mySB.Append("<ul>")
                     Dim myFiles() As String = Directory.GetFiles(myPath, "*.jpg")
                     For i As Integer = 0 To myFiles.Length - 1
                         filename = Replace(myFiles(i).ToString, Server.MapPath("/" & pageActiveSite.SiteGallery), "")
-                        mySB.Append("<li><a href=""/wpm/catalog/browse_images.aspx?SubFolder=" & myRelPath & "&ImageID=" & CheckForImage(filename, myImageRows, sReqImageID) & """>" & filename & "</a></li>")
+                        mySB.Append("<li><a href=""/wpm/catalog/BrowseImages.aspx?SubFolder=" & myRelPath & "&ImageID=" & CheckForImage(filename, myImageRows, sReqImageID) & """>" & filename & "</a></li>")
                     Next
                     mySB.Append("</ul>")
                 End If

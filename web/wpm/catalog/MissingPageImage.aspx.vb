@@ -28,7 +28,7 @@ Partial Class MissingPageImage
 
         If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
             ProcessForm()
-            Response.Redirect("/wpm/catalog/wpmMissingPageImage.aspx")
+            Response.Redirect("/wpm/catalog/MissingPageImage.aspx")
         Else
             myAdminForm.Append("<form name=""frmPageImage"" method=""post"" action=""/wpm/catalog/MissingPageImage.aspx"">")
             myAdminForm.Append(GetPageList(mySiteMap.CurrentPageID, True))
@@ -69,16 +69,15 @@ Partial Class MissingPageImage
         Dim iPageImagePostion As Integer
         Dim iPageID As Integer
         Dim sPageID As String
-        Dim myImage As wpmImage
 
         sPageID = wpmUTIL.GetDBString(Request.Form.GetValues("x_PageID")(0))
         If sPageID = String.Empty Then
-            wpmLog.AuditLog("No PageID Received", "wpmMissingPageImage.ProcessForm")
+            wpmLog.AuditLog("No PageID Received", "MissingPageImage.ProcessForm")
             iPageID = 0
         Else
             iPageID = CInt(sPageID)
             sSQL = "SELECT Max(PageImage.PageImagePosition) FROM PageImage WHERE PageImage.PageID=" & iPageID & " "
-            For Each myrow As DataRow In wpmDB.GetDataTable(sSQL, "wpmMissingPageImage.ProcessForm").Rows
+            For Each myrow As DataRow In wpmDB.GetDataTable(sSQL, "MissingPageImage.ProcessForm").Rows
                 iPageImagePostion = wpmUTIL.GetDBInteger(myrow.Item(0))
                 Exit For
             Next
@@ -87,11 +86,7 @@ Partial Class MissingPageImage
                     iPageImagePostion = iPageImagePostion + 1
                     sSQL = "INSERT INTO PageImage ( PageID, ImageID, PageImagePosition ) " & _
                                           "SELECT " & iPageID & "," & Item & " ," & iPageImagePostion & ";"
-                    wpmDB.RunInsertSQL(sSQL, "wpmMissingPageImage.ProcessForm")
-
-                    ' myImage = New wpmImage(Item)
-                    ' myImage.ImageFileName = ""
-                    ' myImage.updateImage()
+                    wpmDB.RunInsertSQL(sSQL, "MissingPageImage.ProcessForm")
                 Next
             End If
         End If

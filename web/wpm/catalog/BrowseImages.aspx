@@ -1,8 +1,8 @@
 <%@ Page Language="VB" MasterPageFile="~/wpmgen/masterpage.master" AutoEventWireup="false"
-    CodeFile="Browse_Images.aspx.vb" Inherits="wpm_catalog_Browse_Images" Title="Untitled Page" %>
+    CodeFile="BrowseImages.aspx.vb" Inherits="BrowseImages" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <form action="/wpm/catalog/Browse_Images.aspx" method="post" runat="server">
+    <form action="/wpm/catalog/BrowseImages.aspx" method="post" runat="server">
     <table>
         <tr>
             <td valign="top" style="width: 515px">
