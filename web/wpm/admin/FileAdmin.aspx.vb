@@ -15,9 +15,14 @@ Partial Class wpm_file_admin
     End Function
 
     Public Function ProcessImageFolder(ByRef mySB As StringBuilder) As Boolean
-        Dim myFolders() As String = Directory.GetDirectories(Server.MapPath(pageActiveSite.SiteGallery.ToString & "/image/"))
         Dim myPath As String
         Dim myRelPath As String
+
+        If Not wpmFileIO.VerifyFolderExists(Server.MapPath(pageActiveSite.SiteGallery.ToString & "/image/")) Then
+            wpmFileIO.CreateFolder(Server.MapPath(pageActiveSite.SiteGallery.ToString & "/image/"))
+        End If
+
+        Dim myFolders() As String = Directory.GetDirectories(Server.MapPath(pageActiveSite.SiteGallery.ToString & "/image/"))
         For y As Integer = 0 To myFolders.Length - 1
             myPath = myFolders(y).ToString
             myRelPath = Replace(myFolders(y).ToString, Server.MapPath(Session("SiteGallery") & "image/"), "")
