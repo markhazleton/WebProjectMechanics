@@ -8,16 +8,16 @@ Imports System.Data.OleDb
 ' ASP.NET code-behind class (Page)
 '
 
-Partial Class _default
+Partial Class _logout
 	Inherits AspNetMaker7_WPMGen
 
 	' Page object
-	Public index As cindex
+	Public logout As clogout
 
 	'
 	' Page Class
 	'
-	Class cindex
+	Class clogout
 		Inherits AspNetMakerPage
 		Implements IDisposable		
 
@@ -49,9 +49,9 @@ Partial Class _default
 		Public Sub New(ByRef APage As AspNetMaker7_WPMGen)				
 			m_ParentPage = APage
 			m_Page = Me	
-			m_PageID = "index"
-			m_PageObjName = "index"
-			m_PageObjTypeName = "cindex"
+			m_PageID = "logout"
+			m_PageObjName = "logout"
+			m_PageObjTypeName = "clogout"
 
 			' Initialize table object
 			' Connect to database
@@ -67,6 +67,7 @@ Partial Class _default
 		'  - call page load events
 		'
 		Public Sub Page_Init()
+			Security = New cAdvancedSecurity(Me)
 
 			' Global page loading event (in ewglobal*.vb)
 			ParentPage.Page_Loading()
@@ -99,6 +100,7 @@ Partial Class _default
 
 			' Close connection
 			Conn.Dispose()
+			Security = Nothing
 
 			' Go to URL if specified
 			If url <> "" Then
@@ -107,9 +109,37 @@ Partial Class _default
 			End If
 		End Sub
 
+	'
 	' Page main processing
+	'
 	Sub Page_Main()
-	Page_Terminate("Company_list.aspx") ' Exit and go to default page
+		Dim bValidate As Boolean = True
+		Dim sLastUrl As String, sUsername As String
+		sUsername = Security.CurrentUserName()
+
+		' User LoggingOut event
+		bValidate = User_LoggingOut(sUsername)
+		If Not bValidate Then
+			sLastUrl = Security.LastUrl
+			If sLastUrl = "" Then sLastUrl = "default.aspx"
+		Page_Terminate(sLastUrl) ' Go to last accessed URL
+		Else
+			If HttpContext.Current.Request.Cookies(EW_PROJECT_NAME) IsNot Nothing Then
+				ew_Cookie("password") = "" ' Clear password
+				ew_Cookie("lasturl") = "" ' Clear last URL
+				If ew_Cookie("autologin") = "" Then ' Not auto login					
+					ew_Cookie("username") = "" ' Clear user name				
+				End If
+			End If
+
+			' Clear session
+			HttpContext.Current.Session.Abandon()
+
+			' User_LoggedOut event
+			User_LoggedOut(sUsername)
+			ew_WriteAuditTrailOnLogInOut("logout", sUsername)
+		Page_Terminate("login.aspx") ' Go to login page
+		End If
 	End Sub
 
 		' Page Load event
@@ -123,6 +153,21 @@ Partial Class _default
 
 			'HttpContext.Current.Response.Write("Page Unload")
 		End Sub
+
+	' User Logging Out event
+	Public Function User_LoggingOut(usr As String) As Boolean
+
+		' Enter your code here
+		' To cancel, set return value to False
+
+		Return True
+	End Function
+
+	' User Logged Out event
+	Public Sub User_LoggedOut(usr As String)
+
+		'HttpContext.Current.Response.Write("User Logged Out")
+	End Sub
 	End Class
 
 	'
@@ -134,11 +179,11 @@ Partial Class _default
 		Response.Cache.SetCacheability(HttpCacheability.NoCache)
 
 		' Page init
-		index = New cindex(Me)		
-		index.Page_Init()
+		logout = New clogout(Me)		
+		logout.Page_Init()
 
 		' Page main processing
-		index.Page_Main()
+		logout.Page_Main()
 	End Sub
 
 	'
@@ -148,6 +193,6 @@ Partial Class _default
 	Protected Sub Page_Unload(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Unload
 
 		' Dispose page object
-		If index IsNot Nothing Then index.Dispose()
+		If logout IsNot Nothing Then logout.Dispose()
 	End Sub
 End Class

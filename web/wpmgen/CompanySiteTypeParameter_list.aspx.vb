@@ -63,6 +63,16 @@ Partial Class CompanySiteTypeParameter_list
 			End Set	
 		End Property
 
+		' CompanySiteTypeParameter
+		Public Property SiteParameterType() As cSiteParameterType
+			Get				
+				Return ParentPage.SiteParameterType
+			End Get
+			Set(ByVal v As cSiteParameterType)
+				ParentPage.SiteParameterType = v	
+			End Set	
+		End Property
+
 		'
 		'  Constructor
 		'  - init objects
@@ -80,6 +90,7 @@ Partial Class CompanySiteTypeParameter_list
 
 			' Initialize table object
 			CompanySiteTypeParameter = New cCompanySiteTypeParameter(Me)
+			SiteParameterType = New cSiteParameterType(Me)
 
 			' Connect to database
 			Conn = New cConnection()
@@ -136,6 +147,7 @@ Partial Class CompanySiteTypeParameter_list
 			' Close connection
 			Conn.Dispose()
 			CompanySiteTypeParameter.Dispose()
+			SiteParameterType.Dispose()
 			ListOptions = Nothing
 
 			' Go to URL if specified
@@ -200,6 +212,9 @@ Partial Class CompanySiteTypeParameter_list
 
 			' Handle reset command
 			ResetCmd()
+
+			' Set up master detail parameters
+			SetUpMasterDetail()
 
 			' Check QueryString parameters
 			If ObjForm.GetValue("a_list") = "" Then ' Check if post back first
@@ -298,6 +313,10 @@ Partial Class CompanySiteTypeParameter_list
 
 		' Build filter
 		sFilter = ""
+
+		' Restore master/detail filter
+		sDbMasterFilter = CompanySiteTypeParameter.MasterFilter ' Restore master filter
+		sDbDetailFilter = CompanySiteTypeParameter.DetailFilter ' Restore detail filter
 		If sDbDetailFilter <> "" Then
 			If sFilter <> "" Then
 				sFilter = "(" & sFilter & ") AND (" & sDbDetailFilter & ")"
@@ -310,6 +329,26 @@ Partial Class CompanySiteTypeParameter_list
 				sFilter = "(" & sFilter & ") AND (" & sSrchWhere & ")"
 			Else
 				sFilter = sSrchWhere
+			End If
+		End If
+		Dim RsMaster As OleDbDataReader
+
+		' Load master record
+		If CompanySiteTypeParameter.MasterFilter <> "" AndAlso CompanySiteTypeParameter.CurrentMasterTable = "SiteParameterType" Then
+			RsMaster = SiteParameterType.LoadRs(sDbMasterFilter)
+			bMasterRecordExists = RsMaster IsNot Nothing
+			If Not bMasterRecordExists Then
+				CompanySiteTypeParameter.MasterFilter = "" ' Clear master filter
+				CompanySiteTypeParameter.DetailFilter = "" ' Clear detail filter
+				Message = "No records found" ' Set no record found
+			Page_Terminate(CompanySiteTypeParameter.ReturnUrl) ' Return to caller
+			Else
+				RsMaster.Read()
+				SiteParameterType.LoadListRowValues(RsMaster)
+				SiteParameterType.RowType = EW_ROWTYPE_MASTER ' Master row
+				SiteParameterType.RenderListRow()
+				RsMaster.Close()
+				RsMaster.Dispose()
 			End If
 		End If
 
@@ -846,6 +885,16 @@ Partial Class CompanySiteTypeParameter_list
 			' Reset search criteria
 			If ew_SameText(sCmd, "reset") OrElse ew_SameText(sCmd, "resetall") Then
 				ResetSearchParms()
+			End If
+
+			' Reset master/detail keys
+			If ew_SameText(sCmd, "resetall") Then
+				CompanySiteTypeParameter.CurrentMasterTable = "" ' Clear master table
+				CompanySiteTypeParameter.MasterFilter = "" ' Clear master filter
+				sDbMasterFilter = ""
+				CompanySiteTypeParameter.DetailFilter = "" ' Clear detail filter
+				sDbDetailFilter = ""
+				CompanySiteTypeParameter.SiteCategoryTypeID.SessionValue = ""
 			End If
 
 			' Reset sort criteria
@@ -1742,6 +1791,54 @@ Partial Class CompanySiteTypeParameter_list
 			ew_Write(oXmlDoc.OuterXml)
 		Else
 			ew_Write(ew_ExportFooter(CompanySiteTypeParameter.Export))
+		End If
+	End Sub
+
+	'
+	' Set up Master Detail based on querystring parameter
+	'
+	Sub SetUpMasterDetail()
+		Dim bValidMaster As Boolean = False, sMasterTblVar As String
+
+		' Get the keys for master table
+		If ew_Get(EW_TABLE_SHOW_MASTER) <> "" Then
+			sMasterTblVar = ew_Get(EW_TABLE_SHOW_MASTER)
+			If sMasterTblVar = "" Then
+				bValidMaster = True
+				sDbMasterFilter = ""
+				sDbDetailFilter = ""
+			End If
+			If sMasterTblVar = "SiteParameterType" Then
+				bValidMaster = True
+				sDbMasterFilter = CompanySiteTypeParameter.SqlMasterFilter_SiteParameterType
+				sDbDetailFilter = CompanySiteTypeParameter.SqlDetailFilter_SiteParameterType
+				If ew_Get("SiteParameterTypeID") <> "" Then
+					SiteParameterType.SiteParameterTypeID.QueryStringValue = ew_Get("SiteParameterTypeID")
+					CompanySiteTypeParameter.SiteCategoryTypeID.QueryStringValue = SiteParameterType.SiteParameterTypeID.QueryStringValue
+					CompanySiteTypeParameter.SiteCategoryTypeID.SessionValue = CompanySiteTypeParameter.SiteCategoryTypeID.QueryStringValue
+					If Not IsNumeric(SiteParameterType.SiteParameterTypeID.QueryStringValue) Then bValidMaster = False
+					sDbMasterFilter = sDbMasterFilter.Replace("@SiteParameterTypeID@", ew_AdjustSql(SiteParameterType.SiteParameterTypeID.QueryStringValue))
+					sDbDetailFilter = sDbDetailFilter.Replace("@SiteCategoryTypeID@", ew_AdjustSql(SiteParameterType.SiteParameterTypeID.QueryStringValue))
+				Else
+					bValidMaster = False
+				End If
+			End If
+		End If
+		If bValidMaster Then
+
+			' Save current master table
+			CompanySiteTypeParameter.CurrentMasterTable = sMasterTblVar
+
+			' Reset start record counter (new master key)
+			lStartRec = 1
+			CompanySiteTypeParameter.StartRecordNumber = lStartRec
+			CompanySiteTypeParameter.MasterFilter = sDbMasterFilter ' Set up master filter
+			CompanySiteTypeParameter.DetailFilter = sDbDetailFilter ' Set up detail filter
+
+			' Clear previous master session values
+			If sMasterTblVar <> "SiteParameterType" Then
+				If CompanySiteTypeParameter.SiteCategoryTypeID.QueryStringValue = "" Then CompanySiteTypeParameter.SiteCategoryTypeID.SessionValue = ""
+			End If
 		End If
 	End Sub
 
