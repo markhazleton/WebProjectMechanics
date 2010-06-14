@@ -18,7 +18,5 @@
         End If
         pageActiveSite.UseDefaultTemplate = True
         pageActiveSite.WriteCurrentLocation()
-
-
     End Sub
 End Class
