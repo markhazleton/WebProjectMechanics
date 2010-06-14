@@ -1,4 +1,4 @@
-Partial Class mhweb_site_history
+Partial Class wpm_site_history
     Inherits wpmPage
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim sbMainContent As StringBuilder = New StringBuilder()
