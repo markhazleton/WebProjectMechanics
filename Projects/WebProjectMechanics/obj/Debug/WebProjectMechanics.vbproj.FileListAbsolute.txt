@@ -1,0 +1,12 @@
+D:\codeplex\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.SQLResources.resx
+D:\codeplex\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.dll
+D:\codeplex\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.pdb
+D:\codeplex\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.xml
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\ResolveAssemblyReference.cache
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.Resources.resources
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.WebProjectMechanics.SQLResources.resources
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\GenerateResource.read.1.tlog
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\GenerateResource.write.1.tlog
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.dll
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.xml
+D:\codeplex\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.pdb
