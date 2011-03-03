@@ -1,9 +1,0 @@
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\bin\Release\wpmCORE.dll
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\bin\Release\wpmCORE.pdb
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\bin\Release\wpmCORE.xml
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\ResolveAssemblyReference.cache
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\wpmCORE.Resources.resources
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\wpmCORE.vbproj.GenerateResource.Cache
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\wpmCORE.dll
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\wpmCORE.xml
-C:\hosting\codeplex\Projects\wpm\wpmCORE\wpmCORE\obj\Release\wpmCORE.pdb
