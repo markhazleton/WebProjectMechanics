@@ -1,0 +1,418 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WebProjectMechanics
+</name>
+</assembly>
+<members>
+<member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetCompanyData">
+	<summary>
+  Looks up a localized string similar to SELECT Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate,  Company.DefaultSiteTemplate,  Company.HomePageID,  Company.DefaultArticleID,  Company.ActiveFL,  Company.UseBreadCrumbURL,  Company.SiteCategoryTypeID,  Company.DefaultPaymentTerms,  Company.DefaultInvoiceDescription,  Company.City,  Company.StateOrProvince,  Company.PostalCode,  Company.Country,  Company.FromEmail, Company.SMTP, Company.Component, SiteCategoryType.SiteCatego [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetCompanySiteTypeParameterList">
+	<summary>
+  Looks up a localized string similar to SELECT 'CompanySiteTypeParameter' AS RecordSource, IIf(CompanySiteTypeParameter.CompanySiteTypeParameterID Is Null,0,10)+IIf(CompanySiteTypeParameter.SiteCategoryGroupID Is Null,0,1)+IIf(CompanySiteTypeParameter.SiteCategoryID Is Null,0,1)+IIf(CompanySiteTypeParameter.CompanyID Is Null,0,1) AS PrimarySort, CompanySiteTypeParameter.CompanyID, CompanySiteTypeParameter.SiteParameterTypeID, CompanySiteTypeParameter.SortOrder, CompanySiteTypeParameter.ParameterValue, iif(CompanySiteTypeParameter.SiteCategoryID i [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetContactByLogonPassword">
+	<summary>
+  Looks up a localized string similar to SELECT Contact.ContactID, Contact.LogonName, Contact.PrimaryContact,  Contact.GroupID,  Contact.LogonPassword,  Contact.Active,  Contact.EMail,  Contact.TemplatePrefix,  Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate, Company.DefaultArticleID, Company.HomePageID, Company.DefaultSiteTemplate, '' as RoleTitle, '' as RoleID, 'False' as FilterMenu FROM Contact, Company  WHERE Contact.CompanyID=Company.CompanyID AND Contact.LogonName = [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetImageByImageID">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image] where [ImageID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetImageList">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image] where [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetLinkCategoryList">
+	<summary>
+  Looks up a localized string similar to SELECT LinkCategory.ID,  LinkCategory.Title,  LinkCategory.ParentID,  LinkCategory.Description,  LinkCategory.PageID,  0 AS CountOfID FROM LinkCategory .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetPageAliasList">
+	<summary>
+  Looks up a localized string similar to SELECT PageAliasID, PageURL, TargetURL, AliasType from PageAlias where [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetPageImageByCompanyID">
+	<summary>
+  Looks up a localized string similar to SELECT [Page].[PageID], [Page].[PageName], [Page].[PageDescription], [Page].[PageKeywords], [Page].[ImagesPerRow], [Page].[RowsPerPage], [PageImage].[PageImagePosition], [Image].[ImageID], [Image].[ImageName], [Image].[ImageFileName], [Image].[ImageThumbFileName], [Image].[ImageDescription], [Image].[ImageComment], [Image].[ImageDate], [Image].[ModifiedDT], [Image].[VersionNo], [Image].[ContactID], [Image].[title],  [Image].[medium],  [Image].[size] FROM [Page],[PageImage],[Image] WHERE [Page].[PageID] = [P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetPageImageByPageID">
+	<summary>
+  Looks up a localized string similar to SELECT [Page].[PageID], [Page].[PageName], [Page].[PageDescription], [Page].[PageKeywords], [Page].[ImagesPerRow], [Page].[RowsPerPage], [Page].[PageFileName], [PageImage].[PageImagePosition], [Image].[ImageID], [Image].[ImageName], [Image].[ImageFileName], [Image].[ImageThumbFileName], [Image].[ImageDescription], [Image].[ImageComment], [Image].[ImageDate], [Image].[ModifiedDT], [Image].[VersionNo], [Image].[ContactID], [Image].[title],  [Image].[Price], [Image].[Color], [Image].[Subject], [Image].[Sold],  [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteCategoryLinks">
+	<summary>
+  Looks up a localized string similar to SELECT Link.ID,Link.LinkTypeCD, LinkCategory.Title as LinkCategoryTitle, Link.CategoryID, Link.PageID,Link.Title as LinkTitle, Link.Description, Link.URL, Link.DateAdd, Link.Ranks, Link.Views, Link.UserName, Link.UserID, Link.ASIN, Link.Ranks,  'Link' as LinkSource, '' as SiteCategoryTypeID, Link.SiteCategoryGroupID, Link.CompanyID FROM Link, LinkCategory where Link.CategoryID = LinkCategory.ID and ( Link.CompanyID ={0} or Link.CompanyID is null) union all SELECT SiteLink.ID,SiteLink.LinkTypeCD, LinkCategor [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteGroupList">
+	<summary>
+  Looks up a localized string similar to SELECT SiteCategoryGroup.[SiteCategoryGroupID], SiteCategoryGroup.[SiteCategoryGroupNM], SiteCategoryGroup.[SiteCategoryGroupDS], SiteCategoryGroup.[SiteCategoryGroupOrder]FROM SiteCategoryGroup;.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteLinks">
+	<summary>
+  Looks up a localized string similar to SELECT Link.ID,Link.LinkTypeCD, LinkCategory.Title as LinkCategoryTitle, Link.CategoryID, Link.PageID,Link.Title as LinkTitle, Link.Description, Link.URL, Link.DateAdd, Link.Ranks, Link.Views, Link.UserName, Link.UserID, Link.ASIN, 'Link' as LinkSource, '' as SiteCategoryTypeID, Link.SiteCategoryGroupID, Link.CompanyID FROM Link, LinkCategory where Link.CategoryID = LinkCategory.ID and ( Link.CompanyID ={0} or Link.CompanyID is null) ORDER BY Link.Ranks.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteMapByGroup">
+	<summary>
+  Looks up a localized string similar to SELECT Page.PageID, Article.Title AS PageName,  Article.Title AS PageTitle,  Article.Description,  Page.ParentPageID,  'Article' AS PageSource,  Page.PageKeywords,  IIf(pagetype.PageFileName Is Null,"/default.aspx",pagetype.PageFileName) AS TransferURL, Page.PageFileName, Article.StartDT as ModifiedDT, Article.ArticleID, Article.Active, Page.PageOrder,  Page.SiteCategoryID, ' ' as SiteCategoryName, ' ' as SiteCategoryGroupName, ' ' as SiteCategoryGroupID, IIf(pagetype.PageTypeCD Is Null,'Article',pagetype.P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteMapByGroupAnon">
+	<summary>
+  Looks up a localized string similar to SELECT Page.PageID, Article.Title as PageName,  Article.Title as PageTitle,  Article.Description,  Page.ParentPageID,  'Article' AS PageSource,  Page.PageKeywords,  IIf(pagetype.PageFileName Is Null,"/default.aspx",pagetype.PageFileName) AS TransferURL, Page.PageFileName, Article.StartDT as ModifiedDT, Article.ArticleID, Article.Active, Page.PageOrder,  Page.SiteCategoryID, ' ' as SiteCategoryName, ' ' as SiteCategoryGroupName, ' ' as SiteCategoryGroupID, IIf(pagetype.PageTypeCD Is Null,'Article',pagetype.P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetSiteTypeParameter">
+	<summary>
+  Looks up a localized string similar to SELECT CompanySiteTypeParameter.CompanySiteTypeParameterID,  CompanySiteTypeParameter.CompanyID,  CompanySiteTypeParameter.SiteParameterTypeID,  CompanySiteTypeParameter.SortOrder,  CompanySiteTypeParameter.ParameterValue,  CompanySiteTypeParameter.SiteCategoryGroupID,  CompanySiteTypeParameter.SiteCategoryID,  CompanySiteTypeParameter.ParameterValue,  CompanySiteTypeParameter.SiteCategoryTypeID, SiteParameterType.SiteParameterTypeID,  SiteParameterType.SiteParameterTypeNM,  SiteParameterType.SiteParameterT [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.GetUnlinkedImageList">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image]  LEFT JOIN [PageImage] ON [Image].[ImageID] = [PageImage].[ImageID]  WHERE [PageImage].[PageID] Is Null and [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.SELECTCompanySiteParameterASRecordSourceIi">
+	<summary>
+  Looks up a localized string similar to SELECT 'CompanySiteParameter' AS RecordSource, iif(CompanySiteParameter.CompanySiteParameterID is null,0,10)+iif(CompanySiteParameter.SiteCategoryGroupID is null,0,1)+iif(CompanySiteParameter.PageID is null,0,1)+iif(CompanySiteParameter.CompanyID is null,0,1) as PrimarySort, CompanySiteParameter.CompanyID, CompanySiteParameter.SiteParameterTypeID, CompanySiteParameter.SortOrder, CompanySiteParameter.ParameterValue, CompanySiteParameter.PageID, CompanySiteParameter.SiteCategoryGroupID, '' AS SiteCategoryType [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.SELECTSiteParameterTypeASRecordSource0ASPr">
+	<summary>
+  Looks up a localized string similar to SELECT 'SiteParameterType' AS RecordSource, 0 AS PrimarySort, Null AS CompanyID, Null AS SiteParameterTypeID, SiteParameterType.SiteParameterTypeOrder, SiteParameterType.SiteParameterTemplate, Null AS SiteCategoryID, Null AS SiteCategoryGroupID, Null AS SiteCategoryTypeID, SiteParameterType.SiteParameterTypeNM, SiteParameterType.SiteParameterTypeDS,0 as CompanySiteParameterID FROM(SiteParameterType) ORDER BY 2 desc,3 DESC, 7 DESC .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.UpdateUserOptions">
+	<summary>
+  Looks up a localized string similar to UPDATE [contact] SET [contact].[CreateDT]='{0}'  WHERE [contact].[ContactID]={1} .
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownNode(System.Object,System.Xml.Serialization.XmlNodeEventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownAttribute(System.Object,System.Xml.Serialization.XmlAttributeEventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildTemplate(System.Text.StringBuilder@)">
+	<summary>
+	</summary>
+	<param name="sbContent"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildErrorMessage">
+	<summary>
+	</summary>
+	<returns></returns>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetCompanyData">
+	<summary>
+  Looks up a localized string similar to SELECT Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate,  Company.DefaultSiteTemplate,  Company.HomePageID,  Company.DefaultArticleID,  Company.ActiveFL,  Company.UseBreadCrumbURL,  Company.SiteCategoryTypeID,  Company.DefaultPaymentTerms,  Company.DefaultInvoiceDescription,  Company.City,  Company.StateOrProvince,  Company.PostalCode,  Company.Country,  Company.FromEmail, Company.SMTP, Company.Component, SiteCategoryType.SiteCatego [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetCompanySiteTypeParameterList">
+	<summary>
+  Looks up a localized string similar to SELECT 'CompanySiteTypeParameter' AS RecordSource, IIf(CompanySiteTypeParameter.CompanySiteTypeParameterID Is Null,0,10)+IIf(CompanySiteTypeParameter.SiteCategoryGroupID Is Null,0,1)+IIf(CompanySiteTypeParameter.SiteCategoryID Is Null,0,1)+IIf(CompanySiteTypeParameter.CompanyID Is Null,0,1) AS PrimarySort, CompanySiteTypeParameter.CompanyID, CompanySiteTypeParameter.SiteParameterTypeID, CompanySiteTypeParameter.SortOrder, CompanySiteTypeParameter.ParameterValue, iif(CompanySiteTypeParameter.SiteCategoryID i [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetContactByLogonPassword">
+	<summary>
+  Looks up a localized string similar to SELECT Contact.ContactID, Contact.LogonName, Contact.PrimaryContact,  Contact.GroupID,  Contact.LogonPassword,  Contact.Active,  Contact.EMail,  Contact.TemplatePrefix,  Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate, Company.DefaultArticleID, Company.HomePageID, Company.DefaultSiteTemplate, '' as RoleTitle, '' as RoleID, 'False' as FilterMenu FROM Contact, Company  WHERE Contact.CompanyID=Company.CompanyID AND Contact.LogonName = [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetImageByImageID">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image] where [ImageID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetImageList">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image] where [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetLinkCategoryList">
+	<summary>
+  Looks up a localized string similar to SELECT LinkCategory.ID,  LinkCategory.Title,  LinkCategory.ParentID,  LinkCategory.Description,  LinkCategory.PageID,  0 AS CountOfID FROM LinkCategory .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetPageAliasList">
+	<summary>
+  Looks up a localized string similar to SELECT PageAliasID, PageURL, TargetURL, AliasType from PageAlias where [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetPageImageByCompanyID">
+	<summary>
+  Looks up a localized string similar to SELECT [Page].[PageID], [Page].[PageName], [Page].[PageDescription], [Page].[PageKeywords], [Page].[ImagesPerRow], [Page].[RowsPerPage], [PageImage].[PageImagePosition], [Image].[ImageID], [Image].[ImageName], [Image].[ImageFileName], [Image].[ImageThumbFileName], [Image].[ImageDescription], [Image].[ImageComment], [Image].[ImageDate], [Image].[ModifiedDT], [Image].[VersionNo], [Image].[ContactID], [Image].[title],  [Image].[medium],  [Image].[size] FROM [Page],[PageImage],[Image] WHERE [Page].[PageID] = [P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetPageImageByPageID">
+	<summary>
+  Looks up a localized string similar to SELECT [Page].[PageID], [Page].[PageName], [Page].[PageDescription], [Page].[PageKeywords], [Page].[ImagesPerRow], [Page].[RowsPerPage], [Page].[PageFileName], [PageImage].[PageImagePosition], [Image].[ImageID], [Image].[ImageName], [Image].[ImageFileName], [Image].[ImageThumbFileName], [Image].[ImageDescription], [Image].[ImageComment], [Image].[ImageDate], [Image].[ModifiedDT], [Image].[VersionNo], [Image].[ContactID], [Image].[title],  [Image].[Price], [Image].[Color], [Image].[Subject], [Image].[Sold],  [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteCategoryLinks">
+	<summary>
+  Looks up a localized string similar to SELECT Link.ID,Link.LinkTypeCD, LinkCategory.Title as LinkCategoryTitle, Link.CategoryID, Link.PageID,Link.Title as LinkTitle, Link.Description, Link.URL, Link.DateAdd, Link.Ranks, Link.Views, Link.UserName, Link.UserID, Link.ASIN, Link.Ranks,  'Link' as LinkSource, '' as SiteCategoryTypeID, Link.SiteCategoryGroupID, Link.CompanyID FROM Link, LinkCategory where Link.CategoryID = LinkCategory.ID and ( Link.CompanyID ={0} or Link.CompanyID is null) union all SELECT SiteLink.ID,SiteLink.LinkTypeCD, LinkCategor [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteGroupList">
+	<summary>
+  Looks up a localized string similar to SELECT SiteCategoryGroup.[SiteCategoryGroupID], SiteCategoryGroup.[SiteCategoryGroupNM], SiteCategoryGroup.[SiteCategoryGroupDS], SiteCategoryGroup.[SiteCategoryGroupOrder]FROM SiteCategoryGroup;.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteLinks">
+	<summary>
+  Looks up a localized string similar to SELECT Link.ID,Link.LinkTypeCD, LinkCategory.Title as LinkCategoryTitle, Link.CategoryID, Link.PageID,Link.Title as LinkTitle, Link.Description, Link.URL, Link.DateAdd, Link.Ranks, Link.Views, Link.UserName, Link.UserID, Link.ASIN, 'Link' as LinkSource, '' as SiteCategoryTypeID, Link.SiteCategoryGroupID, Link.CompanyID FROM Link, LinkCategory where Link.CategoryID = LinkCategory.ID and ( Link.CompanyID ={0} or Link.CompanyID is null) ORDER BY Link.Ranks.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteMapByGroup">
+	<summary>
+  Looks up a localized string similar to SELECT Page.PageID, Article.Title AS PageName,  Article.Title AS PageTitle,  Article.Description,  Page.ParentPageID,  'Article' AS PageSource,  Page.PageKeywords,  IIf(pagetype.PageFileName Is Null,"/default.aspx",pagetype.PageFileName) AS TransferURL, Page.PageFileName, Article.StartDT as ModifiedDT, Article.ArticleID, Article.Active, Page.PageOrder,  Page.SiteCategoryID, ' ' as SiteCategoryName, ' ' as SiteCategoryGroupName, ' ' as SiteCategoryGroupID, IIf(pagetype.PageTypeCD Is Null,'Article',pagetype.P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteMapByGroupAnon">
+	<summary>
+  Looks up a localized string similar to SELECT Page.PageID, Article.Title as PageName,  Article.Title as PageTitle,  Article.Description,  Page.ParentPageID,  'Article' AS PageSource,  Page.PageKeywords,  IIf(pagetype.PageFileName Is Null,"/default.aspx",pagetype.PageFileName) AS TransferURL, Page.PageFileName, Article.StartDT as ModifiedDT, Article.ArticleID, Article.Active, Page.PageOrder,  Page.SiteCategoryID, ' ' as SiteCategoryName, ' ' as SiteCategoryGroupName, ' ' as SiteCategoryGroupID, IIf(pagetype.PageTypeCD Is Null,'Article',pagetype.P [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetSiteTypeParameter">
+	<summary>
+  Looks up a localized string similar to SELECT CompanySiteTypeParameter.CompanySiteTypeParameterID,  CompanySiteTypeParameter.CompanyID,  CompanySiteTypeParameter.SiteParameterTypeID,  CompanySiteTypeParameter.SortOrder,  CompanySiteTypeParameter.ParameterValue,  CompanySiteTypeParameter.SiteCategoryGroupID,  CompanySiteTypeParameter.SiteCategoryID,  CompanySiteTypeParameter.ParameterValue,  CompanySiteTypeParameter.SiteCategoryTypeID, SiteParameterType.SiteParameterTypeID,  SiteParameterType.SiteParameterTypeNM,  SiteParameterType.SiteParameterT [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.GetUnlinkedImageList">
+	<summary>
+  Looks up a localized string similar to SELECT Image.[ImageID], Image.[ImageName], Image.[ImageFileName], Image.[ImageThumbFileName], Image.[ImageDescription], Image.[ImageComment], Image.[ImageDate], Image.[Active], Image.[ModifiedDT], Image.[VersionNo], Image.[ContactID], Image.[CompanyID], Image.[Title], Image.[Medium], Image.[Size], Image.[Price], Image.[Color], Image.[Subject], Image.[Sold] FROM [Image]  LEFT JOIN [PageImage] ON [Image].[ImageID] = [PageImage].[ImageID]  WHERE [PageImage].[PageID] Is Null and [CompanyID]={0} .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.SELECTCompanySiteParameterASRecordSourceIi">
+	<summary>
+  Looks up a localized string similar to SELECT 'CompanySiteParameter' AS RecordSource, iif(CompanySiteParameter.CompanySiteParameterID is null,0,10)+iif(CompanySiteParameter.SiteCategoryGroupID is null,0,1)+iif(CompanySiteParameter.PageID is null,0,1)+iif(CompanySiteParameter.CompanyID is null,0,1) as PrimarySort, CompanySiteParameter.CompanyID, CompanySiteParameter.SiteParameterTypeID, CompanySiteParameter.SortOrder, CompanySiteParameter.ParameterValue, CompanySiteParameter.PageID, CompanySiteParameter.SiteCategoryGroupID, '' AS SiteCategoryType [rest of string was truncated]";.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.SELECTSiteParameterTypeASRecordSource0ASPr">
+	<summary>
+  Looks up a localized string similar to SELECT 'SiteParameterType' AS RecordSource, 0 AS PrimarySort, Null AS CompanyID, Null AS SiteParameterTypeID, SiteParameterType.SiteParameterTypeOrder, SiteParameterType.SiteParameterTemplate, Null AS SiteCategoryID, Null AS SiteCategoryGroupID, Null AS SiteCategoryTypeID, SiteParameterType.SiteParameterTypeNM, SiteParameterType.SiteParameterTypeDS,0 as CompanySiteParameterID FROM(SiteParameterType) ORDER BY 2 desc,3 DESC, 7 DESC .
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.SQLResources.UpdateUserOptions">
+	<summary>
+  Looks up a localized string similar to UPDATE [contact] SET [contact].[CreateDT]='{0}'  WHERE [contact].[ContactID]={1} .
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.SQLResources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.AddWww(System.Web.HttpContext)">
+	<summary>
+ Adds the www subdomain to the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.RemoveWww(System.Web.HttpContext)">
+	<summary>
+ Removes the www subdomain from the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
+	<summary>
+ Sends permanent redirection headers (301)
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmXML.#ctor(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the wpmXML class
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmRssTools.wpmRSS.#ctor(System.String)">
+	<summary>
+ Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
+ </summary>
+	<param name="feedurl"></param>
+</member><member name="M:WebProjectMechanics.wpmMasterPage.GetFileMenu">
+	<summary>
+ GetFileMenu - Returns HTML List of all files in the current directory
+ </summary>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMasterPage.GetMenuItem(System.String,System.String)">
+	<summary>
+ Returns a MenuItem for a given name and path
+ </summary>
+	<param name="MenuName"></param>
+	<param name="MenuPath"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ChangePassword(System.String,System.String,System.String)">
+	<summary>
+ Change the user password.
+ </summary>
+	<param name="username">UserName</param>
+	<param name="oldPwd">Old password.</param>
+	<param name="newPwd">New password.</param>
+	<returns>T/F if password was changed.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ChangePasswordQuestionAndAnswer(System.String,System.String,System.String,System.String)">
+	<summary>
+ Change the question and answer for a password validation.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<param name="newPwdQuestion">New question text.</param>
+	<param name="newPwdAnswer">New answer text.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Object,System.Web.Security.MembershipCreateStatus@)">
+	<summary>
+ Create a new user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<param name="email">Email address.</param>
+	<param name="passwordQuestion">Security quesiton for password.</param>
+	<param name="passwordAnswer">Security quesiton answer for password.</param>
+	<param name="isApproved"></param>
+	<param name="userID"></param>
+	<param name="status"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.DeleteUser(System.String,System.Boolean)">
+	<summary>
+ Delete a user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="deleteAllRelatedData">Whether to delete all related data.</param>
+	<returns>T/F if the user was deleted.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetAllUsers(System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Get a collection of users.
+ </summary>
+	<param name="pageIndex">Page index.</param>
+	<param name="pageSize">Page size.</param>
+	<param name="totalRecords">Total # of records to retrieve.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetNumberOfUsersOnline">
+	<summary>
+ Gets the number of users currently on-line.
+ </summary>
+	<returns>
+ # of users on-line.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetPassword(System.String,System.String)">
+	<summary>
+ Get the password for a user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="answer">Answer to security question.</param>
+	<returns>Password for the user.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUser(System.Object,System.Boolean)">
+	<summary>
+ Get a user based upon provider key and if they are on-line.
+ </summary>
+	<param name="userID">Provider key.</param>
+	<param name="userIsOnline">T/F whether the user is on-line.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UnlockUser(System.String)">
+	<summary>
+ Unlock a user.
+ </summary>
+	<param name="username">User name.</param>
+	<returns>T/F if unlocked.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUserNameByEmail(System.String)">
+	<summary>
+ Get user name from their email.
+ </summary>
+	<param name="email">Email address</param>
+	<returns>User name.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ResetPassword(System.String,System.String)">
+	<summary>
+ Reset the user password.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="answer">Answer to security question.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UpdateUser(System.Web.Security.MembershipUser)">
+	<summary>
+ Update the user information.
+ </summary>
+	<param name="_membershipUser">MembershipUser object containing data.</param>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ValidateUser(System.String,System.String)">
+	<summary>
+ Validate the user based upon username and password.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<returns>T/F if the user is valid.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.FindUsersByName(System.String,System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Find all users matching a search string.
+ </summary>
+	<param name="usernameToMatch">Search string of user name to match.</param>
+	<param name="pageIndex"></param>
+	<param name="pageSize"></param>
+	<param name="totalRecords">Total records found.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.FindUsersByEmail(System.String,System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Find all users matching a search string of their email.
+ </summary>
+	<param name="emailToMatch">Search string of email to match.</param>
+	<param name="pageIndex"></param>
+	<param name="pageSize"></param>
+	<param name="totalRecords">Total records found.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUserFromReader(System.Data.SqlClient.SqlDataReader)">
+	<summary>
+ Create a MembershipUser object from a data reader.
+ </summary>
+	<param name="_sqlDataReader">Data reader.</param>
+	<returns>MembershipUser object.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.HexToByte(System.String)">
+	<summary>
+ Converts a hexadecimal string to a byte array. Used to convert encryption key values from the configuration
+ </summary>
+	<param name="hexString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UpdateFailureCount(System.String,WebProjectMechanics.wpmMembershipProvider.FailureType)">
+	<summary>
+ Update password and answer failure information.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="failureType">Type of failure</param>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.CheckPassword(System.String,System.String)">
+	<summary>
+ Check the password format based upon the MembershipPasswordFormat.
+ </summary>
+	<param name="password">Password</param>
+	<param name="dbpassword"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.EncodePassword(System.String)">
+	<summary>
+ Encode password.
+ </summary>
+	<param name="password">Password.</param>
+	<returns>Encoded password.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UnEncodePassword(System.String)">
+	<summary>
+ UnEncode password.
+ </summary>
+	<param name="encodedPassword">Password.</param>
+	<returns>Unencoded password.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetConfigValue(System.String,System.String)">
+	<summary>
+ GetConfigValue - Checks for blank, returns default if current value is NullorEmpty
+ </summary>
+	<param name="configValue"></param>
+	<param name="defaultValue"></param>
+	<returns></returns>
+</member>
+</members>
+</doc>

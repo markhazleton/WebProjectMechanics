@@ -1,0 +1,23 @@
+<%@ Master Language="VB" CodeFile="wpm.master.vb" Inherits="wpmmaster" %>
+<%@ Import Namespace="WebProjectMechanics" %>
+<%
+    Dim mySiteMap As New wpmActiveSite(Session)
+    Dim mySiteTheme As New wpmSiteTheme(mySiteMap, False)
+    If mySiteTheme.sbSiteTemplate.Length > 0 Then
+        mySiteTheme.sbSiteTemplate.Replace("~~RightContent~~", mySiteMap.RightContent)
+        mySiteMap.BuildTemplate(mySiteTheme.sbSiteTemplate)
+        mySiteTheme.sbSiteTemplate.Replace("</head>", mySiteMap.AddHTMLHead & "</head>")
+        sTemp = mySiteTheme.sbSiteTemplate.ToString
+        mySiteMap.RightContent = "RESET"
+        mySiteMap.AddHTMLHead = "RESET"
+    End If
+    Response.Write(sTemp.Substring(0, sTemp.IndexOf("~~MainContent~~")))
+%>
+<form id="form1" runat="server">
+<asp:contentplaceholder id="Content" runat="server">
+<asp:literal runat="server" text="" id="MainContent" />
+</asp:contentplaceholder>
+</form>
+<%
+    Response.Write(sTemp.Substring(sTemp.IndexOf("~~MainContent~~") + 15, sTemp.Length - (sTemp.IndexOf("~~MainContent~~") + 15)))
+%>

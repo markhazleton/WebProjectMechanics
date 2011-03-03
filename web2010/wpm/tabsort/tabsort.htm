@@ -1,0 +1,1236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--************************************************************************-->
+<!--* Table Sort Demo                                                      *-->
+<!--*                                                                      *-->
+<!--* Copyright 2002 by Mike Hall                                          *-->
+<!--* Please see http://www.brainjar.com for terms of use.                 *-->
+<!--************************************************************************-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>BrainJar.com: Table Sort Demo</title>
+<style type="text/css">
+
+/* Table styles. */
+table {
+  border-color: #000000;
+  border-spacing: 0px;
+  border-style: solid;
+  border-width: 2px;
+  cell-spacing: 0px;
+}
+
+td, th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  padding: 2px 0.5em;
+  white-space: nowrap;
+}
+
+td.numeric {
+  text-align: right;
+}
+
+th {
+  background-color: #c0c0c0;
+}
+
+th.mainHeader {
+  background-color: #808080;
+  color: #ffffff;
+  text-align: left;
+}
+
+th a {
+  color: #000080;
+  text-decoration: none;
+}
+
+th a:visited {
+  color: #000080;
+}
+
+th a:active, th a:hover {
+  color: #800000;
+  text-decoration: underline;
+}
+
+tr.alternateRow {
+  background-color: #e0e0e0;
+}
+
+td.sortedColumn {
+  background-color: #f0f0f0;
+}
+
+th.sortedColumn {
+  background-color: #b0b0b0;
+}
+
+tr.alternateRow td.sortedColumn {
+  background-color: #d0d0d0;
+}
+
+</style>
+<script type="text/javascript">//<![CDATA[
+//-----------------------------------------------------------------------------
+// sortTable(id, col, rev)
+//
+//  id  - ID of the TABLE, TBODY, THEAD or TFOOT element to be sorted.
+//  col - Index of the column to sort, 0 = first column, 1 = second column,
+//        etc.
+//  rev - If true, the column is sorted in reverse (descending) order
+//        initially.
+//
+// Note: the team name column (index 1) is used as a secondary sort column and
+// always sorted in ascending order.
+//-----------------------------------------------------------------------------
+
+function sortTable(id, col, rev) {
+
+  // Get the table or table section to sort.
+  var tblEl = document.getElementById(id);
+
+  // The first time this function is called for a given table, set up an
+  // array of reverse sort flags.
+  if (tblEl.reverseSort == null) {
+    tblEl.reverseSort = new Array();
+    // Also, assume the team name column is initially sorted.
+    tblEl.lastColumn = 1;
+  }
+
+  // If this column has not been sorted before, set the initial sort direction.
+  if (tblEl.reverseSort[col] == null)
+    tblEl.reverseSort[col] = rev;
+
+  // If this column was the last one sorted, reverse its sort direction.
+  if (col == tblEl.lastColumn)
+    tblEl.reverseSort[col] = !tblEl.reverseSort[col];
+
+  // Remember this column as the last one sorted.
+  tblEl.lastColumn = col;
+
+  // Set the table display style to "none" - necessary for Netscape 6
+  // browsers.
+  var oldDsply = tblEl.style.display;
+  tblEl.style.display = "none";
+
+  // Sort the rows based on the content of the specified column using a
+  // selection sort.
+
+  var tmpEl;
+  var i, j;
+  var minVal, minIdx;
+  var testVal;
+  var cmp;
+
+  for (i = 0; i < tblEl.rows.length - 1; i++) {
+
+    // Assume the current row has the minimum value.
+    minIdx = i;
+    minVal = getTextValue(tblEl.rows[i].cells[col]);
+
+    // Search the rows that follow the current one for a smaller value.
+    for (j = i + 1; j < tblEl.rows.length; j++) {
+      testVal = getTextValue(tblEl.rows[j].cells[col]);
+      cmp = compareValues(minVal, testVal);
+      // Negate the comparison result if the reverse sort flag is set.
+      if (tblEl.reverseSort[col])
+        cmp = -cmp;
+      // Sort by the second column (team name) if those values are equal.
+      if (cmp == 0 && col != 1)
+        cmp = compareValues(getTextValue(tblEl.rows[minIdx].cells[1]),
+                            getTextValue(tblEl.rows[j].cells[1]));
+      // If this row has a smaller value than the current minimum, remember its
+      // position and update the current minimum value.
+      if (cmp > 0) {
+        minIdx = j;
+        minVal = testVal;
+      }
+    }
+
+    // By now, we have the row with the smallest value. Remove it from the
+    // table and insert it before the current row.
+    if (minIdx > i) {
+      tmpEl = tblEl.removeChild(tblEl.rows[minIdx]);
+      tblEl.insertBefore(tmpEl, tblEl.rows[i]);
+    }
+  }
+
+  // Make it look pretty.
+  makePretty(tblEl, col);
+
+  // Set team rankings.
+  setRanks(tblEl, col, rev);
+
+  // Restore the table's display style.
+  tblEl.style.display = oldDsply;
+
+  return false;
+}
+
+//-----------------------------------------------------------------------------
+// Functions to get and compare values during a sort.
+//-----------------------------------------------------------------------------
+
+// This code is necessary for browsers that don't reflect the DOM constants
+// (like IE).
+if (document.ELEMENT_NODE == null) {
+  document.ELEMENT_NODE = 1;
+  document.TEXT_NODE = 3;
+}
+
+function getTextValue(el) {
+
+  var i;
+  var s;
+
+  // Find and concatenate the values of all text nodes contained within the
+  // element.
+  s = "";
+  for (i = 0; i < el.childNodes.length; i++)
+    if (el.childNodes[i].nodeType == document.TEXT_NODE)
+      s += el.childNodes[i].nodeValue;
+    else if (el.childNodes[i].nodeType == document.ELEMENT_NODE &&
+             el.childNodes[i].tagName == "BR")
+      s += " ";
+    else
+      // Use recursion to get text within sub-elements.
+      s += getTextValue(el.childNodes[i]);
+
+  return normalizeString(s);
+}
+
+function compareValues(v1, v2) {
+
+  var f1, f2;
+
+  // If the values are numeric, convert them to floats.
+
+  f1 = parseFloat(v1);
+  f2 = parseFloat(v2);
+  if (!isNaN(f1) && !isNaN(f2)) {
+    v1 = f1;
+    v2 = f2;
+  }
+
+  // Compare the two values.
+  if (v1 == v2)
+    return 0;
+  if (v1 > v2)
+    return 1
+  return -1;
+}
+
+// Regular expressions for normalizing white space.
+var whtSpEnds = new RegExp("^\\s*|\\s*$", "g");
+var whtSpMult = new RegExp("\\s\\s+", "g");
+
+function normalizeString(s) {
+
+  s = s.replace(whtSpMult, " ");  // Collapse any multiple whites space.
+  s = s.replace(whtSpEnds, "");   // Remove leading or trailing white space.
+
+  return s;
+}
+
+//-----------------------------------------------------------------------------
+// Functions to update the table appearance after a sort.
+//-----------------------------------------------------------------------------
+
+// Style class names.
+var rowClsNm = "alternateRow";
+var colClsNm = "sortedColumn";
+
+// Regular expressions for setting class names.
+var rowTest = new RegExp(rowClsNm, "gi");
+var colTest = new RegExp(colClsNm, "gi");
+
+function makePretty(tblEl, col) {
+
+  var i, j;
+  var rowEl, cellEl;
+
+  // Set style classes on each row to alternate their appearance.
+  for (i = 0; i < tblEl.rows.length; i++) {
+   rowEl = tblEl.rows[i];
+   rowEl.className = rowEl.className.replace(rowTest, "");
+    if (i % 2 != 0)
+      rowEl.className += " " + rowClsNm;
+    rowEl.className = normalizeString(rowEl.className);
+    // Set style classes on each column (other than the name column) to
+    // highlight the one that was sorted.
+    for (j = 2; j < tblEl.rows[i].cells.length; j++) {
+      cellEl = rowEl.cells[j];
+      cellEl.className = cellEl.className.replace(colTest, "");
+      if (j == col)
+        cellEl.className += " " + colClsNm;
+      cellEl.className = normalizeString(cellEl.className);
+    }
+  }
+
+  // Find the table header and highlight the column that was sorted.
+  var el = tblEl.parentNode.tHead;
+  rowEl = el.rows[el.rows.length - 1];
+  // Set style classes for each column as above.
+  for (i = 2; i < rowEl.cells.length; i++) {
+    cellEl = rowEl.cells[i];
+    cellEl.className = cellEl.className.replace(colTest, "");
+    // Highlight the header of the sorted column.
+    if (i == col)
+      cellEl.className += " " + colClsNm;
+      cellEl.className = normalizeString(cellEl.className);
+  }
+}
+
+function setRanks(tblEl, col, rev) {
+
+  // Determine whether to start at the top row of the table and go down or
+  // at the bottom row and work up. This is based on the current sort
+  // direction of the column and its reversed flag.
+
+  var i    = 0;
+  var incr = 1;
+  if (tblEl.reverseSort[col])
+    rev = !rev;
+  if (rev) {
+    incr = -1;
+    i = tblEl.rows.length - 1;
+  }
+
+  // Now go through each row in that direction and assign it a rank by
+  // counting 1, 2, 3...
+
+  var count   = 1;
+  var rank    = count;
+  var curVal;
+  var lastVal = null;
+
+  // Note that this loop is skipped if the table was sorted on the name
+  // column.
+  while (col > 1 && i >= 0 && i < tblEl.rows.length) {
+
+    // Get the value of the sort column in this row.
+    curVal = getTextValue(tblEl.rows[i].cells[col]);
+
+    // On rows after the first, compare the sort value of this row to the
+    // previous one. If they differ, update the rank to match the current row
+    // count. (If they are the same, this row will get the same rank as the
+    // previous one.)
+    if (lastVal != null && compareValues(curVal, lastVal) != 0)
+        rank = count;
+    // Set the rank for this row.
+    tblEl.rows[i].rank = rank;
+
+    // Save the sort value of the current row for the next time around and bump
+    // the row counter and index.
+    lastVal = curVal;
+    count++;
+    i += incr;
+  }
+
+  // Now go through each row (from top to bottom) and display its rank. Note
+  // that when two or more rows are tied, the rank is shown on the first of
+  // those rows only.
+
+  var rowEl, cellEl;
+  var lastRank = 0;
+
+  // Go through the rows from top to bottom.
+  for (i = 0; i < tblEl.rows.length; i++) {
+    rowEl = tblEl.rows[i];
+    cellEl = rowEl.cells[0];
+    // Delete anything currently in the rank column.
+    while (cellEl.lastChild != null)
+      cellEl.removeChild(cellEl.lastChild);
+    // If this row's rank is different from the previous one, Insert a new text
+    // node with that rank.
+    if (col > 1 && rowEl.rank != lastRank) {
+      cellEl.appendChild(document.createTextNode(rowEl.rank));
+      lastRank = rowEl.rank;
+    }
+  }
+}
+
+//]]></script>
+</head>
+<body>
+
+<div id="demoBox">
+
+<h3>Table Sorting Demo</h3>
+
+<p>This page contains two similar tables than can be dynamically sorted in a
+number of ways just by clicking on a column header. To reverse the sort order
+for a given column, click on it twice in a row.</p>
+
+<p>The table's appearance and some of its content changes with each sort as
+well. In addition to style changes, the <i>Rank</i> column is updated to match
+the sorted column.</p>
+
+<p>Use your browser's <code>View Source</code> option to see the full source
+code.</p>
+
+</div>
+
+<p></p>
+
+<!-- Offensive statistics table. -->
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <th class="mainHeader" colspan="11">NFL 2001 Offensive Stats</th>
+    </tr>
+    <tr>
+      <th style="text-align:left;">Rank</th>
+      <th style="text-align:left;"><a href="" onclick="this.blur(); return sortTable('offTblBdy', 1, false);" title="Team Name">Team</a></th>
+      <th><span title="Games Played">Gms</span></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  3, true);" title="Total Yards"           >Yds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  4, true);" title="Yards Per Game"        >Yds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  5, true);" title="Total Rushing Yards"   >RuYds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  6, true);" title="Rushing Yards Per Game">RuYds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  7, true);" title="Total Passing Yards"   >PaYds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  8, true);" title="Passing Yards Per Game">PaYds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy',  9, true);" title="Total Points Scored"   >Pts</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('offTblBdy', 10, true);" title="Points Per Game"       >Pts/G</a></th>
+    </tr>
+  </thead>
+  <tbody id="offTblBdy">
+    <tr>
+      <td class="numeric"></td>
+      <td>Arizona</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4898</td>
+      <td class="numeric">306.1</td>
+      <td class="numeric">1449</td>
+      <td class="numeric">90.6</td>
+      <td class="numeric">3449</td>
+      <td class="numeric">215.6</td>
+      <td class="numeric">295</td>
+      <td class="numeric">18.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Atlanta</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5070</td>
+      <td class="numeric">316.9</td>
+      <td class="numeric">1773</td>
+      <td class="numeric">110.8</td>
+      <td class="numeric">3297</td>
+      <td class="numeric">206.1</td>
+      <td class="numeric">291</td>
+      <td class="numeric">18.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Baltimore</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4773</td>
+      <td class="numeric">318.2</td>
+      <td class="numeric">1598</td>
+      <td class="numeric">106.5</td>
+      <td class="numeric">3175</td>
+      <td class="numeric">211.7</td>
+      <td class="numeric">284</td>
+      <td class="numeric">18.9</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Buffalo</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5137</td>
+      <td class="numeric">321.1</td>
+      <td class="numeric">1686</td>
+      <td class="numeric">105.4</td>
+      <td class="numeric">3451</td>
+      <td class="numeric">215.7</td>
+      <td class="numeric">265</td>
+      <td class="numeric">16.6</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Carolina</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4254</td>
+      <td class="numeric">265.9</td>
+      <td class="numeric">1372</td>
+      <td class="numeric">85.8</td>
+      <td class="numeric">2882</td>
+      <td class="numeric">180.1</td>
+      <td class="numeric">253</td>
+      <td class="numeric">15.8</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Chicago</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4694</td>
+      <td class="numeric">293.4</td>
+      <td class="numeric">1742</td>
+      <td class="numeric">108.9</td>
+      <td class="numeric">2952</td>
+      <td class="numeric">184.5</td>
+      <td class="numeric">338</td>
+      <td class="numeric">21.1</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Cincinnati</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4800</td>
+      <td class="numeric">300.0</td>
+      <td class="numeric">1712</td>
+      <td class="numeric">107.0</td>
+      <td class="numeric">3088</td>
+      <td class="numeric">193.0</td>
+      <td class="numeric">226</td>
+      <td class="numeric">14.1</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Cleveland</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4152</td>
+      <td class="numeric">259.5</td>
+      <td class="numeric">1351</td>
+      <td class="numeric">84.4</td>
+      <td class="numeric">2801</td>
+      <td class="numeric">175.1</td>
+      <td class="numeric">285</td>
+      <td class="numeric">17.8</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Dallas</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4402</td>
+      <td class="numeric">275.1</td>
+      <td class="numeric">2184</td>
+      <td class="numeric">136.5</td>
+      <td class="numeric">2218</td>
+      <td class="numeric">138.6</td>
+      <td class="numeric">246</td>
+      <td class="numeric">15.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Denver</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4817</td>
+      <td class="numeric">301.1</td>
+      <td class="numeric">1877</td>
+      <td class="numeric">117.3</td>
+      <td class="numeric">2940</td>
+      <td class="numeric">183.8</td>
+      <td class="numeric">340</td>
+      <td class="numeric">21.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Detroit</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4994</td>
+      <td class="numeric">312.1</td>
+      <td class="numeric">1398</td>
+      <td class="numeric">87.4</td>
+      <td class="numeric">3596</td>
+      <td class="numeric">224.8</td>
+      <td class="numeric">270</td>
+      <td class="numeric">16.9</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Green Bay</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5463</td>
+      <td class="numeric">341.4</td>
+      <td class="numeric">1693</td>
+      <td class="numeric">105.8</td>
+      <td class="numeric">3770</td>
+      <td class="numeric">235.6</td>
+      <td class="numeric">390</td>
+      <td class="numeric">24.4</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Indianapolis</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5955</td>
+      <td class="numeric">372.2</td>
+      <td class="numeric">1966</td>
+      <td class="numeric">122.9</td>
+      <td class="numeric">3989</td>
+      <td class="numeric">249.3</td>
+      <td class="numeric">413</td>
+      <td class="numeric">25.8</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Jacksonville</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4840</td>
+      <td class="numeric">302.5</td>
+      <td class="numeric">1600</td>
+      <td class="numeric">100.0</td>
+      <td class="numeric">3240</td>
+      <td class="numeric">202.5</td>
+      <td class="numeric">294</td>
+      <td class="numeric">18.4</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Kansas City</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5673</td>
+      <td class="numeric">354.6</td>
+      <td class="numeric">2008</td>
+      <td class="numeric">125.5</td>
+      <td class="numeric">3665</td>
+      <td class="numeric">229.1</td>
+      <td class="numeric">320</td>
+      <td class="numeric">20.0</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Miami</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4821</td>
+      <td class="numeric">301.3</td>
+      <td class="numeric">1664</td>
+      <td class="numeric">104.0</td>
+      <td class="numeric">3157</td>
+      <td class="numeric">197.3</td>
+      <td class="numeric">344</td>
+      <td class="numeric">21.5</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Minnesota</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5006</td>
+      <td class="numeric">333.7</td>
+      <td class="numeric">1523</td>
+      <td class="numeric">101.5</td>
+      <td class="numeric">3483</td>
+      <td class="numeric">232.2</td>
+      <td class="numeric">287</td>
+      <td class="numeric">19.1</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>New England</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4882</td>
+      <td class="numeric">305.1</td>
+      <td class="numeric">1793</td>
+      <td class="numeric">112.1</td>
+      <td class="numeric">3089</td>
+      <td class="numeric">193.1</td>
+      <td class="numeric">371</td>
+      <td class="numeric">23.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>New Orleans</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5226</td>
+      <td class="numeric">326.6</td>
+      <td class="numeric">1712</td>
+      <td class="numeric">107.0</td>
+      <td class="numeric">3514</td>
+      <td class="numeric">219.6</td>
+      <td class="numeric">333</td>
+      <td class="numeric">20.8</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>New York Giants</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5335</td>
+      <td class="numeric">333.4</td>
+      <td class="numeric">1777</td>
+      <td class="numeric">111.1</td>
+      <td class="numeric">3558</td>
+      <td class="numeric">222.4</td>
+      <td class="numeric">294</td>
+      <td class="numeric">18.4</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>New York Jets</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4795</td>
+      <td class="numeric">299.7</td>
+      <td class="numeric">2054</td>
+      <td class="numeric">128.4</td>
+      <td class="numeric">2741</td>
+      <td class="numeric">171.3</td>
+      <td class="numeric">308</td>
+      <td class="numeric">19.2</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Oakland</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5361</td>
+      <td class="numeric">335.1</td>
+      <td class="numeric">1654</td>
+      <td class="numeric">103.4</td>
+      <td class="numeric">3707</td>
+      <td class="numeric">231.7</td>
+      <td class="numeric">399</td>
+      <td class="numeric">24.9</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Philadelphia</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4923</td>
+      <td class="numeric">307.7</td>
+      <td class="numeric">1778</td>
+      <td class="numeric">111.1</td>
+      <td class="numeric">3145</td>
+      <td class="numeric">196.6</td>
+      <td class="numeric">343</td>
+      <td class="numeric">21.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Pittsburgh</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5887</td>
+      <td class="numeric">367.9</td>
+      <td class="numeric">2774</td>
+      <td class="numeric">173.4</td>
+      <td class="numeric">3113</td>
+      <td class="numeric">194.6</td>
+      <td class="numeric">352</td>
+      <td class="numeric">22.0</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Saint Louis</td>
+      <td class="numeric">16</td>
+      <td class="numeric">6690</td>
+      <td class="numeric">418.1</td>
+      <td class="numeric">2027</td>
+      <td class="numeric">126.7</td>
+      <td class="numeric">4663</td>
+      <td class="numeric">291.4</td>
+      <td class="numeric">503</td>
+      <td class="numeric">31.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>San Diego</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5200</td>
+      <td class="numeric">325.0</td>
+      <td class="numeric">1695</td>
+      <td class="numeric">105.9</td>
+      <td class="numeric">3505</td>
+      <td class="numeric">219.1</td>
+      <td class="numeric">332</td>
+      <td class="numeric">20.8</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>San Francisco</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5689</td>
+      <td class="numeric">355.6</td>
+      <td class="numeric">2244</td>
+      <td class="numeric">140.2</td>
+      <td class="numeric">3445</td>
+      <td class="numeric">215.3</td>
+      <td class="numeric">409</td>
+      <td class="numeric">25.6</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Seattle</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4772</td>
+      <td class="numeric">298.2</td>
+      <td class="numeric">1936</td>
+      <td class="numeric">121.0</td>
+      <td class="numeric">2836</td>
+      <td class="numeric">177.2</td>
+      <td class="numeric">301</td>
+      <td class="numeric">18.8</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Tampa Bay</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4694</td>
+      <td class="numeric">293.4</td>
+      <td class="numeric">1371</td>
+      <td class="numeric">85.7</td>
+      <td class="numeric">3323</td>
+      <td class="numeric">207.7</td>
+      <td class="numeric">324</td>
+      <td class="numeric">20.2</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Tennessee</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5354</td>
+      <td class="numeric">334.6</td>
+      <td class="numeric">1796</td>
+      <td class="numeric">112.2</td>
+      <td class="numeric">3558</td>
+      <td class="numeric">222.4</td>
+      <td class="numeric">336</td>
+      <td class="numeric">21.0</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Washington</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4435</td>
+      <td class="numeric">277.2</td>
+      <td class="numeric">1948</td>
+      <td class="numeric">121.8</td>
+      <td class="numeric">2487</td>
+      <td class="numeric">155.4</td>
+      <td class="numeric">256</td>
+      <td class="numeric">16.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+
+<!-- Defensive statistics table. -->
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <th class="mainHeader" colspan="11">NFL 2001 Defensive Stats</th>
+    </tr>
+    <tr>
+      <th style="text-align:left;">Rank</th>
+      <th style="text-align:left;"><a href="" onclick="this.blur(); return sortTable('defTblBdy', 1, false);" title="Team Name">Team</a></th>
+      <th><span title="Games Played">Gms</span></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  3, false);" title="Total Yards Allowed"           >Yds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  4, false);" title="Yards Allowed Per Game"        >Yds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  5, false);" title="Total Rushing Yards Allowed"   >RuYds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  6, false);" title="Rushing Yards Allowed Per Game">RuYds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  7, false);" title="Total Passing Yards Allowed"   >PaYds</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  8, false);" title="Passing Yards Allowed Per Game">PaYds/G</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy',  9, false);" title="Total Points Allowed"          >Pts</a></th>
+      <th><a href="" onclick="this.blur(); return sortTable('defTblBdy', 10, false);" title="Points Allowed Per Game"       >Pts/G</a></th>
+    </tr>
+  </thead>
+  <tbody id="defTblBdy">
+    <tr>
+      <td class="numeric"></td>
+      <td>Arizona</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5685</td>
+      <td class="numeric">355.3</td>
+      <td class="numeric">2087</td>
+      <td class="numeric">130.4</td>
+      <td class="numeric">3598</td>
+      <td class="numeric">224.9</td>
+      <td class="numeric">343</td>
+      <td class="numeric">21.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Atlanta</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5845</td>
+      <td class="numeric">365.3</td>
+      <td class="numeric">1943</td>
+      <td class="numeric">121.4</td>
+      <td class="numeric">3902</td>
+      <td class="numeric">243.9</td>
+      <td class="numeric">377</td>
+      <td class="numeric">23.6</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Baltimore</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4267</td>
+      <td class="numeric">284.5</td>
+      <td class="numeric">1325</td>
+      <td class="numeric">88.3</td>
+      <td class="numeric">2942</td>
+      <td class="numeric">196.1</td>
+      <td class="numeric">262</td>
+      <td class="numeric">17.5</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Buffalo</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5292</td>
+      <td class="numeric">330.8</td>
+      <td class="numeric">2133</td>
+      <td class="numeric">133.3</td>
+      <td class="numeric">3159</td>
+      <td class="numeric">197.4</td>
+      <td class="numeric">420</td>
+      <td class="numeric">26.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Carolina</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5943</td>
+      <td class="numeric">371.4</td>
+      <td class="numeric">2301</td>
+      <td class="numeric">143.8</td>
+      <td class="numeric">3642</td>
+      <td class="numeric">227.6</td>
+      <td class="numeric">410</td>
+      <td class="numeric">25.6</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Chicago</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4978</td>
+      <td class="numeric">311.1</td>
+      <td class="numeric">1313</td>
+      <td class="numeric">82.1</td>
+      <td class="numeric">3665</td>
+      <td class="numeric">229.1</td>
+      <td class="numeric">203</td>
+      <td class="numeric">12.7</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Cincinnati</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4832</td>
+      <td class="numeric">302.0</td>
+      <td class="numeric">1675</td>
+      <td class="numeric">104.7</td>
+      <td class="numeric">3157</td>
+      <td class="numeric">197.3</td>
+      <td class="numeric">309</td>
+      <td class="numeric">19.3</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Cleveland</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5297</td>
+      <td class="numeric">331.1</td>
+      <td class="numeric">2208</td>
+      <td class="numeric">138.0</td>
+      <td class="numeric">3089</td>
+      <td class="numeric">193.1</td>
+      <td class="numeric">319</td>
+      <td class="numeric">19.9</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Dallas</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4599</td>
+      <td class="numeric">287.4</td>
+      <td class="numeric">1710</td>
+      <td class="numeric">106.9</td>
+      <td class="numeric">2889</td>
+      <td class="numeric">180.6</td>
+      <td class="numeric">338</td>
+      <td class="numeric">21.1</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Denver</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4774</td>
+      <td class="numeric">298.4</td>
+      <td class="numeric">1492</td>
+      <td class="numeric">93.2</td>
+      <td class="numeric">3282</td>
+      <td class="numeric">205.1</td>
+      <td class="numeric">339</td>
+      <td class="numeric">21.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Detroit</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5521</td>
+      <td class="numeric">345.1</td>
+      <td class="numeric">1993</td>
+      <td class="numeric">124.6</td>
+      <td class="numeric">3528</td>
+      <td class="numeric">220.5</td>
+      <td class="numeric">424</td>
+      <td class="numeric">26.5</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Green Bay</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4937</td>
+      <td class="numeric">308.6</td>
+      <td class="numeric">1769</td>
+      <td class="numeric">110.6</td>
+      <td class="numeric">3168</td>
+      <td class="numeric">198.0</td>
+      <td class="numeric">266</td>
+      <td class="numeric">16.6</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Indianapolis</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5715</td>
+      <td class="numeric">357.2</td>
+      <td class="numeric">2115</td>
+      <td class="numeric">132.2</td>
+      <td class="numeric">3600</td>
+      <td class="numeric">225.0</td>
+      <td class="numeric">486</td>
+      <td class="numeric">30.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Jacksonville</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5070</td>
+      <td class="numeric">316.9</td>
+      <td class="numeric">1611</td>
+      <td class="numeric">100.7</td>
+      <td class="numeric">3459</td>
+      <td class="numeric">216.2</td>
+      <td class="numeric">286</td>
+      <td class="numeric">17.9</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Kansas City</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5304</td>
+      <td class="numeric">331.5</td>
+      <td class="numeric">2140</td>
+      <td class="numeric">133.8</td>
+      <td class="numeric">3164</td>
+      <td class="numeric">197.8</td>
+      <td class="numeric">344</td>
+      <td class="numeric">21.5</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Miami</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4608</td>
+      <td class="numeric">288.0</td>
+      <td class="numeric">1779</td>
+      <td class="numeric">111.2</td>
+      <td class="numeric">2829</td>
+      <td class="numeric">176.8</td>
+      <td class="numeric">290</td>
+      <td class="numeric">18.1</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Minnesota</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5315</td>
+      <td class="numeric">354.3</td>
+      <td class="numeric">2087</td>
+      <td class="numeric">139.1</td>
+      <td class="numeric">3228</td>
+      <td class="numeric">215.2</td>
+      <td class="numeric">371</td>
+      <td class="numeric">24.7</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>New England</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5352</td>
+      <td class="numeric">334.5</td>
+      <td class="numeric">1855</td>
+      <td class="numeric">115.9</td>
+      <td class="numeric">3497</td>
+      <td class="numeric">218.6</td>
+      <td class="numeric">272</td>
+      <td class="numeric">17.0</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>New Orleans</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5070</td>
+      <td class="numeric">316.9</td>
+      <td class="numeric">1715</td>
+      <td class="numeric">107.2</td>
+      <td class="numeric">3355</td>
+      <td class="numeric">209.7</td>
+      <td class="numeric">409</td>
+      <td class="numeric">25.6</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>New York Giants</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4975</td>
+      <td class="numeric">310.9</td>
+      <td class="numeric">1545</td>
+      <td class="numeric">96.6</td>
+      <td class="numeric">3430</td>
+      <td class="numeric">214.4</td>
+      <td class="numeric">321</td>
+      <td class="numeric">20.1</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>New York Jets</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5153</td>
+      <td class="numeric">322.1</td>
+      <td class="numeric">2154</td>
+      <td class="numeric">134.6</td>
+      <td class="numeric">2999</td>
+      <td class="numeric">187.4</td>
+      <td class="numeric">295</td>
+      <td class="numeric">18.4</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Oakland</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5071</td>
+      <td class="numeric">316.9</td>
+      <td class="numeric">1988</td>
+      <td class="numeric">124.2</td>
+      <td class="numeric">3083</td>
+      <td class="numeric">192.7</td>
+      <td class="numeric">327</td>
+      <td class="numeric">20.4</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Philadelphia</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4701</td>
+      <td class="numeric">293.8</td>
+      <td class="numeric">1837</td>
+      <td class="numeric">114.8</td>
+      <td class="numeric">2864</td>
+      <td class="numeric">179.0</td>
+      <td class="numeric">208</td>
+      <td class="numeric">13.0</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Pittsburgh</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4139</td>
+      <td class="numeric">258.7</td>
+      <td class="numeric">1197</td>
+      <td class="numeric">74.8</td>
+      <td class="numeric">2942</td>
+      <td class="numeric">183.9</td>
+      <td class="numeric">212</td>
+      <td class="numeric">13.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Saint Louis</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4471</td>
+      <td class="numeric">279.4</td>
+      <td class="numeric">1385</td>
+      <td class="numeric">86.6</td>
+      <td class="numeric">3086</td>
+      <td class="numeric">192.9</td>
+      <td class="numeric">273</td>
+      <td class="numeric">17.1</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>San Diego</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4904</td>
+      <td class="numeric">306.5</td>
+      <td class="numeric">1504</td>
+      <td class="numeric">94.0</td>
+      <td class="numeric">3400</td>
+      <td class="numeric">212.5</td>
+      <td class="numeric">321</td>
+      <td class="numeric">20.1</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>San Francisco</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4954</td>
+      <td class="numeric">309.6</td>
+      <td class="numeric">1571</td>
+      <td class="numeric">98.2</td>
+      <td class="numeric">3383</td>
+      <td class="numeric">211.4</td>
+      <td class="numeric">282</td>
+      <td class="numeric">17.6</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Seattle</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5206</td>
+      <td class="numeric">325.4</td>
+      <td class="numeric">1721</td>
+      <td class="numeric">107.6</td>
+      <td class="numeric">3485</td>
+      <td class="numeric">217.8</td>
+      <td class="numeric">324</td>
+      <td class="numeric">20.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Tampa Bay</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4653</td>
+      <td class="numeric">290.8</td>
+      <td class="numeric">1702</td>
+      <td class="numeric">106.4</td>
+      <td class="numeric">2951</td>
+      <td class="numeric">184.4</td>
+      <td class="numeric">280</td>
+      <td class="numeric">17.5</td>
+    </tr>
+    <tr class="alternateRow">
+      <td class="numeric"></td>
+      <td>Tennessee</td>
+      <td class="numeric">16</td>
+      <td class="numeric">5515</td>
+      <td class="numeric">344.7</td>
+      <td class="numeric">1431</td>
+      <td class="numeric">89.4</td>
+      <td class="numeric">4084</td>
+      <td class="numeric">255.2</td>
+      <td class="numeric">388</td>
+      <td class="numeric">24.2</td>
+    </tr>
+    <tr>
+      <td class="numeric"></td>
+      <td>Washington</td>
+      <td class="numeric">16</td>
+      <td class="numeric">4846</td>
+      <td class="numeric">302.9</td>
+      <td class="numeric">1869</td>
+      <td class="numeric">116.8</td>
+      <td class="numeric">2977</td>
+      <td class="numeric">186.1</td>
+      <td class="numeric">303</td>
+      <td class="numeric">18.9</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
