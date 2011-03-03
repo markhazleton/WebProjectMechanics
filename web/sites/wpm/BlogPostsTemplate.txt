@@ -1,9 +1,0 @@
-<div class="blog-entry" id="post-~~PostID~~">
-  <div class="blog-name">
-    <h2><a href="~~PostURL~~" title="~~PostName~~">~~PostName~~</a></h2>
-  </div>
-  <div class="blog-body">~~PostBody~~</div><br>
-
-  <div class="blog-date">Poasted ~~PostDate~~ by ~~PostAuthor~~</div>    
-</div>
-~~ArticleAdmin~~
