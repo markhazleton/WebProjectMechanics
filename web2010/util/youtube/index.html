@@ -1,0 +1,62 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>YouTube Chromeless Video Player with Google Analytics Event Tracking demo page</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<style type="text/css">
+/* CSS styling of YouTube Iframe */
+body, html {
+color:#000;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+background: #ccc;
+}
+body {
+font-size:  0.7em;
+}
+.ytIframe {
+height: 422px;
+width: 466px;
+border: 0;
+}
+</style>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl ." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+/*Change the UA code to your own Google Analytics UA code */
+var pageTracker = _gat._getTracker("UA-XXXXX-X");
+</script>
+<script type="text/javascript">
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</head>
+<body>
+<div id="mainContainer">
+
+<iframe src="http://localhost/util/youtube/youtube/default.asp?VideoID=gZwObI5oUk&VideoTitle=Cym Lowell Riddle of Berlin&Quality=" class="ytIframe" frameborder="0" scrolling="no"></iframe>
+
+
+
+
+<br/>
+
+
+
+
+<hr/>
+
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/-gZwObI5oUk&hl=en&fs=1&rel=0&color1=0x5d1719&color2=0xcd311b"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/-gZwObI5oUk&hl=en&fs=1&rel=0&color1=0x5d1719&color2=0xcd311b" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
+
+</div>
+
+
+
+
+
+</body>
+</html>

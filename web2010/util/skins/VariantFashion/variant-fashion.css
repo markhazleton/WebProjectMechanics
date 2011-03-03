@@ -1,0 +1,620 @@
+/*
+Original design: Variant Fashion (v1.0 - Jul 08, 2010) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/variant-fashion/
+*/
+
+/* Main layout */
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: #000 url(/util/skins/VariantFashion/images/sitebg.jpg) top left repeat-y;
+    color: #eee;
+    font: 83% "Trebuchet MS" ,Tahoma,Verdana,Arial,sans-serif;
+    line-height: 1.2em;
+    margin: 0 auto;
+    padding: 0;
+}
+#wrap
+{
+    color: #f0f0f0;
+    margin: 0 0 0 17px;
+    width: 760px;
+}
+
+/* Tags */
+a
+{
+    color: #e9d004;
+    font-weight: 700;
+    text-decoration: none;
+}
+a img
+{
+    border: 0;
+}
+p
+{
+    font-size: .9em;
+    margin: 0 0 15px 5px;
+}
+ul, ol, dl
+{
+    font-size: .9em;
+    margin: 2px 0 15px 30px;
+}
+ul ul, ol ol
+{
+    margin: 4px 0 4px 20px;
+}
+h2
+{
+    border-bottom: 2px solid #e2c904;
+    font-size: 1.6em;
+    margin: 12px 0 8px 0;
+    padding: 1px 2px 3px 1px;
+    letter-spacing: -1px;
+}
+h3
+{
+    font-size: 1.5em;
+    margin: 10px 0 8px;
+    padding: 0;
+}
+blockquote
+{
+    background-color: #303030;
+    border: 1px solid #aaa;
+    font-size: .9em;
+    margin: 20px 10px;
+    padding: 8px;
+}
+blockquote p
+{
+    margin: 0;
+}
+
+/* Header */
+#header
+{
+    background: #716402 url(/util/skins/VariantFashion/images/header.jpg) top left repeat-x;
+    border-bottom: 1px solid #aaa;
+    clear: both;
+}
+#title
+{
+    float: left;
+    text-align: center;
+    width: 450px;
+}
+#title h1
+{
+    color: #f0f0f0;
+    font-size: 3em;
+    letter-spacing: -2px;
+    padding: 60px 0 20px 5px;
+}
+#title h1 a
+{
+    color: #f0f0f0;
+    text-decoration: none;
+}
+#title h1 a:hover
+{
+    color: #e9d004;
+}
+#slogan
+{
+    color: #f0f0f0;
+    font-size: 1.6em;
+    letter-spacing: -1px;
+    margin: 0 0 10px 5px;
+}
+
+/* Main menu */
+#mainmenu
+{
+    border-left: 1px solid #aaa;
+    color: #f0f0f0;
+    float: right;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 1px 1px 0;
+    text-transform: uppercase;
+    width: 300px;
+}
+#mainmenu ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#mainmenu li
+{
+    border-bottom: 1px solid #000;
+    list-style: none;
+}
+#mainmenu li a
+{
+    background: url(/util/skins/VariantFashion/images/mainmenubg.jpg) top left repeat-y;
+    color: #f0f0f0;
+    display: block;
+    font-weight: 700;
+    height: 1.1em;
+    padding: 5px 0 5px 16px;
+    text-decoration: none;
+}
+#mainmenu li a:hover
+{
+    background: url(/util/skins/VariantFashion/images/mainmenubg-hover.jpg) top left repeat-y;
+    color: #303030;
+    text-decoration: none;
+}
+#mainmenu .current
+{
+    background: url(/util/skins/VariantFashion/images/mainmenubg-current.jpg) top left repeat-y;
+    color: #303030;
+}
+#mainmenu li .current:hover
+{
+    background: url(/util/skins/VariantFashion/images/mainmenubg-current.jpg) top left repeat-y;
+    color: #505050;
+}
+
+/* Sidebar */
+#sidebar
+{
+    background: url(/util/skins/VariantFashion/images/leftsidebg.jpg) top right repeat-y;
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    clear: both;
+    float: left;
+    margin: 0 0 10px 0;
+    padding: 1px 10px 5px;
+    width: 120px;
+}
+#sidebaralt
+{
+    background: url(/util/skins/VariantFashion/images/leftsidebg.jpg) top right repeat-y;
+    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    clear: both;
+    float: right;
+    margin: 0 0 10px 0;
+    padding: 1px 10px 5px;
+    width: 120px;
+}
+#sidebar h2, #sidebaralt h2
+{
+    font-size: 1.3em;
+    margin: 10px 0;
+    padding: 1px 2px 2px 1px;
+}
+#sidebar ul, #sidebaralt ul
+{
+    list-style: none;
+    margin: 0 0 15px 0;
+    padding: 0 0 0 5px;
+}
+#sidebar li, #sidebaralt li
+{
+    list-style: none;
+    margin: 0 0 4px;
+    padding: 0;
+}
+#sidebar li a, #sidebaralt li a
+{
+    padding: 2px;
+    font-size: 1.1em;
+}
+#sidebar li a:hover, #sidebaralt li a:hover
+{
+    color: #fff;
+    text-decoration: none;
+}
+#sidebar ul ul, #sidebaralt ul ul
+{
+    line-height: 1.2em;
+    margin: 3px 0 3px 10px;
+    padding: 0;
+}
+#sidebar ul ul li a, #sidebaralt ul ul li a
+{
+    font-weight: 400;
+}
+
+/* Main content */
+#content
+{
+    line-height: 1.3em;
+    margin: 0 15px 0 155px;
+    padding: 0;
+    text-align: left;
+}
+#contentalt
+{
+    line-height: 1.3em;
+    margin: 0 155px 0 15px;
+    padding: 0;
+    text-align: left;
+}
+#contentfull
+{
+    line-height: 1.3em;
+    margin: 0 15px;
+    padding: 0;
+    text-align: left;
+}
+
+/* Footer */
+#footer
+{
+    background: #333 url(/util/skins/VariantFashion/images/fill.jpg) top left repeat-x;
+    border-bottom: 1px solid #aaa;
+    border-top: 1px solid #aaa;
+    clear: both;
+    color: #ddd;
+    margin: 25px auto 0;
+    padding: 4px 0;
+    text-align: left;
+    width: 760px;
+}
+#footer p
+{
+    margin: 3px 3px 3px 10px;
+}
+#footer a
+{
+    color: #ddd;
+    text-decoration: none;
+}
+#footer a:hover, a:hover
+{
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* Classes */
+.splitcontentleft
+{
+    float: left;
+    width: 48%;
+}
+.splitcontentright
+{
+    float: right;
+    width: 46%;
+}
+.important
+{
+    background: #333 url(/util/skins/VariantFashion/images/fill.jpg) top left repeat;
+    border: 1px solid #e3ca04;
+    color: #e3ca04;
+    padding: 2px;
+    text-align: center;
+}
+.infobox
+{
+    background: #333 url(/util/skins/VariantFashion/images/fill.jpg) top left repeat;
+    border: 1px solid #aaa;
+    float: right;
+    font-size: .9em;
+    margin: 0 0 10px 20px;
+    padding: 5px;
+    width: 240px;
+}
+.infobox p
+{
+    margin: 0;
+}
+.infobox ul
+{
+    margin: 0 0 0 25px;
+}
+.links a
+{
+    font-weight: 400;
+}
+.links li
+{
+    line-height: 1.1em;
+}
+.left
+{
+    float: left;
+    margin: 0 15px 4px 0;
+}
+.right
+{
+    float: right;
+    margin: 0 0 4px 15px;
+}
+.textright
+{
+    text-align: right;
+}
+.readmore
+{
+    margin: -10px 10px 18px 0;
+    text-align: right;
+}
+.center
+{
+    text-align: center;
+}
+.yellow
+{
+    color: #e3ca04;
+}
+.blue
+{
+    color: #4088b8;
+}
+.big
+{
+    font-size: 1.2em;
+}
+.small
+{
+    font-size: .8em;
+}
+.clear
+{
+    clear: both;
+    visibility: hidden;
+}
+.hide
+{
+    display: none;
+}
+.photo
+{
+    background-color: #333;
+    border: 1px solid #aaa;
+    margin: 5px 15px 2px 5px;
+    padding: 2px;
+}
+
+/* Light style */
+body.lightstyle
+{
+    background: #ebebeb url(/util/skins/VariantFashion/images/sitebg.jpg) top left repeat-y;
+    color: #505050;
+}
+body.lightstyle a
+{
+    color: #4088b8;
+}
+body.lightstyle h2
+{
+    border-bottom: 2px solid #4088b8;
+}
+body.lightstyle blockquote
+{
+    background-color: #f0f0f0;
+    border: 1px solid #bababa;
+}
+body.lightstyle #wrap
+{
+    color: #505050;
+}
+body.lightstyle #header
+{
+    background: #e0e0e0 url(/util/skins/VariantFashion/images/header.jpg) top left repeat-x;
+    border-bottom: 1px solid #bababa;
+}
+body.lightstyle #title h1
+{
+    color: #4088b8;
+}
+body.lightstyle #title h1 a
+{
+    color: #4088b8;
+}
+body.lightstyle #title h1 a:hover
+{
+    color: #505050;
+}
+body.lightstyle #slogan
+{
+    color: gray;
+}
+body.lightstyle #mainmenu
+{
+    color: #f0f0f0;
+    border: 0;
+}
+body.lightstyle #mainmenu li
+{
+    border: none;
+}
+body.lightstyle #mainmenu li a
+{
+    color: gray;
+    background: none;
+    border: none;
+}
+body.lightstyle #mainmenu li a:hover
+{
+    background: none;
+    color: #505050;
+}
+body.lightstyle #sidebar, body.lightstyle #sidebaralt
+{
+    background: url(/util/skins/VariantFashion/images/leftsidebg.jpg) top right repeat-y;
+    border-bottom: 1px solid #bababa;
+    border-right: 1px solid #bababa;
+}
+body.lightstyle #sidebar a:hover, body.lightstyle #sidebaralt a:hover
+{
+    color: #303030;
+}
+body.lightstyle #footer
+{
+    background: none;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #bababa;
+    border-top: 1px solid #bababa;
+    color: gray;
+}
+body.lightstyle #footer a
+{
+    color: #505050;
+}
+body.lightstyle .important
+{
+    background: none;
+    background-color: #f8f8f8;
+    border: 1px solid #bababa;
+    color: #505050;
+}
+body.lightstyle .infobox
+{
+    background: none;
+    background-color: #f8f8f8;
+    border: 1px solid #bababa;
+}
+body.lightstyle .photo
+{
+    background: none;
+    background-color: #fff;
+    border: 1px solid #bababa;
+}
+body.lightstyle #mainmenu li .current, body.lightstyle #mainmenu li .current:hover
+{
+    background: none;
+    color: #4088b8;
+}
+
+/* Clear style, centered, 960px width, larger text */
+body.clearstyle
+{
+    background: none;
+    color: #505050;
+    font-size: .9em;
+    line-height: 1.4em;
+}
+body.clearstyle #wrap
+{
+    width: 960px;
+    margin: 0 auto;
+}
+body.clearstyle a
+{
+    color: #4088b8;
+}
+body.clearstyle h2
+{
+    border-bottom: 2px solid #4088b8;
+}
+body.clearstyle blockquote
+{
+    background-color: #f0f0f0;
+    border: 1px solid #bababa;
+}
+body.clearstyle #wrap
+{
+    color: #505050;
+}
+body.clearstyle #header
+{
+    background: none;
+    border-bottom: none;
+}
+body.clearstyle #title
+{
+    width: 550px;
+}
+body.clearstyle #title h1
+{
+    color: #4088b8;
+}
+body.clearstyle #title h1 a
+{
+    color: #4088b8;
+}
+body.clearstyle #title h1 a:hover
+{
+    color: #505050;
+}
+body.clearstyle #slogan
+{
+    color: gray;
+}
+body.clearstyle #mainmenu
+{
+    color: #f0f0f0;
+    border: 0;
+}
+body.clearstyle #mainmenu li
+{
+    border: none;
+}
+body.clearstyle #mainmenu li a
+{
+    color: gray;
+    background: none;
+    border: none;
+}
+body.clearstyle #mainmenu li a:hover
+{
+    background: none;
+    color: #505050;
+}
+body.clearstyle #content
+{
+    margin-left: 230px;
+}
+body.clearstyle #contentalt
+{
+    margin-right: 230px;
+}
+body.clearstyle #sidebar, body.clearstyle #sidebaralt
+{
+    width: 200px;
+    background: none;
+    border: none;
+}
+body.clearstyle #sidebar a:hover, body.clearstyle #sidebaralt a:hover
+{
+    color: #303030;
+}
+body.clearstyle #footer
+{
+    background: none;
+    background-color: #fff;
+    border: none;
+    color: gray;
+    width: 960px;
+}
+body.clearstyle #footer a
+{
+    color: #505050;
+}
+body.clearstyle .important
+{
+    background: none;
+    background-color: #f8f8f8;
+    border: 1px solid #bababa;
+    color: #505050;
+}
+body.clearstyle .infobox
+{
+    background: none;
+    border: 1px solid #bababa;
+    width: 300px;
+}
+body.clearstyle .photo
+{
+    background: none;
+    background-color: #fff;
+    border: 1px solid #bababa;
+}
+body.clearstyle #mainmenu li .current, body.clearstyle #mainmenu li .current:hover
+{
+    background: none;
+    color: #4088b8;
+}

@@ -1,0 +1,9 @@
+<script type="text/javascript" src="/wpm/form/prettyForms.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/wpm/form/prettyForms.css" />
+
+<script type="text/javascript">
+  window.onload = function(){
+	prettyForms();
+}
+</script>

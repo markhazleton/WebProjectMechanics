@@ -1,0 +1,12 @@
+#submenu a:hover,#topmenu a:hover,#topmenu li.selected a.selected,#submenu li.selected a.selected{background:#FFFFFF;color:black;}
+#topmenu a,#topmenu a:visited,#submenu a,#submenu a:visited{background:#FFFFFF;color:#A7A7A7;margin-right:10px;padding-top:1px;text-decoration:none;}
+#topmenu li,#submenu li{display:inline;margin-right:10px;white-space: nowrap;}
+#topmenu ul,#submenu ul{display:inline;list-style:none;}
+#topmenu,#submenu{font-size:100%;font-weight:bold;text-align:left;text-transform:uppercase;  margin: 15px 0px 15px 0px; padding: 0px 0px 0px 5px;      }
+
+#ft{color:#999999;font-size:77%;font-weight:bold;}
+
+div.yui-u {
+    margin: 0 0 .5em 0;
+	 border: 0 solid Transparent;
+}

@@ -1,0 +1,147 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/wpmAdmin.master" AutoEventWireup="false" CodeFile="OLDmasterpage.master.vb" Inherits="wpmgen_sample"  %>
+<%@ Register TagPrefix="wpmWebsite" TagName="Menu" Src="ewmenu.ascx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Literal id="Links" runat="server">
+<link rel="stylesheet" type="text/css" href="SpryMenuBarHorizontal.css"  />
+<style>
+/* Spry Menu Bar */
+/* Set the active Menu Bar with this class, currently setting z-index to accomodate IE rendering bug: http://therealcrisp.xs4all.nl/meuk/IE-zindexbug.html */
+ul.MenuBarActive {
+	z-index: 10000;
+}
+/* Menu items are a light gray block with padding and no text decoration */
+ul.MenuBarHorizontal a {
+	background-color: #F1F1F1;
+	color: #000;
+}
+/* Menu items that have mouse over or focus have a blue background and white text */
+ul.MenuBarHorizontal a:hover, ul.MenuBarHorizontal a:focus {
+	background-color: #33C;
+	color: #FFF;
+}
+/* Menu items that are open with submenus are set to MenuBarItemHover with a blue background and white text */
+ul.MenuBarHorizontal a.MenuBarItemHover, ul.MenuBarHorizontal a.MenuBarItemSubmenuHover, ul.MenuBarHorizontal a.MenuBarSubmenuVisible {
+	background-color: #33C;
+	color: #FFF;
+}
+ul.MenuBarHorizontal a.MenuBarItemSubmenu {
+	background-image: url(images/SpryMenuBarDown.gif);
+}
+ul.MenuBarHorizontal ul {
+	z-index: 10020;
+}
+ul.MenuBarHorizontal ul a.MenuBarItemSubmenu {
+	background-image: url(images/SpryMenuBarRight.gif);
+}
+ul.MenuBarHorizontal a.MenuBarItemSubmenuHover {
+	background-image: url(images/SpryMenuBarDownHover.gif);
+}
+ul.MenuBarHorizontal ul a.MenuBarItemSubmenuHover {
+	background-image: url(images/SpryMenuBarRightHover.gif);
+}
+/* HACK FOR IE: to make sure the sub menus show above form controls, we underlay each submenu with an iframe */
+ul.MenuBarHorizontal iframe {
+	z-index: 10010;
+}
+#RootMenu li {
+	width: auto;
+	white-space: nowrap;
+	z-index: 10000; /* for FF */
+}
+#RootMenu ul {
+	width: auto;
+}
+#RootMenu ul li {
+	float: none;
+	background-color: transparent;
+}
+#RootMenu a.MenuBarItemSubmenu {
+	background-position: 100% 50%;
+}
+.ewMenuRow {
+	width: 100%;
+	float: left;
+	background-color: #F1F1F1;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/wpmgen/yui280/build/autocomplete/assets/skins/sam/autocomplete.css" />
+</asp:Literal>
+<asp:Panel id="ProjectCss" runat="server">
+<link rel="stylesheet" type="text/css" href="/wpmgen/wpmwebsite.css" />
+</asp:Panel>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Panel id="ClientScript" runat="server">
+<script type="text/javascript" src="/wpmgen/yui280/build/utilities/utilities.js"></script>
+<script type="text/javascript" src="/wpmgen/yui280/build/datasource/datasource-min.js"></script>
+<script type="text/javascript" src="/wpmgen/yui280/build/autocomplete/autocomplete-min.js"></script>
+<script type="text/javascript" src="/wpmgen/js/SpryMenuBar.js"></script>
+<script type="text/javascript">
+<!--
+    var EW_DATE_SEPARATOR = "/";
+    if (EW_DATE_SEPARATOR == "") EW_DATE_SEPARATOR = "/"; // Default date separator
+    var EW_UPLOAD_ALLOWED_FILE_EXT = "gif,jpg,jpeg,bmp,png,doc,xls,pdf,zip"; // Allowed upload file extension
+    var EW_FIELD_SEP = ", "; // Default field separator
+    // Ajax settings
+    var EW_RECORD_DELIMITER = "\r";
+    var EW_FIELD_DELIMITER = "|";
+    var EW_LOOKUP_FILE_NAME = "ewlookup8.aspx"; // lookup file name
+    // Common JavaScript messages
+    var EW_ADDOPT_BUTTON_SUBMIT_TEXT = "Add";
+    var EW_EMAIL_EXPORT_BUTTON_SUBMIT_TEXT = "Send Email";
+    var EW_BUTTON_CANCEL_TEXT = "Cancel";
+//-->
+</script>
+<script type="text/javascript" src="/wpmgen/js/ewx8.js"></script>
+<script type="text/javascript" src="/wpmgen/js/userfnx8.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+    // Write your client script here, no need to add script tags.
+    // To include another .js script, you can use, e.g.
+    // ew_ClientScriptInclude("my_javascript.js"); or
+    // ew_ClientScriptInclude("my_javascript.js", {onSuccess: function(o) { // your code here }});
+//-->
+</script>
+</asp:Panel>
+<asp:Literal id="Header1" runat="server"></asp:Literal>
+<asp:Literal id="MenuTop" runat="server">
+<div class="ewMenuRow">
+</asp:Literal>
+<wpmWebsite:Menu id="Menu" runat="server" />
+<asp:Literal id="MenuBottom" runat="server">
+</div>
+	<!-- content (begin) -->
+  <table cellspacing="0" class="ewContentTable">
+		<tr>
+</asp:Literal>
+<asp:Panel id="Header2" runat="server"></asp:Panel>
+<asp:contentplaceholder id="Content" runat="server" />
+<asp:Panel id="Footer" runat="server">
+<%
+
+		' Display elapsed time
+		 HttpContext.Current.Response.Write(ew_CalcElapsedTime(ParentPage.StartTimer))
+%>
+<!-- content (end) -->
+<div class="yui-tt" id="ewTooltipDiv" style="visibility: hidden; border: 0px;" name="ewTooltipDivDiv"></div>
+</asp:Panel>
+<asp:Literal id="StartupScript" runat="server">
+<script type="text/javascript">
+<!--
+    ewDom.getElementsByClassName(EW_TABLE_CLASS, "TABLE", null, ew_SetupTable); // init the table
+//-->
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+    // Write your global startup script here
+    // document.write("page loaded");
+//-->
+</script>
+</asp:Literal>
+
+
+
+</asp:Content>
+
