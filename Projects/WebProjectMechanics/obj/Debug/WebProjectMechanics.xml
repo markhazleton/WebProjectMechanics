@@ -6,7 +6,227 @@ WebProjectMechanics
 </name>
 </assembly>
 <members>
-<member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.ResourceManager">
+<member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownNode(System.Object,System.Xml.Serialization.XmlNodeEventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownAttribute(System.Object,System.Xml.Serialization.XmlAttributeEventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildTemplate(System.Text.StringBuilder@)">
+	<summary>
+	</summary>
+	<param name="sbContent"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildErrorMessage">
+	<summary>
+	</summary>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ChangePassword(System.String,System.String,System.String)">
+	<summary>
+ Change the user password.
+ </summary>
+	<param name="username">UserName</param>
+	<param name="oldPwd">Old password.</param>
+	<param name="newPwd">New password.</param>
+	<returns>T/F if password was changed.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ChangePasswordQuestionAndAnswer(System.String,System.String,System.String,System.String)">
+	<summary>
+ Change the question and answer for a password validation.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<param name="newPwdQuestion">New question text.</param>
+	<param name="newPwdAnswer">New answer text.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Object,System.Web.Security.MembershipCreateStatus@)">
+	<summary>
+ Create a new user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<param name="email">Email address.</param>
+	<param name="passwordQuestion">Security quesiton for password.</param>
+	<param name="passwordAnswer">Security quesiton answer for password.</param>
+	<param name="isApproved"></param>
+	<param name="userID"></param>
+	<param name="status"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.DeleteUser(System.String,System.Boolean)">
+	<summary>
+ Delete a user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="deleteAllRelatedData">Whether to delete all related data.</param>
+	<returns>T/F if the user was deleted.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetAllUsers(System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Get a collection of users.
+ </summary>
+	<param name="pageIndex">Page index.</param>
+	<param name="pageSize">Page size.</param>
+	<param name="totalRecords">Total # of records to retrieve.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetNumberOfUsersOnline">
+	<summary>
+ Gets the number of users currently on-line.
+ </summary>
+	<returns>
+ # of users on-line.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetPassword(System.String,System.String)">
+	<summary>
+ Get the password for a user.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="answer">Answer to security question.</param>
+	<returns>Password for the user.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUser(System.Object,System.Boolean)">
+	<summary>
+ Get a user based upon provider key and if they are on-line.
+ </summary>
+	<param name="userID">Provider key.</param>
+	<param name="userIsOnline">T/F whether the user is on-line.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UnlockUser(System.String)">
+	<summary>
+ Unlock a user.
+ </summary>
+	<param name="username">User name.</param>
+	<returns>T/F if unlocked.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUserNameByEmail(System.String)">
+	<summary>
+ Get user name from their email.
+ </summary>
+	<param name="email">Email address</param>
+	<returns>User name.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ResetPassword(System.String,System.String)">
+	<summary>
+ Reset the user password.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="answer">Answer to security question.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UpdateUser(System.Web.Security.MembershipUser)">
+	<summary>
+ Update the user information.
+ </summary>
+	<param name="_membershipUser">MembershipUser object containing data.</param>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.ValidateUser(System.String,System.String)">
+	<summary>
+ Validate the user based upon username and password.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="password">Password.</param>
+	<returns>T/F if the user is valid.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.FindUsersByName(System.String,System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Find all users matching a search string.
+ </summary>
+	<param name="usernameToMatch">Search string of user name to match.</param>
+	<param name="pageIndex"></param>
+	<param name="pageSize"></param>
+	<param name="totalRecords">Total records found.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.FindUsersByEmail(System.String,System.Int32,System.Int32,System.Int32@)">
+	<summary>
+ Find all users matching a search string of their email.
+ </summary>
+	<param name="emailToMatch">Search string of email to match.</param>
+	<param name="pageIndex"></param>
+	<param name="pageSize"></param>
+	<param name="totalRecords">Total records found.</param>
+	<returns>Collection of MembershipUser objects.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetUserFromReader(System.Data.SqlClient.SqlDataReader)">
+	<summary>
+ Create a MembershipUser object from a data reader.
+ </summary>
+	<param name="_sqlDataReader">Data reader.</param>
+	<returns>MembershipUser object.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.HexToByte(System.String)">
+	<summary>
+ Converts a hexadecimal string to a byte array. Used to convert encryption key values from the configuration
+ </summary>
+	<param name="hexString"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UpdateFailureCount(System.String,WebProjectMechanics.wpmMembershipProvider.FailureType)">
+	<summary>
+ Update password and answer failure information.
+ </summary>
+	<param name="username">User name.</param>
+	<param name="failureType">Type of failure</param>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.CheckPassword(System.String,System.String)">
+	<summary>
+ Check the password format based upon the MembershipPasswordFormat.
+ </summary>
+	<param name="password">Password</param>
+	<param name="dbpassword"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.EncodePassword(System.String)">
+	<summary>
+ Encode password.
+ </summary>
+	<param name="password">Password.</param>
+	<returns>Encoded password.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.UnEncodePassword(System.String)">
+	<summary>
+ UnEncode password.
+ </summary>
+	<param name="encodedPassword">Password.</param>
+	<returns>Unencoded password.</returns>
+</member><member name="M:WebProjectMechanics.wpmMembershipProvider.GetConfigValue(System.String,System.String)">
+	<summary>
+ GetConfigValue - Checks for blank, returns default if current value is NullorEmpty
+ </summary>
+	<param name="configValue"></param>
+	<param name="defaultValue"></param>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.AddWww(System.Web.HttpContext)">
+	<summary>
+ Adds the www subdomain to the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.RemoveWww(System.Web.HttpContext)">
+	<summary>
+ Removes the www subdomain from the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.wpmHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
+	<summary>
+ Sends permanent redirection headers (301)
+ </summary>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:WebProjectMechanics.wpmMasterPage.GetFileMenu">
+	<summary>
+ GetFileMenu - Returns HTML List of all files in the current directory
+ </summary>
+	<returns></returns>
+</member><member name="M:WebProjectMechanics.wpmMasterPage.GetMenuItem(System.String,System.String)">
+	<summary>
+ Returns a MenuItem for a given name and path
+ </summary>
+	<param name="MenuName"></param>
+	<param name="MenuPath"></param>
+	<returns></returns>
+</member><member name="P:WebProjectMechanics.My.Resources.WebProjectMechanics_SQLResources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -95,6 +315,11 @@ WebProjectMechanics
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:WebProjectMechanics.wpmRssTools.wpmRSS.#ctor(System.String)">
+	<summary>
+ Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
+ </summary>
+	<param name="feedurl"></param>
 </member><member name="P:WebProjectMechanics.My.Resources.SQLResources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -181,67 +406,6 @@ WebProjectMechanics
   Looks up a localized string similar to UPDATE [contact] SET [contact].[CreateDT]='{0}'  WHERE [contact].[ContactID]={1} .
 </summary>
 </member><member name="T:WebProjectMechanics.My.Resources.SQLResources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member><member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownNode(System.Object,System.Xml.Serialization.XmlNodeEventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-</member><member name="M:WebProjectMechanics.wpmActiveSite.serializer_UnknownAttribute(System.Object,System.Xml.Serialization.XmlAttributeEventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildTemplate(System.Text.StringBuilder@)">
-	<summary>
-	</summary>
-	<param name="sbContent"></param>
-	<returns></returns>
-</member><member name="M:WebProjectMechanics.wpmActiveSite.BuildErrorMessage">
-	<summary>
-	</summary>
-	<returns></returns>
-</member><member name="M:WebProjectMechanics.wpmHttpModule.AddWww(System.Web.HttpContext)">
-	<summary>
- Adds the www subdomain to the request and redirects.
- </summary>
-</member><member name="M:WebProjectMechanics.wpmHttpModule.RemoveWww(System.Web.HttpContext)">
-	<summary>
- Removes the www subdomain from the request and redirects.
- </summary>
-</member><member name="M:WebProjectMechanics.wpmHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
-	<summary>
- Sends permanent redirection headers (301)
- </summary>
-</member><member name="M:WebProjectMechanics.wpmRssTools.wpmRSS.#ctor(System.String)">
-	<summary>
- Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
- </summary>
-	<param name="feedurl"></param>
-</member><member name="M:WebProjectMechanics.wpmMasterPage.GetFileMenu">
-	<summary>
- GetFileMenu - Returns HTML List of all files in the current directory
- </summary>
-	<returns></returns>
-</member><member name="M:WebProjectMechanics.wpmMasterPage.GetMenuItem(System.String,System.String)">
-	<summary>
- Returns a MenuItem for a given name and path
- </summary>
-	<param name="MenuName"></param>
-	<param name="MenuPath"></param>
-	<returns></returns>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:WebProjectMechanics.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
