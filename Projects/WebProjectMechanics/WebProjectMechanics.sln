@@ -1,11 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebProjectMechanics", "WebProjectMechanics.vbproj", "{52B05D4F-A9AE-4E79-9BE6-65E1188CF6A8}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web2010", "..\..\web2010\", "{EC208E10-F58B-451F-BDCE-7490BC1C8A08}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web2010", "..\..\web2010", "{EC208E10-F58B-451F-BDCE-7490BC1C8A08}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		ProjectReferences = "{52B05D4F-A9AE-4E79-9BE6-65E1188CF6A8}|WebProjectMechanics.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/web2010"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\web2010\"
@@ -23,6 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web2010", "..\..\web2010\",
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "61517"
 		VWDVirtualPath = "/"
+		SlnRelativePath = "..\..\web2010\"
 	EndProjectSection
 EndProject
 Global

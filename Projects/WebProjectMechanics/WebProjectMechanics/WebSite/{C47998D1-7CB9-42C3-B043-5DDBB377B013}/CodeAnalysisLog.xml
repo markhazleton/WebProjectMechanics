@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
+ <Targets>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_24ltpqqy.dll">
+   <Modules>
+    <Module Name="app_web_24ltpqqy.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="FaceBookPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FaceBookPage.ashx" Line="38">Object 'readStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FaceBookPage.ashx" Line="42">Object 'response' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FaceBookPage.ashx" Line="39">Object 'responseStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38, 39, 40</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_5iczrboj.dll">
+   <Modules>
+    <Module Name="app_web_5iczrboj.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="FaceBookPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleVideoRSS.ashx" Line="38">Object 'readStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleVideoRSS.ashx" Line="42">Object 'response' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleVideoRSS.ashx" Line="39">Object 'responseStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38, 39, 40</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_am5oynle.dll">
+   <Modules>
+    <Module Name="app_web_am5oynle.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="recipe_RecipeList" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#BindList(WPMRecipe.RecipeListConfig)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe" File="RecipeList.aspx.vb" Line="141">Method 'recipe_RecipeList.BindList(RecipeListConfig)' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1, 2". The provided format string is: '"SELECT Recipes.ID, RECIPE_CAT.CAT_ID, RECIPE_CAT.CAT_TYPE as Category, Recipes...."'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="ASP">
+       <Types>
+        <Type Name="recipe_rate_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DBconnect()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe" File="rate.aspx" Line="116">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_rate_aspx.DBconnect()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_search_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#SQL_Command()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe" File="search.aspx" Line="434">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_search_aspx.SQL_Command()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_b4rffk4o.dll">
+   <Modules>
+    <Module Name="app_web_b4rffk4o.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="recipe_admin_adminrecipe" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#BindData()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="adminrecipe.aspx.vb" Line="131">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_adminrecipe.BindData()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="adminrecipe.aspx.vb" Line="21">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_adminrecipe.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DBconnect()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="adminrecipe.aspx.vb" Line="872">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_adminrecipe.DBconnect()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Delete_Recipes(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="adminrecipe.aspx.vb" Line="548">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_adminrecipe.Delete_Recipes(Object, DataGridCommandEventArgs)' could contain the following variables 'iIdNumber2.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="ASP">
+       <Types>
+        <Type Name="recipe_admin_adminlogin_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_adminlogin_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_admin_categorymanager_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_categorymanager_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Edit_Handle(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="categorymanager.aspx" Line="186">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_categorymanager_aspx.Edit_Handle(Object, DataGridCommandEventArgs)' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_admin_commentsmanager_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_commentsmanager_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Delete_Comment(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="commentsmanager.aspx" Line="208">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_commentsmanager_aspx.Delete_Comment(Object, DataGridCommandEventArgs)' could contain the following variables 'iIdCommNumber.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="commentsmanager.aspx" Line="194">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_commentsmanager_aspx.Delete_Comment(Object, DataGridCommandEventArgs)' could contain the following variables 'iIdKeyNumber.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update_Comments(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="commentsmanager.aspx" Line="135">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_commentsmanager_aspx.Update_Comments(Object, EventArgs)' could contain the following variables 'Strings.Replace(Me.Request("Author"), "'", "''", 1, -1, CompareMethod.Binary)', 'Strings.Replace(Me.Request("Email"), "'", "''", 1, -1, CompareMethod.Binary)', 'Strings.Replace(Me.Request("Comments"), "'", "''", 1, -1, CompareMethod.Binary)', 'Me.Request("KeyIDs")'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_admin_editing_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_editing_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_admin_inc_admindbconn_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_inc_admindbconn_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="recipe_admin_recipemanager_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#BindData()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="recipemanager.aspx" Line="110">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_recipemanager_aspx.BindData()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DataBase_Connect(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="inc_admindbconn.aspx" Line="16">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_recipemanager_aspx.DataBase_Connect(String)' could contain the following variables 'strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DBconnect()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="recipemanager.aspx" Line="852">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_recipemanager_aspx.DBconnect()' could contain the following variables 'Me.strSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Delete_Recipes(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\recipe\admin" File="recipemanager.aspx" Line="528">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'recipe_admin_recipemanager_aspx.Delete_Recipes(Object, DataGridCommandEventArgs)' could contain the following variables 'iIdNumber2.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_esxbplmz.dll">
+   <Modules>
+    <Module Name="app_web_esxbplmz.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="BuildSiteConfig" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetDataTable(System.String,System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\admin" File="BuildSiteConfig.ashx" Line="73">Object 'New OleDbConnection()' can be disposed more than once in method 'BuildSiteConfig.GetDataTable(String, String, String)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 73</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\admin" File="BuildSiteConfig.ashx" Line="65">The query string passed to 'OleDbCommand.New(String, OleDbConnection)' in 'BuildSiteConfig.GetDataTable(String, String, String)' could contain the following variables 'sSQL'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_nu4ijbsh.dll">
+   <Modules>
+    <Module Name="app_web_nu4ijbsh.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="FaceBookPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleNewsRSS.ashx" Line="38">Object 'readStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleNewsRSS.ashx" Line="42">Object 'response' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="GoogleNewsRSS.ashx" Line="39">Object 'responseStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38, 39, 40</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_qq3qenyr.dll">
+   <Modules>
+    <Module Name="app_web_qq3qenyr.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="wpm_admin_ReadLogFile" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AReadTextFile(System.String,System.Text.StringBuilder&amp;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\admin" File="ReadLogFile.aspx.vb" Line="113">Object 'sr' can be disposed more than once in method 'wpm_admin_ReadLogFile.AReadTextFile(String, ByRef StringBuilder)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 113</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_tkfudse1.dll">
+   <Modules>
+    <Module Name="app_web_tkfudse1.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="admin_maint_SiteTemplate" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Page_Load(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\admin\maint" File="SiteTemplate.ascx.vb" Line="47">Method 'admin_maint_SiteTemplate.Page_Load(Object, EventArgs)' calls 'String.Format(String, ParamArray Object())' and does not provide a format item for argument "2". The provided format string is: '"&lt;li&gt;&lt;a href='/admin/maint/ManageItems.aspx?Type=SiteTemplate&amp;{2}={0}'&gt;{0}-{3}&lt;/..."'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_uczcsi3f.dll">
+   <Modules>
+    <Module Name="app_web_uczcsi3f.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="FaceBookPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FlickrSearchRSS.ashx" Line="38">Object 'readStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FlickrSearchRSS.ashx" Line="42">Object 'response' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="FlickrSearchRSS.ashx" Line="39">Object 'responseStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38, 39, 40</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_udufyopf.dll">
+   <Modules>
+    <Module Name="app_web_udufyopf.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="MineralCollection_CollectionItemView" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetCurrentRow()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="276">Method 'MineralCollection_CollectionItemView.GetCurrentRow()' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1, 2". The provided format string is: '"No Results Found"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRows()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="252">Method 'MineralCollection_CollectionItemView.GetRows()' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1". The provided format string is: '"{1} Results Found"'</Issue>
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="248">Method 'MineralCollection_CollectionItemView.GetRows()' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1, 2". The provided format string is: '"No Results Found"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#newDisplayImageList(System.Data.Linq.EntitySet`1&lt;wpmMineralCollection.CollectionItemImage&gt;&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="368">Method 'MineralCollection_CollectionItemView.newDisplayImageList(ByRef EntitySet(Of CollectionItemImage))' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1". The provided format string is: '"&lt;img  data-zoom-image='/sites/nrc/images/{1}' src='/sites/nrc/images/{1}'  &gt;"'</Issue>
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="378">Method 'MineralCollection_CollectionItemView.newDisplayImageList(ByRef EntitySet(Of CollectionItemImage))' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1". The provided format string is: '"&lt;img  data-zoom-image='/sites/nrc/images/{1}' src='/sites/nrc/images/{1}'  &gt;"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#oldDisplayImageList(System.Data.Linq.EntitySet`1&lt;wpmMineralCollection.CollectionItemImage&gt;&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="410">Method 'MineralCollection_CollectionItemView.oldDisplayImageList(ByRef EntitySet(Of CollectionItemImage))' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1". The provided format string is: '"&lt;img  data-zoom-image='/sites/nrc/images/{1}' src='/sites/nrc/images/{1}'  &gt;"'</Issue>
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\MineralCollection" File="CollectionItemView.aspx.vb" Line="420">Method 'MineralCollection_CollectionItemView.oldDisplayImageList(ByRef EntitySet(Of CollectionItemImage))' calls 'String.Format(String, Object, Object)' and does not provide a format item for argument "1". The provided format string is: '"&lt;img  data-zoom-image='/sites/nrc/images/{1}' src='/sites/nrc/images/{1}'  &gt;"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\ControlOrigins\AppData\Local\Temp\tmp99D7.tmp.cadir\bin\App_Web_ywzympyr.dll">
+   <Modules>
+    <Module Name="app_web_ywzympyr.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="FaceBookPage" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2014-11-20 14:35:24Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="TwitterSearchRSS.ashx" Line="38">Object 'readStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="TwitterSearchRSS.ashx" Line="42">Object 'response' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\TeamFoundation\WebProjectMechanics\WebSite\runtime\blog" File="TwitterSearchRSS.ashx" Line="39">Object 'responseStream' can be disposed more than once in method 'FaceBookPage.ProcessRequest(HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 38, 39, 40</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 42</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>Provide correct arguments to formatting methods</Name>
+   <Description>Provide the correct number of arguments to String.Format calls.</Description>
+   <Resolution Name="MissingFormatItem">Method {0} calls {1} and does not provide a format item for argument {2}. The provided format string is: '{3}'</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
