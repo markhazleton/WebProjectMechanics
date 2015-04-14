@@ -13,7 +13,7 @@
     <AssemblyName>WebProjectMechanics</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -24,6 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>WebProjectMechanics.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>WebProjectMechanics.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -48,10 +50,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,31 +66,68 @@
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
+    <Import Include="System.Configuration.Provider" />
     <Import Include="System.Data" />
+    <Import Include="System.Data.Linq" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
     <Import Include="System.Web" />
+    <Import Include="System.Web.Configuration" />
+    <Import Include="System.Web.Handlers" />
+    <Import Include="System.Web.Script.Serialization" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.SessionState" />
     <Import Include="System.Web.UI" />
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cLanguage.vb" />
-    <Compile Include="IImageRow.vb" />
-    <Compile Include="ISiteUserControl.vb" />
-    <Compile Include="LocationPageNameCompare.vb" />
-    <Compile Include="SiteDefaultOrderCompare.vb" />
-    <Compile Include="SortDirection.vb" />
-    <Compile Include="wpmApp.vb" />
-    <Compile Include="ConfigurationBase.vb" />
-    <Compile Include="wpmFileProcessing.vb" />
-    <Compile Include="ItemForCollection.vb" />
-    <Compile Include="KeywordDefaultOrderCompare.vb" />
-    <Compile Include="KeywordPredicateClass.vb" />
-    <Compile Include="LocationDefaultOrderCompare.vb" />
-    <Compile Include="LocationModifiedDateCompare.vb" />
-    <Compile Include="LocationRecordSourceCompare.vb" />
-    <Compile Include="wpmLinkDirectory.vb" />
-    <Compile Include="wpmMailer.vb" />
+    <Compile Include="Application\ApplicationAdministration.vb" />
+    <Compile Include="Application\pmImage.vb" />
+    <Compile Include="Article\Article.vb" />
+    <Compile Include="Article\ArticleBusinessLogic.vb" />
+    <Compile Include="Article\ArticleEditControllor.vb" />
+    <Compile Include="Article\ArticleList.vb" />
+    <Compile Include="Article\IArticle.vb" />
+    <Compile Include="Article\IArticleDisplay.vb" />
+    <Compile Include="Article\IArticleEdit.vb" />
+    <Compile Include="Company\ActiveCompany.vb" />
+    <Compile Include="Company\Company.vb" />
+    <Compile Include="Company\CompanyDefaultOrderCompare.vb" />
+    <Compile Include="Company\CompanyImageList.vb" />
+    <Compile Include="Company\DomainConfiguration.vb" />
+    <Compile Include="Company\DomainConfigurations.vb" />
+    <Compile Include="Company\ICompany.vb" />
+    <Compile Include="Company\ICompanyUserControl.vb" />
+    <Compile Include="FlashGame\FlashGame.vb" />
+    <Compile Include="FlashGame\FlashGameList.vb" />
+    <Compile Include="Image\ILocationImage.vb" />
+    <Compile Include="Image\LocationImage.vb" />
+    <Compile Include="Image\LocationImageAdapter.vb" />
+    <Compile Include="Image\LocationImageList.vb" />
+    <Compile Include="Image\LocationImagePresenter.vb" />
+    <Compile Include="Image\pmImageNew.vb" />
+    <Compile Include="LocationAlias\ILocationAlias.vb" />
+    <Compile Include="LocationAlias\LocationAlias.vb" />
+    <Compile Include="LocationAlias\LocationAliasList.vb" />
+    <Compile Include="LocationHistory\LocationHistory.vb" />
+    <Compile Include="LocationHistory\LocationHistoryList.vb" />
+    <Compile Include="LocationHistory\LocationHistorySession.vb" />
+    <Compile Include="Location\ILocation.vb" />
+    <Compile Include="Location\Location.vb" />
+    <Compile Include="Location\LocationDefaultOrderCompare.vb" />
+    <Compile Include="Location\LocationGroup.vb" />
+    <Compile Include="Location\LocationGroupList.vb" />
+    <Compile Include="Location\LocationKeyword.vb" />
+    <Compile Include="Location\LocationKeywordDefaultOrderCompare.vb" />
+    <Compile Include="Location\LocationKeywordList.vb" />
+    <Compile Include="Location\LocationKeywordPredicateClass.vb" />
+    <Compile Include="Location\LocationList.vb" />
+    <Compile Include="Location\LocationModifiedDateCompare.vb" />
+    <Compile Include="Location\LocationPageNameCompare.vb" />
+    <Compile Include="Location\LocationRecordSourceCompare.vb" />
+    <Compile Include="Location\LocationSource.vb" />
+    <Compile Include="Location\LocationTrail.vb" />
+    <Compile Include="Location\SiteMapXmlTextWriter.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -101,71 +143,96 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SQLResources.Designer.vb" />
-    <Compile Include="wpmMembershipProvider.vb" />
-    <Compile Include="wpmPageHistory.vb" />
-    <Compile Include="wpmPageHistoryList.vb" />
-    <Compile Include="wpmPartGroupList.vb" />
-    <Compile Include="wpmSiteBL.vb" />
-    <Compile Include="wpmSiteGroupList.vb" />
-    <Compile Include="wpmSiteListControler.vb" />
-    <Compile Include="wpmUser.vb" />
-    <Compile Include="wpmUserControl.vb">
+    <Compile Include="Parameter\Parameter.vb" />
+    <Compile Include="Parameter\ParameterList.vb" />
+    <Compile Include="Part\IPart.vb" />
+    <Compile Include="Part\IPartDisplay.vb" />
+    <Compile Include="Part\IPartEdit.vb" />
+    <Compile Include="Part\Part.vb" />
+    <Compile Include="Part\PartBusinessLogic.vb" />
+    <Compile Include="Part\PartCategory.vb" />
+    <Compile Include="Part\PartCategoryList.vb" />
+    <Compile Include="Part\PartDirectory.vb" />
+    <Compile Include="Part\PartEditControllor.vb" />
+    <Compile Include="Part\PartList.vb" />
+    <Compile Include="SDK\IConfig.vb" />
+    <Compile Include="SDK\ILocationDisplay.vb" />
+    <Compile Include="SDK\ILocationKeywordPredicateClass.vb" />
+    <Compile Include="SDK\ISiteTemplate.vb" />
+    <Compile Include="SDK\IUtilityMailer.vb" />
+    <Compile Include="SDK\UserInfo.vb" />
+    <Compile Include="SiteTemplate.vb" />
+    <Compile Include="Utility\ApplicationLogging.vb" />
+    <Compile Include="Utility\ApplicationMembershipProvider.vb" />
+    <Compile Include="Utility\ConfigurationBase.vb" />
+    <Compile Include="Utility\DisplayTable\DataGrid.vb" />
+    <Compile Include="Utility\DisplayTable\DisplayTableHeader.vb" />
+    <Compile Include="Utility\DisplayTable\DisplayTableHeaderItem.vb" />
+    <Compile Include="Utility\DisplayTable\Icontrols_DisplayTable.vb" />
+    <Compile Include="Utility\Eval\Evaluator.vb" />
+    <Compile Include="Utility\Eval\EvalVariable.vb" />
+    <Compile Include="Utility\Eval\Globals.vb" />
+    <Compile Include="Utility\Eval\iEvalFunctions.vb" />
+    <Compile Include="Utility\Eval\iEvalHasDescription.vb" />
+    <Compile Include="Utility\Eval\iEvalTypedValue.vb" />
+    <Compile Include="Utility\Eval\iEvalValue.vb" />
+    <Compile Include="Utility\Eval\iVariableBag.vb" />
+    <Compile Include="Utility\Eval\opCode.vb" />
+    <Compile Include="Utility\Eval\Parser.vb" />
+    <Compile Include="Utility\Eval\tokenizer.vb" />
+    <Compile Include="Utility\Eval\VariableNotFoundException.vb" />
+    <Compile Include="Utility\ExceptionUtility.vb" />
+    <Compile Include="Utility\FileConfig.vb" />
+    <Compile Include="Utility\FileProcessing.vb" />
+    <Compile Include="Utility\HttpModule\AjaxCallSignature.vb" />
+    <Compile Include="Utility\HttpModule\ApplicationHttpModule.vb" />
+    <Compile Include="Utility\HttpModule\BaseHandler.vb" />
+    <Compile Include="Utility\HttpModule\HttpDeleteAttribute.vb" />
+    <Compile Include="Utility\HttpModule\HttpGetAttribute.vb" />
+    <Compile Include="Utility\HttpModule\HttpPostAttribute.vb" />
+    <Compile Include="Utility\HttpModule\HttpPutAttribute.vb" />
+    <Compile Include="Utility\HttpModule\HttpVerbAttribute.vb" />
+    <Compile Include="Utility\HttpModule\HttpVerbNotAllowed.vb" />
+    <Compile Include="Utility\HttpModule\OnMethodInvokeArgs.vb" />
+    <Compile Include="Utility\HttpModule\RequireAuthenticationAttribute.vb" />
+    <Compile Include="Utility\HttpModule\ResponseContentTypes.vb" />
+    <Compile Include="Utility\ILookup.vb" />
+    <Compile Include="Utility\ILookupItemList.vb" />
+    <Compile Include="Utility\LookupItem.vb" />
+    <Compile Include="Utility\Modules\App.vb" />
+    <Compile Include="Utility\Modules\ApplicationDAL.vb" />
+    <Compile Include="Utility\Modules\ApplicationUser.vb" />
+    <Compile Include="Utility\Modules\LocationBuildHTML.vb" />
+    <Compile Include="Utility\Modules\Utility.vb" />
+    <Compile Include="Utility\Modules\UtilityDB.vb" />
+    <Compile Include="Utility\Modules\UtilityHTML.vb" />
+    <Compile Include="Utility\SiteConfig.vb" />
+    <Compile Include="Utility\SQLHelper\SQLFilterClause.vb" />
+    <Compile Include="Utility\SQLHelper\SQLFilterConjunction.vb" />
+    <Compile Include="Utility\SQLHelper\SQLFilterList.vb" />
+    <Compile Include="Utility\SQLHelper\SQLFilterOperator.vb" />
+    <Compile Include="Utility\UIBase\AdminPage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="wpmUserSession.vb" />
-    <Compile Include="wpmUtil.vb" />
-    <Compile Include="WebProjectMechanics.SQLResources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebProjectMechanics.SQLResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="P2PWebsiteProfile.vb" />
-    <Compile Include="wpmActiveSite.vb" />
-    <Compile Include="wpmAdmin.vb" />
-    <Compile Include="wpmArticle.vb" />
-    <Compile Include="wpmBuildHTML.vb" />
-    <Compile Include="wpmDataCon.vb" />
-    <Compile Include="wpmDB.vb" />
-    <Compile Include="wpmFileConfig.vb" />
-    <Compile Include="wpmForm.vb" />
-    <Compile Include="wpmHTML.vb" />
-    <Compile Include="wpmHttpModule.vb" />
-    <Compile Include="wpmImage.vb" />
-    <Compile Include="wpmImageAdapter.vb" />
-    <Compile Include="wpmImageList.vb" />
-    <Compile Include="wpmImagePresenter.vb" />
-    <Compile Include="wpmKeyword.vb" />
-    <Compile Include="wpmKeywordList.vb" />
-    <Compile Include="wpmLocation.vb" />
-    <Compile Include="wpmLocationList.vb" />
-    <Compile Include="wpmLocationTrail.vb" />
-    <Compile Include="wpmLocationTrailList.vb" />
-    <Compile Include="wpmLogging.vb" />
-    <Compile Include="wpmMasterPage.vb">
+    <Compile Include="Utility\UIBase\AlertBoxType.vb" />
+    <Compile Include="Utility\UIBase\ApplicationMasterPage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="wpmPage.vb">
+    <Compile Include="Utility\UIBase\ApplicationPage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="wpmPageAlias.vb" />
-    <Compile Include="wpmPart.vb" />
-    <Compile Include="wpmPartGroup.vb" />
-    <Compile Include="wpmRssFeed.vb" />
-    <Compile Include="wpmRssTools.vb" />
-    <Compile Include="wpmSession.vb" />
-    <Compile Include="wpmSessionTracker.vb" />
-    <Compile Include="wpmSite.vb" />
-    <Compile Include="wpmSiteGroup.vb" />
-    <Compile Include="wpmSiteList.vb" />
-    <Compile Include="wpmSiteListAdapter.vb" />
-    <Compile Include="wpmSiteParameter.vb" />
-    <Compile Include="wpmSiteProfile.vb" />
-    <Compile Include="wpmSiteSettings.vb" />
-    <Compile Include="wpmSiteTheme.vb" />
-    <Compile Include="wpmSortDirection.vb" />
-    <Compile Include="wpmXML.vb" />
-    <Compile Include="wpmXMLSitemap.vb" />
+    <Compile Include="Utility\UIBase\ApplicationUserControl.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Utility\UIBase\IAlertBox.vb" />
+    <Compile Include="Utility\UIBase\IApplicationFilter.vb" />
+    <Compile Include="Utility\UIBase\IApplicationList.vb" />
+    <Compile Include="Utility\UtilityItemForCollection.vb" />
+    <Compile Include="Utility\UtilityMailer.vb" />
+    <Compile Include="Utility\UtilityRSSFeed.vb" />
+    <Compile Include="Utility\UtilityRSSTools.vb" />
+    <Compile Include="Utility\UtilitySortDirection.vb" />
+    <Compile Include="Utility\UtilityXMLDocument.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -173,12 +240,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WebProjectMechanics.SQLResources.resx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>WebProjectMechanics.SQLResources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
