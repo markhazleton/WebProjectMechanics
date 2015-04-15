@@ -1,0 +1,39 @@
+/* Gallery Styles */
+
+#motioncontainer {
+margin:0 auto;  
+width: 100%; /* Set to gallery width, in px or percentage */
+height: 130px; /* Set to gallery height */
+}
+
+#motioncontainer ul{
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+#motioncontainer li{
+display: inline;
+}
+
+#motioncontainer a img {
+border: 1px solid #cccccc; /* Set image border color */
+}
+
+#motioncontainer a:hover img {
+border: 1px solid navy; /* Set image border hover color */
+}
+
+#statusdiv {
+background-color: lightyellow;
+border: 1px solid gray;
+padding: 2px;
+position: absolute; /* Stop Editing Gallery Styles */
+left: -300px;
+visibility: hidden;
+}
+
+#motioncontainer a:hover {
+color: red; /* Dummy definition to overcome IE bug */
+}
+/* End Gallery Styles */

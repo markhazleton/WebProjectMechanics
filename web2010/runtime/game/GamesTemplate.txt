@@ -1,0 +1,3 @@
+<div class="game-entry" id="post-~~GameName~~">
+<h1><a href="~~GamePageURL~~">~~GameName~~</a></h1>
+</div>

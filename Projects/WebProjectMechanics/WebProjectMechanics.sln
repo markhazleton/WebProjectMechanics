@@ -8,7 +8,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web2010", "..\..\web2010", "{EC208E10-F58B-451F-BDCE-7490BC1C8A08}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{52B05D4F-A9AE-4E79-9BE6-65E1188CF6A8}|WebProjectMechanics.dll;"
+		ProjectReferences = "{52B05D4F-A9AE-4E79-9BE6-65E1188CF6A8}|WebProjectMechanics.dll;{de007689-7392-4a0a-a26e-8ceb2053ebfd}|RemoveWWW.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/web2010"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\web2010\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\web2010\"
@@ -28,6 +28,15 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web2010", "..\..\web2010", 
 		SlnRelativePath = "..\..\web2010\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{81B8A727-C599-42C1-A9D0-C15CAF5CF049}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemoveWWW", "..\..\..\removewww\RemoveWWW.vbproj", "{DE007689-7392-4A0A-A26E-8CEB2053EBFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +51,10 @@ Global
 		{EC208E10-F58B-451F-BDCE-7490BC1C8A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC208E10-F58B-451F-BDCE-7490BC1C8A08}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC208E10-F58B-451F-BDCE-7490BC1C8A08}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

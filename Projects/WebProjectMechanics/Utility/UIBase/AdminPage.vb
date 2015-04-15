@@ -38,9 +38,6 @@ Public Class AdminPage
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=ParameterType", .Name = "ParameterType"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=PageType", .Name = "LocationType"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=PageAlias", .Name = "PageAlias"})
-        If Not String.IsNullOrEmpty(wpm_DomainConfig.RecipeHomePageID) Then
-            myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Recipe", .Name = "Recipe"})
-        End If
         Return myListItems
     End Function
 End Class
