@@ -45,8 +45,6 @@ Partial Class SiteList
         mylist.Configuration.SQLDBConnString = String.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|{0};", myFileListBox.SelectedItem.Text)
         mylist.Configuration.DomainName = Replace(Replace(GridView1.SelectedRow.Cells(3).Text, "www.", ""), "http://", "")
         mylist.Configuration.AccessDatabasePath = Replace(Replace(myFileListBox.SelectedValue, HttpContext.Current.Server.MapPath("/"), "/"), "\", "/")
-        mylist.Configuration.RecipeHomePageID = " "
-        mylist.Configuration.RecipeDatabasePath = " "
         If Not FileProcessing.VerifyFolderExists(wpm_SiteConfig.ConfigFolderPath & "sites") Then
             FileProcessing.CreateFolder(wpm_SiteConfig.ConfigFolderPath & "sites")
         End If

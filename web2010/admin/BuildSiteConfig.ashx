@@ -46,8 +46,6 @@ Public Class BuildSiteConfig : Implements IHttpHandler
                 mylist.Configuration.SQLDBConnString = ConStr
                 mylist.Configuration.DomainName = myCompany.DomainName
                 mylist.Configuration.AccessDatabasePath = wpm_SiteConfig.ConfigFolder & Replace(Replace(DatabasePath.ToLower, wpm_SiteConfig.ConfigFolderPath.ToLower, String.Empty), "\", "/")
-                mylist.Configuration.RecipeHomePageID = " "
-                mylist.Configuration.RecipeDatabasePath = " "
                 DomainConfigurations.Save(String.Format("{1}\sites\{0}.xml", mylist.Configuration.DomainName, context.Server.MapPath(wpm_SiteConfig.ConfigFolder)), mylist)
                 mySB.Append(String.Format("<li>{0} - {1} - {2} </li>", myCompany.DomainName, myCompany.CompanyID, myCompany.CompanyTitle))
             Else

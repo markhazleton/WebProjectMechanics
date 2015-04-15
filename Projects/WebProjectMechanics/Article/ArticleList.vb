@@ -258,8 +258,8 @@ Public Class ArticleList
         Dim outputxml = <?xml version="1.0" encoding="UTF-8"?>
                         <rss version="2.0">
                             <channel>
-                                <title>Recipe Library</title>
-                                <description>Recipe Library</description>
+                                <title>Article List</title>
+                                <description>Web Project Mechanics</description>
                                 <link></link>
                                 <lastBuildDate><%= Now.ToLongDateString %></lastBuildDate>
                                 <pubDate><%= Now.ToLongDateString %></pubDate>

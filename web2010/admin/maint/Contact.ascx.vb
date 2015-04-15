@@ -9,13 +9,13 @@ Partial Class admin_maint_Contact
     ' Contact
     Public Const STR_ContactID As String = "ContactID"
 
-    Public Const STR_SelectContactList As String = "SELECT [Contact].[ContactID], [Contact].[GroupID], [Contact].[PrimaryContact], [Contact].[FirstName], [Contact].[MiddleInitial], [Contact].[LastName], [Contact].[EMail], [Contact].[LogonName], [Contact].[LogonPassword], [Contact].[CompanyID], [Contact].[Active], [Contact].[RoleID] FROM Contact "
+    Public Const STR_SelectContactList As String = "SELECT [Contact].[ContactID], [Contact].[GroupID], [Contact].[PrimaryContact], [Contact].[FirstName], [Contact].[MiddleInitial], [Contact].[LastName], [Contact].[EMail], [Contact].[LogonName], [Contact].[LogonPassword], [Contact].[CompanyID], [Contact].[Active] FROM Contact "
 
-    Public Const STR_SelectContactByContactID As String = "SELECT [Contact].[ContactID], [Contact].[GroupID], [Contact].[PrimaryContact], [Contact].[FirstName], [Contact].[MiddleInitial], [Contact].[LastName], [Contact].[EMail], [Contact].[LogonName], [Contact].[LogonPassword], [Contact].[CompanyID], [Contact].[Active], [Contact].[RoleID] FROM Contact WHERE [Contact].[ContactID]={0} "
+    Public Const STR_SelectContactByContactID As String = "SELECT [Contact].[ContactID], [Contact].[GroupID], [Contact].[PrimaryContact], [Contact].[FirstName], [Contact].[MiddleInitial], [Contact].[LastName], [Contact].[EMail], [Contact].[LogonName], [Contact].[LogonPassword], [Contact].[CompanyID], [Contact].[Active] FROM Contact WHERE [Contact].[ContactID]={0} "
 
     Public Const STR_UPDATE_Contact As String = "UPDATE [Contact] SET [PrimaryContact] = @PrimaryContact, [FirstName] = @FirstName, [LastName] = @LastName, [Email] = @Email, [LogonPassword] = @LogonPassword, [LogonName] = @LogonName, [GroupID] = @GroupID, [CompanyID] = @CompanyID WHERE [ContactID] = @ContactID "
 
-    Public Const STR_INSERT_Contact As String = "INSERT INTO Contact ([PrimaryContact] , [FirstName] , [LastName] , [Email] , [LogonPassword] , [LogonName] , [GroupID] , [RoleID] ,[CompanyID] ) VALUES (@PrimaryContact, @FirstName, @LastName, @Email, @LogonPassword, @LogonName, @GroupID, @RoleID,@CompanyID) "
+    Public Const STR_INSERT_Contact As String = "INSERT INTO Contact ([PrimaryContact] , [FirstName] , [LastName] , [Email] , [LogonPassword] , [LogonName] , [GroupID] , [CompanyID] ) VALUES (@PrimaryContact, @FirstName, @LastName, @Email, @LogonPassword, @LogonName, @GroupID, @CompanyID) "
 
     Public Const STR_DELETE_Contact As String = "DELETE FROM [Contact] WHERE [ContactID]= @ContactID "
 
@@ -109,7 +109,6 @@ Partial Class admin_maint_Contact
                     wpm_AddParameterStringValue("@LogonPassword", LogonPasswordTextBox.Text, cmd)
                     wpm_AddParameterStringValue("@LogonName", LogonNameTextBox.Text, cmd)
                     wpm_AddParameterValue("@GroupID", ddlGroup.SelectedValue, SqlDbType.Int, cmd)
-                    wpm_AddParameterValue("@RoleID", 5, SqlDbType.Int, cmd)
                     wpm_AddParameterValue("@CompanyID", hfCompanyID.Value, SqlDbType.Int, cmd)
                     iRowsAffected = cmd.ExecuteNonQuery()
                 End Using
