@@ -4,7 +4,7 @@ Imports System.Text
 Public Class ArticleList
     Inherits List(Of Article)
     Private Property SearchArticleID As Integer
-    Public Property curLocationID As String
+    Public Property curLocation As Location
     Public Property curArticleID As Integer
     Public Property curRecordsPerLocation As Integer = 3
     Public Property CompanyDefaultArticleID As Integer
@@ -20,7 +20,7 @@ Public Class ArticleList
         MyBase.New(collection)
     End Sub
     Sub New(ByRef myActiveCompany As ActiveCompany)
-        curLocationID = myActiveCompany.CurrentLocationID()
+        curLocation = myActiveCompany.CurLocation
         curArticleID = wpm_CurrentArticleID
         CompanyDefaultArticleID = myActiveCompany.DefaultArticleID
         PopulatePageArticleList(myActiveCompany.CurrentLocationID())
@@ -63,9 +63,9 @@ Public Class ArticleList
     End Function
     Private Function GetArticleURL(ByVal myarticle As Article) As String
         If wpm_SiteConfig.Use404Processing Then
-            Return wpm_FormatNameForURL(String.Format("{0}/{1}", myarticle.PageName, myarticle.ArticleName))
+            Return wpm_FormatNameForURL(String.Format("/{0}", myarticle.ArticleName))
         Else
-            Return String.Format("/default.aspx?c={0}&a={1}", curLocationID, myarticle.ArticleID)
+            Return String.Format("/default.aspx?c={0}&a={1}", curLocation.LocationURL, myarticle.ArticleID)
         End If
     End Function
 
@@ -131,7 +131,7 @@ Public Class ArticleList
 
     Public Function BuildBlogList(ByRef sbBlogTemplate As StringBuilder, ByVal iCurrentPageNumber As Integer) As String
         Dim sItem As New StringBuilder
-        Dim sURL As String = (String.Format("/default.aspx?c={0}&amp;a={1}", curLocationID, curArticleID))
+        Dim sURL As String = (String.Format("/default.aspx?c={0}&amp;a={1}", curLocation.LocationID, curArticleID))
         Dim sSubPageNav As String = ("")
         Dim iPageCount As Integer = 0
         Dim iFirstDisplay As Integer = 0
@@ -221,7 +221,7 @@ Public Class ArticleList
         sItem.Replace("~~PostBody~~", myArticle.ArticleBody)
         sItem.Replace("~~PostSummary~~", myArticle.ArticleSummary)
         sItem.Replace("~~PostDescription~~", myArticle.ArticleDescription)
-        sItem.Replace("~~BlogPageURL~~", "/default.aspx?c=" & curLocationID)
+        sItem.Replace("~~BlogPageURL~~", curLocation.BreadCrumbURL.Replace(myArticle.ArticleURL,String.Empty))
         sItem.Replace("~~BlogPageName~~", myArticle.PageName)
         sItem.Replace("~~PostAuthor~~", myArticle.ArticleAuthor)
         sItem.Replace("~~ArticleAdmin~~", myArticle.ArticleAdmin)

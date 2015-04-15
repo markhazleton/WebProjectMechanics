@@ -256,8 +256,6 @@ Public Class PartDirectory
         wpm_RunDeleteSQL(sqlwrk, "wpmLinkDirectory.DeleteCat.Link")
         sqlwrk = String.Format("DELETE FROM LinkCategory WHERE ID={0} and PageID={1} ", intCategoryID, CurrentPageID)
         wpm_RunDeleteSQL(sqlwrk, "wpmLinkDirectory.DeleteCat.LinkCategory")
-        sqlwrk = String.Format("DELETE FROM LinkRank WHERE CateID={0} and PageID={1} ", intCategoryID, CurrentPageID)
-        wpm_RunDeleteSQL(sqlwrk, "wpmLinkDirectory.DeleteCat.LinkRank")
         sqlwrk = String.Format("SELECT ID FROM LinkCategory WHERE ParentID={0} and PageID={1} ", intCategoryID, CurrentPageID)
         For Each row As DataRow In wpm_GetDataTable(sqlwrk, String.Format("DeleteCat - {0} ", intCategoryID)).Rows
             DeleteCat(row.Item("ID").ToString, "wpmLinkDirectory.DeleteCat.LinkCategory")

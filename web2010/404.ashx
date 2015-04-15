@@ -26,14 +26,11 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
         End With
 
         Dim myURIBuilder As UriBuilder = New UriBuilder(context.Request.Url)
+        
         HttpContext.Current.Session("wpm_RequestURL") = context.Request.Url
         strNotFound = HttpContext.Current.Request.Url.ToString()
         
         Dim strHost As String = String.Format("{0}:{1}", myURIBuilder.Host, myURIBuilder.Port)
-        
-        Dim newString As String = strNotFound.Split(strHost).Last
-        
-        HttpContext.Current.Session("wpm_newString") = newString
                         
         Dim sModuleURL As String
         If myURIBuilder.Port = 80 Then
@@ -44,9 +41,7 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
                 
         strNotFound = Replace(strNotFound, sModuleURL, String.Empty)
         strNotFound = RemoveQueryString(strNotFound)
-        
-        HttpContext.Current.Session("wpm_SetCurrentLocation") = myCompany.SetCurrentLocation(strNotFound, False)
-        
+                
         If HttpContext.Current.Session("wpm_Last404") = strNotFound Then
             HttpContext.Current.Response.Redirect("/")
         Else
@@ -69,6 +64,7 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
             End If
             
             If sRedirectURL = String.Empty Then
+                
                 If (Right(strNotFound, 11) = "sitemap.xml") Then
                     myCompany.CurLocation.LocationTypeCD = "sitemap.xml"
                     sRedirectURL = String.Format("{0}sitemap.aspx", wpm_SiteConfig.ApplicationHome())
@@ -110,7 +106,7 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
                 ElseIf (Right(strNotFound, 5) = ".jpeg") Then
                     context.Server.Transfer(String.Format("/runtime/catalog/GenericImage.aspx?Path={0}", strNotFound))
                 End If
-                
+            Else
                 If (sRedirectURL <> String.Empty) Then
                     wpm_Build301Redirect(sRedirectURL)
                 Else
@@ -132,9 +128,6 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
                     wpm_AddHTMLHead = myContents.ToString
                     context.Response.Write(myCompany.GetHTML(String.Format("<blockquote>The page you were looking for can not be found</blockquote><br/><strong>{0}</strong><br/><br/><form><div align=""center""><textarea rows=8 cols=60 wrap=soft></textarea></div></form><br/><br/><hr><sitemap>", sFileName), False, wpm_SiteTemplatePrefix))
                 End If
-            Else
-                HttpContext.Current.Session("wpm_Last404") = String.Empty
-                myCompany.WriteCurrentLocation()
             End If
         Else
             HttpContext.Current.Session("wpm_Last404") = String.Empty

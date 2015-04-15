@@ -18,10 +18,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{a3531d83-00f1-43ff-833a-1eed7d4e437f}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
-    <SourceWebVirtualPath>/WebSite</SourceWebVirtualPath>
+    <SourceWebVirtualPath>/web2010</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SourceWebProject>http://localhost</SourceWebProject>
-    <SourceWebMetabasePath>/LM/W3SVC/1/ROOT</SourceWebMetabasePath>
+    <SourceWebProject>C:\codeplex\wpm\web2010</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/3/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -42,33 +42,13 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     </AssemblyAttributes>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects\LINQHelper\LINQHelper.vbproj">
-      <Project>{7A0F4560-3BEA-4487-8575-0852BBB561A6}</Project>
-      <Name>LINQHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Projects\LumenWorks.Framework.IO\LumenWorks.Framework.IO.csproj">
-      <Project>{E3B83D68-C90C-4874-8E5F-DEC8D038BC7C}</Project>
-      <Name>LumenWorks.Framework.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Projects\RemoveWWW\RemoveWWW.vbproj">
+    <ProjectReference Include="..\..\removewww\RemoveWWW.vbproj">
       <Project>{DE007689-7392-4A0A-A26E-8CEB2053EBFD}</Project>
       <Name>RemoveWWW</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Projects\RssToolkit\RssToolkit.csproj">
-      <Project>{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}</Project>
-      <Name>RssToolkit</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Projects\WebProjectMechanics\WebProjectMechanics.vbproj">
-      <Project>{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}</Project>
+      <Project>{52B05D4F-A9AE-4E79-9BE6-65E1188CF6A8}</Project>
       <Name>WebProjectMechanics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Projects\wpmMineralCollection\wpmMineralCollection.vbproj">
-      <Project>{BC4D92AD-875F-430A-AFA4-B70DA422700F}</Project>
-      <Name>wpmMineralCollection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Projects\WPMRecipe\WPMRecipe.vbproj">
-      <Project>{317A159C-13EB-4979-B1AC-AD81A72C2DD0}</Project>
-      <Name>WPMRecipe</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
