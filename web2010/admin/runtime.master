@@ -1,0 +1,9 @@
+<%@ Master Language="VB" CodeFile="runtime.master.vb" Inherits="RuntimeMaster" %>
+
+<asp:literal id="litTop" runat="server"></asp:literal>
+<form id="form1" runat="server">
+    <asp:contentplaceholder id="content" runat="server">
+     </asp:contentplaceholder>
+</form>
+<asp:literal id="litBottom" runat="server"></asp:literal>
+

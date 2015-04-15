@@ -89,6 +89,19 @@ WebProjectMechanics
 	<param name="strToHash">The String to Hash</param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
 </member><member name="M:WebProjectMechanics.ApplicationMasterPage.GetFileMenu">
 	<summary>
  GetFileMenu - Returns HTML List of all files in the current directory
@@ -269,19 +282,6 @@ WebProjectMechanics
 	<param name="configValue"></param>
 	<param name="defaultValue"></param>
 	<returns></returns>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:WebProjectMechanics.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
 </member>
 </members>
 </doc>

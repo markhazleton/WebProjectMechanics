@@ -1,0 +1,11 @@
+<div class="blog-name">
+<h2><a href="~~BlogPageURL~~" title="~~BlogPageName~~">~~BlogPageName~~</a></h2>
+</div>
+<div class="blog-entry" id="post-~~PostID~~">
+  <div class="blog-byline"><h2><a href="~~PostURL~~">~~PostTitle~~</a></h2></div>
+  <div class="blog-footer">Posted by ~~PostAuthor~~ on ~~PostShortDate~~</div>
+  <div class="blog-body">~~PostBody~~</div>
+</div>
+<blockquote>~~PostSummary~~</blockquote>
+~~ArticleAdmin~~
+
