@@ -13,7 +13,7 @@ Public Module ApplicationUser
         wpm_CheckCommandParameters()
         wpm_SetPageHistory()
         Dim myUser As New UserInfo With {.UserID = -1, .IsActive = False, .DisplayName = "Guest"}
-        Dim strSQL As String = (String.Format("SELECT Contact.ContactID, Contact.LogonName, Contact.PrimaryContact,  Contact.GroupID,  Contact.LogonPassword,  Contact.Active,  Contact.EMail,  Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate, Company.DefaultArticleID, Company.HomePageID, Company.DefaultSiteTemplate, '' as RoleTitle, '' as RoleID, 'False' as FilterMenu FROM Contact, Company  WHERE Contact.CompanyID=Company.CompanyID AND Contact.LogonName = '{0}' AND Contact.LogonPassword = '{1}' ", _
+        Dim strSQL As String = (String.Format("SELECT Contact.ContactID, Contact.LogonName, Contact.PrimaryContact,  Contact.GroupID,  Contact.LogonPassword,  Contact.Active,  Contact.EMail,  Company.CompanyID,  Company.CompanyName,  Company.GalleryFolder,  Company.SiteURL,  Company.SiteTitle,  Company.SiteTemplate, Company.DefaultArticleID, Company.HomePageID, Company.DefaultSiteTemplate FROM Contact, Company  WHERE Contact.CompanyID=Company.CompanyID AND Contact.LogonName = '{0}' AND Contact.LogonPassword = '{1}' ", _
                                     Replace(sLogonName, " ", ""), _
                                     Replace(sPassword, " ", "")))
 
@@ -42,12 +42,6 @@ Public Module ApplicationUser
                 Else
                     wpm_ContactEmail = myRow.Item("EMail").ToString
                 End If
-                ' mySession.ContactRoleTitle = myRow.Item("RoleTitle").ToString
-                ' mySession.ContactRoleID = myRow.Item("RoleID").ToString
-                ' mySession.ContactRoleFilterMenu = myRow.Item("FilterMenu").ToString
-                ' mySession.CompanyID = myRow.Item("CompanyID").ToString
-                ' mySession.SiteTemplatePrefix = myRow.Item("TemplatePrefix").ToString
-                ' mySession.DefaultSitePrefix = myRow.Item("DefaultSiteTemplate").ToString
             End If
             Exit For
         Next

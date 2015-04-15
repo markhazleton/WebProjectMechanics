@@ -13,8 +13,6 @@ Public Class UserInfo
     Property TemplatePrefix As String
     Property MessageCount As Integer
     Property UserID As Integer
-    Property UserRoleID As Integer
-    Property UserRoleName As String
     Property CoAccountID As String
     Property LastloginDate As DateTime
     Property CreatedDate As DateTime

@@ -180,7 +180,6 @@ Public Class ActiveCompany
         ProcessTag(sbContent, "~~UserName~~")
         ProcessTag(sbContent, "~~Year~~")
         ProcessTag(sbContent, "~~Today~~")
-        ProcessTag(sbContent, "~~UserRole~~")
         ProcessTag(sbContent, "~~UserPreferences~~")
         ProcessTag(sbContent, "~~PageArticles~~")
         ProcessTag(sbContent, "~~KeywordSearch~~")

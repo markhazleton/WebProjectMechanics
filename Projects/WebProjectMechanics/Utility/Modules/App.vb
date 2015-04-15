@@ -6,10 +6,8 @@ Public Module App
     ' Public Shared Config As New FileConfig
     Public Const wpm_FileNotFound As String = "404 - File Not Found"
     Public Const wpm_STR_CatalogPath As String = "/runtime/catalog/"
-    Private Const wpm_STR_DomainConfig As String = "wpm_DomainConfig"
     Private Const wpm_STR_SiteConfig As String = "wpm_SiteConfig"
     Private Const wpm_STR_ListPageURL As String = "wpm_ListPageURL"
-    Private Const wpm_STR_LoginLink As String = "wpm_ListPageURL"
     Private Const wpm_STR_DefaultSitePrefix As String = "wpm_DefaultSitePrefix"
     Private Const wpm_STR_SiteTemplatePrefix As String = "wpm_SiteTemplatePrefix"
     Private Const wpm_STR_RightContent As String = "wpm_RightContent"
@@ -20,11 +18,8 @@ Public Module App
     Private Const wpm_STR_UserEmail As String = "wpm_UserEmail"
     Private Const wpm_STR_ContactName As String = "wpm_UserName"
     Private Const wpm_STR_ContactEmail As String = "wpm_UserEmail"
-    Private Const wpm_STR_UserRoleTitle As String = "wpm_UserRoleTitle"
-    Private Const wpm_STR_UserRoleID As String = "wpm_UserRoleID"
 
     Private Const wpm_STR_CurrentSQL As String = "wpm_CurrentSQL"
-    Private Const wpm_STR_UserRoleFilterMenu As String = "wpm_UserRoleFilterMenu"
     Private Const wpm_STR_SiteHomePageID As String = "wpm_SiteHomePageID"
     Private Const wpm_STR_PageHistory As String = "wpm_PageHistory"
     Private Const wpm_STR_CurrentSiteName As String = "wpm_CurrentSiteName"
@@ -78,7 +73,6 @@ Public Module App
                             mySite.CompanyID = CStr(mySiteSettings.Configuration.CompanyID)
                             mySite.SQLDBConnString = CStr(mySiteSettings.Configuration.SQLDBConnString)
                             mySite.AccessDatabasePath = CStr(mySiteSettings.Configuration.AccessDatabasePath)
-                            mySite.RecipeHomePageID = mySiteSettings.Configuration.RecipeHomePageID
                             HttpContext.Current.Application(wpm_HostName) = mySite
                         End If
                     Else
@@ -232,33 +226,12 @@ Public Module App
         HttpContext.Current.Session.Item(wpm_STR_UserEmail) = sUserEmail
         Return True
     End Function
-    Public Function wpm_GetUserRoleTitle() As String
-        Return CStr(HttpContext.Current.Session.Item(wpm_STR_UserRoleTitle))
-    End Function
-    Public Function wpm_SetUserRoleTitle(ByVal sUserRoleTitle As String) As Boolean
-        HttpContext.Current.Session.Item(wpm_STR_UserRoleTitle) = sUserRoleTitle
-        Return True
-    End Function
-    Public Function wpm_GetUserRoleID() As String
-        Return CStr(HttpContext.Current.Session.Item(wpm_STR_UserRoleID))
-    End Function
-    Public Function wpm_SetUserRoleID(ByVal sUserRoleID As String) As String
-        HttpContext.Current.Session.Item(wpm_STR_UserRoleID) = sUserRoleID
-        Return HttpContext.Current.Session.Item(wpm_STR_UserRoleID).ToString()
-    End Function
     Public Function wpm_GetCurrentSQL() As String
         Return CStr(HttpContext.Current.Session.Item(wpm_STR_CurrentSQL))
     End Function
     Public Function wpm_SetCurrentSQL(ByVal sCurrentSQL As String) As String
         HttpContext.Current.Session.Item(wpm_STR_CurrentSQL) = sCurrentSQL
         Return HttpContext.Current.Session.Item(wpm_STR_CurrentSQL).ToString
-    End Function
-    Public Function wpm_GetUserRoleFilterMenu() As Boolean
-        Return CBool(HttpContext.Current.Session.Item(wpm_STR_UserRoleFilterMenu))
-    End Function
-    Public Function wpm_SetUserRoleFilterMenu(ByVal sUserRoleFilterMenu As String) As String
-        HttpContext.Current.Session.Item(wpm_STR_UserRoleFilterMenu) = sUserRoleFilterMenu
-        Return HttpContext.Current.Session.Item(wpm_STR_UserRoleFilterMenu).ToString
     End Function
     Public Function wpm_GetDefaultSitePrefix() As String
         If IsDBNull(HttpContext.Current.Session.Item(wpm_STR_DefaultSitePrefix)) Then
