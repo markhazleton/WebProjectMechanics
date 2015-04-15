@@ -331,7 +331,7 @@
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-15T11:27:56.2270446-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
@@ -374,7 +374,154 @@
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-15T11:27:56.2270446-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>764</LocationID>
+      <ArticleID>0</ArticleID>
+      <LocationTypeCD>BLOG</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>4</GroupID>
+      <LocationName>Blog</LocationName>
+      <LocationTitle>Blog</LocationTitle>
+      <LocationDescription>This is our Site Blog</LocationDescription>
+      <LocationKeywords>blog</LocationKeywords>
+      <LocationFileName />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <ParentLocationID />
+      <DefaultOrder>7</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <SiteTypeID />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/default.aspx?c=764&amp;a=0</TransferURL>
+      <BreadCrumbURL>/blog</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Blog&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>764</LocationID>
+          <Name>Blog</Name>
+          <Description>This is our Site Blog</Description>
+          <ParentLocationID />
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-04-15T15:07:22</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Article</RecordSource>
+      <LocationID>ART-510</LocationID>
+      <ArticleID>510</ArticleID>
+      <LocationTypeCD>BLOG</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>4</GroupID>
+      <LocationName>My First Blog Post</LocationName>
+      <LocationTitle>My First Blog Post</LocationTitle>
+      <LocationDescription>My First Blog Post</LocationDescription>
+      <LocationKeywords>blog</LocationKeywords>
+      <LocationFileName />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <ParentLocationID>764</ParentLocationID>
+      <DefaultOrder>8</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <SiteTypeID />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/default.aspx?a=510&amp;c=764</TransferURL>
+      <BreadCrumbURL>/blog/my-first-blog-post</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/blog" title="This is our Site Blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;My First Blog Post&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>764</LocationID>
+          <Name>Blog</Name>
+          <Description>This is our Site Blog</Description>
+          <ParentLocationID />
+          <DisplayURL>/blog</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>ART-510</LocationID>
+          <Name>My First Blog Post</Name>
+          <Description>My First Blog Post</Description>
+          <ParentLocationID>764</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Article</RecordSource>
+      <LocationID>ART-511</LocationID>
+      <ArticleID>511</ArticleID>
+      <LocationTypeCD>BLOG</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>4</GroupID>
+      <LocationName>My Second Blog Post</LocationName>
+      <LocationTitle>My Second Blog Post</LocationTitle>
+      <LocationDescription>My Second Blog Post</LocationDescription>
+      <LocationKeywords>blog</LocationKeywords>
+      <LocationFileName />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <ParentLocationID>764</ParentLocationID>
+      <DefaultOrder>9</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <SiteTypeID />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/default.aspx?a=511&amp;c=764</TransferURL>
+      <BreadCrumbURL>/blog/my-second-blog-post</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/blog" title="This is our Site Blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;My Second Blog Post&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>764</LocationID>
+          <Name>Blog</Name>
+          <Description>This is our Site Blog</Description>
+          <ParentLocationID />
+          <DisplayURL>/blog</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>ART-511</LocationID>
+          <Name>My Second Blog Post</Name>
+          <Description>My Second Blog Post</Description>
+          <ParentLocationID>764</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
     </Location>
   </Locations>
   <Parts>
@@ -609,13 +756,46 @@
       <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=492"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
       <ArticleAuthor />
       <ArticleBody>&lt;p&gt;&lt;strong&gt;Welcome&lt;/strong&gt; to the home page for the &amp;quot;Web Project Mechanis - WPM&amp;nbsp;cms tool.&lt;/p&gt;
-~~lightbox~~</ArticleBody>
+
+&lt;p&gt;~~cmotion~~&lt;/p&gt;</ArticleBody>
       <ArticleDescription>Home of WebProjectMechanics.com</ArticleDescription>
-      <ArticleModDate>2010-05-05T00:00:00</ArticleModDate>
+      <ArticleModDate>2015-04-15T11:42:05</ArticleModDate>
       <ArticleURL>/home</ArticleURL>
       <IsArticleActive>true</IsArticleActive>
       <IsArticleDefault>false</IsArticleDefault>
       <PageName>Home</PageName>
+      <RowsPerPage>0</RowsPerPage>
+    </Article>
+    <Article>
+      <ArticleID>511</ArticleID>
+      <ArticleName>My Second Blog Post</ArticleName>
+      <ArticlePageID>764</ArticlePageID>
+      <ArticleSummary>My Second Blog Post</ArticleSummary>
+      <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=511"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
+      <ArticleAuthor>Mark Hazleton</ArticleAuthor>
+      <ArticleBody>&lt;p&gt;My Second Blog Post&lt;/p&gt;</ArticleBody>
+      <ArticleDescription>My Second Blog Post</ArticleDescription>
+      <ArticleModDate>2015-04-15T15:06:52</ArticleModDate>
+      <ArticleURL>/my-second-blog-post</ArticleURL>
+      <IsArticleActive>true</IsArticleActive>
+      <IsArticleDefault>false</IsArticleDefault>
+      <PageName>My Second Blog Post</PageName>
+      <RowsPerPage>0</RowsPerPage>
+    </Article>
+    <Article>
+      <ArticleID>510</ArticleID>
+      <ArticleName>My First Blog Post</ArticleName>
+      <ArticlePageID>764</ArticlePageID>
+      <ArticleSummary>My First Blog Post</ArticleSummary>
+      <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=510"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
+      <ArticleAuthor>Mark Hazleton</ArticleAuthor>
+      <ArticleBody>&lt;p&gt;My First Blog Post&lt;/p&gt;</ArticleBody>
+      <ArticleDescription>My First Blog Post</ArticleDescription>
+      <ArticleModDate>2015-04-15T14:52:11</ArticleModDate>
+      <ArticleURL>/my-first-blog-post</ArticleURL>
+      <IsArticleActive>true</IsArticleActive>
+      <IsArticleDefault>false</IsArticleDefault>
+      <PageName>My First Blog Post</PageName>
       <RowsPerPage>0</RowsPerPage>
     </Article>
   </Articles>

@@ -177,11 +177,11 @@ Public Class admin_maint_Location
             Response.Redirect(String.Format("/admin/maint/default.aspx?Type=Article&ArticleID={0}", reqLocation.ArticleID))
         End If
 
-        If reqLocation.LocationTypeCD = "Blog" Then
+        If reqLocation.LocationTypeCD.ToLower() = "blog" Then
             Response.Redirect(String.Format("/admin/maint/default.aspx?Type=Blog&LocationID={0}", reqLocation.LocationID))
         End If
 
-        If reqLocation.LocationTypeCD = "CATALOG" or reqLocation.LocationTypeCD = "GALLERY" then 
+        If reqLocation.LocationTypeCD.ToLower()  = "catalog" or reqLocation.LocationTypeCD.ToLower()  = "gallery" then 
             Response.Redirect(String.Format("/admin/maint/default.aspx?Type=Gallery&LocationID={0}", reqLocation.LocationID))
         End If
 

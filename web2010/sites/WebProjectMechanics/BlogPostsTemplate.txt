@@ -1,8 +1,13 @@
-<div class="blog-entry" id="post-~~PostID~~">
-  <div class="blog-name">
-    <h2><a href="~~PostURL~~" title="~~PostName~~">~~PostName~~</a></h2>
-  </div>
-  <div class="blog-body">~~PostSummary~~</div><br>
-  <div class="blog-date">Posted ~~PostShortDate~~ by ~~PostAuthor~~</div>    
-</div>
-~~ArticleAdmin~~
+
+						<div class="blog-post blog-single-post">
+							<div class="single-post-title" id="post-~~PostID~~">
+								<h2><a href="~~PostURL~~">~~PostTitle~~</a></h2>
+							</div>
+							<div class="single-post-info">
+								<i class="glyphicon glyphicon-time"></i>~~PostShortDate~~ by ~~PostAuthor~~
+							</div>							
+							<div class="single-post-content">
+							~~PostSummary~~
+							~~ArticleAdmin~~
+							</div>
+						</div>

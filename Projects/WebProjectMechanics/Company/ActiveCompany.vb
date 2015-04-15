@@ -855,7 +855,7 @@ Public Class ActiveCompany
                     urlName = Left(urlName, Len(urlName) - 1)
                 Else
                     If (indexc > 1) Then
-                        urlName = Right(urlName, Len(urlName) - indexc)
+                        urlName = Right(urlName, Len(urlName) - indexc +1)
                     End If
                 End If
                 bMatch = wpm_CheckForMatch(urlName, myLocation.LocationURL)
