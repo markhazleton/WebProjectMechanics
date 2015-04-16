@@ -231,110 +231,6 @@
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>763</LocationID>
-      <ArticleID>0</ArticleID>
-      <LocationTypeCD>Form</LocationTypeCD>
-      <LocationTypeID>28</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Contact Us</LocationName>
-      <LocationTitle>Contact Us</LocationTitle>
-      <LocationDescription>Contact Us</LocationDescription>
-      <LocationKeywords>Contact Us</LocationKeywords>
-      <LocationFileName />
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>0</RowsPerPage>
-      <ImagesPerRow>0</ImagesPerRow>
-      <ParentLocationID>747</ParentLocationID>
-      <DefaultOrder>4</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <SiteTypeID />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=763&amp;a=0</TransferURL>
-      <BreadCrumbURL>/home/contact-us</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/home" title="This is the home of WebProjectMechanics.com"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Contact Us&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>747</LocationID>
-          <Name>Home</Name>
-          <Description>This is the home of WebProjectMechanics.com</Description>
-          <ParentLocationID />
-          <DisplayURL>/home</DisplayURL>
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>763</LocationID>
-          <Name>Contact Us</Name>
-          <Description>Contact Us</Description>
-          <ParentLocationID>747</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>2</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2010-04-25T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>761</LocationID>
-      <ArticleID>0</ArticleID>
-      <LocationTypeCD>MAIN</LocationTypeCD>
-      <LocationTypeID>8</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Sub Home Page</LocationName>
-      <LocationTitle>Sub Home Page</LocationTitle>
-      <LocationDescription>Sub Home Page</LocationDescription>
-      <LocationKeywords>Sub Home Page</LocationKeywords>
-      <LocationFileName />
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>0</RowsPerPage>
-      <ImagesPerRow>0</ImagesPerRow>
-      <ParentLocationID>747</ParentLocationID>
-      <DefaultOrder>5</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <SiteTypeID />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=761&amp;a=0</TransferURL>
-      <BreadCrumbURL>/home/sub-home-page</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/home" title="This is the home of WebProjectMechanics.com"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Sub Home Page&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>747</LocationID>
-          <Name>Home</Name>
-          <Description>This is the home of WebProjectMechanics.com</Description>
-          <ParentLocationID />
-          <DisplayURL>/home</DisplayURL>
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>761</LocationID>
-          <Name>Sub Home Page</Name>
-          <Description>Sub Home Page</Description>
-          <ParentLocationID>747</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>2</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
       <LocationID>762</LocationID>
       <ArticleID>0</ArticleID>
       <LocationTypeCD>MAIN</LocationTypeCD>
@@ -349,7 +245,7 @@
       <RowsPerPage>0</RowsPerPage>
       <ImagesPerRow>0</ImagesPerRow>
       <ParentLocationID />
-      <DefaultOrder>6</DefaultOrder>
+      <DefaultOrder>4</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
@@ -374,7 +270,7 @@
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
@@ -392,7 +288,7 @@
       <RowsPerPage>0</RowsPerPage>
       <ImagesPerRow>0</ImagesPerRow>
       <ParentLocationID />
-      <DefaultOrder>7</DefaultOrder>
+      <DefaultOrder>5</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
@@ -435,7 +331,7 @@
       <RowsPerPage>0</RowsPerPage>
       <ImagesPerRow>0</ImagesPerRow>
       <ParentLocationID>764</ParentLocationID>
-      <DefaultOrder>8</DefaultOrder>
+      <DefaultOrder>6</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
@@ -469,7 +365,7 @@
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Article</RecordSource>
@@ -487,7 +383,7 @@
       <RowsPerPage>0</RowsPerPage>
       <ImagesPerRow>0</ImagesPerRow>
       <ParentLocationID>764</ParentLocationID>
-      <DefaultOrder>9</DefaultOrder>
+      <DefaultOrder>7</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
@@ -521,7 +417,7 @@
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-15T15:08:09.1983363-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
     </Location>
   </Locations>
   <Parts>
@@ -701,22 +597,6 @@
   </Parameters>
   <Articles>
     <Article>
-      <ArticleID>509</ArticleID>
-      <ArticleName>Contact Us</ArticleName>
-      <ArticlePageID>763</ArticlePageID>
-      <ArticleSummary>&lt;br /&gt;</ArticleSummary>
-      <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=509"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
-      <ArticleAuthor />
-      <ArticleBody>&lt;div class="yui-gd"&gt;&lt;div class="yui-u first"&gt;&lt;br /&gt;&lt;input type="hidden" name="subject" value="Contact Us" /&gt; &lt;input type="hidden" name="redirect" value="/" /&gt; This is a form to submit an inquiry or comment to WebProjectMechanics.com creator &lt;a href="http://projectmechanics.com/about-us/mark-hazleton"&gt;Mark Hazleton&lt;/a&gt;.&amp;#160;&lt;/div&gt;&lt;div class="yui-u"&gt;&lt;fieldset&gt;&lt;legend&gt;Send A Message To Frogsfolly&lt;/legend&gt;&lt;label&gt;Your Name:&lt;/label&gt;&lt;br /&gt;&lt;input style="background-color: rgb(255,255,160)" title="Your Name" size="60" name="Name" type="text" /&gt;&lt;br class="clearAll" /&gt;&lt;label&gt;Your Email:&lt;/label&gt;&lt;br /&gt;&lt;input style="background-color: rgb(255,255,160)" title="Your Email" size="60" name="Email" type="text" /&gt;&lt;br class="clearAll" /&gt;&lt;label&gt;Your Phone:&lt;/label&gt;&lt;br /&gt;&lt;input style="background-color: rgb(255,255,160)" title="Your Phone Number (optional)" size="60" name="Phone" type="text" /&gt;&lt;br class="clearAll" /&gt;&lt;label&gt;Subject:&lt;/label&gt;&lt;br /&gt;&lt;input title="Subject" size="60" name="Subject" type="text" /&gt;&lt;br class="clearAll" /&gt;&lt;label&gt;Message:&lt;/label&gt;&lt;br /&gt;&lt;textarea rows="5" cols="60" name="Message"&gt;&lt;/textarea&gt; &lt;br class="clearAll" /&gt;&lt;br class="clearAll" /&gt;&lt;input type="submit" name="Submit" value="Send To Mark" /&gt; &lt;br /&gt;&lt;br class="clearAll" /&gt;&lt;br class="clearAll" /&gt;&lt;/fieldset&gt; &lt;br class="clearAll" /&gt;&lt;br class="clearAll" /&gt;&amp;#160;&lt;/div&gt;&lt;/div&gt;</ArticleBody>
-      <ArticleDescription />
-      <ArticleModDate>2010-04-25T00:00:00</ArticleModDate>
-      <ArticleURL>/contact-us</ArticleURL>
-      <IsArticleActive>true</IsArticleActive>
-      <IsArticleDefault>false</IsArticleDefault>
-      <PageName>Contact Us</PageName>
-      <RowsPerPage>0</RowsPerPage>
-    </Article>
-    <Article>
       <ArticleID>508</ArticleID>
       <ArticleName>About Us</ArticleName>
       <ArticlePageID>762</ArticlePageID>
@@ -730,22 +610,6 @@
       <IsArticleActive>true</IsArticleActive>
       <IsArticleDefault>false</IsArticleDefault>
       <PageName>About Us</PageName>
-      <RowsPerPage>0</RowsPerPage>
-    </Article>
-    <Article>
-      <ArticleID>507</ArticleID>
-      <ArticleName>Sub Home Page</ArticleName>
-      <ArticlePageID>761</ArticlePageID>
-      <ArticleSummary>test article</ArticleSummary>
-      <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=507"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
-      <ArticleAuthor />
-      <ArticleBody>test article&lt;br type="_moz" /&gt;</ArticleBody>
-      <ArticleDescription />
-      <ArticleModDate>2010-04-25T00:00:00</ArticleModDate>
-      <ArticleURL>/sub-home-page</ArticleURL>
-      <IsArticleActive>true</IsArticleActive>
-      <IsArticleDefault>false</IsArticleDefault>
-      <PageName>Sub Home Page</PageName>
       <RowsPerPage>0</RowsPerPage>
     </Article>
     <Article>
