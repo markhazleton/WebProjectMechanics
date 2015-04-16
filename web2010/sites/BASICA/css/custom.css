@@ -19,7 +19,7 @@
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #aec62c;
+    background-color: #b22222;
     color: #fff;
 }
 
@@ -321,5 +321,23 @@
 
 
 
+.panel-info {
+    background-color: #FFF;
+    border-color: #CCC;
 
-
+}
+.panel-info > .panel-heading {
+  color: #FFF;
+    background-color: #B22222;
+    border-color: #CCC;
+}
+.panel-info > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #B22222;
+}
+.panel-info > .panel-heading .badge {
+  color: #FFF;
+  background-color: #B22222;
+}
+.panel-info > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #B22222;
+}

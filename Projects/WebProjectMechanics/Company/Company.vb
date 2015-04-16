@@ -290,18 +290,19 @@ Public Class Company
 
     Public Function bootBuilNavBar(ByVal ParentLocationID As String, ByVal LocationID As String, ByVal Level As Integer) As String
         Dim sReturn As New StringBuilder(String.Empty)
-        Dim ParentLocation As New Location
+        Dim ParentLocation As Location = Locations.FindLocation(ParentLocationID,0)
+
+        Dim myMain = (From i In Locations.FindLocation(LocationID,0).LocationTrailList Where i.MenuLevelNBR=1 Select i).SingleOrDefault
+
+
         Dim ChildLocations As New List(Of Location)
         If ParentLocationID <> String.Empty Or Level = 0 Then
             For Each myrow As Location In Locations
-                If myrow.LocationID = ParentLocationID Then
-                    ParentLocation.CopyLocation(myrow)
-                End If
-                If (myrow.RecordSource = "Category" Or (myrow.RecordSource = "Page")) Then
+                If (myrow.RecordSource.ToLower() = "category" Or (myrow.RecordSource.ToLower = "page")) Then
                     If (myrow.ParentLocationID = ParentLocationID) Then
                         ChildLocations = Locations.FindChildLocation(myrow.LocationID)
                         If ChildLocations.Count > 0 Then
-                            If myrow.LocationID = HomeLocationID Then
+                            If myrow.LocationID = myMain.LocationID Then
                                 sReturn.Append("<li class=""dropdown-submenu active"" >")
                             ElseIf myrow.LocationID = LocationID Then
                                 sReturn.Append("<li class=""dropdown-submenu"" >")
@@ -312,7 +313,7 @@ Public Class Company
                             sReturn.Append(bootBuilNavBar(myrow.LocationID, LocationID, Level + 1))
                             sReturn.Append("</li>" & vbCrLf)
                         Else
-                            If myrow.LocationID = HomeLocationID Then
+                            If myrow.LocationID = myMain.LocationID Then
                                 sReturn.Append("<li class=""active"" >")
                             ElseIf myrow.LocationID = LocationID Then
                                 sReturn.Append("<li >")
