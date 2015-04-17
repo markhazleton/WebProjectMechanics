@@ -8,7 +8,16 @@ Public Class admin_maint_Parameter
         reqParameterID = wpm_GetProperty("ParameterID", String.Empty)
         litParameterTypeID.Text = reqParameterID
         If Not IsPostBack Then
-            If reqParameterID <> String.Empty Then
+            If reqParameterID = "NEW" or reqParameterID="0" then 
+                ' Insert Mode
+                pnlEdit.Visible = True
+                dtList.Visible = False
+                cmd_Update.Visible = False
+                cmd_Insert.Visible = True
+                cmd_Delete.Visible = False
+                cmd_Cancel.Visible = True
+
+            ElseIf reqParameterID <> String.Empty Then
                 ' Edit Mode
                 pnlEdit.Visible = True
                 dtList.Visible = False
@@ -111,7 +120,6 @@ Public Class admin_maint_Parameter
 
     Protected Sub cmd_Insert_Click(sender As Object, e As EventArgs)
         OnUpdated(Me)
-
     End Sub
 
     Protected Sub cmd_Cancel_Click(sender As Object, e As EventArgs)

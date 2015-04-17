@@ -53,6 +53,11 @@ Public Class Admin_Maint_Default
                 If wpm_GetProperty("PageTypeID", String.Empty) = String.Empty Then
                     wpm_ListPageURL = "/admin/maint/default.aspx?Type=PageType"
                 End If
+            Case "LocationType"
+                myControl = DirectCast(Page.LoadControl("~/admin/maint/PageType.ascx"), ApplicationUserControl)
+                If wpm_GetProperty("PageTypeID", String.Empty) = String.Empty Then
+                    wpm_ListPageURL = "/admin/maint/default.aspx?Type=LocationType"
+                End If
             Case "ParameterType"
                 myControl = DirectCast(Page.LoadControl("~/admin/maint/ParameterType.ascx"), ApplicationUserControl)
                 If wpm_GetProperty("ParameterTypeID", String.Empty) = String.Empty Then

@@ -36,7 +36,7 @@ Public Class AdminPage
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Part", .Name = "Part"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Parameter", .Name = "Parameter"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=ParameterType", .Name = "ParameterType"})
-        myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=PageType", .Name = "LocationType"})
+        myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=LocationType", .Name = "LocationType"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=PageAlias", .Name = "PageAlias"})
         Return myListItems
     End Function

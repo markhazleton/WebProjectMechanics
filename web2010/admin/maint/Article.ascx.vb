@@ -17,7 +17,17 @@ Public Class admin_maint_Article
             ddlPage.DataTextField = "Name"
             ddlPage.DataValueField = "Value"
             ddlPage.DataBind()
-            If reqArticleID <> String.Empty Then
+            If reqArticleID = "new" or reqArticleID = "0" Then
+                pnlEdit.Visible = True
+                dtList.Visible = False
+                ' Insert Mode
+                cmd_Update.Visible = False
+                cmd_Insert.Visible = True
+                cmd_Delete.Visible = False
+                cmd_Cancel.Visible = True
+                tbAuthor.Text = wpm_GetUserName
+                tbPubDate.Text = Now().ToString("yyyy-MM-ddTHH:mm")
+            ElseIf reqArticleID <> String.Empty Then
                 pnlEdit.Visible = True
                 dtList.Visible = False
                 ' Edit Mode
@@ -26,14 +36,6 @@ Public Class admin_maint_Article
                 cmd_Delete.Visible = True
                 cmd_Cancel.Visible = True
                 GetSiteTemplateForEdit(masterPage.myCompany)
-            ElseIf reqArticleID = "new" Then
-                pnlEdit.Visible = True
-                dtList.Visible = False
-                ' Insert Mode
-                cmd_Update.Visible = False
-                cmd_Insert.Visible = True
-                cmd_Delete.Visible = False
-                cmd_Cancel.Visible = True
             Else
                 ' Show the list
                 pnlEdit.Visible = False
@@ -48,6 +50,7 @@ Public Class admin_maint_Article
                                                                               .LinkTextName = "PageName",
                                                                               .LinkKeyName = "ArticlePageID"
                                                                              })
+                myListHeader.AddHeaderItem("Publish Date","ArticleModDate")
                 myListHeader.DetailKeyName = "ArticleID"
                 myListHeader.DetailFieldName = "ArticleName"
                 myListHeader.DetailPath = "/admin/maint/default.aspx?type=Article&ArticleID={0}"
@@ -64,9 +67,6 @@ Public Class admin_maint_Article
 
     Protected Sub cmd_Update_Click(sender As Object, e As EventArgs) Handles cmd_Update.Click
         reqArticle = masterPage.myCompany.ArticleList.FindArticle(reqArticleID)
-
-
-
         With reqArticle
             .ArticleBody = myHTMLControl.GetHTML()
             .ArticleName = wpm_GetDBString(tbTitle.Text)
@@ -77,13 +77,7 @@ Public Class admin_maint_Article
             .ArticlePageID = ddlPage.SelectedValue
             .ArticleAuthor = wpm_GetDBString(tbAuthor.Text)
             .IsArticleActive = True
-
-            ' ArticleID = .ArticleID
-            ' ArticleURL = .ArticleURL
-            ' IsArticleActive = .IsArticleActive
-            ' IsArticleDefault = .IsArticleDefault
-            ' PageName = .PageName
-            ' RowsPerPage = .RowsPerPage
+            .ArticleModDate = wpm_GetDBDate(tbPubDate.Text)
         End With
         reqArticle.UpdateArticle()
         OnUpdated(Me)
@@ -91,7 +85,6 @@ Public Class admin_maint_Article
 
     Protected Sub cmd_Insert_Click(sender As Object, e As EventArgs) Handles cmd_Insert.Click
         reqArticle = New Article With {.ArticleID = -1}
-
         With reqArticle
             .ArticleBody = myHTMLControl.GetHTML()
             .ArticleName = wpm_GetDBString(tbTitle.Text)
@@ -102,12 +95,7 @@ Public Class admin_maint_Article
             .ArticlePageID = ddlPage.SelectedValue
             .ArticleAuthor = wpm_GetDBString(tbAuthor.Text)
             .IsArticleActive = True
-            ' ArticleID = .ArticleID
-            ' ArticleURL = .ArticleURL
-            ' IsArticleActive = .IsArticleActive
-            ' IsArticleDefault = .IsArticleDefault
-            ' PageName = .PageName
-            ' RowsPerPage = .RowsPerPage
+            .ArticleModDate = wpm_GetDBDate(tbPubDate.Text)
         End With
         reqArticle.UpdateArticle()
 
@@ -116,13 +104,14 @@ Public Class admin_maint_Article
 
     Protected Sub cmd_Delete_Click(sender As Object, e As EventArgs) Handles cmd_Delete.Click
         reqArticle = masterPage.myCompany.ArticleList.FindArticle(reqArticleID)
-
         OnUpdated(Me)
     End Sub
 
     Private Sub GetSiteTemplateForEdit(ByRef myCompany As ActiveCompany)
         reqArticle = myCompany.ArticleList.FindArticle(reqArticleID)
         With reqArticle
+
+            tbPubDate.Text = .ArticleModDate.ToString("yyyy-MM-ddTHH:mm")
             ArticleIDLabel.Text = .ArticleID
             tbAuthor.Text = wpm_GetDBString(.ArticleAuthor)
             ddlPage.SelectedValue = .ArticlePageID

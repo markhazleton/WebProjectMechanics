@@ -270,7 +270,7 @@
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-17T11:57:18.1438879-05:00</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
@@ -365,7 +365,7 @@
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-17T11:57:18.1438879-05:00</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Article</RecordSource>
@@ -417,7 +417,7 @@
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2015-04-16T13:11:15.1947994-05:00</ModifiedDT>
+      <ModifiedDT>2015-04-17T11:57:18.1438879-05:00</ModifiedDT>
     </Location>
   </Locations>
   <Parts>
@@ -618,12 +618,12 @@
       <ArticlePageID>747</ArticlePageID>
       <ArticleSummary />
       <ArticleAdmin>&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;&lt;a href="/admin//maint/default.aspx?type=Article&amp;ArticleID=492"&gt; Edit Article &lt;/a&gt;</ArticleAdmin>
-      <ArticleAuthor />
+      <ArticleAuthor>Mark Hazleton</ArticleAuthor>
       <ArticleBody>&lt;p&gt;&lt;strong&gt;Welcome&lt;/strong&gt; to the home page for the &amp;quot;Web Project Mechanis - WPM&amp;nbsp;cms tool.&lt;/p&gt;
 
 &lt;p&gt;~~cmotion~~&lt;/p&gt;</ArticleBody>
       <ArticleDescription>Home of WebProjectMechanics.com</ArticleDescription>
-      <ArticleModDate>2015-04-15T11:42:05</ArticleModDate>
+      <ArticleModDate>2015-04-15T23:00:00</ArticleModDate>
       <ArticleURL>/home</ArticleURL>
       <IsArticleActive>true</IsArticleActive>
       <IsArticleDefault>false</IsArticleDefault>
@@ -639,7 +639,7 @@
       <ArticleAuthor>Mark Hazleton</ArticleAuthor>
       <ArticleBody>&lt;p&gt;My Second Blog Post&lt;/p&gt;</ArticleBody>
       <ArticleDescription>My Second Blog Post</ArticleDescription>
-      <ArticleModDate>2015-04-15T15:06:52</ArticleModDate>
+      <ArticleModDate>2015-03-15T08:00:00</ArticleModDate>
       <ArticleURL>/my-second-blog-post</ArticleURL>
       <IsArticleActive>true</IsArticleActive>
       <IsArticleDefault>false</IsArticleDefault>
@@ -655,7 +655,7 @@
       <ArticleAuthor>Mark Hazleton</ArticleAuthor>
       <ArticleBody>&lt;p&gt;My First Blog Post&lt;/p&gt;</ArticleBody>
       <ArticleDescription>My First Blog Post</ArticleDescription>
-      <ArticleModDate>2015-04-15T14:52:11</ArticleModDate>
+      <ArticleModDate>2015-04-17T20:00:00</ArticleModDate>
       <ArticleURL>/my-first-blog-post</ArticleURL>
       <IsArticleActive>true</IsArticleActive>
       <IsArticleDefault>false</IsArticleDefault>

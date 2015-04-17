@@ -41,7 +41,17 @@ Public Class admin_maint_Blog
                 cbActive.Checked = .ActiveFL
             End With
 
-            If hfArticleID.Value <> String.Empty Then
+            If hfArticleID.Value = "new" or hfArticleID.Value="0" Then
+                pnlEdit.Visible = True
+                dtList.Visible = False
+                ' Insert Mode
+                cmd_Update.Visible = False
+                cmd_Insert.Visible = True
+                cmd_Delete.Visible = False
+                cmd_Cancel.Visible = True
+                tbAuthor.Text = wpm_GetUserName()
+                tbPubDate.Text = Now.ToString("yyyy-MM-ddTHH:mm")
+            ElseIf hfArticleID.Value <> String.Empty Then
                 pnlEdit.Visible = True
                 dtList.Visible = False
                 ' Edit Mode
@@ -50,14 +60,6 @@ Public Class admin_maint_Blog
                 cmd_Delete.Visible = True
                 cmd_Cancel.Visible = True
                 GetSiteTemplateForEdit()
-            ElseIf hfArticleID.Value = "new" Then
-                pnlEdit.Visible = True
-                dtList.Visible = False
-                ' Insert Mode
-                cmd_Update.Visible = False
-                cmd_Insert.Visible = True
-                cmd_Delete.Visible = False
-                cmd_Cancel.Visible = True
             Else
                 ' Show the list
                 pnlEdit.Visible = False
@@ -65,6 +67,7 @@ Public Class admin_maint_Blog
                 Dim myListHeader As New DisplayTableHeader() With {.TableTitle = String.Format("Blog Articles (<a href=""/admin/maint/default.aspx?type=Blog&LocationID={0}&ArticleID=0"">Add Blog Article</a>)", hfLocationID.Value)}
                 myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "Summary", .Value = "ArticleSummary"})
                 myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "Description", .Value = "ArticleDescription"})
+                myListHeader.AddHeaderItem("Publish Date" ,"ArticleModDate")
                 myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = True,
                                                                               .Name = "Page Name",
                                                                               .Value = "ArticlePageID",
@@ -98,6 +101,7 @@ Public Class admin_maint_Blog
             .ArticlePageID = hfLocationID.Value
             .ArticleAuthor = wpm_GetDBString(tbAuthor.Text)
             .IsArticleActive = True
+            .ArticleModDate = wpm_GetDBDate(tbPubDate.text)
         End With
         reqArticle.UpdateArticle()
         OnUpdated(Me)
@@ -115,6 +119,7 @@ Public Class admin_maint_Blog
             .ArticlePageID = hfLocationID.Value
             .ArticleAuthor = wpm_GetDBString(tbAuthor.Text)
             .IsArticleActive = True
+            .ArticleModDate = wpm_GetDBDate(tbPubDate.text)
         End With
         reqArticle.UpdateArticle()
         OnUpdated(Me)
@@ -134,6 +139,7 @@ Public Class admin_maint_Blog
             tbTitle.Text = wpm_GetDBString(.ArticleName)
             tbDescription.Text = wpm_GetDBString(.ArticleDescription)
             tbSummary.Text = wpm_GetDBString(.ArticleSummary)
+            tbPubDate.Text = .ArticleModDate.ToString("yyyy-MM-ddTHH:mm")
         End With
     End Sub
 
