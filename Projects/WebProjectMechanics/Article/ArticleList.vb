@@ -112,14 +112,14 @@ Public Class ArticleList
         If (curArticleID < 1) Or (curArticleID = CompanyDefaultArticleID) Then
             sItem.Append("<div class=""blog"">")
             sItem.Append("<div class=""blog-posts"">")
-            For Each myArticle As Article In Me
+            For Each myArticle As Article In (From i In Me Order By i.ArticleModDate Descending Select i).ToList
                 ' Build The Blog Entry
                 AddArticleWithParm(myArticle, sItem, sbBlogTemplate)
             Next
             sItem.Append("</div>")
             sItem.Append("</div>")
         Else
-            For Each myArticle As Article In Me
+            For Each myArticle As Article In (From i In Me Order By i.ArticleModDate Descending Select i).ToList
                 If myArticle.ArticleID = curArticleID Then
                     AddArticleWithParm(myArticle, sItem, sbBlogTemplate)
                     Exit For
@@ -187,7 +187,7 @@ Public Class ArticleList
                 End If
                 ' Draw The current page
 
-                For Each myArticle As Article In Me
+                For Each myArticle As Article In (From i In Me Order By i.ArticleModDate Descending Select i).ToList
                     ' Determine if this record is displayed
                     If (iRow >= iFirstDisplay) Then
                         If (iRow <= iLastDisplay) Then
@@ -200,7 +200,7 @@ Public Class ArticleList
             sItem.Append(String.Format("<center>{0}</center>{1}{1}", sSubPageNav, vbCrLf))
             sItem.Append(vbCrLf)
         Else
-            For Each myArticle As Article In Me
+            For Each myArticle As Article In (From i In Me Order By i.ArticleModDate Descending Select i).ToList
                 If myArticle.ArticleID = curArticleID Then
                     AddArticleWithParm(myArticle, sItem, sbBlogTemplate)
                     Exit For
@@ -264,7 +264,7 @@ Public Class ArticleList
                                 <lastBuildDate><%= Now.ToLongDateString %></lastBuildDate>
                                 <pubDate><%= Now.ToLongDateString %></pubDate>
                                 <ttl>1800</ttl>
-                                <%= From i In Me Select <item>
+                                <%= From i In Me Order By i.ArticleModDate Descending Select <item>
                                                             <title><%= i.ArticleName %></title>
                                                             <description><%= i.ArticleDescription %></description>
                                                             <link><%= i.ArticleURL %></link>

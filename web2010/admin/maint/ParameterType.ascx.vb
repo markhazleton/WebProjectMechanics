@@ -3,12 +3,21 @@
 Public Class admin_maint_ParameterType
     Inherits ApplicationUserControl
 
-    Private Property reqParameterTypeID As Integer
+
+    ' Parameter Type 
+        Public Const STR_SiteParameterTypeID As String = "SiteParameterTypeID"
+    Public Const STR_SELECTSiteParameterTypeList As String = "SELECT SiteParameterType.[SiteParameterTypeID], SiteParameterType.[SiteParameterTypeCD], SiteParameterType.[SiteParameterTypeDesc], SiteParameterType.[PageFileName] FROM SiteParameterType;"
+    Public Const STR_SELECT_SiteParameterTypeBySiteParameterTypeID As String = "SELECT SiteParameterType.[SiteParameterTypeID], SiteParameterType.[SiteParameterTypeCD], SiteParameterType.[SiteParameterTypeDesc], SiteParameterType.[PageFileName] FROM SiteParameterType where [SiteParameterType].[SiteParameterTypeID]={0};"
+    Public Const STR_UPDATE_SiteParameterType As String = "UPDATE SiteParameterType SET SiteParameterType.SiteParameterTypeCD = @SiteParameterTypeCD , SiteParameterType.SiteParameterTypeDesc = @SiteParameterTypeDesc, SiteParameterType.PageFileName = @PageFileName WHERE (((SiteParameterType.SiteParameterTypeID)=@SiteParameterTypeID));"
+    Public Const STR_INSERT_SiteParameterType As String = "INSERT INTO SiteParameterType ( SiteParameterType.SiteParameterTypeCD , SiteParameterType.SiteParameterTypeDesc , SiteParameterType.PageFileName ) VALUES ( @SiteParameterTypeCD ,@SiteParameterTypeDesc, @PageFileName ); "
+    Public Const STR_DELETE_SiteParameterType As String = "DELETE FROM [SiteParameterType] WHERE [SiteParameterType].[SiteParameterTypeID]={0};"
+
+    Private Property reqSiteParameterTypeID As Integer
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        reqParameterTypeID = wpm_GetIntegerProperty("ParameterTypeID", 0)
-        litParameterTypeID.Text = reqParameterTypeID
+        reqSiteParameterTypeID = wpm_GetIntegerProperty("ParameterTypeID", 0)
+        litParameterTypeID.Text = reqSiteParameterTypeID
         If Not IsPostBack Then
-            If reqParameterTypeID > 0 Then
+            If reqSiteParameterTypeID > 0 Then
                 ' Edit Mode
                 pnlEdit.Visible = True
                 dtList.Visible = False
@@ -18,7 +27,7 @@ Public Class admin_maint_ParameterType
                 cmd_Delete.Visible = True
                 cmd_Cancel.Visible = True
             Else
-                If reqParameterTypeID = -1 Then
+                If reqSiteParameterTypeID = -1 Then
                     pnlEdit.Visible = True
                     dtList.Visible = False
                     ' Insert Mode

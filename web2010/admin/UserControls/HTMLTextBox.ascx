@@ -4,6 +4,9 @@
 
 <script src="//cdn.ckeditor.com/4.4.6/full-all/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor1', {
+        language: 'en',
+        uiColor: '#9AB8F3',
+        height:500    });
 </script>
 

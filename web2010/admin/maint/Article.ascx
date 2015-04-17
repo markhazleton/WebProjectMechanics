@@ -7,35 +7,22 @@
 <asp:Panel ID="pnlEdit" runat="server" CssClass="gadgetblock">
     <div class="row">
         <div class="col-lg-12">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     Edit Article ID:
                     <asp:Literal ID="ArticleIDLabel" runat="server" Text="" />
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12 form-group">
-                            <label>Article</label><asp:TextBox ID="tbTitle" runat="server" Width="100%"></asp:TextBox>
+                        <div class="col-lg-6 form-group">
+                            <label>Blog Title</label><asp:TextBox ID="tbTitle" runat="server" CssClass="form-control"></asp:TextBox>
+                            <label>Publish Date</label><asp:TextBox ID="tbPubDate" runat="server" Textmode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
+                            <label>Author</label><asp:TextBox ID="tbAuthor" runat="server" CssClass="form-control"></asp:TextBox>
+                            <label>Page</label><asp:DropDownList ID="ddlPage" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 form-group">
-                            <label>Author</label><asp:TextBox ID="tbAuthor" runat="server" Width="100%"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 form-group">
-                            <label>Page</label><asp:DropDownList ID="ddlPage" runat="server" Width="100%"></asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 form-group">
-                            <label>Description</label><asp:TextBox ID="tbDescription" runat="server" Width="100%"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 form-group">
-                            <label>Summary</label><asp:TextBox ID="tbSummary" runat="server" Width="100%"></asp:TextBox>
+                        <div class="col-lg-6 form-group">
+                            <label>Description</label><asp:TextBox ID="tbDescription" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>
+                            <label>Summary</label><asp:TextBox ID="tbSummary" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">

@@ -191,6 +191,7 @@ Public Class Article
     End Function
     Public Function UpdateArticle() As String
         Dim result As String = String.Empty
+
         If ArticleID > 0 Then
             Using connection As New OleDbConnection(wpm_SQLDBConnString)
                 Try
@@ -205,7 +206,7 @@ Public Class Article
                                 "[Article].[ContactID]=@ContactID, " & _
                                 "[Article].[CompanyID]=@CompanyID, " & _
                                 "[Article].[PageID]=@PageID, " & _
-                                "[Article].[ModifiedDT]=now() " & _
+                                "[Article].[ModifiedDT]=@PubDate " & _
                                 "WHERE [Article].[ArticleID]=@ArticleID ", connection)
                         wpm_AddParameterStringValue("@ArticleBody", ArticleBody, myCommand)
                         wpm_AddParameterStringValue("@ArticleName", ArticleName, myCommand)
@@ -216,6 +217,7 @@ Public Class Article
                         wpm_AddParameterStringValue("@ContactID", ContactID, myCommand)
                         wpm_AddParameterStringValue("@CompanyID", CompanyID, myCommand)
                         wpm_AddParameterStringValue("@PageID", ArticlePageID, myCommand)
+                        wpm_AddParameterValue("@PubDate",ArticleModDate,SqlDbType.Date,myCommand)
                         wpm_AddParameterValue("@ArticleID", ArticleID, SqlDbType.Int, myCommand)
 
                         If myCommand.ExecuteNonQuery() > 0 Then
@@ -251,7 +253,7 @@ Public Class Article
                                 "@ContactID, " & _
                                 "@CompanyID, " & _
                                 "@PageID, " & _
-                                "now() )", connection)
+                                "@PubDate )", connection)
                         wpm_AddParameterStringValue("@ArticleBody", ArticleBody, myCommand)
                         wpm_AddParameterStringValue("@ArticleName", ArticleName, myCommand)
                         wpm_AddParameterStringValue("@ArticleDescription", ArticleDescription, myCommand)
@@ -261,6 +263,7 @@ Public Class Article
                         wpm_AddParameterStringValue("@ContactID", ContactID, myCommand)
                         wpm_AddParameterStringValue("@CompanyID", CompanyID, myCommand)
                         wpm_AddParameterStringValue("@PageID", ArticlePageID, myCommand)
+                        wpm_AddParameterValue("@PubDate",ArticleModDate,SqlDbType.Date,myCommand)
                         If myCommand.ExecuteNonQuery() > 0 Then
                             result = String.Empty
                         End If
