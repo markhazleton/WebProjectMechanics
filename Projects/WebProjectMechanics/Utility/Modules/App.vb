@@ -438,9 +438,9 @@ Public Module App
     Public Function wpm_GetIntegerProperty(ByVal myProperty As String, ByVal curValue As Integer) As Integer
         Dim myValue As Integer
         If Len(HttpContext.Current.Request.QueryString(myProperty)) > 0 Then
-            myValue = CInt(HttpContext.Current.Request.QueryString(myProperty))
+            myValue = wpm_GetDBInteger(HttpContext.Current.Request.QueryString(myProperty), curValue)
         ElseIf Len(HttpContext.Current.Request.Form.Item(myProperty)) > 0 Then
-            myValue = CInt(HttpContext.Current.Request.Form.Item(myProperty))
+            myValue = wpm_GetDBInteger(HttpContext.Current.Request.Form.Item(myProperty), curValue)
         Else
             myValue = curValue
         End If
@@ -713,21 +713,25 @@ Public Module App
     End Function
 
     Public Sub wpm_AddGenericError(ByVal sReason As String)
-        Dim sReturn As New StringBuilder(sReason)
-        sReturn.AppendLine("<br/>")
-        sReturn.AppendLine(wpm_GetDBString(HttpContext.Current.Session("wpm_GenericError")))
-        sReturn.AppendLine("<br/>")
-        HttpContext.Current.Session("wpm_GenericError") = sReturn.ToString()
+        If Not HttpContext.Current.Session Is Nothing Then
+            Dim sReturn As New StringBuilder(sReason)
+            sReturn.AppendLine("<br/>")
+            sReturn.AppendLine(wpm_GetDBString(HttpContext.Current.Session("wpm_GenericError")))
+            sReturn.AppendLine("<br/>")
+            HttpContext.Current.Session("wpm_GenericError") = sReturn.ToString()
+        End If
     End Sub
     Public Sub wpm_SetGenericError(ByVal sReason As String)
-        Dim sReturn As New StringBuilder(sReason)
-        sReturn.AppendLine("<br/>")
-        sReturn.AppendLine(wpm_GetDBString(HttpContext.Current.Session("wpm_GenericError")))
-        sReturn.AppendLine("<br/>")
-        sReturn.AppendLine(String.Format("CompanyID: {0}<br/>", wpm_DomainConfig.CompanyID))
-        sReturn.AppendLine(String.Format("AccessDatabasePath: {0}<br/>", wpm_DomainConfig.AccessDatabasePath))
-        sReturn.AppendLine(String.Format("Connection String: {0}<br/>", wpm_DomainConfig.SQLDBConnString))
-        HttpContext.Current.Session("wpm_GenericError") = sReturn.ToString()
+        If Not HttpContext.Current.Session Is Nothing Then
+            Dim sReturn As New StringBuilder(sReason)
+            sReturn.AppendLine("<br/>")
+            sReturn.AppendLine(wpm_GetDBString(HttpContext.Current.Session("wpm_GenericError")))
+            sReturn.AppendLine("<br/>")
+            sReturn.AppendLine(String.Format("CompanyID: {0}<br/>", wpm_DomainConfig.CompanyID))
+            sReturn.AppendLine(String.Format("AccessDatabasePath: {0}<br/>", wpm_DomainConfig.AccessDatabasePath))
+            sReturn.AppendLine(String.Format("Connection String: {0}<br/>", wpm_DomainConfig.SQLDBConnString))
+            HttpContext.Current.Session("wpm_GenericError") = sReturn.ToString()
+        End If
     End Sub
 
 End Module

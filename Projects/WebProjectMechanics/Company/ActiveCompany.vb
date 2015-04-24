@@ -16,6 +16,15 @@ Public Class ActiveCompany
             wpm_SetGenericError("ActiveCompany.New - Site Profile Did not load")
             HttpContext.Current.Response.Redirect("/GenericErrorPage.aspx")
         End If
+        With CurLocation
+            .LocationTypeCD = "404"
+            .LocationID = ""
+            .ArticleID = 0
+            .TransferURL = ""
+            .MainMenuLocationID = ""
+            .LocationName = wpm_FileNotFound
+            .LocationTitle = wpm_FileNotFound
+        End With
     End Sub
     Public Sub New(ByVal OrderBy As String)
         MyBase.New()
@@ -25,6 +34,16 @@ Public Class ActiveCompany
             wpm_SetGenericError("ActiveCompany.New - Site Profile Did not load")
             HttpContext.Current.Response.Redirect("/GenericErrorPage.aspx")
         End If
+        With CurLocation
+            .LocationTypeCD = "404"
+            .LocationID = ""
+            .ArticleID = 0
+            .TransferURL = ""
+            .MainMenuLocationID = ""
+            .LocationName = wpm_FileNotFound
+            .LocationTitle = wpm_FileNotFound
+        End With
+
     End Sub
 #End Region
 
@@ -159,6 +178,7 @@ Public Class ActiveCompany
     End Sub
     Public Function BuildTemplate(ByRef sbContent As StringBuilder) As Boolean
         ReplaceLinkTags(sbContent)
+        ReplaceTags(CurLocation, sbContent)
         ProcessTag(sbContent, "~~SiteTitle~~")
         ProcessTag(sbContent, "~~SiteName~~")
         ProcessTag(sbContent, "~~SiteTagLine~~")
@@ -855,7 +875,7 @@ Public Class ActiveCompany
                     urlName = Left(urlName, Len(urlName) - 1)
                 Else
                     If (indexc > 1) Then
-                        urlName = Right(urlName, Len(urlName) - indexc +1)
+                        urlName = Right(urlName, Len(urlName) - indexc + 1)
                     End If
                 End If
                 bMatch = wpm_CheckForMatch(urlName, myLocation.LocationURL)
@@ -1015,12 +1035,12 @@ Public Class ActiveCompany
             Return CurCompany.CompanyTitle
         End Get
     End Property
-    Public ReadOnly Property SiteCategoryTypeID As String 
+    Public ReadOnly Property SiteCategoryTypeID As String
         Get
             Return CurCompany.SiteCategoryTypeID
         End Get
     End Property
-    Public ReadOnly Property SiteCategoryTypeNM As String 
+    Public ReadOnly Property SiteCategoryTypeNM As String
         Get
             Return CurCompany.SiteCategoryTypeNM
         End Get

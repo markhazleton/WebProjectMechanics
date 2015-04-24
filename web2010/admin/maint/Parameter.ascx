@@ -6,14 +6,13 @@
 
 <asp:Panel ID="pnlEdit" runat="server" CssClass="">
     <asp:HiddenField ID="hfRecordSource" runat="server" />
-    <asp:HiddenField ID="hfCompanySiteParameterID" runat="server" />
-    <asp:HiddenField ID="HiddenField1" runat="server" />
+    <asp:HiddenField ID="hfParameterID" runat="server" />
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit Parameter Type ID:
-                    <asp:Literal ID="litParameterTypeID" runat="server" Text="" />
+                    Edit Parameter ID:
+                    <asp:Literal ID="litParameterID" runat="server" Text="" />
                 </div>
                 <div class="panel-body">
                     <div class="row">

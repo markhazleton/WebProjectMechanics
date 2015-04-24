@@ -25,6 +25,9 @@ Public Interface ISiteType
     Property SiteTypeID As String
     Property SiteTypeNM As String
     Property SiteTypeDS As String
+    Property SiteTypeComment As String 
+    Property SiteTypeFileName As String 
+    Property SiteTypeTransferURL As String 
     Property ModifiedID As Integer
     Property ModifiedDT As DateTime
     Property DefaultSiteTypeLocationID As String
@@ -36,6 +39,9 @@ Public Class SiteType
     Public Property SiteTypeID As String Implements ISiteType.SiteTypeID
     Public Property SiteTypeNM As String Implements ISiteType.SiteTypeNM
     Public Property SiteTypeDS As String Implements ISiteType.SiteTypeDS
+    Public Property SiteTypeComment As String Implements ISiteType.SiteTypeComment
+    Public Property SiteTypeFileName As String Implements ISiteType.SiteTypeFileName
+    Public Property SiteTypeTransferURL As String Implements ISiteType.SiteTypeTransferURL
     Public Property DefaultSiteTypeLocationID As String Implements ISiteType.DefaultSiteTypeLocationID
     Public Property DefaultSiteTypeLocationNM As String Implements ISiteType.DefaultSiteTypeLocationNM
     Public Property ModifiedDT As Date Implements ISiteType.ModifiedDT

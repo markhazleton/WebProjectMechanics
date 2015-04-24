@@ -4,7 +4,6 @@ Public Class admin_maint_Article
     Inherits ApplicationUserControl
     Private Const STR_ArticleID As String = "ArticleID"
     Private myHTMLControl As IHTMLControl
-
     Public Property reqArticleID As String
     Public Property reqArticle As Article
 
@@ -17,7 +16,7 @@ Public Class admin_maint_Article
             ddlPage.DataTextField = "Name"
             ddlPage.DataValueField = "Value"
             ddlPage.DataBind()
-            If reqArticleID = "new" or reqArticleID = "0" Then
+            If reqArticleID = "new" Or reqArticleID = "0" Then
                 pnlEdit.Visible = True
                 dtList.Visible = False
                 ' Insert Mode
@@ -25,7 +24,9 @@ Public Class admin_maint_Article
                 cmd_Insert.Visible = True
                 cmd_Delete.Visible = False
                 cmd_Cancel.Visible = True
-                tbAuthor.Text = wpm_GetUserName
+                GetSiteTemplateForEdit(masterPage.myCompany)
+
+                tbAuthor.Text = wpm_GetUserName()
                 tbPubDate.Text = Now().ToString("yyyy-MM-ddTHH:mm")
             ElseIf reqArticleID <> String.Empty Then
                 pnlEdit.Visible = True
@@ -50,7 +51,7 @@ Public Class admin_maint_Article
                                                                               .LinkTextName = "PageName",
                                                                               .LinkKeyName = "ArticlePageID"
                                                                              })
-                myListHeader.AddHeaderItem("Publish Date","ArticleModDate")
+                myListHeader.AddHeaderItem("Publish Date", "ArticleModDate")
                 myListHeader.DetailKeyName = "ArticleID"
                 myListHeader.DetailFieldName = "ArticleName"
                 myListHeader.DetailPath = "/admin/maint/default.aspx?type=Article&ArticleID={0}"
@@ -98,7 +99,6 @@ Public Class admin_maint_Article
             .ArticleModDate = wpm_GetDBDate(tbPubDate.Text)
         End With
         reqArticle.UpdateArticle()
-
         OnUpdated(Me)
     End Sub
 
@@ -110,7 +110,6 @@ Public Class admin_maint_Article
     Private Sub GetSiteTemplateForEdit(ByRef myCompany As ActiveCompany)
         reqArticle = myCompany.ArticleList.FindArticle(reqArticleID)
         With reqArticle
-
             tbPubDate.Text = .ArticleModDate.ToString("yyyy-MM-ddTHH:mm")
             ArticleIDLabel.Text = .ArticleID
             tbAuthor.Text = wpm_GetDBString(.ArticleAuthor)

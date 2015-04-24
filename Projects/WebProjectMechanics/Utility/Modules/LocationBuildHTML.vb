@@ -63,10 +63,15 @@ Public Module LocationBuildHTML
 
     Public Function wpm_DeletePageDB(ByVal myLoc As Location) As Boolean
         Dim result As Boolean = False
-        If myLoc.RecordSource = "Page" Then
+        If myLoc.RecordSource.ToLower = "page" Then
             If wpm_RunDeleteSQL("delete from page where pageid=" & myLoc.LocationID, "Page") > 0 Then
                 result = True
             End If
+        ElseIf myLoc.RecordSource.ToLower = "category" Then
+            If wpm_RunDeleteSQL("delete from sitecategory where sitecategoryid=" & myLoc.LocationID.Replace("CAT-",String.Empty), "Category") > 0 Then
+                result = True
+            End If
+
         End If
         Return result
     End Function
