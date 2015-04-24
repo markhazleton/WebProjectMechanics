@@ -24,9 +24,9 @@ Public Class Company
     Public Property SiteState As String
     Public Property SiteCountry As String
     Public Property PostalCode As String
-    Public Property SiteType As new SiteType
+    Public Property SiteType As New SiteType
     Public Property SiteCategoryTypeID() As String
-    Public Property SiteCategoryTypeNM() As String 
+    Public Property SiteCategoryTypeNM() As String
     Public Property DefaultSiteCategoryID() As String
     Public Property UseBreadCrumbURL() As Boolean
     Public Property FromEmail() As String
@@ -290,38 +290,43 @@ Public Class Company
 
     Public Function bootBuilNavBar(ByVal ParentLocationID As String, ByVal LocationID As String, ByVal Level As Integer) As String
         Dim sReturn As New StringBuilder(String.Empty)
-        Dim ParentLocation As Location = Locations.FindLocation(ParentLocationID,0)
+        Dim ParentLocation As Location = Locations.FindLocation(ParentLocationID, 0)
 
-        Dim myMain = (From i In Locations.FindLocation(LocationID,0).LocationTrailList Where i.MenuLevelNBR=1 Select i).SingleOrDefault
+        Dim myMain = (From i In Locations.FindLocation(LocationID, 0).LocationTrailList Where i.MenuLevelNBR = 1 Select i).SingleOrDefault()
 
+        If myMain Is Nothing Then
+            myMain = New LocationTrail
+        End If
 
-        Dim ChildLocations As New List(Of Location)
         If ParentLocationID <> String.Empty Or Level = 0 Then
-            For Each myrow As Location In Locations
-                If (myrow.RecordSource.ToLower() = "category" Or (myrow.RecordSource.ToLower = "page")) Then
-                    If (myrow.ParentLocationID = ParentLocationID) Then
-                        ChildLocations = Locations.FindChildLocation(myrow.LocationID)
-                        If ChildLocations.Count > 0 Then
-                            If myrow.LocationID = myMain.LocationID Then
-                                sReturn.Append("<li class=""dropdown-submenu active"" >")
-                            ElseIf myrow.LocationID = LocationID Then
-                                sReturn.Append("<li class=""dropdown-submenu"" >")
+            For Each myLocation As Location In Locations
+                If ((myLocation.RecordSource.ToLower = "page")) Then
+                    If (myLocation.ParentLocationID = ParentLocationID) Then
+                        If Locations.FindChildLocation(myLocation.LocationID).Count > 0 Then
+                            If myLocation.LocationID = myMain.LocationID Then
+                                sReturn.AppendLine("<li class=""dropdown-submenu active"" >")
+                            ElseIf myLocation.LocationID = LocationID Then
+                                sReturn.AppendLine("<li class=""dropdown-submenu"" >")
                             Else
-                                sReturn.Append("<li class=""dropdown-submenu"" >")
+                                sReturn.AppendLine("<li class=""dropdown-submenu"" >")
                             End If
-                            sReturn.Append(String.Format("<a href=""#"" class=""dropdown-toggle"" data-toggle=""dropdown"" role=""button"" aria-expanded=""false""  >{0}</a>", myrow.LocationName))
-                            sReturn.Append(bootBuilNavBar(myrow.LocationID, LocationID, Level + 1))
-                            sReturn.Append("</li>" & vbCrLf)
+                            If Level < 2 Then
+                                sReturn.AppendLine(String.Format("<a href=""{1}"" class=""dropdown-toggle"" data-toggle=""dropdown"" role=""button"" aria-expanded=""false""  >{0}</a>", myLocation.LocationName, myLocation.LocationURL))
+                            Else
+                                sReturn.AppendLine(String.Format("<a href=""{1}"" >{0}</a>", myLocation.LocationName, myLocation.LocationURL))
+                            End If
+                            sReturn.AppendLine(bootBuilNavBar(myLocation.LocationID, LocationID, Level + 1))
+                            sReturn.AppendLine("</li>" )
                         Else
-                            If myrow.LocationID = myMain.LocationID Then
-                                sReturn.Append("<li class=""active"" >")
-                            ElseIf myrow.LocationID = LocationID Then
-                                sReturn.Append("<li >")
+                            If myLocation.LocationID = myMain.LocationID Then
+                                sReturn.AppendLine("<li class=""active"" >")
+                            ElseIf myLocation.LocationID = LocationID Then
+                                sReturn.AppendLine("<li >")
                             Else
-                                sReturn.Append("<li >")
+                                sReturn.AppendLine("<li >")
                             End If
-                            sReturn.Append(BuildClassLink(myrow, "", False))
-                            sReturn.Append("</li>" & vbCrLf)
+                            sReturn.AppendLine(BuildClassLink(myLocation, "", False))
+                            sReturn.AppendLine("</li>")
                         End If
                     End If
                 End If

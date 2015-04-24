@@ -1,6 +1,4 @@
 ﻿Imports WebProjectMechanics
-Imports System.Data.OleDb
-Imports System.Data
 
 Public Class admin_maint_Location
     Inherits ApplicationUserControl
@@ -201,7 +199,7 @@ Public Class admin_maint_Location
             ddlParentLocation.DataValueField = "LocationID"
             ddlParentLocation.DataBind()
             ddlLocationType.Items.Clear
-            ddlLocationType.Items.Add(myCompany.SiteCategoryTypeNM)
+            ddlLocationType.Items.Add(New ListItem With {.Text =  myCompany.SiteCategoryTypeNM, .Value=myCompany.SiteCategoryTypeID})
         Else
             ddlParentLocation.Items.Add(New ListItem With {.Value = String.Empty, .Text = "Please Select"})
             ddlParentLocation.AppendDataBoundItems = True
@@ -209,7 +207,7 @@ Public Class admin_maint_Location
             ddlParentLocation.DataTextField = "Location"
             ddlParentLocation.DataValueField = "LocationID"
             ddlParentLocation.DataBind()
-            wpm_LoadCMB(ddlLocationType, reqLocation.LocationTypeCD, "SELECT PageType.PageTypeID, PageType.PageTypeCD FROM PageType ORDER BY PageType.PageTypeCD;", "PageTypeCD", "PageTypeID", False)
+            wpm_LoadCMB(ddlLocationType, reqLocation.LocationTypeID, "SELECT PageType.PageTypeID, PageType.PageTypeCD FROM PageType ORDER BY PageType.PageTypeCD;", "PageTypeCD", "PageTypeID", True)
         End If
         wmp_LoadCompanyDropDow(ddlCompany, wpm_DomainConfig.CompanyID, True)
         ddlCompany.Enabled = True
