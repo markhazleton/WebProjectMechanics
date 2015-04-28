@@ -1,18 +1,18 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Parameter.ascx.vb" Inherits="admin_maint_Parameter" %>
 <%@ Register Src="../UserControls/DisplayTable.ascx" TagName="DisplayTable" TagPrefix="uc1" %>
 
-<uc1:DisplayTable ID="dtList" runat="server" />
+<uc1:DisplayTable ID="dtList" runat="server" EnableViewState="false" ViewStateMode="Disabled" />
 
 
 <asp:Panel ID="pnlEdit" runat="server" CssClass="">
-    <asp:HiddenField ID="hfRecordSource" runat="server" />
-    <asp:HiddenField ID="hfParameterID" runat="server" />
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Edit Parameter ID:
                     <asp:Literal ID="litParameterID" runat="server" Text="" />
+                    <asp:HiddenField ID="hfParameterID" runat="server" />
+                    <asp:HiddenField ID="hfRecordSource" runat="server" />
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -26,7 +26,12 @@
                             <asp:TextBox ID="tbSortOrder" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="row" style="background-color:aliceblue;border:1px solid black;"><p><strong>Targeting</strong></p>
+                    <div class="row" style="background-color: aliceblue; border: 1px solid black;">
+                        <p><strong>Targeting</strong></p>
+                        <div class="col-lg-12 form-group">
+                            <asp:Label ID="labelddlSiteCategoryTypeID" runat="server" AssociatedControlID="ddlSiteCategoryTypeID">Site Type:</asp:Label>
+                            <asp:DropDownList ID="ddlSiteCategoryTypeID" runat="server" CssClass="form-control"></asp:DropDownList>
+                        </div>
                         <div class="col-lg-12 form-group">
                             <asp:Label ID="labelddlLocation" runat="server" AssociatedControlID="ddlLocation">Location:</asp:Label>
                             <asp:DropDownList ID="ddlLocation" runat="server" CssClass="form-control"></asp:DropDownList>

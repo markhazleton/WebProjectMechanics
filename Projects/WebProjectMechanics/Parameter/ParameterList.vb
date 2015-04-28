@@ -15,7 +15,7 @@ Public Class ParameterList
     End Sub
 
 
-    Private Function PopulateParameterTypeListSite(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
+    Private Function LoadParameterList_Site(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
         Try
             For Each myrow As DataRow In ApplicationDAL.GetSiteParameterList(CompanyID, SiteCategoryTypeID).Rows
                 Add(New Parameter() With {.RecordSource = wpm_GetDBString(myrow("RecordSource")),
@@ -36,14 +36,14 @@ Public Class ParameterList
                                                                        wpm_GetDBString(myrow("SiteParameterTypeNM")),
                                                                        wpm_GetDBString(myrow("CompanyName")),
                                                                        wpm_GetDBString(myrow("PageName"))),
-                                          .ParameterID = String.Format("PP-{0}", wpm_GetDBInteger(myrow("CompanySiteParameterID"), 0))})
+                                          .ParameterID = String.Format("SP-{0}", wpm_GetDBInteger(myrow("CompanySiteParameterID"), 0))})
             Next
         Catch ex As Exception
             ApplicationLogging.ErrorLog("Error on PopulateParameterTypeList.GetSiteParameterList", ex.ToString)
         End Try
         Return True
     End Function
-    Private Function PopulateParameterTypeListCompanySite(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
+    Private Function LoadParameterList_SiteType(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
         Dim bReturn As Boolean = False
         Try
             For Each myrow As DataRow In ApplicationDAL.GetCompanySiteTypeParameterList(CompanyID, SiteCategoryTypeID).Rows
@@ -74,7 +74,7 @@ Public Class ParameterList
         End Try
         Return bReturn
     End Function
-    Private Function PopulateParameterTypeListDefault(ByVal SiteCategoryTypeID As String) As Boolean
+    Private Function LoadParameterList_Default(ByVal SiteCategoryTypeID As String) As Boolean
         Dim bReturn As Boolean = False
         Try
             For Each myrow As DataRow In ApplicationDAL.GetParameterTypeList().Rows
@@ -103,10 +103,10 @@ Public Class ParameterList
         Return bReturn
     End Function
 
-    Public Function PopulateParameterTypeList(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
-        PopulateParameterTypeListSite(CompanyID, SiteCategoryTypeID)
-        PopulateParameterTypeListCompanySite(CompanyID, SiteCategoryTypeID)
-        PopulateParameterTypeListDefault(SiteCategoryTypeID)
+    Public Function LoadParameterList(ByVal CompanyID As String, ByVal SiteCategoryTypeID As String) As Boolean
+        LoadParameterList_Site(CompanyID, SiteCategoryTypeID)
+        LoadParameterList_SiteType(CompanyID, SiteCategoryTypeID)
+        LoadParameterList_Default(SiteCategoryTypeID)
         Return True
     End Function
 

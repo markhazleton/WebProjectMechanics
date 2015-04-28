@@ -4,16 +4,29 @@ Imports System
 Partial Class wpm_login_login
     Inherits ApplicationPage
 
+    Protected Sub Page_Init1(sender As Object, e As EventArgs) Handles Me.Init
+        With masterPage.myCompany.CurLocation
+            .LocationName = "Login"
+            .RecordSource = "Login"
+            .LocationDescription = "Login Page"
+            .ModifiedDT = Now()
+            .ActiveFL =True
+        End With
+
+
+    End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         Dim myStringBuilder As StringBuilder = New StringBuilder()
         myStringBuilder.Append(Session("msg"))
         Session("msg") = ""
         If IsPostBack Then
             If wpm_ProcessUserLogin(wpm_GetProperty("Username", ""), wpm_GetProperty("Password", "")) Then
-                If (wpm_ListPageURL = "" Or wpm_ListPageURL = "/admin/login/login.aspx") Then
+                If (wpm_LoginRedirectURL = "" Or wpm_LoginRedirectURL = "/admin/login/login.aspx") Then
                     Response.Redirect("/")
                 Else
-                    Response.Redirect(wpm_ListPageURL)
+                    Response.Redirect(wpm_LoginRedirectURL)
                 End If
             Else
                 'We are NOT logged In
