@@ -2,8 +2,8 @@
 <DomainConfigurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Configuration>
     <DomainName></DomainName>
-    <CompanyID>25</CompanyID>
+    <CompanyID>3</CompanyID>
     <AccessDatabasePath></AccessDatabasePath>
-    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|wpmLiving.mdb;</SQLDBConnString>
+    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|InformationCenter.mdb;</SQLDBConnString>
   </Configuration>
 </DomainConfigurations>
