@@ -123,7 +123,7 @@ Public Class Company
             PartCategories.PopulateLinkCategoryList(CompanyID)
             updatePartCategories()
             LocationGroups.PopulateSiteGroupList(CompanyID)
-            Parameters.PopulateParameterTypeList(CompanyID, SiteCategoryTypeID)
+            Parameters.LoadParameterList(CompanyID, SiteCategoryTypeID)
             Images.GetCompanyImages(CompanyID)
             LocationAliases.GetCompanyLocationAliases(CompanyID)
             Articles.PopulateCompanyArticleList(CompanyID)

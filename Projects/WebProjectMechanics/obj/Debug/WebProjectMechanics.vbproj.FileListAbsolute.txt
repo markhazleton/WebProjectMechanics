@@ -18,3 +18,4 @@ C:\codeplex\wpm\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.vbpro
 C:\codeplex\wpm\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.dll
 C:\codeplex\wpm\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.xml
 C:\codeplex\wpm\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.pdb
+C:\codeplex\wpm\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.vbprojResolveAssemblyReference.cache

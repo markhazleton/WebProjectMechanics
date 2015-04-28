@@ -8,6 +8,7 @@ Public Module App
     Public Const wpm_STR_CatalogPath As String = "/runtime/catalog/"
     Private Const wpm_STR_SiteConfig As String = "wpm_SiteConfig"
     Private Const wpm_STR_ListPageURL As String = "wpm_ListPageURL"
+    Private Const wpm_STR_LoginRedirectURL As String = "wpm_LoginRedirectURL"
     Private Const wpm_STR_DefaultSitePrefix As String = "wpm_DefaultSitePrefix"
     Private Const wpm_STR_SiteTemplatePrefix As String = "wpm_SiteTemplatePrefix"
     Private Const wpm_STR_RightContent As String = "wpm_RightContent"
@@ -156,6 +157,14 @@ Public Module App
         End If
         Return True
     End Function
+    Public Property wpm_LoginRedirectURL() As String
+        Get
+            Return wpm_GetDBString(HttpContext.Current.Session.Item(wpm_STR_LoginRedirectURL))
+        End Get
+        Set(ByVal value As String)
+            HttpContext.Current.Session.Item(wpm_STR_LoginRedirectURL) = value
+        End Set
+    End Property
     Public Property wpm_ListPageURL() As String
         Get
             Return wpm_GetDBString(HttpContext.Current.Session.Item(wpm_STR_ListPageURL))

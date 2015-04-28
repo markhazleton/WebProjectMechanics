@@ -16,21 +16,22 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
         ' Check for loop, make sure same page is not returned more than once
         If context.Session("wpm_Last404") = strNotFound Then
             sPageURL = String.Empty
+            Create404Response(context, myCompany)
         Else
             context.Session("wpm_Last404") = strNotFound
             sPageURL = myCompany.SetCurrentLocation(strNotFound, True)
-        End If
-        
-        If sPageURL <> String.Empty Then
-            myCompany.WriteCurrentLocation()
-            HttpContext.Current.Session("wpm_Last404") = String.Empty
-        Else
-            If Not ProcessRedirect(context, myCompany, strNotFound) Then
-                If Not ProcessServerTransfers(context, strNotFound) Then
+            If sPageURL <> String.Empty Then
+                myCompany.WriteCurrentLocation()
+                HttpContext.Current.Session("wpm_Last404") = String.Empty
+            Else
+                If Not ProcessRedirect(context, myCompany, strNotFound) Then
+                    If Not ProcessServerTransfers(context, strNotFound) Then
                         Create404Response(context, myCompany)
+                    End If
                 End If
             End If
         End If
+        
     End Sub
     
     Public ReadOnly Property IsReusable() As Boolean Implements IHttpHandler.IsReusable
@@ -139,12 +140,14 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
             sFileName.Append("?")
         End If
         ApplicationLogging.FileNotFoundLog("404.ProcessRequest", HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING").Replace("404;", ""))
-        FileProcessing.ReadTextFile(HttpContext.Current.Server.MapPath(String.Format("/{0}404-Text.html", wpm_SiteConfig.ApplicationHome)), myContents)
+        ' FileProcessing.ReadTextFile(HttpContext.Current.Server.MapPath(String.Format("/{0}404-Text.html", wpm_SiteConfig.ApplicationHome)), myContents)
         myContents.Replace("<RequestURL>", sFileName.ToString)
         myContents.Replace("<UserHostAddress>", HttpContext.Current.Request.UserHostAddress)
         myContents.Replace("<UserLanguages>", HttpContext.Current.Request.UserAgent)
         myContents.Replace("<RequestBrowser>", HttpContext.Current.Request.Browser.Browser)
         wpm_AddHTMLHead = myContents.ToString
-        context.Response.Write(myCompany.GetHTML(String.Format("<blockquote>The page you were looking for can not be found</blockquote><br/><strong>{0}</strong><br/><br/><form><div align=""center""><textarea rows=8 cols=60 wrap=soft></textarea></div></form><br/><br/><hr><sitemap>", sFileName), False, wpm_SiteTemplatePrefix))
+        context.Response.Write(myCompany.GetHTML(String.Format("<blockquote>The page you were looking for can not be found</blockquote><br/><strong>{0}</strong><br/><br/><sitemap>", sFileName), False, wpm_SiteTemplatePrefix))
+
+        '        context.Response.Write(myCompany.GetHTML(String.Format("<blockquote>The page you were looking for can not be found</blockquote><br/><strong>{0}</strong><br/><br/><form><div align=""center""><textarea rows=8 cols=60 wrap=soft></textarea></div></form><br/><br/><hr><sitemap>", sFileName), False, wpm_SiteTemplatePrefix))
     End Sub
 End Class

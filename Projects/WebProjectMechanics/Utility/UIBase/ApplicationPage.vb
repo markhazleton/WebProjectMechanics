@@ -23,7 +23,7 @@ Public Class ApplicationPage
     End Sub
     Public Sub CheckAdmin()
         If Not (wpm_IsAdmin) Then
-            wpm_ListPageURL = Request.Url.AbsoluteUri
+            wpm_LoginRedirectURL = Request.Url.AbsoluteUri
             Response.Redirect(String.Format("{0}login/login.aspx", wpm_SiteConfig.AdminFolder))
         End If
     End Sub

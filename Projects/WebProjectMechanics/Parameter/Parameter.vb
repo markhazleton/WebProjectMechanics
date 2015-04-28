@@ -12,6 +12,7 @@ Public Class Parameter
     Public Property CompanyID As String
     Public Property CompanyNM As String 
     Public Property SiteCategoryTypeID As String
+    Public Property SiteCategoryTypeNM As String 
     Public Property LocationID As String
     Public Property LocationNM As String 
     Public Property LocationGroupID As String
