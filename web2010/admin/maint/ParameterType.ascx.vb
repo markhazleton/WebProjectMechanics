@@ -71,17 +71,23 @@ Public Class admin_maint_ParameterType
             hfRecordSource.Value = .RecordSource
         End With
 
-        Dim myListHeader As New DisplayTableHeader() With {.TableTitle = String.Format("Parameter Usage ( <a href='/admin/maint/default.aspx?type=Parameter&ParameterID=NEW&ParameterTypeID={0}'>New Parameter Usage</a>)", myParameterType.ParameterTypeID)}
-        myListHeader.AddHeaderItem("Location", "LocationNM", "/admin/maint/default.aspx?Type=Parameter&LocationID={0}", "LocationID", "LocationNM")
-        myListHeader.AddHeaderItem("Company", "CompanyNM", "/admin/maint/default.aspx?Type=Parameter&CompanyID={0}", "CompanyID", "CompanyNM")
-        myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "ParameterTypeDS", .Value = "ParameterTypeDS"})
-        myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "SortOrder", .Value = "SortOrder"})
-        myListHeader.DetailKeyName = "ParameterID"
-        myListHeader.DetailFieldName = "ParameterNM"
-        myListHeader.DetailPath = "/admin/maint/default.aspx?type=Parameter&ParameterID={0}"
+
+        LoadDisplyTableParameter(0, myParameterType.ParameterTypeID,dtParameterUsage)
+
+
+        'Dim myListHeader As New DisplayTableHeader() With {.TableTitle = String.Format("Parameter Usage ( <a href='/admin/maint/default.aspx?type=Parameter&ParameterID=NEW&ParameterTypeID={0}'>New Parameter Usage</a>)", myParameterType.ParameterTypeID)}
+        'myListHeader.AddHeaderItem("Location", "LocationNM", "/admin/maint/default.aspx?Type=Parameter&LocationID={0}", "LocationID", "LocationNM")
+        'myListHeader.AddHeaderItem("Company", "CompanyNM", "/admin/maint/default.aspx?Type=Parameter&CompanyID={0}", "CompanyID", "CompanyNM")
+        'myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "ParameterTypeDS", .Value = "ParameterTypeDS"})
+        'myListHeader.HeaderItems.Add(New DisplayTableHeaderItem With {.KeyField = False, .Name = "SortOrder", .Value = "SortOrder"})
+        'myListHeader.DetailKeyName = "ParameterID"
+        'myListHeader.DetailFieldName = "ParameterNM"
+        'myListHeader.DetailPath = "/admin/maint/default.aspx?type=Parameter&ParameterID={0}"
         Dim myList As New List(Of Object)
+
         myList.AddRange((From i In masterPage.myCompany.SiteParameterList Where i.ParameterTypeID = myParameterType.ParameterTypeID And i.ParameterID <> myParameterType.ParameterID Select i).ToList())
-        dtParameterUsage.BuildTable(myListHeader, myList)
+
+'        dtParameterUsage.BuildTable(myListHeader, myList)
 
         If myList.Count > 0 Then
             cmd_Delete.Visible = False

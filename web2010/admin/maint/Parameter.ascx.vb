@@ -249,68 +249,9 @@ Public Class admin_maint_Parameter
 
     Private Sub ShowList()
 
-        Dim sWhere As String = String.Format("where ( Company.CompanyID is null or Company.CompanyID = {0}) and (SiteCategoryType.SiteCategoryTypeID={1} or SiteCategoryType.siteCategoryTypeID is null) ",wpm_CurrentSiteID, masterPage.myCompany.SiteCategoryTypeID)
-
-        If GetProperty("ALL","FALSE") = "TRUE" then 
-            sWhere = String.Empty
-        End If
-
-
-        Dim STR_SELECT_ParameterList As String = String.Format("SELECT 'TP-' & CompanySiteTypeParameter.CompanySiteTypeParameterID AS ParameterID, CompanySiteTypeParameter.CompanyID, CompanySiteTypeParameter.SiteParameterTypeID, CompanySiteTypeParameter.SortOrder, CompanySiteTypeParameter.ParameterValue, CompanySiteTypeParameter.SiteCategoryID AS LocationID, CompanySiteTypeParameter.SiteCategoryGroupID AS LocationGroupID, CompanySiteTypeParameter.SiteCategoryTypeID, Company.CompanyName AS CompanyNM, SiteCategoryGroup.SiteCategoryGroupNM AS LocationGroupNM, SiteCategory.CategoryName AS LocationNM, SiteParameterType.SiteParameterTypeNM, 'CompanySiteTypeParameter' AS RecordSource, SiteCategoryType.SiteCategoryTypeNM FROM (SiteParameterType RIGHT JOIN (SiteCategory RIGHT JOIN (SiteCategoryGroup RIGHT JOIN (CompanySiteTypeParameter LEFT JOIN Company ON CompanySiteTypeParameter.CompanyID = Company.CompanyID) ON SiteCategoryGroup.SiteCategoryGroupID = CompanySiteTypeParameter.SiteCategoryGroupID) ON SiteCategory.SiteCategoryID = CompanySiteTypeParameter.SiteCategoryID) ON SiteParameterType.SiteParameterTypeID = CompanySiteTypeParameter.SiteParameterTypeID) LEFT JOIN SiteCategoryType ON CompanySiteTypeParameter.SiteCategoryTypeID = SiteCategoryType.SiteCategoryTypeID {0}  union SELECT 'SP-' & CompanySiteParameter.CompanySiteParameterID AS Expr1, CompanySiteParameter.CompanyID, CompanySiteParameter.SiteParameterTypeID, CompanySiteParameter.SortOrder, CompanySiteParameter.ParameterValue, CompanySiteParameter.PageID, CompanySiteParameter.SiteCategoryGroupID, Company.SiteCategoryTypeID, Company.CompanyName, SiteCategoryGroup.SiteCategoryGroupNM, Page.PageName, SiteParameterType.SiteParameterTypeNM, 'CompanySiteParameter' AS RecordSource, SiteCategoryType.SiteCategoryTypeNM FROM SiteCategoryType RIGHT JOIN (SiteParameterType RIGHT JOIN (Page RIGHT JOIN (SiteCategoryGroup RIGHT JOIN (CompanySiteParameter LEFT JOIN Company ON CompanySiteParameter.CompanyID = Company.CompanyID) ON SiteCategoryGroup.SiteCategoryGroupID = CompanySiteParameter.SiteCategoryGroupID) ON Page.PageID = CompanySiteParameter.PageID) ON SiteParameterType.SiteParameterTypeID = CompanySiteParameter.SiteParameterTypeID) ON SiteCategoryType.SiteCategoryTypeID = Company.SiteCategoryTypeID  {0} ", sWhere)
-
-
-
-
-
-
+        LoadDisplyTableParameter(wpm_GetIntegerProperty("CompanyID",0), wpm_GetIntegerProperty("ParameterTypeID",0),dtList)
         pnlEdit.Visible = False
         dtList.Visible = True
-
-        Dim myListHeader As New DisplayTableHeader() With {.TableTitle = "Parameter (<a href='/admin/maint/default.aspx?type=Parameter&ALL=TRUE'>All Parameters</a> , <a href='/admin/maint/default.aspx?type=Parameter&ParameterID=NEW'>Add New Parameter</a>)"}
-
-        myListHeader.AddHeaderItem("Parameter Type", "ParameterTypeNM", "/admin/maint/default.aspx?Type=Parameter&ParameterTypeID={0}", "ParameterTypeID", "ParameterTypeNM")
-        myListHeader.AddHeaderItem("Location", "LocationNM", "/admin/maint/default.aspx?Type=Parameter&LocationID={0}", "LocationID", "LocationNM")
-        myListHeader.AddHeaderItem("Location Group", "LocationGroupID", "/admin/maint/default.aspx?Type=Parameter&LocationGroupID={0}", "LocationGroupID", "LocationGroupNM")
-        myListHeader.AddHeaderItem("Site", "CompanyNM", "/admin/maint/default.aspx?Type=Parameter&CompanyID={0}", "CompanyID", "CompanyNM")
-        myListHeader.AddHeaderItem("SiteCategoryTypeNM", "SiteCategoryTypeNM")
-        myListHeader.AddHeaderItem("SortOrder", "SortOrder")
-
-        myListHeader.DetailKeyName = "ParameterID"
-        myListHeader.DetailFieldName = "ParameterNM"
-        myListHeader.DetailPath = "/admin/maint/default.aspx?type=Parameter&ParameterID={0}"
-        Dim myList As New List(Of Object)
-
-        For Each myRow In wpm_GetDataTable(String.Format("{0} ", STR_SELECT_ParameterList, wpm_CurrentSiteID), "Parameter").Rows
-            myList.Add(New Parameter With {.ParameterID = wpm_GetDBString(myRow("ParameterID")),
-                                           .ParameterNM = String.Format("{0}-{1}", wpm_GetDBString(myRow("SiteParameterTypeNM")), wpm_GetDBString(myRow("ParameterID"))),
-                                           .RecordSource = wpm_GetDBString(myRow("RecordSource")),
-                                           .ParameterTypeID = wpm_GetDBInteger(myRow("SiteParameterTypeID")),
-                                           .ParameterTypeNM = wpm_GetDBString(myRow("SiteParameterTypeNM")),
-                                           .SiteCategoryTypeID = wpm_GetDBString(myRow("SiteCategoryTypeID")),
-                                           .SiteCategoryTypeNM = wpm_GetDBString(myRow("SiteCategoryTypeNM")),
-                                           .SortOrder = wpm_GetDBInteger(myRow("SortOrder")),
-                                           .CompanyID = wpm_GetDBString(myRow("CompanyID")),
-                                           .CompanyNM = wpm_GetDBString(myRow("CompanyNM")),
-                                           .LocationID = wpm_GetDBString(myRow("LocationID")),
-                                           .LocationNM = wpm_GetDBString(myRow("LocationNM")),
-                                           .LocationGroupID = wpm_GetDBString(myRow("LocationGroupID")),
-                                           .LocationGroupNM = wpm_GetDBString(myRow("LocationGroupNM"))})
-        Next
-
-
-
-        'If wpm_GetIntegerProperty("ParameterTypeID", 0) > 0 Then
-        '    myList.AddRange((From i In masterPage.myCompany.SiteParameterList Where i.ParameterTypeID = wpm_GetIntegerProperty("ParameterTypeID", 0) Select i).ToList())
-        'ElseIf wpm_GetIntegerProperty("CompanyID", 0) > 0 Then
-        '    myList.AddRange((From i In masterPage.myCompany.SiteParameterList Where i.CompanyID = wpm_GetIntegerProperty("CompanyID", 0).ToString() Select i).ToList())
-        'ElseIf wpm_GetProperty("LocationID", String.Empty) <> String.Empty Then
-        '    myList.AddRange((From i In masterPage.myCompany.SiteParameterList Where i.LocationID = wpm_GetProperty("LocationID", String.Empty) Select i).ToList())
-        'Else
-        '    myList.AddRange((From i In masterPage.myCompany.SiteParameterList Select i).ToList())
-
-        'End If
-
-        dtList.BuildTable(myListHeader, myList)
     End Sub
     Private Function GetSiteParameterByParameterID(reqParameterID As String) As Parameter
         Dim myParameter = New Parameter With {.ParameterTypeID = wpm_GetDBInteger(reqParameterID)}
@@ -369,5 +310,4 @@ Public Class admin_maint_Parameter
         End If
         Return myParameter
     End Function
-
 End Class
