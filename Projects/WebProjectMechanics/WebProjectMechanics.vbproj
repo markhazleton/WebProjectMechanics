@@ -173,6 +173,7 @@
     <Compile Include="Utility\DisplayTable\DisplayTableHeader.vb" />
     <Compile Include="Utility\DisplayTable\DisplayTableHeaderItem.vb" />
     <Compile Include="Utility\DisplayTable\Icontrols_DisplayTable.vb" />
+    <Compile Include="Utility\DisplayTable\IHTMLControl.vb" />
     <Compile Include="Utility\Eval\Evaluator.vb" />
     <Compile Include="Utility\Eval\EvalVariable.vb" />
     <Compile Include="Utility\Eval\Globals.vb" />

@@ -31,7 +31,7 @@ Public Class Location
     Public Property LocationGroupNM() As New String(CType(String.Empty, Char())) Implements ILocation.LocationGroupNM
 
     Public Property SiteTypeID As New String(CType(String.Empty, Char())) Implements ILocation.SiteTypeID
-    
+    Public Property SiteTypeNM As New String(CType(String.Empty, Char())) 
     Public Property ActiveFL() As Boolean Implements ILocation.ActiveFL
 
     Public Property LevelNBR() As Integer Implements ILocation.LevelNBR
