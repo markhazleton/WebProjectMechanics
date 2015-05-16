@@ -6,50 +6,16 @@ WebProjectMechanics
 </name>
 </assembly>
 <members>
-<member name="M:WebProjectMechanics.BaseHandler.OnMethodInvoke(WebProjectMechanics.OnMethodInvokeArgs)">
+<member name="M:WebProjectMechanics.UtilityRSSTools.RSSFeed.#ctor(System.String)">
 	<summary>
- Intercept the execution right before the handler method is called
+ Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
  </summary>
-	<param name="e"></param>
-</member><member name="M:WebProjectMechanics.BaseHandler.AfterMethodInvoke(System.Object)">
-	<summary>
- Intercept the execution right after the handler method is called
- </summary>
-</member><member name="M:WebProjectMechanics.BaseHandler.HandleRequest">
-	<summary>
- Method used to handle the request as a normal ASHX.
- To use this method just pass handlerequest=true on the request query string.
- </summary>
-</member><member name="M:WebProjectMechanics.BaseHandler.DefaultContentType">
-	<summary>
- Returns the default content type returned by the handler.
- </summary>
-	<returns></returns>
-</member><member name="P:WebProjectMechanics.BaseHandler.SkipDefaultSerialization">
-	<summary>
- Setting this to false will make the handler to respond with exacly what the called method returned.
- If true the handler will try to serialize the content based on the ContentType set.
- </summary>
-</member><member name="P:WebProjectMechanics.BaseHandler.SkipContentTypeEvaluation">
-	<summary>
- Setting this to true will avoid the handler to change the content type wither to its default value or to its specified value on the request.
- This is useful if you're handling the request yourself and need to specify it yourself.
- </summary>
-</member><member name="M:WebProjectMechanics.BaseHandler.Help">
-	<summary>
- Prints an help page discribing the available methods on this handler.
- </summary>
-	<returns></returns>
+	<param name="feedurl"></param>
 </member><member name="T:WebProjectMechanics.RequireAuthenticationAttribute">
 	<summary>
  Use this attribute to decorate the handler methods that need explicit authentication configuration.
  If this attibute is set to true it will validate if the user is authenticated.
  </summary>
-</member><member name="M:WebProjectMechanics.UtilityRSSTools.RSSFeed.#ctor(System.String)">
-	<summary>
- Initializes a new instance of the wpmRSS class. You must enter a feed url as a string.
- </summary>
-	<param name="feedurl"></param>
 </member><member name="M:WebProjectMechanics.AjaxCallSignature.ProcessProperty(System.String,System.Type,System.String)">
 	<summary>
 	</summary>
@@ -66,42 +32,6 @@ WebProjectMechanics
 	<summary>
  Hydrates complex types
  </summary>
-</member><member name="M:WebProjectMechanics.ApplicationHttpModule.AddWww(System.Web.HttpContext)">
-	<summary>
- Adds the www subdomain to the request and redirects.
- </summary>
-</member><member name="M:WebProjectMechanics.ApplicationHttpModule.RemoveWww(System.Web.HttpContext)">
-	<summary>
- Removes the www subdomain from the request and redirects.
- </summary>
-</member><member name="M:WebProjectMechanics.ApplicationHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
-	<summary>
- Sends permanent redirection headers (301)
- </summary>
-</member><member name="M:WebProjectMechanics.UtilityXMLDocument.#ctor(System.String,System.String,System.String,System.String)">
-	<summary>
- Initializes a new instance of the UtilityXMLDocument class
- </summary>
-</member><member name="M:WebProjectMechanics.UtilityXMLDocument.getMD5Hash(System.String)">
-	<summary>
- Get the MD5 Hash of a String
- </summary>
-	<param name="strToHash">The String to Hash</param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:WebProjectMechanics.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
 </member><member name="M:WebProjectMechanics.ApplicationMasterPage.GetFileMenu">
 	<summary>
  GetFileMenu - Returns HTML List of all files in the current directory
@@ -114,6 +44,29 @@ WebProjectMechanics
 	<param name="MenuName"></param>
 	<param name="MenuPath"></param>
 	<returns></returns>
+</member><member name="M:WebProjectMechanics.UtilityXMLDocument.#ctor(System.String,System.String,System.String,System.String)">
+	<summary>
+ Initializes a new instance of the UtilityXMLDocument class
+ </summary>
+</member><member name="M:WebProjectMechanics.UtilityXMLDocument.getMD5Hash(System.String)">
+	<summary>
+ Get the MD5 Hash of a String
+ </summary>
+	<param name="strToHash">The String to Hash</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WebProjectMechanics.ApplicationHttpModule.AddWww(System.Web.HttpContext)">
+	<summary>
+ Adds the www subdomain to the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.ApplicationHttpModule.RemoveWww(System.Web.HttpContext)">
+	<summary>
+ Removes the www subdomain from the request and redirects.
+ </summary>
+</member><member name="M:WebProjectMechanics.ApplicationHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">
+	<summary>
+ Sends permanent redirection headers (301)
+ </summary>
 </member><member name="T:WebProjectMechanics.ResponseContentTypes">
 	<summary>
  Represent the list of supported response content types
@@ -281,6 +234,53 @@ WebProjectMechanics
  </summary>
 	<param name="configValue"></param>
 	<param name="defaultValue"></param>
+	<returns></returns>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:WebProjectMechanics.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:WebProjectMechanics.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:WebProjectMechanics.BaseHandler.OnMethodInvoke(WebProjectMechanics.OnMethodInvokeArgs)">
+	<summary>
+ Intercept the execution right before the handler method is called
+ </summary>
+	<param name="e"></param>
+</member><member name="M:WebProjectMechanics.BaseHandler.AfterMethodInvoke(System.Object)">
+	<summary>
+ Intercept the execution right after the handler method is called
+ </summary>
+</member><member name="M:WebProjectMechanics.BaseHandler.HandleRequest">
+	<summary>
+ Method used to handle the request as a normal ASHX.
+ To use this method just pass handlerequest=true on the request query string.
+ </summary>
+</member><member name="M:WebProjectMechanics.BaseHandler.DefaultContentType">
+	<summary>
+ Returns the default content type returned by the handler.
+ </summary>
+	<returns></returns>
+</member><member name="P:WebProjectMechanics.BaseHandler.SkipDefaultSerialization">
+	<summary>
+ Setting this to false will make the handler to respond with exacly what the called method returned.
+ If true the handler will try to serialize the content based on the ContentType set.
+ </summary>
+</member><member name="P:WebProjectMechanics.BaseHandler.SkipContentTypeEvaluation">
+	<summary>
+ Setting this to true will avoid the handler to change the content type wither to its default value or to its specified value on the request.
+ This is useful if you're handling the request yourself and need to specify it yourself.
+ </summary>
+</member><member name="M:WebProjectMechanics.BaseHandler.Help">
+	<summary>
+ Prints an help page discribing the available methods on this handler.
+ </summary>
 	<returns></returns>
 </member>
 </members>
