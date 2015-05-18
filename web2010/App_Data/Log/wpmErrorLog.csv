@@ -1,0 +1,2 @@
+"UserName","HostName","RequestURL","Date","Time","MessageOne","MessageTwo"
+"","localhost","http://localhost:2690/default.aspx","5/16/2015","11:02:58 AM","Failed to GetCompanyFromDB (3)","ActiveCompany.LoadSiteProfile"
