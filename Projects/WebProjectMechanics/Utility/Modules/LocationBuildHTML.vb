@@ -68,7 +68,7 @@ Public Module LocationBuildHTML
                 result = True
             End If
         ElseIf myLoc.RecordSource.ToLower = "category" Then
-            If wpm_RunDeleteSQL("delete from sitecategory where sitecategoryid=" & myLoc.LocationID.Replace("CAT-",String.Empty), "Category") > 0 Then
+            If wpm_RunDeleteSQL("delete from sitecategory where sitecategoryid=" & myLoc.SiteCategoryID, "Category") > 0 Then
                 result = True
             End If
 
@@ -87,10 +87,39 @@ Public Module LocationBuildHTML
                     wpm_InsertPageDB(myLoc, CompanyID, GroupID, iRowsAffected)
                 End If
             Case "Category"
-                If wpm_RunUpdateSQL(String.Format(" UPDATE SiteCategory SET CategoryKeywords = '{0}', CategoryName = '{1}', CategoryTitle = '{2}', CategoryDescription = '{3}', GroupOrder = {4}, ParentCategoryID = {5}, SiteCategoryGroupID = {6} WHERE (SiteCategory.SiteCategoryID = {7}) ", myLoc.LocationKeywords, myLoc.LocationName, myLoc.LocationTitle, myLoc.LocationDescription, myLoc.DefaultOrder, wpm_GetNullableIndex(myLoc.ParentCategoryID), wpm_GetNullableIndex(myLoc.LocationGroupID), wpm_GetNullableIndex(myLoc.GetSiteCategoryID)), "Page") = 1 Then
-                    bReturn = True
+                If CInt(myLoc.SiteCategoryID) > 0 Then
+                    If wpm_RunUpdateSQL(String.Format(" UPDATE SiteCategory SET CategoryKeywords = '{0}', CategoryName = '{1}', CategoryTitle = '{2}', CategoryDescription = '{3}', GroupOrder = {4}, ParentCategoryID = {5}, SiteCategoryGroupID = {6} WHERE (SiteCategory.SiteCategoryID = {7}) ", myLoc.LocationKeywords, myLoc.LocationName, myLoc.LocationTitle, myLoc.LocationDescription, myLoc.DefaultOrder, wpm_GetNullableIndex(myLoc.ParentCategoryID), wpm_GetNullableIndex(myLoc.LocationGroupID), wpm_GetNullableIndex(myLoc.GetSiteCategoryID)), "Page") = 1 Then
+                        bReturn = True
+                    Else
+                        bReturn = False
+                    End If
                 Else
-                    bReturn = False
+
+                    Dim mySQL As String = "Insert Into [SiteCategory] ([GroupOrder], [CategoryName], [CategoryTitle], [CategoryDescription], [CategoryKeywords], [SiteCategoryTypeID], [ParentCategoryID], [CategoryFileName], [SiteCategoryGroupID]) values (@GroupOrder, @CategoryName , @CategoryTitle , @CategoryDescription , @CategoryKeywords , @SiteCategoryTypeID , @ParentCategoryID, @CategoryFileName,  @SiteCategoryGroupID)"
+
+                    With myLoc
+                        Using conn As New OleDbConnection(wpm_SQLDBConnString)
+                            conn.Open()
+                            Using cmd As New OleDbCommand() With {.Connection = conn, .CommandType = CommandType.Text, .CommandText = mySQL}
+                                Try
+                                    wpm_AddParameterValue("@GroupOrder", .DefaultOrder, SqlDbType.Int, cmd)
+                                    wpm_AddParameterStringValue("@CategoryName", .LocationName, cmd)
+                                    wpm_AddParameterStringValue("@CategoryTitle", .LocationTitle, cmd)
+                                    wpm_AddParameterStringValue("@CategoryDescription", .LocationDescription, cmd)
+                                    wpm_AddParameterStringValue("@CategoryKeywords", .LocationKeywords, cmd)
+                                    wpm_AddParameterValue("@SiteCategoryTypeID", .SiteTypeID, SqlDbType.Int, cmd)
+                                    wpm_AddParameterValue("@ParentCategoryID", .ParentPageID, SqlDbType.Int, cmd)
+                                    wpm_AddParameterStringValue("@CategoryFileName", .LocationFileName, cmd)
+                                    wpm_AddParameterValue("@SiteCategoryGroupID", .LocationGroupID, SqlDbType.Int, cmd)
+                                    iRowsAffected = cmd.ExecuteNonQuery()
+                                Catch ex As Exception
+                                    ApplicationLogging.SQLUpdateError(cmd.CommandText, "LocationbuildHTML.InsertSiteCategory")
+                                End Try
+                            End Using
+                        End Using
+                    End With
+
+
                 End If
             Case Else
                 bReturn = False
