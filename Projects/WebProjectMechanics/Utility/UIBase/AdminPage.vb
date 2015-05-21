@@ -28,6 +28,7 @@ Public Class AdminPage
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Location", .Name = "Location"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Company", .Name = "Company"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=SiteType", .Name = "Site Type"})
+        myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=SiteCategory", .Name = "Site Category"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Contact", .Name = "Contact"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=SiteTemplate", .Name = "SiteTemplate"})
         myListItems.Add(New LookupItem With {.Value = "/admin/maint/default.aspx?type=Image", .Name = "Image"})
