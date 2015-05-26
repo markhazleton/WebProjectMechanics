@@ -2,7 +2,7 @@ Imports System.Reflection
 Imports System.Text
 
 Public Class DisplayTableHeader
-        Public HeaderItems As New List(Of DisplayTableHeaderItem)
+    Public HeaderItems As New List(Of DisplayTableHeaderItem)
     Public TableTitle As String
     Public DetailPath As String
     Public DetailKeyName As String
@@ -31,7 +31,16 @@ Public Class DisplayTableHeader
                                                          .LinkKeyName = LinkKeyName,
                                                          .LinkPath = LinkPath,
                                                          .LinkTextName = LinkTextName})
- End Sub 
+    End Sub
+    Sub AddHeaderThumbnailItem(DisplayName As String, Value As String, LinkPath As String, LinkKeyName As String, LinkTextName As String, ThumbPath As String)
+        HeaderItems.Add(New DisplayTableHeaderItem With {.Name = DisplayName,
+                                                         .Value = Value,
+                                                         .KeyField = True,
+                                                         .LinkKeyName = LinkKeyName,
+                                                         .LinkPath = LinkPath,
+                                                         .ThumbnailPath = ThumbPath,
+                                                         .LinkTextName = LinkTextName})
+    End Sub
 
     'Public HeaderItems As New List(Of DisplayTableHeaderItem)
     'Public TableTitle As String

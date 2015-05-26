@@ -7,5 +7,6 @@
     Public Property LinkTextName As String 
     Public Property ViewOnPhone As Boolean = True
     Public Property GridIndex As Integer 
+    Public Property ThumbnailPath As String 
 
 End Class
