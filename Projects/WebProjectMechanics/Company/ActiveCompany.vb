@@ -325,7 +325,7 @@ Public Class ActiveCompany
             'End If
             wpm_ResetSessionVariables()
         End If
-        wpm_SetListPageURL(HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING"), HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), HttpContext.Current.Request.ServerVariables.Item("URL"))
+        '  wpm_SetListPageURL(HttpContext.Current.Request.ServerVariables.Item("QUERY_STRING"), HttpContext.Current.Request.ServerVariables.Item("SERVER_NAME"), HttpContext.Current.Request.ServerVariables.Item("URL"))
         ' If App.Config.FullLoggingOn() Then
         ' LocationBuildHTML.SaveHTML(CurLocation.LocationName, myHTML.ToString)
         ' End If
