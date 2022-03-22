@@ -1,0 +1,234 @@
+*{
+margin:0 0 0 0;
+padding:0 0 0 0;
+}
+* html #leftcolumn,* html #rightcolumn{
+height:531px;
+}
+body{
+background: #999999;
+color:#333369;
+font:12px Arial,Helvetica,sans-serif;
+}
+
+blockquote,ul,ol,dl{
+margin:1em;/*giving blockquotes and lists room to breath*/
+}
+em{
+font-style:italic;/*bringing italics back to the em element*/
+}
+h1,h2,h3{
+background:transparent;/* top & bottom margin based on font size */
+color:#333369;
+margin:1em 0;
+}
+h1,h2,h3,h4,h5,h6,strong{
+font-weight:bold;/*bringing boldness back to headers and the strong element*/
+}
+h1{
+background:#003046 none repeat scroll 0 0;
+color:#FFFFFF;
+border-bottom:2px solid #B22222;
+padding: 4px 10px 2px 2px;
+font-size:138.5%;/*18px via YUI Fonts CSS foundation*/
+}
+h2 {
+background:#003046 none repeat scroll 0 0;
+color:#FFFFFF;
+font-weight:normal;
+padding:4px 10px;
+border-bottom:2px solid #B22222;
+font-size:123.1%;/*16px via YUI Fonts CSS foundation*/
+}
+h3 {
+background:#003046 none repeat scroll 0 0;
+color:#FFFFFF;
+font-weight:normal;
+padding:4px 10px;
+border-bottom:2px solid #B22222;
+font-size:108%;/*14px via YUI Fonts CSS foundation*/
+}
+h3 a, h2 a, h1 a{
+	background: transparent;
+	color: inherit;
+}
+p,fieldset,table{
+margin-bottom:1em;/*so things don't run into each other*/
+}
+
+img.header-banner{
+border:none;
+left:-43%;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+position:relative;
+top:1px;
+}
+
+.box{
+border:1px solid #B22222;
+clear:both;
+margin:10px 5px 10px 5px;
+padding:4px 4px 4px 4px;
+width:95%;
+overflow: hidden;
+}
+.box li{
+list-style-type:none;
+}
+.box p{
+color:#333369;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+text-align:justify;
+}
+.box ul{
+line-height:18px;
+margin-left:40px;
+padding-top:10px;
+}
+.clear{
+border:none;
+border-width:0px 0px 0px 0px;
+clear:both;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+.leftbox{
+border:1px solid #B22222;
+margin: 0px 5px 10px 5px;
+padding: 0px 4px 4px 4px;
+}
+
+#footer{
+background:#F2EFDE;
+border-top:2px #B22222 solid;
+clear:both;
+display:inline;
+float:left;
+padding-bottom:5px;
+padding-top:5px;
+text-align:center;
+width:100%;
+}
+#header{
+border:none;
+clear:both;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+#headerspace {
+background:#FFFFFF url(/sites/ProjectMechanics/img/headerbackground.gif) repeat-x scroll 0 10px;
+border-bottom:3px solid #FFFFFF;
+padding:10px 0 0;
+}
+
+
+#leftcolumn{
+display:inline;
+float:left;
+min-height:531px;
+padding-bottom:10px;
+text-align:left;
+width:275px;
+}
+#rightcolumn{
+display:inline;
+float:left;
+margin:0px 0px 0px 0px;
+min-height:531px;
+padding:0px 0px 0px 0px;
+text-align:left;
+width:695px;
+}
+
+#rightcolumn ul
+{
+margin-left:15px;
+padding-left:15px;
+}
+
+#rightcolumn ul li
+{
+list-style: circle;
+padding: 0.25em;
+}
+
+
+#wrapper{
+background:#FFFFFF;
+margin:0 auto;
+width:975px;
+}
+
+#navbar {
+	background: #003046 url('/sites/projectmechanics/img/navbackground.jpg') top left repeat-x;
+    width: 100%;
+	border-bottom: #fff 3px solid;
+	text-transform: uppercase;
+	} html>body #navbar { float: left; }
+#navbar ul {
+  	margin: 0 auto 0 auto; /* make room for background image */
+  	padding: 0;
+  	list-style: none;
+	position: relative;
+  	}
+#navbar ul li{
+	background-color: transparent;
+	color: #fff;
+	border-right: 1px solid #1466A3;
+  	float: left;
+  	margin: 0;
+  	padding: 0;
+  	line-height: normal;
+	position: relative; /* anchor point for absolutely positioned subnavs */
+	}
+#navbar ul li a {
+	background-color: transparent;
+	color: #fff;
+	border-right: 1px solid #003046;
+  	display: block;
+	float: left;
+  	padding: 8px 12px;
+	font-size: 90%;
+	font-weight: normal;
+  	text-decoration: none;
+  	}
+/* hide from IE5-Mac \*/
+#navbar ul li a { 
+	float: none; 
+	}
+/* end hide */
+#navbar ul li.mainnav:hover>a { 
+	background: #003046;
+	border-right-color: #003046;
+	color: #fff;
+	}
+#navbar ul li a:hover { 
+	background: #003046;
+	border-right-color: #003046;
+	color: #fff;
+	}
+
+div.leftbox,div.box {
+ border:none;
+}
+
+div.rss_dl {
+	clear: both;
+}
+div.rss_dl dl dt {
+	display: block;
+	overflow: hidden;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	border-top: thin dotted #CCCCCC;
+}
+div.rss_dl dl dt img {
+	border: none;
+	display: inline;
+	float: left;
+	margin: 2px 4px 2px 0px;
+}
+

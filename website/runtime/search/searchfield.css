@@ -1,0 +1,115 @@
+/* 
+
+	SearchField	
+	by Alen Grakalic, brought to you by cssglobe.com
+	
+*/
+
+/* default (inactive field) */
+.sf_inactive
+{
+    border: 2px #999999 solid;
+    background: #ffffff;
+    color: #000000;
+}
+/* on focus (when field is clicked on)  */
+.sf_active
+{
+    border: 2px #999999 solid;
+    background: #ffffff;
+    color: #000000;
+}
+/* with text (when field is inactive but contains user's input)  */
+.sf_text
+{
+    border: 2px #666666 solid;
+    background: #ffffff;
+    color: #000000;
+}
+
+/* suggestions box */
+/* js code generates unordered list */
+.sf_suggestion
+{
+    position: relative;
+}
+.sf_suggestion ul
+{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    top: 0;
+    left: 0;
+}
+.sf_suggestion li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sf_suggestion li a
+{
+    display: block;
+    text-indent: 5px;
+    color: #fff;
+}
+.sf_suggestion li.selected a
+{
+    background: transparent;
+}
+form#searchform
+{
+    margin: 5px 0;
+    padding: 0;
+    width: 290px;
+    height: 44px;
+    background-color: #EBEBEC;
+}
+form#searchform p
+{
+    margin: 0 0px;
+}
+form#searchform input
+{
+    margin-top: 0px;
+    width: 220px;
+    border: none;
+    padding: 2px;
+    font-size: 100%;
+    vertical-align: middle;
+}
+form#searchform button
+{
+    margin-top: 0px;
+    margin-left: 5px;
+    width: 53px;
+    height: 30px;
+    border: none;
+    text-indent: -8000px;
+    overflow: hidden;
+    background: url(button.gif) no-repeat 0 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+div.sf_suggestion
+{
+    background-color: transparent;
+    border: solid thick transparent;
+}
+div.sf_suggestion ul li.selected
+{
+    background-color: #cccccc;
+}
+div.sf_suggestion ul li a
+{
+    color: #1f60a7;
+}
+div.menugroupsearch {
+	border: 1px solid #CCCCCC;
+	margin-top: 0px;
+	padding-top: 5px;
+	margin-bottom:15px;
+	padding-left: 5px;
+    background-color: #EBEBEC;	
+}

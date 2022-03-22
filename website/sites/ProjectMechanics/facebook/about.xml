@@ -1,0 +1,24 @@
+﻿<html>
+	<settings>
+		<!-- total height -->
+		<height>500</height>
+		<!-- margin settings -->
+		<titleMargin>5</titleMargin>
+		<textMargin>5</textMargin>
+		<!-- scrollbar settings -->
+		<scrollbarBackColor>666666</scrollbarBackColor>
+		<scrollbarHandleColor1>999999</scrollbarHandleColor1>
+		<scrollbarHandleColor2>FFCC00</scrollbarHandleColor2>
+		<!-- text color settings -->
+		<titleDefaultColor>FFCC00</titleDefaultColor>
+		<textDefaultColor>333333</textDefaultColor>
+	</settings>
+	<data>
+		<column width="510">
+			<title><![CDATA[<p><font color="#333333">Mechanics of Motherhood</font></p>]]></title>
+			<text><![CDATA[<p>The Mechanics of Motherhood is a place for all Moms to share their tricks of the trade.</p>]]></text>
+		</column>
+	
+	</data>
+	
+</html>

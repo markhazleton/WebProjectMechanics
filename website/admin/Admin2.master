@@ -1,0 +1,142 @@
+﻿<%@ Master Language="VB" CodeFile="Admin2.master.vb" Inherits="WpmAdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WPM - Administration</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme      -->
+    <%= ThemeCSS %>
+
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+
+        .container {
+            width: 98%;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href="/admin/" title=""><%=SiteName  %></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Site Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/ApplicationAdmin.aspx">Application Setup</a></li>
+                            <li><a href="/admin/ReadLogFile.aspx">Read Log File</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=Company">Site/Company</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=Contact">User/Contact</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=SiteTemplate">Site Template</a></li>
+                            <li><a href="/admin/SiteList.aspx">Site Configuration by Database</a></li>
+                            <li><a href="/admin/site_switch.aspx">Change Current Site</a></li>
+                            <li><a href="/admin/skin_switch.aspx">Change Current Template</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages/Location <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/maint/default.aspx?type=Location">Pages/Location</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=Blog">Blogs</a></li>
+                            <li><a href="/admin/PageOrder.aspx">Page Order</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=PageAlias">Page Alias</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=PageType">Page Type</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Content/Parts<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/AdminLink.aspx">Part Dashboard</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=Article">Articles</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=Part">Parts</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=PartType">Part Type</a></li>
+                            <li><a href="/admin/maint/default.aspx?type=PartCategory">Part Category</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Parameter<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/maint/default.aspx?Type=ParameterType">Parameter Type</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=Parameter">Parameter Items</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Files<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/catalog/BrowseImages.aspx">Browse Site Images</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=Image">Site Images</a></li>
+                            <li><a href="/admin/maint/default.aspx?Type=LocationImage">Page-Image Mapping</a></li>
+                            <li><a href="/admin/catalog/MissingPageImage.aspx">Assign Images to Pages</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/admin/KitchenSink.aspx">Choose Site Theme</a></li>
+                    <li><a href="/">Return To Site</a></li>
+                    <li><a href="/admin/login/logout.aspx">Logout</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <form runat="server" id="frmMain">
+        <div class="container ">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <asp:ContentPlaceHolder ID="content" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentMain" runat="server"></asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+        <asp:ContentPlaceHolder ID="footer" runat="server">
+        </asp:ContentPlaceHolder>
+</body>
+</html>

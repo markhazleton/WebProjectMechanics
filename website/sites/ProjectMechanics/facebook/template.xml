@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<template>
+
+	<settings>
+		
+		<!-- logo path -->
+		<logo>logo.png</logo>
+	
+		<!-- preloader color -->
+		<preloaderColor>FFCC00</preloaderColor>
+	
+		<!-- menu colors -->
+		<menuNormalColor>333333</menuNormalColor>
+		<menuSelectedColor>FFCC00</menuSelectedColor>
+		
+		<!-- background image -->
+		<background>bg-page.gif</background>
+	
+	</settings>
+	
+	<data>
+	
+		<page>
+			<title>HOME</title>
+			<type>slideshow</type>
+			<xml>home.xml</xml>
+		</page>
+		
+		<page>
+			<title>BLOG</title>
+			<type>feed</type>
+			<xml>blog.xml</xml>
+		</page>
+
+	
+		<page>
+			<title>RECIPE</title>
+			<type>feed</type>
+			<xml>feed.xml</xml>
+		</page>
+	
+		
+	<!--	
+		<page>
+			<title>CONTACT</title>
+			<type>contact</type>
+			<xml>contact.xml</xml>
+		</page>
+		<page>
+			<title>GALLERY</title>
+			<type>gallery</type>
+			<xml>gallery.xml</xml>
+		</page>
+		<page>
+			<title>LINK</title>
+			<type>link</type>
+			<url>http://rubenbristian.com</url>
+			<target>_blank</target>
+		</page>
+		
+	-->
+	
+	</data>
+
+</template>

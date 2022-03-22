@@ -1,0 +1,6 @@
+<div class="panel panel-default" id="post-~~PostID~~">
+  <div class="panel-heading"><a href="~~PostURL~~" title="~~PostName~~">~~PostName~~</a></div>
+  <div class="panel-body">~~PostDescription~~</div>
+  <br/>
+  <div class="panel-footer">Published ~~PostDate~~ by ~~PostAuthor~~</div>
+</div>

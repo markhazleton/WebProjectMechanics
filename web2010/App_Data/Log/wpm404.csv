@@ -1,2 +1,0 @@
-"UserName","HostName","RequestURL","Date","Time","MessageOne","MessageTwo"
-"","localhost","http://localhost:2690/404.ashx?404;http://localhost:2690/fonts/glyphicons-halflings-regular.woff2","5/16/2015","11:04:19 AM","http://localhost:2690/fonts/glyphicons-halflings-regular.woff2","404.ProcessRequest"

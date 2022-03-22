@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contact>	
+<settings>			
+<!-- label text color -->		
+<labelText>333333</labelText>				
+<!-- input boxes/text colors -->		
+<inputText>333333</inputText>		
+<borderColor>FFCC00</borderColor>		
+<backgroundColor>F7F7F7</backgroundColor>				
+<!-- contact text -->		
+<textAreaWidth>380</textAreaWidth>				
+<!-- send button -->		
+<buttonColor>000000</buttonColor>		
+<buttonColorRoll>FFCC00</buttonColorRoll>				
+<!-- your website's(email) title and email address -->		
+<title>Project Mechanics</title>		
+<email>projectmechanic@projectmechanics.com</email>
+<!-- confirmation messages -->
+<sendProgress><![CDATA[Sending.. Please wait.]]></sendProgress>
+<sendSuccess><![CDATA[Your message was sent. You will get an answer in the next days.]]></sendSuccess>
+<sendFail><![CDATA[Your message was not sent. Please try again later.]]></sendFail>
+<!-- labels -->
+<nameLabel><![CDATA[Name:]]></nameLabel>
+<emailLabel><![CDATA[Email:]]></emailLabel>
+<messageLabel><![CDATA[Message:]]></messageLabel>
+<sendLabel><![CDATA[• Send]]></sendLabel>
+<!-- error mesages -->
+<nameError><![CDATA[Please enter your full name]]></nameError>
+<emailError><![CDATA[Please enter a correct email address]]></emailError>
+<messageError><![CDATA[Please enter a message here]]></messageError>
+</settings>
+<data>	<![CDATA[<p><br/><b>Company Name: </b>Project Mechanics<br/><br/><b>Website: </b><font color="#FFCC00"><a href="http://projectmechanics.com/">projectmechanics.com</a></font><br/>]]>
+</data>
+</contact>

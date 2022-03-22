@@ -1,0 +1,12 @@
+<div class="" id="post-~~PostID~~">
+  <div class="">~~PostBody~~</div>
+  <br/>
+  <div class=""> 
+  <i class="icon-user"></i>~~PostAuthor~~
+	| <i class="icon-calendar"></i> ~~PostDate~~
+</div> 
+</div>
+~~ArticleAdmin~~
+<br/>
+<center><strong><a href="/~~BlogPageName~~">Return to ~~BlogPageName~~</a></strong></center>
+<br/>

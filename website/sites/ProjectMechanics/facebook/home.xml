@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<slideshow>
+
+	<settings>
+
+		<!-- slideshow size(pixels) -->
+		<width>520</width>
+		<height>280</height>
+
+		<!-- transition settings -->
+		<transitionSpeed>2.2</transitionSpeed>
+
+		<!-- preloader settings -->
+		<preloaderColor>FFCC00</preloaderColor>
+
+		<!-- control buttons settings -->
+		<showButtons>true</showButtons>
+		<buttonsBack>1E1E1E</buttonsBack>
+		<buttonsSymbol>F7F7F7</buttonsSymbol>
+		<buttonsBackRoll>FFCC00</buttonsBackRoll>
+		<buttonsSymbolRoll>1E1E1E</buttonsSymbolRoll>
+
+		<!-- slideshow play settings -->
+		<slideshow>true</slideshow>
+		<loop>true</loop>
+		<random>false</random>
+
+		<!-- caption settings -->
+		<titleDefaultColor>FFFFFF</titleDefaultColor>
+		<descriptionDefaultColor>FFFFFF</descriptionDefaultColor>
+		<titleBackgroundColor>000000</titleBackgroundColor>
+		<titleBackgroundOpacity>80</titleBackgroundOpacity>
+		<descriptionBackgroundColor>000000</descriptionBackgroundColor>
+		<descriptionBackgroundOpacity>80</descriptionBackgroundOpacity>
+
+		<!-- first text box settings -->
+		<textBox1Width>290</textBox1Width>
+		<textBox1Height>100</textBox1Height>
+		<textBox1Color>1E1E1E</textBox1Color>
+		<textBox1Title>FFCC00</textBox1Title>
+		<textBox1Text>F7F7F7</textBox1Text>
+
+		<!-- second text box settings -->
+		<textBox2Width>225</textBox2Width>
+		<textBox2Height>100</textBox2Height>
+		<textBox2Title>333333</textBox2Title>
+		<textBox2Text>1E1E1E</textBox2Text>
+
+	</settings>
+
+	<data>
+
+		<image>
+			<src>photos/header01.jpg</src>
+			<burns>100;120;MC;TC</burns>
+			<time>7</time>
+			<title><![CDATA[<p>Fantastic Recipes</p>]]></title>
+			<description><![CDATA[<p>Find the best recipes for busy moms.</p>]]></description>
+            <url>http://mechanicsofmotherhood.com/recipe-database</url>
+            <target>blank</target>
+        </image>
+
+		<image>
+			<src>photos/header04.jpg</src>
+			<burns>120;80;BL;TL</burns>
+			<time>7</time>
+			<title><![CDATA[<p>Mom Blog</p>]]></title>
+			<description><![CDATA[<p>Read the mom blog for tips, tricks and commentary on what it means to be a mom.</p>]]></description>
+            <url>http://mechanicsofmotherhood.com</url>
+            <target>blank</target>
+        </image>
+
+		<image>
+			<src>photos/header03.jpg</src>
+			<burns>110;92;TR;ML</burns>
+			<time>6</time>
+			<title><![CDATA[<p>Contribute and Participate</p>]]></title>
+			<description><![CDATA[<p>You are invited to comment and participate, you can use your Facebook account so there is nothing to sign up for. .</p>]]></description>
+        </image>
+
+        <!--
+		<image>
+			<src>photos/header04.jpg</src>
+			<burns>90;110;ML;TR</burns>
+			<time>6</time>
+			<title><![CDATA[<p>HTML Captions</p>]]></title>
+			<description><![CDATA[<p>You can use bold and <u>underlined</u> text, <font color="#FFCC00">change colors</font>, add <a href="http://www.activeden.net/user/RubenBristian" target="_blank">hyperlinks</a>, and use special characters: á, é, ç, i, ô, ü.</p>]]></description>
+		</image>
+		<image>
+			<src>photos/pic1.jpg</src>
+			<burns>110;92;TR;BL</burns>
+			<time>5</time>
+			<title><![CDATA[<p>Each image can have it's own hyperlink</p>]]></title>
+			<url>http://www.activeden.net/user/RubenBristian</url>
+			<target>blank</target>
+		</image>
+
+		<image>
+			<src>photos/pic6.jpg</src>
+			<burns>100;105;TC;MC</burns>
+			<time>5</time>
+			<title><![CDATA[<p><font size="19">Faster, smoother, more <font color="#FFCC00">beautiful</font> than ever!</font></p>]]></title>
+			<url>http://www.activeden.net/user/RubenBristian</url>
+			<target>blank</target>
+		</image>
+	   -->
+	</data>
+
+	<textBox1>
+
+		<title><![CDATA[<p>Welcome</p>]]></title>
+		<text><![CDATA[<p>Mechanics of Motherhood.</p>]]></text>
+
+	</textBox1>
+
+	<textBox2>
+
+		<title><![CDATA[<p>Great Recipies</p>]]></title>
+		<text><![CDATA[<p>You will love the recipe database.  If you don't see your favorite, then add it youself!  No login necessary..</p>]]></text>
+
+	</textBox2>
+
+</slideshow>

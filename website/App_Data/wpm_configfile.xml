@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <wpm_ConfigFolder>/App_Data/</wpm_ConfigFolder>
+  <wpm_FullLoggingOn>False</wpm_FullLoggingOn>
+  <wpm_FullDebuggingOn>False</wpm_FullDebuggingOn>
+  <wpm_CachingEnabled>True</wpm_CachingEnabled>
+  <wpm_DefaultExtension>none</wpm_DefaultExtension>
+  <wpm_Use404Processing>True</wpm_Use404Processing>
+  <wpm_MaxXMLFeedAge>600</wpm_MaxXMLFeedAge>
+  <wpm_RemoveWWW>True</wpm_RemoveWWW>
+  <wpm_ApplicationHome>/runtime/</wpm_ApplicationHome>
+  <wpm_AdminFolder>/admin/</wpm_AdminFolder>
+  <wpm_AccessLogFile>/App_Data/logs/wpmAccess.csv</wpm_AccessLogFile>
+  <wpm_AuditLogFile>/App_Data/logs/wpmAuditLog.csv</wpm_AuditLogFile>
+  <wpm_CommonFolder>/runtime/</wpm_CommonFolder>
+  <wpm_ForceSSL>False</wpm_ForceSSL>
+  <wpm_SQLLogFile>/App_Data/logs/wpmSQL.csv</wpm_SQLLogFile>
+  <wpm_ThowExceptionOnError>True</wpm_ThowExceptionOnError>
+</Configuration>

@@ -1,9 +1,0 @@
-<script type="text/javascript" src="/runtime/form/prettyForms.js"></script>
-
-<link rel="stylesheet" type="text/css" href="/runtime/form/prettyForms.css" />
-
-<script type="text/javascript">
-  window.onload = function(){
-	prettyForms();
-}
-</script>

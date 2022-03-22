@@ -1,0 +1,8 @@
+
+<div class="blog-entry" id="post-~~PostID~~">
+    <div class="blog-post">~~PostSummary~~</div>
+  <div class="blog-body">~~PostBody~~</div>
+  <div class="blog-header">Posted ~~PostDate~~ by ~~PostAuthor~~ </div>
+</div>
+<br />
+~~ArticleAdmin~~

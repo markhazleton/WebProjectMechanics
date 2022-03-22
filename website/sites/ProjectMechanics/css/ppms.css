@@ -1,0 +1,155 @@
+
+.NarrativeTable,.NarrativeLabel,.NarrativeValue {
+  background: white;
+  font: "MS Sans Serif", "Microsoft Sans Serif";
+  text-align: left;
+  vertical-align: top;
+}
+.NarrativeHeaderLine {
+  border: 5px solid transparent;
+  color:black;
+
+}
+table.NarrativeTable {
+  border: 2px solid #CCCCCC;
+}
+.NarrativeLabel {
+  background: #fff;
+  font: "MS Sans Serif", "Microsoft Sans Serif";
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+  vertical-align: top;
+}
+.NarrativeValue  {
+  margin: 0px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+  vertical-align: top;
+  background: #fff;
+}
+
+td.NarrativeValue hr {
+  color: transparent;
+}
+.ppmsNavigation a:link, .ppmsNavigation a:visited
+{
+  float: left;
+  margin: 2px 5px 2px 5px;
+  padding: 2px;
+  width: 100px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid black;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid black;
+  background: #cccccc;
+  text-align: center;
+  text-decoration: none;
+  font: normal 10px Verdana;
+  color: black;
+}
+
+.ppmsNavigation a:hover
+{
+  background: #eeeeee;
+}
+
+.ppmsNavigation a:active
+{
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid black;
+  border-right: 1px solid #eeeeee;
+  border-left: 1px solid black;
+}
+td.right-column-title-grey, .right-column-title-grey{margin:0em 0em 0.5em 0em;padding:0.2em 0em 0.2em 0.2em;display:block;/* clear:both;*/ color:#646464;background:#DCDCDC;font-weight:bold}
+.right-column-box-standard{border:#C8C8C8 solid 0.1em;margin:0em 1.0em 0.8em 0em;padding:0.4em 0.4em 0.4em 0.4em;color:#646464;background:#FFFFFF;width:20.0em/*	float:right;*/}
+.middle-column-img-left-fullsize-border{border:#646464 solid 1px;float:left;margin:0.3em 0.75em 0.3em 0em;height:11.0em;width:11.0em}
+.middle-column-img-left-fullsize-noborder{float:left;margin:0.3em 0.5em 0.3em 0em;}
+td.center-column-td{padding:5px 5px 5px 5px;width:650px;text-align:left;vertical-align:top}
+td.right-column-td{padding:5px 5px 5px 5px;width:200px;text-align:left;vertical-align:top}
+td.left-column-td{padding:5px 5px 5px 5px;width:200px;text-align:left;vertical-align:top}
+.bottom-border{background:#CCCCCC}
+.right-border{background:url('/sites/controlorigins/img/img_background_right.gif')}
+.left-border{background:url('/sites/controlorigins/img/img_background_left.gif')}
+.header-nav-bottom{border-bottom:#FFFFFF 3px solid;background:url('/sites/controlorigins/img/img_header_nav_bottom.jpg');font-weight:bold}
+.header-nav-bottom li a{border-right:1px solid #FFFFFF;padding-left:1em;padding-right:1em;background:transparent;color:#FFFFFF;text-decoration:none}
+.header-nav-bottom a:hover,.header-nav-bottom a.selected{background:transparent;color:#000000}
+.header-nav-bottom ul,.header-nav-bottom li{padding:0px 0px 0px 1px;margin:0px 0px 0px 1px;display:inline;list-style-type:none;line-height:175%}
+.header-nav-top li a{margin:0em;padding:0.5em;color:#333333;background:#FFFFFF}
+.header-nav-top li a:hover,.header-nav-top li a.selected{color:#000000;background:transparent;text-decoration:underline}
+.header-nav-top ul,.header-nav-top li{display:inline;list-style-type:none;line-height:200%}
+.header-nav-top{text-align:right}
+
+
+
+/*- Menu Tabs C--------------------------- */
+    .mhcam_menu {
+      float:left;
+      width:100%;
+      background:#FFF;
+      font-size:75%;
+      line-height:normal;
+      }
+    .mhcam_menu ul {
+        margin:0px 0px 0px 0px;
+        padding:0px 0px 0px 0px;
+        list-style:none;
+      }
+    .mhcam_menu li {
+      display:inline;
+      margin:0px 0px 0px 0px;
+      padding:0px 0px 0px 0px;
+      }
+    .mhcam_menu a {
+      float:left;
+      background:url("/mhcam/App_Themes/mhcam/tableftB.gif") no-repeat left top;
+      margin:0px 0px 0px 0px;
+      padding: 0px 0px 0px 1px;
+      text-decoration:none;
+      }
+    .mhcam_menu a span {
+      float:left;
+      display:block;
+      background:url("/mhcam/App_Themes/mhcam/tabrightB.gif") no-repeat right top;
+      padding: 5px 10px 4px 6px;
+      color:#464E42;
+	   border-left: 1px solid #eee;
+      }
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+    .mhcam_menu a span {float:none;}
+    /* End IE5-Mac hack */
+
+    .mhcam_menu a:hover span {color:#000;       }
+    .mhcam_menu a:hover { background-position:0% -42px;       }
+    .mhcam_menu a:hover span {background-position:100% -42px;          }
+    .mhcam_menu .selected a {background-position:0% -42px;             }
+    .mhcam_menu .selected a span {background-position:100% -42px;      }
+
+	
+	.ppms_narrativelink{
+font:normal 11px Verdana;
+padding-left:0cm
+}
+.ppms_narrativeobjective,.ppms_parenthierarchy,.ppms_hierarchy{
+font:normal 11px Verdana;
+padding:0.1cm;
+padding-left:0cm
+}
+.ppms_narrativetype
+{
+    background: #738ADE;
+    color: #003366;
+    font: bold 11px Verdana;
+    padding: 0.1cm;
+}
+.ppms_parentHierarchyHeader, .ppms_parenthierarchyheader{
+color:#154A2C;
+font:bold 11px Verdana;
+padding-left:0cm;
+}
+
+.ppms_pdflink{
+border:0px
+}
+
+
+

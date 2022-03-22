@@ -1,8 +1,0 @@
-<h2>~~GameName~~</h2>
-
-<div class="video-container" id="post-~~GameName~~">
-
-<embed src="~~GameURL~~" menu="false" quality="high" width="~~GameWidth~~" height="~~GameHeight~~" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-
-</div>
-<p>~~GameDescription~~</p>

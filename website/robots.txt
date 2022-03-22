@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /default.aspx 
+Disallow: /redirect.ashx
+Disallow: /cgi-bin/
+Disallow: /admin/
+disallow: /MineralCollection/
+Disallow: /App_Data/
+Disallow: /runtime/
+Disallow: /framework/
+Sitemap: /sitemap.xml

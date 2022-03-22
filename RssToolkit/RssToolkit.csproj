@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RssToolkit</RootNamespace>
+    <AssemblyName>RssToolkit</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>RssToolkit.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Opml\OpmlBody.cs" />
+    <Compile Include="Opml\OpmlDocument.cs" />
+    <Compile Include="Opml\OpmlHead.cs" />
+    <Compile Include="Opml\OpmlOutline.cs" />
+    <Compile Include="Opml\OutlineInfo.cs" />
+    <Compile Include="Pluralizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\RssToolkit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RssToolkit.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rss\CodeGeneration\ClassInfo.cs" />
+    <Compile Include="Rss\CodeGeneration\PropertyInfo.cs" />
+    <Compile Include="Rss\CodeGeneration\RssBuildProvider.cs" />
+    <Compile Include="Rss\CodeGeneration\RssCodeGenerator.cs" />
+    <Compile Include="Rss\CodeGeneration\RssCodeTreeGenerator.cs" />
+    <Compile Include="Rss\CodeGeneration\RssdlBuildProvider.cs" />
+    <Compile Include="Rss\DocumentType.cs" />
+    <Compile Include="Rss\DownloadManager.cs" />
+    <Compile Include="Rss\RssAggregationEventArgs.cs" />
+    <Compile Include="Rss\RssAggregator.cs" />
+    <Compile Include="Rss\RssCategory.cs" />
+    <Compile Include="Rss\RssChannel.cs" />
+    <Compile Include="Rss\RssCloud.cs" />
+    <Compile Include="Rss\RssDocument.cs" />
+    <Compile Include="Rss\RssDocumentBase.cs" />
+    <Compile Include="Rss\RssDocumentHttpHandler.cs" />
+    <Compile Include="Rss\RssEnclosure.cs" />
+    <Compile Include="Rss\RssGuid.cs" />
+    <Compile Include="Rss\RssHttpHandlerBase.cs" />
+    <Compile Include="Rss\RssHttpHandlerHelper.cs" />
+    <Compile Include="Rss\RssImage.cs" />
+    <Compile Include="Rss\RssItem.cs" />
+    <Compile Include="Rss\RssSeverityType.cs" />
+    <Compile Include="Rss\RssSkipDays.cs" />
+    <Compile Include="Rss\RssSkipHours.cs" />
+    <Compile Include="Rss\RssSource.cs" />
+    <Compile Include="Rss\RssTextInput.cs" />
+    <Compile Include="Rss\RssXmlHelper.cs" />
+    <Compile Include="Rss\RssXmlSchemaValidator.cs" />
+    <Compile Include="Web\Design\RssDataSourceConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web\Design\RssDataSourceConfigForm.Designer.cs">
+      <DependentUpon>RssDataSourceConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Design\RssDataSourceDesigner.cs" />
+    <Compile Include="Web\Design\RssDataSourceView.cs" />
+    <Compile Include="Web\WebControls\RssDataSource.cs" />
+    <Compile Include="Web\WebControls\RssHyperLink.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\RssToolkit.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RssToolkit.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AtomToRss20.xsl" />
+    <EmbeddedResource Include="Resources\RdfToRss20.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rss20.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rss20ToAtom.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rss20ToRdf.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rss20ToOpml.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RssToolkit.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

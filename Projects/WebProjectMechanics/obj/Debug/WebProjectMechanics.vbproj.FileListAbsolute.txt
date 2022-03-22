@@ -1,9 +1,0 @@
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.dll
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.pdb
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\bin\Debug\WebProjectMechanics.xml
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.Resources.resources
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.vbproj.GenerateResource.cache
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.vbproj.CoreCompileInputs.cache
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.dll
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.xml
-C:\GITHUB\WebProjectMechanics\Projects\WebProjectMechanics\obj\Debug\WebProjectMechanics.pdb

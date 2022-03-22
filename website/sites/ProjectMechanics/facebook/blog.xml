@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<reader>
+	<settings>
+		<!-- items per page -->
+		<itemsPerPage>3</itemsPerPage>
+		<!-- maximum feed items -->
+		<maxItems>10</maxItems>
+		<!-- strip images from feed description -->
+		<stripImages>true</stripImages>
+		<!-- preloader settings -->
+		<preloaderColor>FFCC00</preloaderColor>
+		<!-- navigation buttons settings -->
+		<buttonsBack>F7F7F7</buttonsBack>
+		<buttonsSymbol>1E1E1E</buttonsSymbol>
+		<buttonsBackRoll>FFCC00</buttonsBackRoll>
+		<buttonsSymbolRoll>F7F7F7</buttonsSymbolRoll>
+		<!-- text color settings -->
+		<titleDefaultColor>F7F7F7</titleDefaultColor>
+		<titleSelectColor>FFCC00</titleSelectColor>
+		<textDefaultColor>F7F7F7</textDefaultColor>
+	</settings>
+	
+	<data>
+		<!-- feed type(atom or rss) -->
+		<type>rss</type>
+		<!-- path to feed -->
+		<feed>http://mechanicsofmotherhood.com/wpm/blog/rss_blog.aspx?c=738</feed>
+	</data>
+
+</reader>

@@ -1,0 +1,27 @@
+body{
+margin: 1em;
+font: 0.8em Arial, Geneva, sans-serif;
+color: #000000;
+text-align: left;
+}
+h1{
+font-size: 2.5em;
+}
+h2{
+font-size: 1.5em;
+}
+h3{
+font-size: 1.25em;
+}
+p.date{
+color: #666;
+}
+a{
+color: #AA0000;
+}
+li.entry{
+float: left;
+width: 18em;
+padding: 0.5em;
+margin: 1em;
+}

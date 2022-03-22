@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul.topmenu { font-size:17px; line-height:17px;}
+
+/*- Top Nav -*/
+.topnav
+{
+    float: right;
+    width: 380px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+.topnav ul
+{
+    list-style: none;
+    padding: 50px 0 0 15px;
+    margin: 0;
+    float: right;
+}
+.topnav li
+{
+    float: left;
+    padding: 0 0 0 10px;
+}
+.topnav li a
+{
+    color: #bcbcbc;
+    display: block;
+    float: left;
+    padding: 4px 10px;
+    text-decoration: none;
+    text-transform: none;
+}
+.topnav li a:hover
+{
+    padding: 3px 9px;
+    color: #888787;
+ /*    background: url(/sites/controlorigins/images/bg_menu.gif) top repeat-x; */
+    border: 1px solid #ddd;
+}
+.topnav li.current_page_item a
+{
+    padding: 3px 9px;
+    color: #888787;
+/*    background: url(/sites/controlorigins/images/bg_menu.gif) top repeat-x; */
+    border: 1px solid #ddd;
+}
+
+
+/* DESIGN NAV1 (categories) */
+#topnav { padding:0; margin:0 auto; height:40px; background:transparent; top repeat-x; line-height:17px;}
+/* level 0 */
+ul.topmenu { margin:0; padding:0; margin:0 auto; width:970px; background-color:#ccc}
+ul.topmenu li { margin:0 8px 0 0; padding:0; float:left;}
+ul.topmenu li a { display:block; margin:0; padding:12px 20px; color:#FFF; text-decoration:none; background-color:#CCC;}
+ul.topmenu li.current-cat { }				/* active item first level */
+ul.topmenu li.current-cat a,
+ul.topmenu li a.a_hover_main { background:#3e3e3e;}	/* on hover */
+/* level 1 */
+ul.topmenu li ul { font-size:17px; margin:0; padding:0; width:320px; height:auto; top:41px; left:0; background:#3e3e3e;}	/* position of submenu */
+ul.topmenu li ul li { margin:0; padding:0; float:none;}
+ul.topmenu li ul li a { padding:8px 20px; color:#bebebe; background:#3e3e3e; border:none;}
+ul.topmenu li ul li a.have_submenu { background-color:blue; }									/* if item have submenu */
+ul.topmenu li ul li a:hover,
+ul.topmenu li ul li a.have_submenu_hover { color:#e1e0e0; text-decoration:none; background:#bbb url(/sites/controlorigins/images/bg_submenu_hover.gif) repeat-x; border:none;}
+ul.topmenu li ul li ul { top:0; left:170px;}		/* position of submenu level 2 */
+
+/* DO NOT EDIT!!! */
+ul.topmenu { list-style:none;}
+ul.topmenu li { cursor:pointer; position:relative; z-index:/*IE7*/999;}
+ul.topmenu li a { position:relative; z-index:1000;}
+ul.topmenu li ul { display:none; position:absolute; list-style:none; z-index:999;}
+ul.topmenu li ul li ul { position:absolute; list-style:none;}

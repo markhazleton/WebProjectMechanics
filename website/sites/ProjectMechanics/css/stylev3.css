@@ -1,0 +1,32 @@
+blockquote,ul,ol,dl{
+margin:1em;/*giving blockquotes and lists room to breath*/
+}
+em{
+font-style:italic;/*bringing italics back to the em element*/
+}
+h1{
+background:transparent;
+color:#333369;
+font-size:138.5%;/*18px via YUI Fonts CSS foundation*/
+}
+h1,h2,h3{
+background:transparent;/* top & bottom margin based on font size */
+color:#333369;
+margin:1em 0;
+}
+h1,h2,h3,h4,h5,h6,strong{
+font-weight:bold;/*bringing boldness back to headers and the strong element*/
+}
+h2{
+background:transparent;
+color:#333369;
+font-size:123.1%;/*16px via YUI Fonts CSS foundation*/
+}
+h3{
+background:transparent;
+color:#333369;
+font-size:108%;/*14px via YUI Fonts CSS foundation*/
+}
+p,fieldset,table{
+margin-bottom:1em;/*so things don't run into each other*/
+}

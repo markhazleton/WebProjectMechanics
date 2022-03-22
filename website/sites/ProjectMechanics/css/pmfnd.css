@@ -1,0 +1,187 @@
+h1, h2, h3
+{
+    background: transparent;
+    color: #333369;
+}
+
+h1, h2, h3, h4, h5, h6, strong
+{
+    font-weight: 700;
+}
+
+h1
+{
+    background: #003046 none repeat scroll 0 0;
+    color: #FFF;
+    border-bottom: 2px solid #B22222;
+    font-size: 138.5%;
+    padding: 4px 10px 2px 2px;
+}
+
+h2
+{
+    background: #003046 none repeat scroll 0 0;
+    color: #FFF;
+    font-weight: 400;
+    border-bottom: 2px solid #B22222;
+    font-size: 123.1%;
+    padding: 4px 10px;
+}
+
+h3
+{
+    background: #003046 none repeat scroll 0 0;
+    color: #FFF;
+    font-weight: 400;
+    border-bottom: 2px solid #B22222;
+    font-size: 108%;
+    padding: 4px 10px;
+}
+
+h3 a, h2 a, h1 a
+{
+  background: transparent;
+  color: inherit;
+}
+.columns ul
+{
+  padding-top: 0px;
+  padding-left:20px;
+}
+.columns ul li 
+{
+  list-style-type: disc;
+  padding-top: 4px;
+  padding-left:0px;
+}
+
+
+.box, .leftbox
+{
+    border: none;
+    clear: both;
+    overflow: hidden;
+}
+.leftbox
+{
+    border: none;
+    padding: 0 4px 4px;
+}
+
+.leftbox h1, .leftbox h2, .leftbox h3, .leftbox h4
+{
+margin-bottom:0px;
+}
+
+.box ul, .leftbox ul
+{
+  line-height: 18px;
+  padding-top: 4px;
+}
+.box ul li,.leftbox ul li
+{
+  list-style-type: none;
+  padding-top: 4px;
+  padding-left:0px;
+  display:block;
+}
+.leftbox ul li:hover
+{
+background-color:#ccc;
+}
+
+
+
+.box p,.leftbox p
+{
+  color: #333369;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 4px;
+  text-align: left;
+}
+
+
+.clear
+{
+    border: none;
+    clear: both;
+    border-width: 0;
+    padding: 0;
+}
+
+
+#footer
+{
+    background: #F2EFDE;
+    border-top: 2px #B22222 solid;
+    clear: both;
+    display: inline;
+    float: left;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+div.rss_dl
+{
+    clear: both;
+}
+
+div.rss_dl dl dt
+{
+        display: block;
+        overflow: hidden;
+        padding-bottom: 10px;
+        border-top: thin dotted #CCC;
+}
+
+div.rss_dl dl dt img
+{
+            border: none;
+            display: inline;
+            float: left;
+}
+
+
+div.leftbox ul
+ {
+ padding: 0px;
+ border: 1px solid #808080;
+ border-top: 0px;
+ margin: 0px;
+ font: bold 12px verdana,helvetica,arial,sans-serif;
+ background: #808080;
+ }
+
+ div.leftbox ul li
+ {
+ list-style: none;
+ margin: 0px;
+ border: 0px;
+ border-top: 1px solid #808080;
+ }
+
+ div.leftbox ul li a
+ {
+ display: block;
+ padding: 4px 8px 4px 8px;
+ border: 0px;
+ border-left: 20px solid rgb(77, 77, 77);
+ background: #ccc;
+ text-decoration: none;
+ text-align: left;
+ }
+
+ div.leftbox ul li a:link { color: #666677; }
+ div.leftbox ul li a:visited { color: #666677; }
+ div.leftbox ul li a:hover
+ {
+  border-color: rgb(43, 166, 203);
+  color: #ffffff;
+  background: #000d33;
+ }
+
+
+

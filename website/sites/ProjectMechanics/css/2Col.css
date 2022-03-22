@@ -1,0 +1,182 @@
+*{
+margin:0;
+padding:0;
+}
+* html #leftcolumn,* html #rightcolumn{
+height:531px;
+}
+body{
+background:#F2EFDE;
+color:#333369;
+font:12px Arial,Helvetica,sans-serif;
+}
+img.header-banner{
+border:none;
+left:-40%;
+margin:0px 15px 0px 0px;
+padding:0px 0px 0px 0px;
+position:relative;
+top:25px;
+}
+
+.box{
+border:1px solid #B22222;
+clear:both;
+margin:10px 5px 10px 5px;
+padding:4px 4px 4px 4px;
+width:95%;
+overflow: hidden;
+}
+.box a{
+color:#333369;
+}
+.box h3{
+border-bottom:3px solid #B22222;
+color:#333369;
+font:lighter 1.8em Arial,Helvetica,sans-serif;
+padding-bottom:7px;
+padding-left:10px;
+padding-top:5px;
+}
+.box li{
+list-style-type:none;
+}
+.box p{
+color:#333369;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+text-align:justify;
+}
+.box ul{
+line-height:18px;
+margin-left:40px;
+padding-top:10px;
+}
+.clear{
+border:none;
+border-width:0px 0px 0px 0px;
+clear:both;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+.leftbox{
+border:1px solid #B22222;
+margin:10px 5px 10px 5px;
+padding:4px 4px 4px 4px;
+}
+.leftbox h3{
+color:#393939;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+#footer{
+background:#F2EFDE;
+border-top:2px #B22222 solid;
+clear:both;
+display:inline;
+float:left;
+padding-bottom:5px;
+padding-top:5px;
+text-align:center;
+width:100%;
+}
+#header{
+border:none;
+clear:both;
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+#leftcolumn{
+display:inline;
+float:left;
+min-height:531px;
+padding-bottom:10px;
+text-align:left;
+width:275px;
+}
+#navlist{
+background:#333369;
+border-top:1px solid #B22222;
+font:normal normal normal 100% Verdana,Geneva,Arial,Helvetica,sans-serif;
+margin-top:25px;
+}
+#navlist .selected a,#navlist .selected a:link,#navlist .selected a:visited,#navlist .selected a:hover{
+background:#333369;
+}
+#navlist a,#navlist a:link,#navlist a:visited,#navlist a:hover,#navlist a:active{
+background:#B22222;
+color:#FFFFFF;
+cursor:pointer;
+display:inline;
+height:0em;
+margin:0;
+padding:3px 5px 3px 5px;
+position:relative;
+right:2px;
+text-decoration:none;
+}
+#navlist ul{
+list-style:none outside none;
+margin:0em 0em 0em 0em;
+padding:0em 0em 0em 0em;
+text-align:center;
+}
+#navlist ul li{
+bottom:17px;
+display:inline;
+margin:0em 0em 0em 0em;
+padding:0em 0em 0em 0em;
+position:relative;
+}
+#rightcolumn{
+display:inline;
+float:left;
+margin:0px 0px 0px 0px;
+min-height:531px;
+padding:0px 0px 0px 0px;
+text-align:left;
+width:585px;
+}
+#slantedmenu{
+font-size:90%;
+font-weight:bold;
+white-space:nowrap;
+}
+#slantedmenu ul{
+background:#EEEEEE;
+border:none;
+margin:0;
+padding:3px 0;
+text-align:center;/*set value to "center" for example to center items*/
+text-indent:10px;
+}
+#slantedmenu ul li{
+display:inline;
+}
+#slantedmenu ul li a{
+background:transparent url(slantdivider.gif) top right no-repeat;
+color:#333369;
+margin:0;
+padding:3px 0;
+padding-right:25px;
+text-decoration:none;
+}
+#slantedmenu ul li a.selected{
+color:#000000;
+}
+#slantedmenu ul li a:visited,#slantedmenu ul li a:hover{
+color:#333369;
+}
+#slantedmenu:after{
+clear:both;
+content:".";/*Add margin between menu and rest of content in Firefox*/
+display:block;
+height:0;
+visibility:hidden;
+}
+#wrapper{
+background:#FFFFFF;
+margin:0 auto;
+width:870px;
+}
