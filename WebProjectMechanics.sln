@@ -12,7 +12,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		ProjectReferences = "{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}|WebProjectMechanics.dll;{e3b83d68-c90c-4874-8e5f-dec8d038bc7c}|LumenWorks.Framework.IO.dll;{d20ef1b8-0aa6-44d4-9dcb-8c5c406aad2d}|RssToolkit.dll;{de007689-7392-4a0a-a26e-8ceb2053ebfd}|RemoveWWW.dll;{7A0F4560-3BEA-4487-8575-0852BBB561A6}|LINQHelper.dll;"
+		ProjectReferences = "{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}|WebProjectMechanics.dll;{e3b83d68-c90c-4874-8e5f-dec8d038bc7c}|LumenWorks.Framework.IO.dll;{d20ef1b8-0aa6-44d4-9dcb-8c5c406aad2d}|RssToolkit.dll;{de007689-7392-4a0a-a26e-8ceb2053ebfd}|RemoveWWW.dll;{7A0F4560-3BEA-4487-8575-0852BBB561A6}|LINQHelper.dll;{bc4d92ad-875f-430a-afa4-b70da422700f}|wpmMineralCollection.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_10046"
 		Debug.AspNetCompiler.PhysicalPath = "website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10046\"
@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wpmMineralCollection", "wpmMineralCollection\wpmMineralCollection.vbproj", "{BC4D92AD-875F-430A-AFA4-B70DA422700F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

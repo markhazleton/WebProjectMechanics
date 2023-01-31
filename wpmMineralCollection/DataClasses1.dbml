@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MineralCollection" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=MineralCollection;User ID=codb" SettingsObjectName="wpmMineralCollection.My.MySettings" SettingsPropertyName="MineralCollectionConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Collection" Member="Collections">
+    <Type Name="Collection">
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Collection_CollectionItem" Member="CollectionItems" ThisKey="CollectionID" OtherKey="CollectionID" Type="CollectionItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mineral" Member="Minerals">
+    <Type Name="Mineral">
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WikipediaURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Mineral_CollectionItem" Member="CollectionItems" ThisKey="MineralID" OtherKey="PrimaryMineralID" Type="CollectionItem" />
+      <Association Name="Mineral_CollectionItemMineral" Member="CollectionItemMinerals" ThisKey="MineralID" OtherKey="MineralID" Type="CollectionItemMineral" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionItem" Member="CollectionItems">
+    <Type Name="CollectionItem">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsSold" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CollectionItem_CollectionItemImage" Member="CollectionItemImages" ThisKey="CollectionItemID" OtherKey="CollectionItemID" Type="CollectionItemImage" />
+      <Association Name="CollectionItem_CollectionItemMineral" Member="CollectionItemMinerals" ThisKey="CollectionItemID" OtherKey="CollectionItemID" Type="CollectionItemMineral" />
+      <Association Name="Collection_CollectionItem" Member="Collection" ThisKey="CollectionID" OtherKey="CollectionID" Type="Collection" IsForeignKey="true" />
+      <Association Name="Mineral_CollectionItem" Member="Mineral" ThisKey="PrimaryMineralID" OtherKey="MineralID" Type="Mineral" IsForeignKey="true" />
+      <Association Name="Company_CollectionItem" Member="Company" ThisKey="PurchasedFromCompanyID" OtherKey="CompanyID" Type="Company" IsForeignKey="true" />
+      <Association Name="LocationCity_CollectionItem" Member="LocationCity" ThisKey="LocationCityID" OtherKey="LocationCityID" Type="LocationCity" IsForeignKey="true" />
+      <Association Name="LocationCountry_CollectionItem" Member="LocationCountry" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="LocationCountry" IsForeignKey="true" />
+      <Association Name="LocationState_CollectionItem" Member="LocationState" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="LocationState" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionItemImage" Member="CollectionItemImages">
+    <Type Name="CollectionItemImage">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CollectionItem_CollectionItemImage" Member="CollectionItem" ThisKey="CollectionItemID" OtherKey="CollectionItemID" Type="CollectionItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollectionItemMineral" Member="CollectionItemMinerals">
+    <Type Name="CollectionItemMineral">
+      <Column Name="CollectionItemMineralID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CollectionItem_CollectionItemMineral" Member="CollectionItem" ThisKey="CollectionItemID" OtherKey="CollectionItemID" Type="CollectionItem" IsForeignKey="true" />
+      <Association Name="Mineral_CollectionItemMineral" Member="Mineral" ThisKey="MineralID" OtherKey="MineralID" Type="Mineral" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Companies">
+    <Type Name="Company">
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Company_CollectionItem" Member="CollectionItems" ThisKey="CompanyID" OtherKey="PurchasedFromCompanyID" Type="CollectionItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LocationCity" Member="LocationCities">
+    <Type Name="LocationCity">
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="LocationCity_CollectionItem" Member="CollectionItems" ThisKey="LocationCityID" OtherKey="LocationCityID" Type="CollectionItem" />
+      <Association Name="LocationCountry_LocationCity" Member="LocationCountry" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="LocationCountry" IsForeignKey="true" />
+      <Association Name="LocationState_LocationCity" Member="LocationState" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="LocationState" IsForeignKey="true" />
+      <Association Name="LocationState_LocationCity1" Member="LocationState1" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="LocationState" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LocationCountry" Member="LocationCountries">
+    <Type Name="LocationCountry">
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="LocationCountry_CollectionItem" Member="CollectionItems" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="CollectionItem" />
+      <Association Name="LocationCountry_LocationCity" Member="LocationCities" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="LocationCity" />
+      <Association Name="LocationCountry_LocationState" Member="LocationStates" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="LocationState" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LocationState" Member="LocationStates">
+    <Type Name="LocationState">
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="LocationState_CollectionItem" Member="CollectionItems" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="CollectionItem" />
+      <Association Name="LocationState_LocationCity" Member="LocationCities" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="LocationCity" />
+      <Association Name="LocationState_LocationCity1" Member="LocationCities1" ThisKey="LocationStateID" OtherKey="LocationStateID" Type="LocationCity" />
+      <Association Name="LocationCountry_LocationState" Member="LocationCountry" ThisKey="LocationCountryID" OtherKey="LocationCountryID" Type="LocationCountry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwSpecimenImage" Member="vwSpecimenImages">
+    <Type Name="vwSpecimenImage">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwCollectionItemImages" Member="vwCollectionItemImages">
+    <Type Name="vwCollectionItemImage">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CompanyDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CountryNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CountryDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwCollectionItems" Member="vwCollectionItems">
+    <Type Name="vwCollectionItem">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryMineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CompanyDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CountryNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CountryDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ThumbImageFileNM" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwMineralCollectionItems" Member="vwMineralCollectionItems">
+    <Type Name="vwMineralCollectionItem">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CountryDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CountryNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CompanyDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CompanyNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryMineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwSpecimenImage" Member="vwSpecimenImage1s">
+    <Type Name="vwSpecimenImage1">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.usp_RelatedCollectionItem_SelectByMineralID" Method="usp_RelatedCollectionItem_SelectByMineralID">
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_RelatedCollectionItem_SelectByMineralIDResult">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_RelatedCollectionItem_SelectByCollectionItemID" Method="usp_RelatedCollectionItem_SelectByCollectionItemID">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_RelatedCollectionItem_SelectByCollectionItemIDResult">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Collection_Delete" Method="gsp_Collection_Delete">
+    <Parameter Name="CollectionID" Parameter="collectionID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_Collection_Insert" Method="gsp_Collection_Insert">
+    <Parameter Name="CollectionNM" Parameter="collectionNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="CollectionDS" Parameter="collectionDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_Collection_InsertResult">
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Collection_Select" Method="gsp_Collection_Select">
+    <Parameter Name="CollectionID" Parameter="collectionID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_Collection_SelectResult">
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Collection_Update" Method="gsp_Collection_Update">
+    <Parameter Name="CollectionID" Parameter="collectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollectionNM" Parameter="collectionNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="CollectionDS" Parameter="collectionDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_Collection_UpdateResult">
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItem_Delete" Method="gsp_CollectionItem_Delete">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_CollectionItem_Insert" Method="gsp_CollectionItem_Insert">
+    <Parameter Name="CollectionID" Parameter="collectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SpecimenNumber" Parameter="specimenNumber" Type="System.Double" DbType="Float" />
+    <Parameter Name="Nickname" Parameter="nickname" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PrimaryMineralID" Parameter="primaryMineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MineralVariety" Parameter="mineralVariety" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MineNM" Parameter="mineNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Value" Parameter="value" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ShowWherePurchased" Parameter="showWherePurchased" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PurchasedFromCompanyID" Parameter="purchasedFromCompanyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StorageLocation" Parameter="storageLocation" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SpecimenNotes" Parameter="specimenNotes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ExCollection" Parameter="exCollection" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="HeightCm" Parameter="heightCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="WidthCm" Parameter="widthCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="ThicknessCm" Parameter="thicknessCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="HeightIn" Parameter="heightIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="WidthIn" Parameter="widthIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="ThicknessIn" Parameter="thicknessIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="WeightGr" Parameter="weightGr" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="WeightKg" Parameter="weightKg" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SaleDT" Parameter="saleDT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="LocationCityID" Parameter="locationCityID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsFeatured" Parameter="isFeatured" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_CollectionItem_InsertResult">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItem_Select" Method="gsp_CollectionItem_Select">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_CollectionItem_SelectResult">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItem_Update" Method="gsp_CollectionItem_Update">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollectionID" Parameter="collectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SpecimenNumber" Parameter="specimenNumber" Type="System.Double" DbType="Float" />
+    <Parameter Name="Nickname" Parameter="nickname" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PrimaryMineralID" Parameter="primaryMineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MineralVariety" Parameter="mineralVariety" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MineNM" Parameter="mineNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PurchaseDate" Parameter="purchaseDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Value" Parameter="value" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ShowWherePurchased" Parameter="showWherePurchased" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PurchasedFromCompanyID" Parameter="purchasedFromCompanyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StorageLocation" Parameter="storageLocation" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SpecimenNotes" Parameter="specimenNotes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ExCollection" Parameter="exCollection" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="HeightCm" Parameter="heightCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="WidthCm" Parameter="widthCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="ThicknessCm" Parameter="thicknessCm" Type="System.Double" DbType="Float" />
+    <Parameter Name="HeightIn" Parameter="heightIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="WidthIn" Parameter="widthIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="ThicknessIn" Parameter="thicknessIn" Type="System.Double" DbType="Float" />
+    <Parameter Name="WeightGr" Parameter="weightGr" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="WeightKg" Parameter="weightKg" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SaleDT" Parameter="saleDT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="LocationCityID" Parameter="locationCityID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsFeatured" Parameter="isFeatured" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_CollectionItem_UpdateResult">
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecimenNumber" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryMineralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MineralVariety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MineNM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShowWherePurchased" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PurchasedFromCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StorageLocation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SpecimenNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExCollection" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeightCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessCm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HeightIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WidthIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThicknessIn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeightGr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightKg" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SaleDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsFeatured" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemImage_Delete" Method="gsp_CollectionItemImage_Delete">
+    <Parameter Name="CollectionItemImageID" Parameter="collectionItemImageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemImage_Insert" Method="gsp_CollectionItemImage_Insert">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ImageType" Parameter="imageType" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="DisplayOrder" Parameter="displayOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ImageNM" Parameter="imageNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ImageDS" Parameter="imageDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ImageFileNM" Parameter="imageFileNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_CollectionItemImage_InsertResult">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemImage_Select" Method="gsp_CollectionItemImage_Select">
+    <Parameter Name="CollectionItemImageID" Parameter="collectionItemImageID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_CollectionItemImage_SelectResult">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemImage_Update" Method="gsp_CollectionItemImage_Update">
+    <Parameter Name="CollectionItemImageID" Parameter="collectionItemImageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ImageType" Parameter="imageType" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="DisplayOrder" Parameter="displayOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ImageNM" Parameter="imageNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ImageDS" Parameter="imageDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ImageFileNM" Parameter="imageFileNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_CollectionItemImage_UpdateResult">
+      <Column Name="CollectionItemImageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageFileNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemMineral_Delete" Method="gsp_CollectionItemMineral_Delete">
+    <Parameter Name="CollectionItemMineralID" Parameter="collectionItemMineralID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemMineral_Insert" Method="gsp_CollectionItemMineral_Insert">
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Position" Parameter="position" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_CollectionItemMineral_InsertResult">
+      <Column Name="CollectionItemMineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemMineral_Select" Method="gsp_CollectionItemMineral_Select">
+    <Parameter Name="CollectionItemMineralID" Parameter="collectionItemMineralID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_CollectionItemMineral_SelectResult">
+      <Column Name="CollectionItemMineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_CollectionItemMineral_Update" Method="gsp_CollectionItemMineral_Update">
+    <Parameter Name="CollectionItemMineralID" Parameter="collectionItemMineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollectionItemID" Parameter="collectionItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Position" Parameter="position" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_CollectionItemMineral_UpdateResult">
+      <Column Name="CollectionItemMineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationCity_Delete" Method="gsp_LocationCity_Delete">
+    <Parameter Name="LocationCityID" Parameter="locationCityID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_LocationCity_Insert" Method="gsp_LocationCity_Insert">
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="CityDS" Parameter="cityDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="County" Parameter="county" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Latitude" Parameter="latitude" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_LocationCity_InsertResult">
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationCity_Select" Method="gsp_LocationCity_Select">
+    <Parameter Name="LocationCityID" Parameter="locationCityID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_LocationCity_SelectResult">
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationCity_Update" Method="gsp_LocationCity_Update">
+    <Parameter Name="LocationCityID" Parameter="locationCityID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="CityDS" Parameter="cityDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="County" Parameter="county" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Latitude" Parameter="latitude" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_LocationCity_UpdateResult">
+      <Column Name="LocationCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CityDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationState_Delete" Method="gsp_LocationState_Delete">
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_LocationState_Insert" Method="gsp_LocationState_Insert">
+    <Parameter Name="StateNM" Parameter="stateNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="StateCD" Parameter="stateCD" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="StateDS" Parameter="stateDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_LocationState_InsertResult">
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationState_Select" Method="gsp_LocationState_Select">
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_LocationState_SelectResult">
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_LocationState_Update" Method="gsp_LocationState_Update">
+    <Parameter Name="LocationStateID" Parameter="locationStateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StateNM" Parameter="stateNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="StateCD" Parameter="stateCD" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="StateDS" Parameter="stateDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="LocationCountryID" Parameter="locationCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_LocationState_UpdateResult">
+      <Column Name="LocationStateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Mineral_Delete" Method="gsp_Mineral_Delete">
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.gsp_Mineral_Insert" Method="gsp_Mineral_Insert">
+    <Parameter Name="MineralNM" Parameter="mineralNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MineralDS" Parameter="mineralDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="WikipediaURL" Parameter="wikipediaURL" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_Mineral_InsertResult">
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WikipediaURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Mineral_Select" Method="gsp_Mineral_Select">
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="gsp_Mineral_SelectResult">
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WikipediaURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.gsp_Mineral_Update" Method="gsp_Mineral_Update">
+    <Parameter Name="MineralID" Parameter="mineralID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MineralNM" Parameter="mineralNM" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MineralDS" Parameter="mineralDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="WikipediaURL" Parameter="wikipediaURL" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ModifiedID" Parameter="modifiedID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedDT" Parameter="modifiedDT" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="gsp_Mineral_UpdateResult">
+      <Column Name="MineralID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MineralNM" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MineralDS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WikipediaURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

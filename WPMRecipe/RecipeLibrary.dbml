@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WebProjectMechanics" Class="RecipeLibraryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=WebProjectMechanics;User ID=codb" SettingsObjectName="WPMRecipe.My.MySettings" SettingsPropertyName="WebProjectMechanicsConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Recipe" Member="Recipes">
+    <Type Name="Recipe">
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecipeCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeNM" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeDS" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="AuthorNM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IngredientDS" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionDS" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AverageRating" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RatingCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CommentCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastViewDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Recipe_RecipeImage" Member="RecipeImages" ThisKey="RecipeID" OtherKey="RecipeID" Type="RecipeImage" />
+      <Association Name="Recipe_RecipeComment" Member="RecipeComments" ThisKey="RecipeID" OtherKey="RecipeID" Type="RecipeComment" />
+      <Association Name="RecipeCategory_Recipe" Member="RecipeCategory" ThisKey="RecipeCategoryID" OtherKey="RecipeCategoryID" Type="RecipeCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecipeImage" Member="RecipeImages">
+    <Type Name="RecipeImage">
+      <Column Name="RecipeImageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Recipe_RecipeImage" Member="Recipe" ThisKey="RecipeID" OtherKey="RecipeID" Type="Recipe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecipeComment" Member="RecipeComments">
+    <Type Name="RecipeComment">
+      <Column Name="RecipeCommentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorNM" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorEmail" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Recipe_RecipeComment" Member="Recipe" ThisKey="RecipeID" OtherKey="RecipeID" Type="Recipe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecipeCategory" Member="RecipeCategories">
+    <Type Name="RecipeCategory">
+      <Column Name="RecipeCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecipeCategoryNM" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeCategoryCM" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="RecipeCategory_Recipe" Member="Recipes" ThisKey="RecipeCategoryID" OtherKey="RecipeCategoryID" Type="Recipe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRecipe" Member="vwRecipes">
+    <Type Name="vwRecipe">
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeCategoryNM" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeNM" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeDS" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="AuthorNM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IngredientDS" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionDS" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AverageRating" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RatingCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastViewDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FileDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRecipeCategory" Member="vwRecipeCategories">
+    <Type Name="vwRecipeCategory">
+      <Column Name="RecipeCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeCategoryNM" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeCategoryCM" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="ModifiedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecipeNM" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="RecipeDS" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FileDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RecipeCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewestRecipeDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
