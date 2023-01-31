@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit Page Alias ID:<asp:Literal ID="PageAliasIDLabel1" runat="server" />
+                    Edit Location Alias: (ID:<asp:Literal ID="PageAliasIDLabel1" runat="server" />)
                 </div>
                 <div class="panel-body">
                     <div class="row">

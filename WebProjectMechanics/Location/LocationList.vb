@@ -97,7 +97,7 @@ Public Class LocationList
         Return True
     End Function
 
-    'The function to generate the breadcrumb for a row
+    'The function to generate the bread crumb for a row
     Private Function GenerateBreadcrumRow(ByVal myrow As Location, ByVal levelCount As Integer) As Boolean
         Dim sBreadCrumbHTML As String = String.Empty
 

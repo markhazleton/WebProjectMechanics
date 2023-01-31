@@ -6,7 +6,7 @@
     <members>
         <member name="M:RemoveWWW.ApplicationHttpModule.RemoveWww(System.Web.HttpContext)">
             <summary>
-            Removes the www subdomain from the request and redirects.
+            Removes the www sub domain from the request and redirects.
             </summary>
         </member>
         <member name="M:RemoveWWW.ApplicationHttpModule.PermanentRedirect(System.String,System.Web.HttpContext)">

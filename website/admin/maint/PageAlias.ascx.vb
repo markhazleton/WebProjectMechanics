@@ -10,7 +10,7 @@ Partial Class admin_maint_PageAlias
     Public Const STR_SelectPageAliasByPageAliasID As String = "SELECT [PageAliasID],[PageURL], [TargetURL], [AliasType], [CompanyID] FROM [PageAlias] where [PageAliasID] ={0} "
     Public Const STR_UPDATE_PageAlias As String = "UPDATE [PageAlias] SET [PageURL] = @PageURL, [TargetURL] = @TargetURL, [AliasType] = @AliasType, [CompanyID] = @CompanyID WHERE [PageAliasID] = @PageAliasID "
     Public Const STR_INSERT_PageAlias As String = "INSERT INTO [PageAlias] ([PageURL], [TargetURL], [AliasType], [CompanyID]) VALUES (@PageURL, @TargetURL, @AliasType, @CompanyID)"
-    Public Const STR_DELETE_PageAlias As String = "DELETE FROM [PageAlias] WHERE [PageAliasID] = {0}"
+    Public Const STR_DELETE_PageAlias As String = "DELETE FROM [PageAlias] WHERE [PageAliasID] = @PageAliasID"
 
     Private Property reqPageAlaisID As String
 
@@ -71,9 +71,37 @@ Partial Class admin_maint_PageAlias
         OnUpdated(Me)
     End Sub
     Protected Sub cmd_Insert_Click(sender As Object, e As EventArgs)
+        Dim iRowsAffected As Integer = 0
+        Using conn As New OleDbConnection(wpm_SQLDBConnString)
+            Try
+                conn.Open()
+                Using cmd As New OleDbCommand() With {.Connection = conn, .CommandType = CommandType.Text, .CommandText = STR_INSERT_PageAlias}
+                    wpm_AddParameterStringValue("@PageURL", PageURLTextBox.Text, cmd)
+                    wpm_AddParameterStringValue("@TargetURL", TargetURLTextBox.Text, cmd)
+                    wpm_AddParameterStringValue("@AliasType", "301", cmd)
+                    wpm_AddParameterValue("@CompanyID", ddlCompany.SelectedValue, SqlDbType.Int, cmd)
+                    wpm_AddParameterValue("@PageAliasID", PageAliasIDLabel1.Text, SqlDbType.Int, cmd)
+                    iRowsAffected = cmd.ExecuteNonQuery()
+                End Using
+            Catch ex As Exception
+                ApplicationLogging.SQLUpdateError(STR_INSERT_PageAlias, "PageAlias.acsx - cmd_Insert_Click")
+            End Try
+        End Using
         OnUpdated(Me)
     End Sub
     Protected Sub cmd_Delete_Click(sender As Object, e As EventArgs)
+        Dim iRowsAffected As Integer = 0
+        Using conn As New OleDbConnection(wpm_SQLDBConnString)
+            Try
+                conn.Open()
+                Using cmd As New OleDbCommand() With {.Connection = conn, .CommandType = CommandType.Text, .CommandText = STR_DELETE_PageAlias}
+                    wpm_AddParameterValue("@PageAliasID", PageAliasIDLabel1.Text, SqlDbType.Int, cmd)
+                    iRowsAffected = cmd.ExecuteNonQuery()
+                End Using
+            Catch ex As Exception
+                ApplicationLogging.SQLUpdateError(STR_INSERT_PageAlias, "PageAlias.acsx - cmd_Delete_Click")
+            End Try
+        End Using
         OnUpdated(Me)
     End Sub
     Protected Sub cmd_Cancel_Click(sender As Object, e As EventArgs)

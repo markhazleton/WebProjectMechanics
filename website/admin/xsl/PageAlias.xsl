@@ -2,16 +2,16 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:a="http://projectmechanics.com">
   <xsl:output omit-xml-declaration="yes" method="html"/>
   <xsl:template match="/">
-    <h1>Page Alias Setup</h1>
+    <h1>Location Alias Setup</h1>
     <h2>
-      <a href="/admin/maint/default.aspx?Type=PageAlias&amp;PageAliasID=NEW">Add Page Alias</a>
+      <a href="/admin/maint/default.aspx?Type=PageAlias&amp;PageAliasID=NEW">Add Location Alias</a>
     </h2>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-alias">
         <thead>
           <tr>
             <th></th>
-            <th>Page URL</th>
+            <th>Location URL</th>
             <th>Transfer URL</th>
           </tr>
         </thead>

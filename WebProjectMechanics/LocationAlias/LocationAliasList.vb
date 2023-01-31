@@ -15,10 +15,14 @@ Public Class LocationAliasList
     Public Sub GetCompanyLocationAliases(ByVal CompanyID As String)
         Using mydt As DataTable = ApplicationDAL.GetPageAliasList(CompanyID)
             For Each myrow As DataRow In mydt.Rows
-                Dim myPageAlias As New LocationAlias() With {.PageAliasID = wpm_GetDBString(myrow.Item("PageAliasID")),
-                                                          .PageURL = wpm_GetDBString(myrow.Item("PageURL")),
-                                                          .TargetURL = wpm_GetDBString(myrow.Item("TargetURL")),
-                                                          .AliasType = wpm_GetDBString(myrow.Item("AliasType"))}
+                Dim myPageAlias As New LocationAlias() With
+                {
+                    .CompanyID = wpm_GetDBString(CompanyID),
+                    .PageAliasID = wpm_GetDBString(myrow.Item("PageAliasID")),
+                    .PageURL = wpm_GetDBString(myrow.Item("PageURL")),
+                    .TargetURL = wpm_GetDBString(myrow.Item("TargetURL")),
+                    .AliasType = wpm_GetDBString(myrow.Item("AliasType"))
+                }
                 Add(myPageAlias)
             Next
         End Using
@@ -64,18 +68,18 @@ Public Class LocationAliasList
         webPage = GrabUrl()
         Dim myDelegate As New MatchEvaluator(AddressOf MatchHandler)
 
-        Dim linksExpression As New Regex( _
-  "\<a				(?# Find the opening ANCHOR tag )" & _
-  ".+?				(?# followed, minimally by everything up to the href attribute ) " & _
-  "href=['""]			(?# up to the opening Href attribute ) " & _
-  "(?!http\:\/\/)			(?# assert that the next sequence is not Http://) " & _
-  "(?!mailto\:)			(?# ...or mailto:) " & _
-  "(?<foundAnchor>[^'"">]+?)	(?# now, match everything up to the next ' or "" into a group named 'foundAnchor') " & _
-  "[^>]*?				(?# followed, minimally by everything up to the closing tag ) " & _
-  "\>				(?# then the end of the opening ANCHOR tag)", _
-  RegexOptions.Multiline Or _
-  RegexOptions.IgnoreCase Or _
-  RegexOptions.IgnorePatternWhitespace _
+        Dim linksExpression As New Regex(
+  "\<a				(?# Find the opening ANCHOR tag )" &
+  ".+?				(?# followed, minimally by everything up to the href attribute ) " &
+  "href=['""]			(?# up to the opening Href attribute ) " &
+  "(?!http\:\/\/)			(?# assert that the next sequence is not Http://) " &
+  "(?!mailto\:)			(?# ...or mailto:) " &
+  "(?<foundAnchor>[^'"">]+?)	(?# now, match everything up to the next ' or "" into a group named 'foundAnchor') " &
+  "[^>]*?				(?# followed, minimally by everything up to the closing tag ) " &
+  "\>				(?# then the end of the opening ANCHOR tag)",
+  RegexOptions.Multiline Or
+  RegexOptions.IgnoreCase Or
+  RegexOptions.IgnorePatternWhitespace
  )
 
         Dim newWebPage As String = linksExpression.Replace(webPage, myDelegate)
@@ -93,12 +97,12 @@ Public Class LocationAliasList
         row = rToL.Matches(webPage, m.Index).Count
         col = m.Index - lineBegin
 
-        report.AppendFormat( _
-            "Link <b>{0}</b>, fixed at row: {1}, col: {2}{3}", _
-            HttpContext.Current.Server.HtmlEncode(m.Groups(0).Value), _
-            row, _
-            col, _
-            Environment.NewLine _
+        report.AppendFormat(
+            "Link <b>{0}</b>, fixed at row: {1}, col: {2}{3}",
+            HttpContext.Current.Server.HtmlEncode(m.Groups(0).Value),
+            row,
+            col,
+            Environment.NewLine
         )
         Dim newLink As String
         If link.StartsWith("/") Then

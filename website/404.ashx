@@ -146,7 +146,12 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
         End If
 
         sRedirectURL = myCompany.LocationAliasList.LookupTargetURL(strNotFound)
-        sRedirectURL = myCompany.SetCurrentLocation(strNotFound, False)
+
+        If String.IsNullOrEmpty(sRedirectURL) Then
+            sRedirectURL = myCompany.SetCurrentLocation(strNotFound, False)
+        End If
+
+
         If strNotFound = "/l.php" Then
             sRedirectURL = Replace(Replace(Replace(context.Request.QueryString.Item(0), "404;", ""), "{", ""), "}", "")
         End If
