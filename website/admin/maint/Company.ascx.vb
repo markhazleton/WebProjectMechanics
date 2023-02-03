@@ -145,6 +145,8 @@ Public Class admin_maint_Company
                         wpm_AddParameterStringValue("@Country", .SiteCountry, cmd)
                         wpm_AddParameterStringValue("@PhoneNumber", PhoneNumberTextBox.Text, cmd)
                         wpm_AddParameterStringValue("@FaxNumber", FaxNumberTextBox.Text, cmd)
+                        wpm_AddParameterStringValue("@DefaultPaymentTerms", String.Empty, cmd)
+                        wpm_AddParameterStringValue("@DefaultInvoiceDescription", String.Empty, cmd)
                         wpm_AddParameterStringValue("@GalleryFolder", .SiteGallery, cmd)
                         wpm_AddParameterStringValue("@SiteURL", .CompanyURL, cmd)
                         wpm_AddParameterStringValue("@SiteTitle", .CompanyTitle, cmd)

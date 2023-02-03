@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+  <title>~~PageTitle~~</title>
+
+  <!-- Included CSS Files (Uncompressed) -->
+  <!--
+  <link rel="stylesheet" href="/framework/foundation.custom/stylesheets/foundation.css">
+  -->
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="/framework/foundation.custom/stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="/framework/foundation.custom/stylesheets/app.css">
+  <link rel="stylesheet" href="/sites/projectmechanics/css/pmfnd.css">
+  <script src="/framework/foundation.custom/javascripts/modernizr.foundation.js"></script>
+</head>
+<body style="background-color:#ccc;">
+~~PageAdmin~~
+  <!-- Header and Nav -->
+
+  <div class="row" style="background-color:#fff;background-image:url('http://projectmechanics.com/sites/ProjectMechanics/img/headerbackground.gif');background-repeat:repeat-x;">
+    <div class="twelve columns" >
+      <a href="/"><img src="/sites/ProjectMechanics/img/logo_bg.gif" alt="ProjectMechanics.com" border="0" width="109" height="75" ></a>
+    </div>
+  </div>
+  <div class="row" style="background-color:#fff;">
+      ~~fndNavBar~~
+  </div>
+
+  <!-- End Header and Nav -->
+  <div class="row" style="background-color:#fff;">
+    <!-- Main Content Section -->
+    <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+    <div class="eight columns push-four">
+      <h2>~~PageTitle~~</h2>
+~~MainContent~~      ~~CenterColumnLinks~~
+    </div>
+    <!-- Nav Sidebar -->
+    <!-- This is source ordered to be pulled to the left on larger screens -->
+    <div class="four columns pull-eight">
+      ~~LeftColumnLinks~~
+      ~~RightColumnLinks~~
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="row" style="background-color:#fff;background-image:url('http://projectmechanics.com/sites/ProjectMechanics/img/headerbackground.gif');;background-repeat:repeat-x;">
+    <div class="twelve columns">
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="seven columns">
+          <p>&copy;2002-~~Year~~ <a href="http://projectmechanics.com">Project Mechanics LLC</a><br>
+Discover the mechanics of getting IT done. <a href="https://plus.google.com/u/0/110628011423220821939#110628011423220821939/posts?rel=author" rel="author">Site Author Mark Hazleton Google Profile</a> - <a href="https://plus.google.com/u/0/b/103674893887379585098/103674893887379585098" rel="publisher">Find ProjectMechanics on Google+</a><br/>
+<br/><br/><br/><br/><br/></p>
+        </div>
+        <div class="five columns">
+        <g:plus href="https://plus.google.com/u/0/b/103674893887379585098/103674893887379585098"></g:plus>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+  <script src="/framework/foundation.custom/javascripts/jquery.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.forms.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.reveal.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.orbit.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.navigation.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.buttons.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.tabs.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.tooltips.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.accordion.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.placeholder.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.alerts.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.topbar.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.joyride.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.clearing.js"></script>
+  <script src="/framework/foundation.custom/javascripts/jquery.foundation.magellan.js"></script>
+  -->
+
+  <!-- Included JS Files (Compressed) -->
+  <script src="/framework/foundation.custom/javascripts/jquery.js"></script>
+  <script src="/framework/foundation.custom/javascripts/foundation.min.js"></script>
+
+  <!-- Initialize JS Plugins -->
+  <script src="/framework/foundation.custom/javascripts/app.js"></script>
+
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+  <script type="text/javascript" src="http://feedjit.com/map/?bc=FFFFFF&amp;tc=494949&amp;brd1=336699&amp;lnk=494949&amp;hc=336699&amp;ww=160"></script><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
+
+
+~~google_analytics_uacct~~
+</body></html>

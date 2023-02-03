@@ -77,7 +77,7 @@ Public Class admin_maint_SiteTemplate
                 Using cmd As New OleDbCommand() With {.Connection = conn, .CommandType = CommandType.Text, .CommandText = STR_UPDATE_SiteTemplate}
                     wpm_AddParameterStringValue("@Top", tbTop.Text, cmd)
                     wpm_AddParameterStringValue("@Bottom", tbBottom.Text, cmd)
-                    wpm_AddParameterStringValue("@TemplatenAME", tbTemplateNM.Text, cmd)
+                    wpm_AddParameterStringValue("@TemplateName", tbTemplateNM.Text, cmd)
                     wpm_AddParameterStringValue("@TemplatePrefix", tbTemplateCD.Text, cmd)
                     iRowsAffected = cmd.ExecuteNonQuery()
                 End Using
@@ -96,12 +96,12 @@ Public Class admin_maint_SiteTemplate
                 Using cmd As New OleDbCommand() With {.Connection = conn, .CommandType = CommandType.Text, .CommandText = STR_INSERT_SiteTemplate}
                     wpm_AddParameterStringValue("@Top", tbTop.Text, cmd)
                     wpm_AddParameterStringValue("@Bottom", tbBottom.Text, cmd)
-                    wpm_AddParameterStringValue("@TemplatenAME", tbTemplateNM.Text, cmd)
+                    wpm_AddParameterStringValue("@TemplateName", tbTemplateNM.Text, cmd)
                     wpm_AddParameterStringValue("@TemplatePrefix", tbTemplateCD.Text, cmd)
                     iRowsAffected = cmd.ExecuteNonQuery()
                 End Using
             Catch ex As Exception
-                ApplicationLogging.SQLUpdateError(STR_UPDATE_SiteTemplate, "SiteTemplate.acsx - cmd_Update_Click")
+                ApplicationLogging.SQLUpdateError(STR_UPDATE_SiteTemplate, "SiteTemplate.acsx - cmd_Insert_Click")
             End Try
         End Using
         OnUpdated(Me)

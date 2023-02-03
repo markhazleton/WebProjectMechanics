@@ -1,6 +1,5 @@
 ﻿Imports System.Net.Mail
 Imports WebProjectMechanics
-Imports System
 
 Partial Class ProjectMechanicsForm
     Inherits ApplicationPage
@@ -92,14 +91,6 @@ Partial Class ProjectMechanicsForm
                     mail.IsBodyHtml = True
                     ' Save Copy of Email
                     SaveMailToFile(masterPage.myCompany, sOutFile)
-                    'send the message
-                    Try
-                        Dim smtp As New SmtpClient("smtpout.secureserver.net", 25) With {.Credentials = New Net.NetworkCredential("website@projectmechanics.com", "justdoit"), .UseDefaultCredentials = False, .EnableSsl = False}
-                        smtp.Send(mail)
-
-                    Catch ex As Exception
-                        ApplicationLogging.ErrorLog(String.Format("Form-Error Sending Email -({0}) {1}", sFileName, ex), "Form.aspx - PageLoad")
-                    End Try
                 End Using
             Else
                 ApplicationLogging.AuditLog("Form-Error - " & errStr, "Form.aspx - PageLoad")

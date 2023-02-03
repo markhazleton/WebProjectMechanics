@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Article.ascx.vb" Inherits="admin_maint_Article" %>
-
 <%@ Register Src="../UserControls/DisplayTable.ascx" TagName="DisplayTable" TagPrefix="uc1" %>
 <%@ Register Src="~/admin/UserControls/HTMLTextBox.ascx" TagPrefix="uc1" TagName="HTMLTextBox" %>
 

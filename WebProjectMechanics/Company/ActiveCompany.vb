@@ -136,6 +136,11 @@ Public Class ActiveCompany
             Return CurCompany.SitePrefix
         End Get
     End Property
+    Public ReadOnly Property SiteCompanyId As String
+        Get
+            Return CurCompany.CompanyID
+        End Get
+    End Property
     Public ReadOnly Property SiteTitle() As String
         Get
             Return CurCompany.CompanyTitle

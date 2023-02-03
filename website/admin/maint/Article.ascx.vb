@@ -5,7 +5,7 @@ Public Class admin_maint_Article
     Private Const STR_ArticleID As String = "ArticleID"
     Private myHTMLControl As IHTMLControl
     Public Property reqArticleID As String
-    Public Property reqArticle As Article
+    Public Property reqArticle As Article = New Article()
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         myHTMLControl = DirectCast(HTMLTextBox, IHTMLControl)
@@ -59,8 +59,7 @@ Public Class admin_maint_Article
                 myListHeader.DetailKeyName = "ArticleID"
                 myListHeader.DetailFieldName = "ArticleName"
                 myListHeader.DetailPath = "/admin/maint/default.aspx?type=Article&ArticleID={0}"
-                Dim myList As New List(Of Object)
-                myList.AddRange(masterPage.myCompany.ArticleList)
+                Dim myList = reqArticle.GetArticleByCompanyID(masterPage.myCompany.SiteCompanyId)
                 dtList.BuildTable(myListHeader, myList)
             End If
         End If
@@ -71,12 +70,11 @@ Public Class admin_maint_Article
     End Sub
 
     Protected Sub cmd_Update_Click(sender As Object, e As EventArgs) Handles cmd_Update.Click
-        reqArticle = masterPage.myCompany.ArticleList.FindArticle(reqArticleID)
 
+        reqArticle.GetArticleByArticleID(reqArticleID)
         If (wpm_GetDBString(tbAuthor.Text) = String.Empty) Then
             tbAuthor.Text = wpm_ContactName
         End If
-
         With reqArticle
             .ArticleBody = myHTMLControl.GetHTML()
             .ArticleName = wpm_GetDBString(tbTitle.Text)
@@ -112,13 +110,14 @@ Public Class admin_maint_Article
     End Sub
 
     Protected Sub cmd_Delete_Click(sender As Object, e As EventArgs) Handles cmd_Delete.Click
-        reqArticle = masterPage.myCompany.ArticleList.FindArticle(reqArticleID)
+        reqArticle.GetArticleByArticleID(reqArticleID)
         reqArticle.DeleteArticle()
         OnUpdated(Me)
     End Sub
 
     Private Sub GetSiteTemplateForEdit(ByRef myCompany As ActiveCompany)
-        reqArticle = myCompany.ArticleList.FindArticle(reqArticleID)
+
+        reqArticle.GetArticleByArticleID(reqArticleID)
         With reqArticle
             tbPubDate.Text = .ArticleModDate.ToString("yyyy-MM-ddTHH:mm")
             ArticleIDLabel.Text = .ArticleID

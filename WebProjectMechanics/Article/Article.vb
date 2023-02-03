@@ -95,7 +95,7 @@ Public Class Article
             Return String.Empty
         End If
     End Function
-    Private Function GetArticleByArticleID(ByVal reqArticleID As Integer) As Boolean
+    Public Function GetArticleByArticleID(ByVal reqArticleID As Integer) As Boolean
         Dim bFunctionStatus As Boolean = False
         Dim artSQL As String = ("SELECT article.author, article.ArticleID, article.Title, article.ArticleSummary, article.Description, article.ArticleBody, article.StartDT, page.pageid, page.pagename, article.active, article.contactID FROM article LEFT JOIN page ON article.PageID = page.PageID WHERE [article].[ArticleID]=" & reqArticleID)
         If reqArticleID < 1 Then
@@ -122,6 +122,35 @@ Public Class Article
             bFunctionStatus = True
         End If
         Return bFunctionStatus
+    End Function
+    Public Function GetArticleByCompanyID(ByVal reqCompanyID As String) As List(Of Article)
+        Dim mylist As New List(Of Article)
+        Dim artSQL As String = ("SELECT article.author, article.ArticleID, article.Title, article.ArticleSummary, article.Description, article.ArticleBody, article.StartDT, page.pageid, page.pagename, article.active, article.contactID FROM article LEFT JOIN page ON article.PageID = page.PageID WHERE [article].[CompanyID]=" & reqCompanyID)
+        If String.IsNullOrEmpty(reqCompanyID) Then
+            Return mylist
+        Else
+            Try
+                For Each row As DataRow In wpm_GetDataTable(artSQL, "Article.SetArticleByArticleID").Rows
+                    Dim article As New Article With {
+                        .ArticleID = wpm_GetDBInteger(row.Item("ArticleID")),
+                        .ArticleBody = wpm_GetDBString(row.Item("ArticleBody")),
+                        .ArticleName = wpm_GetDBString(row.Item("Title")),
+                        .ArticleDescription = wpm_GetDBString(row.Item("Description")),
+                        .ArticleSummary = wpm_GetDBString(row.Item("ArticleSummary")),
+                        .ArticleModDate = Now(),
+                        .ArticlePageID = wpm_GetDBString(row.Item("PageID")),
+                        .PageName = wpm_GetDBString(row.Item("PageName")),
+                        .IsArticleActive = wpm_GetDBBoolean(row.Item("active")),
+                        .ContactID = wpm_GetDBString(row.Item("ContactID")),
+                        .ArticleAuthor = wpm_GetDBString(row.Item("Author"))
+                    }
+                    mylist.Add(article)
+                Next
+            Catch ex As Exception
+
+            End Try
+        End If
+        Return mylist
     End Function
     Private Function GetDefaultArticle(ByVal SiteArticleID As Integer) As Boolean
         ArticleID = SiteArticleID
