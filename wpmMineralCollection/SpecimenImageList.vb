@@ -46,7 +46,7 @@ Public Class SpecimenImageList
         End Try
     End Function
     Private Function FindImageByImageFileName(ByVal Image As SpecimenImage) As Boolean
-        If wpm_CheckForMatch(Image.ImageFileNM, _SearchImageFileName)  Then
+        If wpm_CheckForMatch(Image.ImageFileNM, _SearchImageFileName) Then
             Return True
         Else
             Return False

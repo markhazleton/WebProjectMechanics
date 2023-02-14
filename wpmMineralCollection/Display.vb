@@ -1,6 +1,6 @@
-Imports System.Text
 Imports System.Data.Linq
 Imports System.Globalization
+Imports System.Text
 
 Public Module Display
     Public Function DisplayDate(ByVal dbObject As Object) As String

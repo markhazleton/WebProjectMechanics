@@ -1,0 +1,122 @@
+﻿<%@ Master Language="VB" CodeFile="MineralAdmin.master.vb" Inherits="MineralAdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mineral Collection Administration</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('table.data_table').dataTable();
+
+        });
+    </script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme      -->
+    <%--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.css" />
+     --%>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+
+        .container {
+            width: 98%;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/MineralCollection/gallery/dropzone.js"></script>
+    <link rel="stylesheet" href="/MineralCollection/gallery/dropzone.css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/MineralCollection/">Mineral Collection Admin</a></li>
+                    <li><a href="/MineralCollection/admin.aspx?Type=Specimen">Specimen List</a></li>
+                    <li><a href="/MineralCollection/gallery/ListImages.aspx?Type=Image">Specimen Images</a></li>
+                    <li><a href="/MineralCollection/CollectionPivot.aspx">Collection Analysis</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lookups <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/MineralCollection/admin.aspx?Type=Mineral">Mineral</a></li>
+                            <li><a href="/MineralCollection/admin.aspx?Type=Company">Company</a></li>
+                            <li><a href="/MineralCollection/admin.aspx?Type=Collection">Collection</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/MineralCollection/admin.aspx?Type=Country">Country</a></li>
+                            <li><a href="/MineralCollection/admin.aspx?Type=State">State</a></li>
+                            <li><a href="/MineralCollection/admin.aspx?Type=City">City</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Back to Site</a></li>
+                    <li><a href="/admin">Site Admin</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container ">
+        <div class="row clearfix" >
+            <div class="col-md-12 column">
+                <form runat="server" id="frmMain">
+                    <asp:ContentPlaceHolder ID="content" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+
+</body>
+</html>

@@ -5,14 +5,22 @@ VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebProjectMechanics", "WebProjectMechanics\WebProjectMechanics.vbproj", "{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wpmMineralCollection", "wpmMineralCollection\wpmMineralCollection.vbproj", "{BC4D92AD-875F-430A-AFA4-B70DA422700F}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LumenWorks.Framework.IO", "LumenWorks.Framework.IO\LumenWorks.Framework.IO.csproj", "{E3B83D68-C90C-4874-8E5F-DEC8D038BC7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssToolkit", "RssToolkit\RssToolkit.csproj", "{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveWWW", "RemoveWWW\RemoveWWW.csproj", "{DE007689-7392-4A0A-A26E-8CEB2053EBFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{63CBE01A-022B-4035-AE77-EBD5F0EBABA1}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LINQHelper", "LINQHelper\LINQHelper.vbproj", "{7A0F4560-3BEA-4487-8575-0852BBB561A6}"
+EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		ProjectReferences = "{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}|WebProjectMechanics.dll;{e3b83d68-c90c-4874-8e5f-dec8d038bc7c}|LumenWorks.Framework.IO.dll;{d20ef1b8-0aa6-44d4-9dcb-8c5c406aad2d}|RssToolkit.dll;{de007689-7392-4a0a-a26e-8ceb2053ebfd}|RemoveWWW.dll;{7A0F4560-3BEA-4487-8575-0852BBB561A6}|LINQHelper.dll;{bc4d92ad-875f-430a-afa4-b70da422700f}|wpmMineralCollection.dll;"
+		ProjectReferences = "{7a0f4560-3bea-4487-8575-0852bbb561a6}|LINQHelper.dll;{e3b83d68-c90c-4874-8e5f-dec8d038bc7c}|LumenWorks.Framework.IO.dll;{de007689-7392-4a0a-a26e-8ceb2053ebfd}|RemoveWWW.dll;{d20ef1b8-0aa6-44d4-9dcb-8c5c406aad2d}|RssToolkit.dll;{bc4d92ad-875f-430a-afa4-b70da422700f}|wpmMineralCollection.dll;{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}|WebProjectMechanics.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_10046"
 		Debug.AspNetCompiler.PhysicalPath = "website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10046\"
@@ -31,18 +39,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{8AF
 		SlnRelativePath = "website\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveWWW", "RemoveWWW\RemoveWWW.csproj", "{DE007689-7392-4A0A-A26E-8CEB2053EBFD}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LINQHelper", "LINQHelper\LINQHelper.vbproj", "{7A0F4560-3BEA-4487-8575-0852BBB561A6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{4877B3E2-6DE0-4318-AF36-83C5945EA4E5}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		README.md = README.md
-	EndProjectSection
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wpmMineralCollection", "wpmMineralCollection\wpmMineralCollection.vbproj", "{BC4D92AD-875F-430A-AFA4-B70DA422700F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +49,10 @@ Global
 		{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFC8D22E-84D9-4D6A-9D61-E8F1A20E8A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3B83D68-C90C-4874-8E5F-DEC8D038BC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3B83D68-C90C-4874-8E5F-DEC8D038BC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3B83D68-C90C-4874-8E5F-DEC8D038BC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,10 +61,6 @@ Global
 		{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D20EF1B8-0AA6-44D4-9DCB-8C5C406AAD2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE007689-7392-4A0A-A26E-8CEB2053EBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,10 +69,10 @@ Global
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A0F4560-3BEA-4487-8575-0852BBB561A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC4D92AD-875F-430A-AFA4-B70DA422700F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF7651F-CCB5-4BD5-B1C9-41D25DB12A87}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

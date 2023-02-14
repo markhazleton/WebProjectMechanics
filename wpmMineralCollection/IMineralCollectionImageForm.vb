@@ -1,5 +1,3 @@
-Imports WebProjectMechanics
-Imports wpmMineralCollection
 
 
 Public Interface IMineralCollectionImageForm

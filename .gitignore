@@ -317,4 +317,8 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
-/source/website/sites
+
+# Ignore Site Specific Files
+/website/sites
+/website/App_Data/log
+/website/App_Data/sites/localhost

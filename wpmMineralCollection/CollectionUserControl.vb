@@ -1,4 +1,3 @@
-Imports System.Web
 
 Public Class CollectionUserControl
     Inherits ApplicationUserControl

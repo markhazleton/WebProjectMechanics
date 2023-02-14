@@ -1,5 +1,4 @@
 Imports LINQHelper.System.Linq.Dynamic
-Imports System.Data.Linq
 
 Public Class MineralCollectionListView
     Private Const INT_IndexBase As Integer = 0
