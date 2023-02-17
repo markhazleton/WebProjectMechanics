@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DomainConfigurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Configuration>
-    <DomainName>TexEcon.com</DomainName>
+    <DomainName>texecon.com</DomainName>
     <CompanyID>32</CompanyID>
-    <AccessDatabasePath>/App_Data/FrogsFolly.mdb</AccessDatabasePath>
-    <SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|FrogsFolly.mdb;</SQLDBConnString>
+    <AccessDatabasePath>/App_Data/frogsfolly.mdb</AccessDatabasePath>
+    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|frogsfolly.mdb;</SQLDBConnString>
+    <RecipeDatabasePath> </RecipeDatabasePath>
+    <RecipeHomePageID> </RecipeHomePageID>
   </Configuration>
 </DomainConfigurations>

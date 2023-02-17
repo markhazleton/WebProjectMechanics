@@ -4,7 +4,7 @@
     <DomainName>localhost</DomainName>
     <CompanyID>17</CompanyID>
     <AccessDatabasePath>/App_Data/ProjectMechanics.mdb</AccessDatabasePath>
-    <SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|ProjectMechanics.mdb;</SQLDBConnString>
+    <SQLDBConnString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|ProjectMechanics.mdb;</SQLDBConnString>
     <RecipeDatabasePath> </RecipeDatabasePath>
     <RecipeHomePageID> </RecipeHomePageID>
   </Configuration>
