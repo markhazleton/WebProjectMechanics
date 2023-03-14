@@ -3,7 +3,7 @@
     Public Property ReturnValue As String
 
     Public Sub New()
-        MyBase.New("Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=MineralCollection;User ID=codb;Password=P@ssword1")
+        MyBase.New("Data Source=Data Source=c:\\websites\\MineralCollection.db")
     End Sub
 
     Public Sub New(sConnectionStr As String)
