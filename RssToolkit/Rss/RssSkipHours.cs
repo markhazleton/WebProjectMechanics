@@ -29,14 +29,14 @@ namespace RssToolkit.Rss
         [XmlElement("hour")]
         public List<string> Hours
         {
-            get 
-            { 
-                return _hours; 
+            get
+            {
+                return _hours;
             }
 
-            set 
-            { 
-                _hours = value; 
+            set
+            {
+                _hours = value;
             }
         }
     }

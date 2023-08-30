@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Web;
 using System.Web.Security;
@@ -18,9 +17,9 @@ namespace RssToolkit.Rss
     /// <summary>
     ///  helper class (for RssHtppHandler) to pack and unpack user name and channel to from/to query string
     /// </summary>
-    public sealed class RssHttpHandlerHelper 
+    public sealed class RssHttpHandlerHelper
     {
-        private RssHttpHandlerHelper() 
+        private RssHttpHandlerHelper()
         {
         }
 
@@ -31,21 +30,21 @@ namespace RssToolkit.Rss
         /// <param name="channelName">Name of the channel.</param>
         /// <param name="userName">Name of the user.</param>
         /// <returns>string</returns>
-        public static string GenerateChannelLink(string handlerPath, string channelName, string userName) 
+        public static string GenerateChannelLink(string handlerPath, string channelName, string userName)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(handlerPath);
 
-            if (string.IsNullOrEmpty(userName)) 
+            if (string.IsNullOrEmpty(userName))
             {
                 if (!string.IsNullOrEmpty(channelName))
                 {
                     stringBuilder.Append("?c=" + HttpUtility.UrlEncode(channelName));
                 }
             }
-            else 
+            else
             {
-                if (channelName == null) 
+                if (channelName == null)
                 {
                     channelName = string.Empty;
                 }
@@ -82,7 +81,7 @@ namespace RssToolkit.Rss
             }
 
             string ticket = request.QueryString["t"];
-            if (string.IsNullOrEmpty(ticket)) 
+            if (string.IsNullOrEmpty(ticket))
             {
                 userName = string.Empty;
                 //// optional unencrypted channel name

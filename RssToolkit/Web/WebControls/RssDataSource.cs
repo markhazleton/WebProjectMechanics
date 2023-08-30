@@ -7,12 +7,11 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Web.UI;
 using RssToolkit.Rss;
 using RssToolkit.Web.Design;
+using System;
+using System.ComponentModel;
+using System.Web.UI;
 
 namespace RssToolkit.Web.WebControls
 {
@@ -88,7 +87,7 @@ namespace RssToolkit.Web.WebControls
         /// <returns>
         /// Returns the named <see cref="T:System.Web.UI.DataSourceView"></see> associated with the <see cref="T:System.Web.UI.DataSourceControl"></see>.
         /// </returns>
-        protected override DataSourceView GetView(string viewName) 
+        protected override DataSourceView GetView(string viewName)
         {
             if (_itemsView == null)
             {

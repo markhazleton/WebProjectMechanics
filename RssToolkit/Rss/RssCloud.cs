@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -33,13 +32,13 @@ namespace RssToolkit.Rss
         public string Domain
         {
             get
-            { 
-                return _domain; 
+            {
+                return _domain;
             }
 
-            set 
-            { 
-                _domain = value; 
+            set
+            {
+                _domain = value;
             }
         }
 
@@ -50,14 +49,14 @@ namespace RssToolkit.Rss
         [XmlAttribute("path")]
         public string Path
         {
-            get 
-            { 
-                return _path; 
+            get
+            {
+                return _path;
             }
 
-            set 
-            { 
-                _path = value; 
+            set
+            {
+                _path = value;
             }
         }
 
@@ -68,14 +67,14 @@ namespace RssToolkit.Rss
         [XmlAttribute("port")]
         public string Port
         {
-            get 
-            { 
-                return _port; 
+            get
+            {
+                return _port;
             }
 
-            set 
+            set
             {
-                _port = value; 
+                _port = value;
             }
         }
 
@@ -86,14 +85,14 @@ namespace RssToolkit.Rss
         [XmlAttribute("protocol")]
         public string Protocol
         {
-            get 
-            { 
-                return _protocol; 
+            get
+            {
+                return _protocol;
             }
 
-            set 
-            { 
-                _protocol = value; 
+            set
+            {
+                _protocol = value;
             }
         }
 
@@ -104,14 +103,14 @@ namespace RssToolkit.Rss
         [XmlAttribute("registerProcedure")]
         public string RegisterProcedure
         {
-            get 
-            { 
-                return _registerProcedure; 
+            get
+            {
+                return _registerProcedure;
             }
 
-            set 
-            { 
-                _registerProcedure = value; 
+            set
+            {
+                _registerProcedure = value;
             }
         }
     }

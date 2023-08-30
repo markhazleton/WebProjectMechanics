@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Web;
 using System.Xml;
 
@@ -18,7 +17,7 @@ namespace RssToolkit.Rss
     ///  base class for RssHttpHandler - Generic handler and strongly typed ones are derived from it
     /// </summary>
     /// <typeparam name="RssRssType">RssDocumentBase</typeparam>
-    public abstract class RssHttpHandlerBase<RssRssType> : IHttpHandler where RssRssType:RssDocumentBase, new()
+    public abstract class RssHttpHandlerBase<RssRssType> : IHttpHandler where RssRssType : RssDocumentBase, new()
     {
         private RssRssType _rss;
         private HttpContext _context;
@@ -42,9 +41,9 @@ namespace RssToolkit.Rss
         /// <value>The RSS.</value>
         protected RssRssType Rss
         {
-            get 
-            { 
-                return _rss; 
+            get
+            {
+                return _rss;
             }
         }
 
@@ -54,9 +53,9 @@ namespace RssToolkit.Rss
         /// <value>The context.</value>
         protected HttpContext Context
         {
-            get 
-            { 
-                return _context; 
+            get
+            {
+                return _context;
             }
         }
 

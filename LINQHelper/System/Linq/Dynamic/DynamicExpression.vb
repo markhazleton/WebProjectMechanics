@@ -12,7 +12,7 @@ Namespace System.Linq.Dynamic
         End Function
 
         Public Function ParseLambda(ByVal itType As Type, ByVal resultType As Type, ByVal expressionStr As String, ByVal ParamArray values() As Object) As LambdaExpression
-            Return ParseLambda(New ParameterExpression() {Expression.Parameter(itType, "")}, resultType, expressionStr, values)
+            Return ParseLambda(New ParameterExpression() {Expression.Parameter(itType, String.Empty)}, resultType, expressionStr, values)
         End Function
 
         Public Function ParseLambda(ByVal parameters() As ParameterExpression, ByVal resultType As Type, ByVal expressionStr As String, ByVal ParamArray values() As Object) As LambdaExpression

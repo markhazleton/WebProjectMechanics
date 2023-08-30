@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace RssToolkit
 {
@@ -8,7 +7,7 @@ namespace RssToolkit
     /// </summary>
     public static class Constants
     {
-       
+
         /// <summary>
         /// Xsl for converting Atom format to Rss 2.0
         /// </summary>

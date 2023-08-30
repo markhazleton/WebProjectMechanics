@@ -170,7 +170,7 @@ Public Class RecipeImageItem
         End Try
     End Sub
 
-Sub Delete()
+    Sub Delete()
         Try
             Using mycon As New RecipeDataController()
                 mycon.DeleteRecipeImageItem(Me)
@@ -178,6 +178,6 @@ Sub Delete()
         Catch ex As Exception
             ApplicationLogging.SQLAudit("RecipeImageItem.Delete", String.Format("Error on RecipeImage.Delete(ID) - {0} ({1})", RecipeImageID, ex.Message))
         End Try
- End Sub 
+    End Sub
 
 End Class

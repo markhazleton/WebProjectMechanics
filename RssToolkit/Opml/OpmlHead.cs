@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Opml
@@ -34,13 +33,13 @@ namespace RssToolkit.Opml
         public string Title
         {
             get
-            { 
-                return title; 
+            {
+                return title;
             }
 
-            set 
-            { 
-                title = value; 
+            set
+            {
+                title = value;
             }
         }
 
@@ -51,14 +50,14 @@ namespace RssToolkit.Opml
         [XmlElement("dateCreated")]
         public string DateCreated
         {
-            get 
-            { 
-                return dateCreated; 
+            get
+            {
+                return dateCreated;
             }
 
             set
-            { 
-                dateCreated = value; 
+            {
+                dateCreated = value;
             }
         }
 
@@ -69,14 +68,14 @@ namespace RssToolkit.Opml
         [XmlElement("dateModified")]
         public string DateModified
         {
-            get 
-            { 
-                return dateModified; 
+            get
+            {
+                return dateModified;
             }
 
-            set 
-            { 
-                dateModified = value; 
+            set
+            {
+                dateModified = value;
             }
         }
 
@@ -87,14 +86,14 @@ namespace RssToolkit.Opml
         [XmlElement("ownerName")]
         public string OwnerName
         {
-            get 
-            { 
-                return ownerName; 
+            get
+            {
+                return ownerName;
             }
 
-            set 
-            { 
-                ownerName = value; 
+            set
+            {
+                ownerName = value;
             }
         }
 
@@ -105,14 +104,14 @@ namespace RssToolkit.Opml
         [XmlElement("ownerEmail")]
         public string OwnerEmail
         {
-            get 
-            { 
-                return ownerEmail; 
+            get
+            {
+                return ownerEmail;
             }
 
-            set 
-            { 
-                ownerEmail = value; 
+            set
+            {
+                ownerEmail = value;
             }
         }
 
@@ -123,14 +122,14 @@ namespace RssToolkit.Opml
         [XmlElement("link")]
         public string Link
         {
-            get 
-            { 
-                return link; 
+            get
+            {
+                return link;
             }
 
-            set 
-            { 
-                link = value; 
+            set
+            {
+                link = value;
             }
         }
     }

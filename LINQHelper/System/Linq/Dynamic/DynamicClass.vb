@@ -2,8 +2,8 @@ Option Strict On
 
 Option Explicit On
 
-Imports System.Text
 Imports System.Reflection
+Imports System.Text
 
 Namespace System.Linq.Dynamic
     Public MustInherit Class DynamicClass

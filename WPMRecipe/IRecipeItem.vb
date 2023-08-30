@@ -17,10 +17,10 @@ Public Interface IRecipeItem
 End Interface
 
 Public Interface IRecipeImage
-    Property RecipeID() As String 
-    Property RecipeImageID as string 
+    Property RecipeID() As String
+    Property RecipeImageID as string
     Property FileName As String
-    Property FileDescription As String 
+    Property FileDescription As String
     Property DisplayOrder As Integer
     Property ModifiedID As Integer
     Property ModifiedDT As DateTime

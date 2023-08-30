@@ -7,6 +7,7 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
+using RssToolkit.Opml;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,7 +15,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Xml;
-using RssToolkit.Opml;
 
 namespace RssToolkit.Rss
 {
@@ -226,8 +226,8 @@ namespace RssToolkit.Rss
                             {
                                 string key = String.Format(
                                     System.Globalization.CultureInfo.InvariantCulture,
-                                    "{0}_{1}", 
-                                    date.ToString("u", System.Globalization.CultureInfo.InvariantCulture), 
+                                    "{0}_{1}",
+                                    date.ToString("u", System.Globalization.CultureInfo.InvariantCulture),
                                     node.ChildNodes[0].InnerText);
                                 nodesList.Add(key, node);
                             }

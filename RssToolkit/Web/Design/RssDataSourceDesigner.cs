@@ -7,15 +7,14 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
+using RssToolkit.Rss;
+using RssToolkit.Web.WebControls;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Web.UI.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
-using RssToolkit.Rss;
-using RssToolkit.Web.WebControls;
 
 namespace RssToolkit.Web.Design
 {
@@ -46,7 +45,7 @@ namespace RssToolkit.Web.Design
             base.Initialize(component);
             _dataSource = (RssDataSource)component;
         }
-        
+
         /// <summary>
         /// Launches the data source configuration utility in the design host.
         /// </summary>

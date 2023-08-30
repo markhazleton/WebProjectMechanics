@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Opml
@@ -32,14 +31,14 @@ namespace RssToolkit.Opml
         [XmlAttribute("text")]
         public string Text
         {
-            get 
+            get
             {
-                return text; 
+                return text;
             }
 
-            set 
-            { 
-                text = value; 
+            set
+            {
+                text = value;
             }
         }
 
@@ -50,14 +49,14 @@ namespace RssToolkit.Opml
         [XmlAttribute("title")]
         public string Title
         {
-            get 
-            { 
-                return title; 
+            get
+            {
+                return title;
             }
 
-            set 
-            { 
-                title = value; 
+            set
+            {
+                title = value;
             }
         }
 
@@ -68,14 +67,14 @@ namespace RssToolkit.Opml
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings"), XmlAttribute("xmlUrl")]
         public string XmlUrl
         {
-            get 
-            { 
-                return xmlUrl; 
+            get
+            {
+                return xmlUrl;
             }
 
-            set 
-            { 
-                xmlUrl = value; 
+            set
+            {
+                xmlUrl = value;
             }
         }
 
@@ -86,14 +85,14 @@ namespace RssToolkit.Opml
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings"), XmlAttribute("htmlUrl")]
         public string HtmlUrl
         {
-            get 
-            { 
-                return htmlUrl; 
+            get
+            {
+                return htmlUrl;
             }
 
-            set 
-            { 
-                htmlUrl = value; 
+            set
+            {
+                htmlUrl = value;
             }
         }
 
@@ -104,14 +103,14 @@ namespace RssToolkit.Opml
         [XmlAttribute("type")]
         public string Type
         {
-            get 
-            { 
-                return type; 
+            get
+            {
+                return type;
             }
 
-            set 
-            { 
-                type = value; 
+            set
+            {
+                type = value;
             }
         }
     }

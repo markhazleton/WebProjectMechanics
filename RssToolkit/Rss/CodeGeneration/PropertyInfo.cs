@@ -7,7 +7,6 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 using System;
-using System.Collections.Generic;
 
 namespace RssToolkit.Rss.CodeGeneration
 {
@@ -37,9 +36,9 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <value>The name.</value>
         public string Name
         {
-            get 
+            get
             {
-                return _name; 
+                return _name;
             }
         }
 
@@ -63,14 +62,14 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <value>The occurrences.</value>
         public int Occurrences
         {
-            get 
+            get
             {
-                return _occurrences; 
+                return _occurrences;
             }
 
-            set 
+            set
             {
-                _occurrences = value; 
+                _occurrences = value;
             }
         }
     }

@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -33,14 +32,14 @@ namespace RssToolkit.Rss
         [XmlElement("description")]
         public string Description
         {
-            get 
-            { 
-                return _description; 
+            get
+            {
+                return _description;
             }
 
-            set 
+            set
             {
-                _description = value; 
+                _description = value;
             }
         }
 
@@ -51,14 +50,14 @@ namespace RssToolkit.Rss
         [XmlElement("height")]
         public string Height
         {
-            get 
-            { 
-                return _height; 
+            get
+            {
+                return _height;
             }
 
             set
-            { 
-                _height = value; 
+            {
+                _height = value;
             }
         }
 
@@ -69,14 +68,14 @@ namespace RssToolkit.Rss
         [XmlElement("link")]
         public string Link
         {
-            get 
+            get
             {
-                return _link; 
+                return _link;
             }
 
-            set 
+            set
             {
-                _link = value; 
+                _link = value;
             }
         }
 
@@ -87,14 +86,14 @@ namespace RssToolkit.Rss
         [XmlElement("title")]
         public string Title
         {
-            get 
-            { 
-                return _title; 
+            get
+            {
+                return _title;
             }
 
-            set 
-            { 
-                _title = value; 
+            set
+            {
+                _title = value;
             }
         }
 
@@ -105,14 +104,14 @@ namespace RssToolkit.Rss
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings"), XmlElement("url")]
         public string Url
         {
-            get 
-            { 
-                return _url; 
+            get
+            {
+                return _url;
             }
 
-            set 
-            { 
-                _url = value; 
+            set
+            {
+                _url = value;
             }
         }
 
@@ -123,14 +122,14 @@ namespace RssToolkit.Rss
         [XmlElement("width")]
         public string Width
         {
-            get 
-            { 
-                return _width; 
+            get
+            {
+                return _width;
             }
 
-            set 
-            { 
-                _width = value; 
+            set
+            {
+                _width = value;
             }
         }
     }

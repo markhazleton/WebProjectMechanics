@@ -7,11 +7,10 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
+using RssToolkit.Rss;
 using System;
-using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using RssToolkit.Rss;
 
 namespace RssToolkit.Web.WebControls
 {
@@ -23,7 +22,7 @@ namespace RssToolkit.Web.WebControls
         private string _channelName;
         private bool _includeUserName;
         private bool _renderStandardImage;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RssHyperLink"/> class.
         /// </summary>
@@ -69,7 +68,7 @@ namespace RssToolkit.Web.WebControls
         protected override void OnPreRender(EventArgs e)
         {
             // modify the NavigateUrl to include optional user name and channel name
-            string channel = (string)_channelName ?? string.Empty;
+            string channel = _channelName ?? string.Empty;
             string user = _includeUserName ? Context.User.Identity.Name : string.Empty;
             NavigateUrl = RssHttpHandlerHelper.GenerateChannelLink(NavigateUrl, channel, user);
 
@@ -83,7 +82,7 @@ namespace RssToolkit.Web.WebControls
                     string.Format(
                     System.Globalization.CultureInfo.InvariantCulture,
                     "\r\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"{0}\" href=\"{1}\" />",
-                    title, 
+                    title,
                     NavigateUrl)));
             }
 
@@ -96,6 +95,6 @@ namespace RssToolkit.Web.WebControls
             }
 
             base.OnPreRender(e);
-        }   
+        }
     }
 }

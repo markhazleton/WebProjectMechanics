@@ -8,12 +8,12 @@
 =======================================================================*/
 
 using System;
-using System.Data;
 using System.Collections;
+using System.Data;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace RssToolkit.Rss 
+namespace RssToolkit.Rss
 {
     /// <summary>
     /// RssDocument
@@ -34,13 +34,13 @@ namespace RssToolkit.Rss
         public new string Version
         {
             get
-            { 
-                return _version; 
+            {
+                return _version;
             }
-            
+
             set
             {
-                _version = value; 
+                _version = value;
             }
         }
 
@@ -92,12 +92,12 @@ namespace RssToolkit.Rss
         {
             return RssDocumentBase.Load<RssDocument>(reader);
         }
-        
+
         /// <summary>
         /// Coverts to DataSet
         /// </summary>
         /// <returns>DataSet</returns>
-        public DataSet ToDataSet() 
+        public DataSet ToDataSet()
         {
             return RssXmlHelper.ToDataSet(ToXml(DocumentType.Rss));
         }

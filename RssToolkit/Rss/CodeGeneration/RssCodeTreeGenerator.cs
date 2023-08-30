@@ -53,7 +53,7 @@ namespace RssToolkit.Rss.CodeGeneration
                 {
                     ////Got an element. This will be the name of a class.
                     string className = reader.LocalName;
-                    
+
                     if (className.Equals("rss", StringComparison.OrdinalIgnoreCase))
                     {
                         nps = new XmlNamespaceManager(reader.NameTable);

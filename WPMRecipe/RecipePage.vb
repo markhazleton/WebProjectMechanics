@@ -33,15 +33,15 @@ Public Class RecipeUserControl
     End Property
 
     Public Property myRecipeImageList As RecipeImageList
-    Get
-            If _RecipeImageList is Nothing then 
+        Get
+            If _RecipeImageList is Nothing then
                 SetData()
             End If
             Return _RecipeImageList
-    End Get
-    Set(value As RecipeImageList)
+        End Get
+        Set(value As RecipeImageList)
             _RecipeImageList = value
-    End Set
+        End Set
     End Property
 
 

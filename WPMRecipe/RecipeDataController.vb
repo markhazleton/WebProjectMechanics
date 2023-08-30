@@ -5,7 +5,7 @@ Public Class RecipeDataController
     Public Property ReturnValue As String
     Public Sub New()
         MyBase.New("Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=WebProjectMechanics;User ID=codb;Password=P@ssword1")
-        
+
     End Sub
 
     Public Sub New(sConnectionStr As String)
@@ -54,7 +54,7 @@ Public Class RecipeDataController
                     myRecipe.CommentsCount = wpm_GetDBInteger(.RecipeComments.Count)
                     myRecipe.LastViewDT = wpm_GetDBDate(.LastViewDT)
                     myRecipe.RecipeCommentList.AddRange(.RecipeComments)
-                    myRecipe.RecipeImageList.AddRange( 
+                    myRecipe.RecipeImageList.AddRange(
                         (From i In .RecipeImages
                          Select New RecipeImageItem With {.RecipeID = wpm_GetDBString(i.RecipeID),
                                                           .RecipeImageID = wpm_GetDBString(i.RecipeImageID),

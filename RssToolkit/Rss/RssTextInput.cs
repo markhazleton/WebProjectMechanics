@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -31,14 +30,14 @@ namespace RssToolkit.Rss
         [XmlElement("description")]
         public string Description
         {
-            get 
-            { 
-                return _description; 
+            get
+            {
+                return _description;
             }
 
-            set 
-            { 
-                _description = value; 
+            set
+            {
+                _description = value;
             }
         }
 
@@ -67,14 +66,14 @@ namespace RssToolkit.Rss
         [XmlElement("name")]
         public string Name
         {
-            get 
+            get
             {
-                return _name; 
+                return _name;
             }
 
             set
             {
-                _name = value; 
+                _name = value;
             }
         }
 
@@ -85,14 +84,14 @@ namespace RssToolkit.Rss
         [XmlElement("title")]
         public string Title
         {
-            get 
+            get
             {
-                return _title; 
+                return _title;
             }
 
             set
-            { 
-                _title = value; 
+            {
+                _title = value;
             }
         }
     }

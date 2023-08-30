@@ -48,13 +48,13 @@ namespace RssToolkit.Rss
         public List<RssCategory> Categories
         {
             get
-            { 
-                return _categories; 
+            {
+                return _categories;
             }
 
-            set 
-            { 
-                _categories = value; 
+            set
+            {
+                _categories = value;
             }
         }
 
@@ -65,14 +65,14 @@ namespace RssToolkit.Rss
         [XmlElement("cloud")]
         public RssCloud Cloud
         {
-            get 
-            { 
-                return _cloud; 
+            get
+            {
+                return _cloud;
             }
 
-            set 
-            { 
-                _cloud = value; 
+            set
+            {
+                _cloud = value;
             }
         }
 
@@ -83,13 +83,13 @@ namespace RssToolkit.Rss
         [XmlElement("copyright")]
         public string Copyright
         {
-            get 
-            { 
-                return _copyright; 
+            get
+            {
+                return _copyright;
             }
 
-            set 
-            { 
+            set
+            {
                 _copyright = value;
             }
         }
@@ -101,14 +101,14 @@ namespace RssToolkit.Rss
         [XmlElement("description")]
         public string Description
         {
-            get 
-            { 
-                return _description; 
+            get
+            {
+                return _description;
             }
 
-            set 
-            { 
-                _description = value; 
+            set
+            {
+                _description = value;
             }
         }
 
@@ -119,14 +119,14 @@ namespace RssToolkit.Rss
         [XmlElement("docs")]
         public string Docs
         {
-            get 
-            { 
-                return _docs; 
+            get
+            {
+                return _docs;
             }
 
-            set 
-            { 
-                _docs = value; 
+            set
+            {
+                _docs = value;
             }
         }
 
@@ -137,14 +137,14 @@ namespace RssToolkit.Rss
         [XmlElement("generator")]
         public string Generator
         {
-            get 
-            { 
-                return _generator; 
+            get
+            {
+                return _generator;
             }
 
-            set 
-            { 
-                _generator = value; 
+            set
+            {
+                _generator = value;
             }
         }
 
@@ -156,13 +156,13 @@ namespace RssToolkit.Rss
         public List<RssItem> Items
         {
             get
-            { 
-                return _items; 
+            {
+                return _items;
             }
 
-            set 
-            { 
-                _items = value; 
+            set
+            {
+                _items = value;
             }
         }
 
@@ -174,13 +174,13 @@ namespace RssToolkit.Rss
         public string LastBuildDate
         {
             get
-            { 
-                return _lastBuildDate; 
+            {
+                return _lastBuildDate;
             }
 
-            set 
-            { 
-                _lastBuildDate = value; 
+            set
+            {
+                _lastBuildDate = value;
             }
         }
 
@@ -191,14 +191,14 @@ namespace RssToolkit.Rss
         [XmlElement("link")]
         public string Link
         {
-            get 
-            { 
-                return _link; 
+            get
+            {
+                return _link;
             }
 
-            set 
-            { 
-                _link = value; 
+            set
+            {
+                _link = value;
             }
         }
 
@@ -209,14 +209,14 @@ namespace RssToolkit.Rss
         [XmlElement("managingEditor")]
         public string ManagingEditor
         {
-            get 
-            { 
-                return _managingEditor; 
+            get
+            {
+                return _managingEditor;
             }
 
-            set 
-            { 
-                _managingEditor = value; 
+            set
+            {
+                _managingEditor = value;
             }
         }
 
@@ -229,12 +229,12 @@ namespace RssToolkit.Rss
         {
             get
             {
-                return _timeToLive; 
+                return _timeToLive;
             }
 
-            set 
-            { 
-                _timeToLive = value; 
+            set
+            {
+                _timeToLive = value;
             }
         }
 
@@ -245,14 +245,14 @@ namespace RssToolkit.Rss
         [XmlElement("title")]
         public string Title
         {
-            get 
-            { 
-                return _title; 
+            get
+            {
+                return _title;
             }
 
-            set 
-            { 
-                _title = value; 
+            set
+            {
+                _title = value;
             }
         }
 
@@ -263,14 +263,14 @@ namespace RssToolkit.Rss
         [XmlElement("pubDate")]
         public string PubDate
         {
-            get 
-            { 
-                return _pubDate; 
+            get
+            {
+                return _pubDate;
             }
 
-            set 
-            { 
-                _pubDate = value; 
+            set
+            {
+                _pubDate = value;
             }
         }
 
@@ -281,14 +281,14 @@ namespace RssToolkit.Rss
         [XmlElement("rating")]
         public string Rating
         {
-            get 
-            { 
-                return _rating; 
+            get
+            {
+                return _rating;
             }
 
-            set 
-            { 
-                _rating = value; 
+            set
+            {
+                _rating = value;
             }
         }
 
@@ -299,14 +299,14 @@ namespace RssToolkit.Rss
         [XmlElement("skipDays")]
         public RssSkipDays SkipDays
         {
-            get 
-            { 
-                return _skipDays; 
+            get
+            {
+                return _skipDays;
             }
 
-            set 
+            set
             {
-                _skipDays = value; 
+                _skipDays = value;
             }
         }
 
@@ -317,14 +317,14 @@ namespace RssToolkit.Rss
         [XmlElement("skipHours")]
         public RssSkipHours SkipHours
         {
-            get 
+            get
             {
-                return _skipHours; 
+                return _skipHours;
             }
 
-            set 
-            { 
-                _skipHours = value; 
+            set
+            {
+                _skipHours = value;
             }
         }
 
@@ -335,12 +335,12 @@ namespace RssToolkit.Rss
         [XmlElement("webMaster")]
         public string WebMaster
         {
-            get 
-            { 
-                return _webMaster; 
+            get
+            {
+                return _webMaster;
             }
 
-            set 
+            set
             {
                 _webMaster = value;
             }
@@ -355,12 +355,12 @@ namespace RssToolkit.Rss
         {
             get
             {
-                return _image; 
+                return _image;
             }
 
-            set 
+            set
             {
-                _image = value; 
+                _image = value;
             }
         }
 

@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -31,13 +30,13 @@ namespace RssToolkit.Rss
         public string Length
         {
             get
-            { 
-                return _length; 
+            {
+                return _length;
             }
 
             set
             {
-                _length = value; 
+                _length = value;
             }
         }
 
@@ -49,13 +48,13 @@ namespace RssToolkit.Rss
         public string Type
         {
             get
-            { 
-                return _type; 
+            {
+                return _type;
             }
 
             set
-            { 
-                _type = value; 
+            {
+                _type = value;
             }
         }
 
@@ -68,8 +67,8 @@ namespace RssToolkit.Rss
         public string Url
         {
             get
-            { 
-                return _url; 
+            {
+                return _url;
             }
 
             set

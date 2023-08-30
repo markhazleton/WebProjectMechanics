@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -31,12 +30,12 @@ namespace RssToolkit.Rss
         {
             get
             {
-                return _isPermaLink; 
+                return _isPermaLink;
             }
 
             set
             {
-                _isPermaLink = value; 
+                _isPermaLink = value;
             }
         }
 

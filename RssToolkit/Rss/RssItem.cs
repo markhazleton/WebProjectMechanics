@@ -37,14 +37,14 @@ namespace RssToolkit.Rss
         [XmlElement("author")]
         public string Author
         {
-            get 
-            { 
-                return _author; 
+            get
+            {
+                return _author;
             }
 
-            set 
-            { 
-                _author = value; 
+            set
+            {
+                _author = value;
             }
         }
 
@@ -171,7 +171,7 @@ namespace RssToolkit.Rss
             set
             {
                 _pubDate = value;
-            }   
+            }
         }
 
         /// <summary>

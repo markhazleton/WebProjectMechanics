@@ -8,9 +8,9 @@
 =======================================================================*/
 
 using System;
+using System.IO;
 using System.Xml;
 using System.Xml.Schema;
-using System.IO;
 
 namespace RssToolkit.Rss
 {
@@ -65,8 +65,8 @@ namespace RssToolkit.Rss
             {
                 throw new ArgumentNullException("xsd");
             }
-            
-            try 
+
+            try
             {
                 XmlSchemaSet sc = new XmlSchemaSet();
                 sc.Add(null, xsd);
@@ -78,14 +78,14 @@ namespace RssToolkit.Rss
                 using (StringReader stringReader = new StringReader(xml))
                 {
                     reader = XmlReader.Create(stringReader, settings);
-                    while (reader.Read());
+                    while (reader.Read()) ;
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 this.validationError = ex.Message;
-                isValidXml = false; 
-            } 
+                isValidXml = false;
+            }
         }
 
         private void ValidationCallBack(object sender, ValidationEventArgs args)

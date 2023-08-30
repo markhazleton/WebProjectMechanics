@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 
 namespace RssToolkit.Opml
 {
@@ -42,9 +41,9 @@ namespace RssToolkit.Opml
         /// <value>The outline.</value>
         public OpmlOutline Outline
         {
-            get 
-            { 
-                return outline; 
+            get
+            {
+                return outline;
             }
         }
 
@@ -54,9 +53,9 @@ namespace RssToolkit.Opml
         /// <value>The index.</value>
         public int Index
         {
-            get 
-            { 
-                return index; 
+            get
+            {
+                return index;
             }
         }
     }

@@ -7,12 +7,11 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
+using RssToolkit.Rss;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using RssToolkit.Rss;
 
 namespace RssToolkit.Opml
 {
@@ -35,13 +34,13 @@ namespace RssToolkit.Opml
         public String Version
         {
             get
-            { 
-                return version; 
+            {
+                return version;
             }
 
-            set 
-            { 
-                version = value; 
+            set
+            {
+                version = value;
             }
         }
 
@@ -52,14 +51,14 @@ namespace RssToolkit.Opml
         [XmlElement("head")]
         public OpmlHead Head
         {
-            get 
-            { 
-                return head; 
+            get
+            {
+                return head;
             }
 
-            set 
-            { 
-                head = value; 
+            set
+            {
+                head = value;
             }
         }
 
@@ -70,14 +69,14 @@ namespace RssToolkit.Opml
         [XmlElement("body")]
         public OpmlBody Body
         {
-            get 
-            { 
-                return body; 
+            get
+            {
+                return body;
             }
 
-            set 
-            { 
-                body = value; 
+            set
+            {
+                body = value;
             }
         }
 

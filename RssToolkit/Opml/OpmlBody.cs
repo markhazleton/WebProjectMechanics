@@ -28,14 +28,14 @@ namespace RssToolkit.Opml
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists"), XmlElement("outline")]
         public List<OpmlOutline> Outlines
         {
-            get 
-            { 
-                return outlines; 
+            get
+            {
+                return outlines;
             }
 
-            set 
-            { 
-                outlines = value; 
+            set
+            {
+                outlines = value;
             }
         }
     }

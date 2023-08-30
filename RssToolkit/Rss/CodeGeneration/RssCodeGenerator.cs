@@ -68,10 +68,10 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <param name="useBaseClass">if set to <c>true</c> [use base class].</param>
         public static void GenerateCode(
             RssDocumentBase rssDefinition,
-            string outputLanguage, 
-            string namespaceName, 
+            string outputLanguage,
+            string namespaceName,
             string classNamePrefix,
-            TextWriter outputCode, 
+            TextWriter outputCode,
             bool useBaseClass)
         {
             if (rssDefinition == null)
@@ -113,12 +113,12 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <param name="outputCode">The output code.</param>
         /// <param name="useBaseClass">if set to <c>true</c> [use base class].</param>
         public static void GenerateCode(
-            string codeXml, 
-            string url, 
-            string outputLanguage, 
-            string namespaceName, 
+            string codeXml,
+            string url,
+            string outputLanguage,
+            string namespaceName,
             string classNamePrefix,
-            TextWriter outputCode, 
+            TextWriter outputCode,
             bool useBaseClass)
         {
             if (string.IsNullOrEmpty(codeXml))
@@ -174,7 +174,7 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <param name="useBaseClass">if set to <c>true</c> [use base class].</param>
         public static void GenerateCodeDomTree(
             RssDocumentBase rssDefinition,
-            string namespaceName, 
+            string namespaceName,
             string classNamePrefix,
             CodeCompileUnit outputCodeCompileUnit,
             bool useBaseClass)
@@ -212,11 +212,11 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <param name="outputCodeCompileUnit">The output code compile unit.</param>
         /// <param name="useBaseClass">if set to <c>true</c> [use base class].</param>
         public static void GenerateCodeDomTree(
-            string codeXml, 
+            string codeXml,
             string url,
-            string namespaceName, 
+            string namespaceName,
             string classNamePrefix,
-            CodeCompileUnit outputCodeCompileUnit, 
+            CodeCompileUnit outputCodeCompileUnit,
             bool useBaseClass)
         {
             if (string.IsNullOrEmpty(codeXml))
@@ -262,7 +262,7 @@ namespace RssToolkit.Rss.CodeGeneration
                 {
                     string className = classNamePrefix + CodeNameFromRssName(classInfo.Name);
                     CodeTypeDeclaration itemType = new CodeTypeDeclaration(className);
-                    
+
                     if (classInfo.Name.Equals(RssConstant, StringComparison.OrdinalIgnoreCase))
                     {
                         itemType.CustomAttributes.Add(new CodeAttributeDeclaration("System.Serializable"));
@@ -276,7 +276,7 @@ namespace RssToolkit.Rss.CodeGeneration
                         if (!string.IsNullOrEmpty(url))
                         {
                             string itemTypeName = classNamePrefix + "Item";
-                            
+
                             //// LoadRss (and LoadRssItems) method
                             GenerateLoad(itemType, url);
                             GenerateLoadRssByUrl(itemType);
@@ -288,7 +288,7 @@ namespace RssToolkit.Rss.CodeGeneration
                         GenerateToXml(itemType);
                         GenerateToDataSet(itemType);
                     }
-                    
+
                     if (!NamespaceContainsType(generatedNamespace, itemType.Name))
                     {
                         generatedNamespace.Types.Add(itemType);
@@ -501,7 +501,7 @@ namespace RssToolkit.Rss.CodeGeneration
             property.Type = propertyType;
 
             // prevent warnings for RssDocumentBase properties
-            if (propertyName.Equals("Version", StringComparison.Ordinal) 
+            if (propertyName.Equals("Version", StringComparison.Ordinal)
                 || propertyName.Equals("Channel", StringComparison.Ordinal))
             {
                 property.Attributes |= MemberAttributes.New;
@@ -510,9 +510,9 @@ namespace RssToolkit.Rss.CodeGeneration
             CodeAttributeDeclaration cad;
             if (nodeType != XmlNodeType.Text)
             {
-                 cad = new CodeAttributeDeclaration(
-                     "Xml" + nodeType,
-                     new CodeAttributeArgument(new CodePrimitiveExpression(nodeName)));
+                cad = new CodeAttributeDeclaration(
+                    "Xml" + nodeType,
+                    new CodeAttributeArgument(new CodePrimitiveExpression(nodeName)));
             }
             else
             {
@@ -549,7 +549,7 @@ namespace RssToolkit.Rss.CodeGeneration
                 new CodeMethodInvokeExpression(
                     new CodeVariableReferenceExpression(typeName),
                     "Load",
-                    new CodeExpression[1] { new CodeObjectCreateExpression( "System.Uri", new CodeExpression[1] {new CodePrimitiveExpression(url) })})));
+                    new CodeExpression[1] { new CodeObjectCreateExpression("System.Uri", new CodeExpression[1] { new CodePrimitiveExpression(url) }) })));
 
             m.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression(varName)));
 

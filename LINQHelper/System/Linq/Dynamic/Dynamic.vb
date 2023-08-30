@@ -5,8 +5,8 @@ Imports System.Globalization
 Imports System.Linq.Expressions
 Imports System.Reflection
 Imports System.Reflection.Emit
-Imports System.Threading
 Imports System.Runtime.CompilerServices
+Imports System.Threading
 
 Namespace System.Linq.Dynamic
     Public Module DynamicQueryable
@@ -50,7 +50,7 @@ Namespace System.Linq.Dynamic
             If (source Is Nothing) Then Throw New ArgumentNullException("source")
             If (ordering Is Nothing) Then Throw New ArgumentNullException("ordering")
             Dim parameters = New ParameterExpression() { _
-                Expression.Parameter(source.ElementType, "")}
+                Expression.Parameter(source.ElementType, String.Empty)}
             Dim parser As New ExpressionParser(parameters, ordering, values)
             Dim orderings As IEnumerable(Of DynamicOrdering) = parser.ParseOrdering()
             Dim queryExpr As Expression = source.Expression
@@ -547,8 +547,8 @@ Namespace System.Linq.Dynamic
                 If i = values.Length - 1 AndAlso TryCast(value, IDictionary(Of String, Object)) IsNot Nothing Then
                     externals = DirectCast(value, IDictionary(Of String, Object))
                 Else
-                     AddSymbol("@" & i.ToString(CultureInfo.InvariantCulture), value)
-                    
+                    AddSymbol("@" & i.ToString(CultureInfo.InvariantCulture), value)
+
                 End If
             Next
         End Sub
@@ -1075,7 +1075,7 @@ amphersand:
                         If method.ReturnType.Equals(GetType(Void)) Then
                             Throw ParseError(errorPos, Res.MethodIsVoid, id, GetTypeName(method.DeclaringType))
                         End If
-                        Return Expression.Call(instance, DirectCast(method, MethodInfo), args)
+                        Return Expression.Call(instance, method, args)
                     Case Else
                         Throw ParseError(errorPos, Res.AmbiguousMethodInvocation, id, GetTypeName(type))
                 End Select
@@ -1106,7 +1106,7 @@ amphersand:
 
         Function ParseAggregate(ByVal instance As Expression, ByVal elementType As Type, ByVal methodName As String, ByVal errorPos As Integer) As Expression
             Dim outerIt As ParameterExpression = it
-            Dim innerIt As ParameterExpression = Expression.Parameter(elementType, "")
+            Dim innerIt As ParameterExpression = Expression.Parameter(elementType, String.Empty)
             it = innerIt
             Dim args As Expression() = ParseArgumentList()
             it = outerIt

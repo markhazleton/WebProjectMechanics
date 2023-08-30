@@ -28,14 +28,14 @@ namespace RssToolkit.Rss
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists"), XmlElement("day")]
         public List<string> Days
         {
-            get 
-            { 
-                return _days; 
+            get
+            {
+                return _days;
             }
 
-            set 
-            { 
-                _days = value; 
+            set
+            {
+                _days = value;
             }
         }
     }

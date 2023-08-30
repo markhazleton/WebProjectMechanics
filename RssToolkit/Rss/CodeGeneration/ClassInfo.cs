@@ -33,9 +33,9 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <value>The name.</value>
         public string Name
         {
-            get 
-            { 
-                return _name; 
+            get
+            {
+                return _name;
             }
         }
 
@@ -79,9 +79,9 @@ namespace RssToolkit.Rss.CodeGeneration
         /// <value>The properties.</value>
         internal Dictionary<string, PropertyInfo> Properties
         {
-            get 
-            { 
-                return _properties; 
+            get
+            {
+                return _properties;
             }
         }
     }

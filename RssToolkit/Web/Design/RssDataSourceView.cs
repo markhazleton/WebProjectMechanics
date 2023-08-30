@@ -7,11 +7,10 @@
   PARTICULAR PURPOSE.
 =======================================================================*/
 
+using RssToolkit.Web.WebControls;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Web.UI;
-using RssToolkit.Web.WebControls;
 
 namespace RssToolkit.Web.Design
 {

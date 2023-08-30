@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace RssToolkit.Rss
 {
@@ -18,14 +17,14 @@ namespace RssToolkit.Rss
         /// <value>The exception.</value>
         public Exception Exception
         {
-            get 
-            { 
-                return _exception; 
+            get
+            {
+                return _exception;
             }
 
-            set 
-            { 
-                _exception = value; 
+            set
+            {
+                _exception = value;
             }
         }
 
@@ -36,13 +35,13 @@ namespace RssToolkit.Rss
         public string Message
         {
             get
-            { 
-                return _message; 
+            {
+                return _message;
             }
 
-            set 
-            { 
-                _message = value; 
+            set
+            {
+                _message = value;
             }
         }
 
@@ -52,14 +51,14 @@ namespace RssToolkit.Rss
         /// <value>The type of the severity.</value>
         public RssSeverityType SeverityType
         {
-            get 
-            { 
-                return _severityType; 
+            get
+            {
+                return _severityType;
             }
 
-            set 
-            { 
-                _severityType = value; 
+            set
+            {
+                _severityType = value;
             }
         }
     }

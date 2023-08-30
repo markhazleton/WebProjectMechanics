@@ -8,7 +8,6 @@
 =======================================================================*/
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace RssToolkit.Rss
@@ -29,14 +28,14 @@ namespace RssToolkit.Rss
         [XmlAttribute("domain")]
         public string Domain
         {
-            get 
-            { 
-                return _domain; 
+            get
+            {
+                return _domain;
             }
 
-            set 
+            set
             {
-                _domain = value; 
+                _domain = value;
             }
         }
 
@@ -47,14 +46,14 @@ namespace RssToolkit.Rss
         [XmlText()]
         public string Text
         {
-            get 
-            { 
-                return _text; 
+            get
+            {
+                return _text;
             }
 
-            set 
-            { 
-                _text = value; 
+            set
+            {
+                _text = value;
             }
         }
     }
