@@ -2,12 +2,12 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:a="http://projectmechanics.com">
   <xsl:output omit-xml-declaration="yes" method="html"/>
   <xsl:template match="/">
-    <h1>Location Alias Setup</h1>
+    <h1>Location Alias (Redirects)</h1>
     <h2>
-      <a href="/admin/maint/default.aspx?Type=PageAlias&amp;PageAliasID=NEW">Add Location Alias</a>
+      <a href="/admin/maint/default.aspx?Type=PageAlias&amp;PageAliasID=NEW">Add</a>
     </h2>
     <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-alias">
+      <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-admin">
         <thead>
           <tr>
             <th></th>

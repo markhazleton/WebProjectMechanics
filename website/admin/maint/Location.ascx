@@ -10,7 +10,6 @@
             Edit Location ID:
                     <asp:Literal ID="LocationIDLit" runat="server" Text="" />
             <asp:CheckBox ID="cbActive" runat="server" Text=" Is Active" />
-
         </div>
         <div class="panel-body">
             <div class="row">
@@ -56,10 +55,7 @@
                         <asp:TextBox ID="tbLocationOrder" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
-
             </div>
-
-
             <div class="row">
                 <asp:panel runat="server" id="pnlArticle" cssclass="col-lg-12 form-group">
                     <asp:HiddenField ID="hfArticleID" runat="server" />
@@ -69,8 +65,6 @@
                     <uc1:HTMLTextBox runat="server" ID="HTMLTextBox" />
                 </asp:panel>
             </div>
-
-
         </div>
         <div class="panel-footer">
             <div class="form-group">
@@ -84,10 +78,6 @@
         </div>
     </div>
 </asp:Panel>
-
-
-
-
 
 <asp:Panel ID="pnlThumbnails" runat="server" CssClass="row" Visible="false">
     <div class="col-lg-12 col-md-12 col-xs-12">

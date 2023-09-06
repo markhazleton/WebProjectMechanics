@@ -3,7 +3,6 @@
 <asp:Panel ID="pnlList" runat="server">
     <asp:Literal runat="server" Text="" ID="myContent" />
 </asp:Panel>
-
 <asp:Panel ID="pnlEdit" runat="server">
     <div class="row">
         <div class="col-lg-12">
@@ -42,16 +41,9 @@
                             <asp:LinkButton ID="cmd_Delete" runat="server" CssClass="btn btn-warning" OnClick="cmd_Delete_Click"><span><span>Delete</span></span></asp:LinkButton>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </asp:Panel>
-
-
-
-
-
-
 
