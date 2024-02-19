@@ -172,7 +172,7 @@ Public Class MineralCollection_CollectionItemEdit
         End With
         If SaveChanges(AlertBox) Then
             OnUpdated(Me)
-            Response.Redirect(String.Format("/MineralCollection/Admin.aspx?Type=Specimen&CollectionItemID={0}", hfCollectionItemID.Value))
+            Response.Redirect(String.Format("/MineralCollection/Admin.aspx?Type=Specimen", hfCollectionItemID.Value))
         End If
     End Sub
 

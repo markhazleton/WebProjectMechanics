@@ -33,7 +33,7 @@ Partial Class MineralCollection_view_collection
         SetPageName("View Collection")
 
         myListView.ResetCriteria()
-        myListView.FeaturedOnly = False
+        myListView.FeaturedOnly = True
         myListView.SoldOnly = False
         GetRows(myListView)
 

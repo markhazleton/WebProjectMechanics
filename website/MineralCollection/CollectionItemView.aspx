@@ -75,7 +75,7 @@
         <ItemTemplate>
             <div class="panel panel-default ">
                 <div class="panel-heading">
-                    <%# wpmMineralCollection.Display.DisplayWithSold("Specimen #", Eval("SpecimenNumber"), Eval("IsSold")) %>
+                    <%# wpmMineralCollection.Display.DisplayWithSold("Specimen #", Eval("SpecimenNumber"), Eval("IsSold"), Eval("IsFeatured")) %>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -163,7 +163,7 @@
           <ul class="list-inline">
     </HeaderTemplate>
     <ItemTemplate>
-          <li> <a id='carousel-selector-00<%# Eval("DisplayOrder") %>'  class='<%# GetThumnailClassByOrder(Eval("DisplayOrder")) %>' >
+          <li> <a id='carousel-selector-00<%# Eval("DisplayOrder") %>'  class='<%# GetThumbnailClassByOrder(Eval("DisplayOrder")) %>' >
             <img src='<%# GetThumbnailURL( Eval("ImageFileNM")) %>' class="img-responsive" style="max-height:60px;max-width:80px;">
           </a></li>
     </ItemTemplate>
@@ -185,7 +185,7 @@
 
     </HeaderTemplate>
     <ItemTemplate>
-        <div class='<%# GetCaroselImageClassByOrder(Eval("DisplayOrder")) %>' data-slide-number='00<%# Eval("DisplayOrder") %>'>
+        <div class='<%# GetCarouselImageClassByOrder(Eval("DisplayOrder")) %>' data-slide-number='00<%# Eval("DisplayOrder") %>'>
             <img src='<%# GetImageURL( Eval("ImageFileNM")) %>' class="img-responsive img_zoom" style="max-height:500px;max-width:1200px;">
         </div>
     </ItemTemplate>
@@ -223,7 +223,7 @@
                             <a class="thumbnail" href='/MineralCollection/CollectionItemView.aspx?CollectionItemID=<%# Eval("CollectionItemID") %>'>
                                 <img src='<%# GetThumbnailURL(Eval("ImageFileNM")) %>' class="img-responsive" style="max-height:120px;max-width:160px;">
                                 <br />
-                                Specimen # <%# Eval("SpecimenNumber") %><%# GetSold(Eval("IsSold")) %>
+                                Specimen # <%# Eval("SpecimenNumber") %><%# GetSold(Eval("IsSold"), Eval("IsFeatured")) %>
                                 <br />
                                 <%# Eval("PrimaryMineralNM")  %>
                                 <br />

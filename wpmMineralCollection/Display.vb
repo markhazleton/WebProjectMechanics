@@ -49,16 +49,22 @@ Public Module Display
             End If
         End If
     End Function
-    Public Function DisplayWithSold(ByVal sLabel As String, ByVal sValue As String, ByVal isSold As String) As String
+    Public Function DisplayWithSold(ByVal sLabel As String, ByVal sValue As String, ByVal isSold As String, ByVal isFeatured As String) As String
         If String.IsNullOrEmpty(sValue) Then
             Return String.Empty
         Else
-            Dim myInt As Int32 = 0
-            Int32.TryParse(isSold, myInt)
-            If (myInt <> 0) Then
+            Dim intFeatured As Int32 = 0
+            Int32.TryParse(isFeatured, intFeatured)
+            Dim intSold As Int32 = 0
+            Int32.TryParse(isSold, intSold)
+            If (intSold <> 0) Then
                 Return String.Format("<div class="" display_field""><em>{0}:  </em>  {1} (<span style=""color:red;display:inline;"">SOLD</span>)</div>", sLabel, sValue)
             Else
-                Return String.Format("<div class="" display_field""><em>{0}:  </em>  {1}</div>", sLabel, sValue)
+                If (intFeatured <> 0) Then
+                    Return String.Format("<div class="" display_field""><em>{0}:  </em>  {1} (<span style=""color:red;display:inline;"">FEATURED</span>)</div>", sLabel, sValue)
+                Else
+                    Return String.Format("<div class="" display_field""><em>{0}:  </em>  {1}</div>", sLabel, sValue)
+                End If
             End If
         End If
     End Function

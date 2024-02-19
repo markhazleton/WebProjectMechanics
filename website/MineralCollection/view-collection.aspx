@@ -22,7 +22,7 @@
                                 <div class="cbp-caption-activeWrap"></div>
                             </a>
                             <a href="/MineralCollection/view-item.ashx?Specimen=<%# Eval("CollectionItemID") %>" class="cbp-l-grid-work-title cbp-singlePage" rel="nofollow">
-                                <%# wpmMineralCollection.Display.DisplayWithSold("Specimen #", Eval("SpecimenNumber"), Eval("IsSold")) %>
+                                <%# wpmMineralCollection.Display.DisplayWithSold("Specimen #", Eval("SpecimenNumber"), Eval("IsSold"), Eval("IsFeatured")) %>
                             </a>
                             <div class="cbp-l-grid-work-desc">
                                 <%# wpmMineralCollection.Display.DisplayLinkField("Primary Mineral", Eval("PrimaryMineralNM"), "MineralID", Eval("PrimaryMineralID")) %>

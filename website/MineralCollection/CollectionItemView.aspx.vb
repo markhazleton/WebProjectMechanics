@@ -1,6 +1,5 @@
 ﻿Imports wpmMineralCollection
 Imports LINQHelper.System.Linq.Dynamic
-Imports System.Data.Linq
 Imports WebProjectMechanics
 
 Public Class MineralCollection_CollectionItemView
@@ -267,20 +266,22 @@ Public Class MineralCollection_CollectionItemView
             Return String.Format("/sites/nrc/Thumbnails/{0}", FileName.ToLower().Replace(".jpg", ".png"))
         End If
     End Function
-    Public Function GetSold(ByVal IsSold As Integer) As String
+    Public Function GetSold(ByVal IsSold As Integer, ByVal IsFeatured As Integer) As String
         If IsSold <> 0 Then
             Return "(<span style='color:red;'>SOLD</span>)"
+        ElseIf IsFeatured <> 0 Then
+            Return "(<span style='color:blue;'>FEATURED</span>)"
         End If
         Return String.Empty
     End Function
-    Public Function GetThumnailClassByOrder(ByVal iOrder As Integer) As String
+    Public Function GetThumbnailClassByOrder(ByVal iOrder As Integer) As String
         If iOrder = 0 Then
             Return " selected "
         Else
             Return " "
         End If
     End Function
-    Public Function GetCaroselImageClassByOrder(ByVal iOrder As Integer) As String
+    Public Function GetCarouselImageClassByOrder(ByVal iOrder As Integer) As String
         If iOrder = 0 Then
             Return " active item "
         Else

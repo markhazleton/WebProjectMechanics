@@ -1,9 +1,11 @@
-﻿Public Class DataController
+﻿Imports System.Data.SqlClient
+
+Public Class DataController
     Inherits DataClasses1DataContext
     Public Property ReturnValue As String
 
     Public Sub New()
-        MyBase.New("Data Source=Data Source=c:\\websites\\MineralCollection.db")
+        MyBase.New("Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=MineralCollection;User ID=codb;Password=P@ssword1;Connect Timeout=30;Encrypt=False;")
     End Sub
 
     Public Sub New(sConnectionStr As String)
@@ -28,7 +30,3 @@
         End Try
     End Sub
 End Class
-
-
-
-

@@ -1,9 +1,5 @@
 ﻿<%@ WebHandler Language="VB" Class="view_item" %>
 
-Imports System
-Imports System.Web
-Imports System.Linq
-Imports LINQHelper
 Imports wpmMineralCollection
 
 Public Class view_item : Implements IHttpHandler, System.Web.SessionState.IRequiresSessionState
@@ -11,6 +7,11 @@ Public Class view_item : Implements IHttpHandler, System.Web.SessionState.IRequi
     Public Sub ProcessRequest(ByVal context As HttpContext) Implements IHttpHandler.ProcessRequest
         context.Response.ContentType = "text/html"
         Dim Specimen As String = context.Request.QueryString("Specimen")
+
+        If Specimen Is Nothing Then
+            context.Response.Redirect("/")
+        End If
+
 
         If CType(context.Session("wpm_MineralListView"), MineralCollectionListView) Is Nothing Then
             context.Session("wpm_MineralListView") = New MineralCollectionListView
@@ -40,11 +41,25 @@ Public Class view_item : Implements IHttpHandler, System.Web.SessionState.IRequi
         context.Response.Write("</div>")
 
         context.Response.Write("<div Class=""cbp-l-project-details"">")
-        context.Response.Write("<ul Class=""cbp-l-project-details-list"">")
-        context.Response.Write(GetLI("", String.Format("<strong>Primary Mineral:</strong>{0}", myItem.PrimaryMineralNM)))
-        context.Response.Write(GetLI("", String.Format("<strong>City:</strong>{0}", myItem.City)))
-        context.Response.Write(GetLI("", String.Format("<strong>State:</strong>{0}", myItem.StateNM)))
-        context.Response.Write("</ul>")
+
+        If (String.IsNullOrEmpty(myItem.CountryNM) = False) Then
+            context.Response.Write(GetP("", String.Format("<em>Country:</em><span style='float:right;'>{0}</span>", myItem.CountryNM)))
+        End If
+        If (String.IsNullOrEmpty(myItem.StateNM) = False) Then
+            context.Response.Write(GetP("", String.Format("<em>State:</em><span style='float:right;'>{0}</span>", myItem.StateNM)))
+        End If
+        If (String.IsNullOrEmpty(myItem.City) = False) Then
+            context.Response.Write(GetP("", String.Format("<em>City:</em><span style='float:right;'>{0}</span>", myItem.City)))
+        End If
+
+
+        If (myItem.WidthCm > 0) Then
+            context.Response.Write("<ul Class=""cbp-l-project-details-list"">")
+            context.Response.Write(GetLI("", String.Format("<strong>Width (cm):</strong>{0}", myItem.WidthCm)))
+            context.Response.Write(GetLI("", String.Format("<strong>Height (cm):</strong>{0}", myItem.HeightCm)))
+            context.Response.Write(GetLI("", String.Format("<strong>Weight (kg):</strong>{0}", myItem.WeightKg)))
+            context.Response.Write("</ul>")
+        End If
 
         If (myItem.WidthIn > 0) Then
             context.Response.Write("<ul Class=""cbp-l-project-details-list"">")
@@ -54,15 +69,8 @@ Public Class view_item : Implements IHttpHandler, System.Web.SessionState.IRequi
             context.Response.Write("</ul>")
         End If
 
-
-
-
         context.Response.Write("</div>")
         context.Response.Write("</div>")
-
-
-
-
 
 
         context.Response.Write("</div>")
