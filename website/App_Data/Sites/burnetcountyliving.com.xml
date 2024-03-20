@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DomainConfigurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Configuration>
-    <DomainName>burnetcountyliving.com</DomainName>
-    <CompanyID>26</CompanyID>
-    <AccessDatabasePath>/App_Data/wpmLiving.mdb</AccessDatabasePath>
-    <SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|wpmLiving.mdb;</SQLDBConnString>
-  </Configuration>
-</DomainConfigurations>

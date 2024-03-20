@@ -69,14 +69,25 @@ Public Module App
                 Try
                     If Not IsNothing(ConfigFile) Then
                         mySiteSettings = DomainConfigurations.Load(ConfigFile)
-                        If Not (mySiteSettings Is Nothing) Then
-                            mySite.CompanyID = CStr(mySiteSettings.Configuration.CompanyID)
-                            mySite.SQLDBConnString = CStr(mySiteSettings.Configuration.SQLDBConnString)
-                            mySite.AccessDatabasePath = CStr(mySiteSettings.Configuration.AccessDatabasePath)
-                            HttpContext.Current.Application(wpm_HostName) = mySite
+                        If (mySiteSettings?.Configuration?.CompanyID Is Nothing) Then
+                            ' Add New Site Configuration with default values
+                            mySiteSettings = New DomainConfigurations With {
+                                .Configuration = New DomainConfiguration
+                            }
+                            mySiteSettings.Configuration.CompanyID = "17"
+                            mySiteSettings.Configuration.SQLDBConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|projectmechanics.mdb;"
+                            mySiteSettings.Configuration.AccessDatabasePath = "/App_Data/projectmechanics.mdb"
                         End If
-                    Else
-                        ApplicationLogging.ErrorLog(String.Format("Invalid Site Config - {0}", ConfigFile), "App.wpm_DomainConfig")
+
+
+                        If Not (mySiteSettings Is Nothing) Then
+                                mySite.CompanyID = CStr(mySiteSettings.Configuration.CompanyID)
+                                mySite.SQLDBConnString = CStr(mySiteSettings.Configuration.SQLDBConnString)
+                                mySite.AccessDatabasePath = CStr(mySiteSettings.Configuration.AccessDatabasePath)
+                                HttpContext.Current.Application(wpm_HostName) = mySite
+                            End If
+                        Else
+                            ApplicationLogging.ErrorLog(String.Format("Invalid Site Config - {0}", ConfigFile), "App.wpm_DomainConfig")
                         wpm_AddGenericError(String.Format("App.wpm_DomainConfig - Invalid Site Config - {0}", ConfigFile))
 
                     End If
