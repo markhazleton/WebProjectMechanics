@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP app to Azure Web App - WebProjectMechanics
+name: Build and deploy ASP.NET Framework app to Azure Web App
 
 on:
   push:
@@ -23,23 +20,25 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore
+        run: nuget restore WebProjectMechanics.sln # Replace YourSolution.sln with your solution file name
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
+        run: |
+          msbuild YourProject.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFrameworkVersion=v4.8 /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:publishUrl="$(Build.ArtifactStagingDirectory)" # Replace YourProject.csproj with your project file name
+        env:
+          Build.ArtifactStagingDirectory: './published'
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: ASP-app
-          path: '/published/**'
+          path: './published/**' # Ensure this path matches the output of the build process
 
   deploy:
     runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
       - name: Download artifact from build job
@@ -48,10 +47,9 @@ jobs:
           name: ASP-app
       
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'WebProjectMechanics'
           slot-name: 'Production'
-          package: .
+          package: './ASP-app' # Ensure this is the path to the artifact downloaded in the previous step
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_86940D6A7F0D4BF4A435FE4610F236B9 }}
