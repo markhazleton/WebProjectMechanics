@@ -1,4 +1,7 @@
-name: Build and deploy ASP.NET Framework app to Azure Web App
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP app to Azure Web App - WebProjectMechanics
 
 on:
   push:
@@ -20,36 +23,44 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore WebProjectMechanics.sln # Replace YourSolution.sln with your solution file name
+        run: nuget restore
 
       - name: Publish to folder
-        run: |
-          msbuild YourProject.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFrameworkVersion=v4.8 /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:publishUrl="$(Build.ArtifactStagingDirectory)" # Replace YourProject.csproj with your project file name
-        env:
-          Build.ArtifactStagingDirectory: './published'
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: ASP-app
-          path: './published/**' # Ensure this path matches the output of the build process
+          path: '/published/**'
 
   deploy:
     runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
-    
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: ASP-app
       
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A19D4EF178774B098F7F7336B0CA78E6 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6F48F245503E4281B3316EA0B29DDB0D }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7EEF030F2E3A4C5F97CFA0D47CB99600 }}
+
       - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'WebProjectMechanics'
           slot-name: 'Production'
-          package: './ASP-app' # Ensure this is the path to the artifact downloaded in the previous step
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_86940D6A7F0D4BF4A435FE4610F236B9 }}
+          package: .
+          
