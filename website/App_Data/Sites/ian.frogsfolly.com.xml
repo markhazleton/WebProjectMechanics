@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DomainConfigurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Configuration>
+    <AccessDatabasePath>/App_Data/FrogsFollyKids.mdb</AccessDatabasePath>
+    <CompanyID>37</CompanyID>
+    <DomainName>ian.frogsfolly.com</DomainName>
+    <SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|FrogsFollyKids.mdb;</SQLDBConnString>
+  </Configuration>
+</DomainConfigurations>

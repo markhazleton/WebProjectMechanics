@@ -1,5 +1,6 @@
 ﻿Imports WebProjectMechanics
 Imports System.Data
+Imports System.Data.OleDb
 
 Partial Class SiteList
     Inherits ApplicationPage
@@ -18,24 +19,32 @@ Partial Class SiteList
                 myFileListBox.Items.Add(li)
             End If
         Next
-        AccessDataSource.DataFile = myFileListBox.SelectedValue
-        GridView1.DataBind()
-
+        BindTheGridview()
     End Sub
 
     Protected Sub btnSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSubmit.Click
-
-        AccessDataSource.DataFile = myFileListBox.SelectedValue
-        GridView1.DataBind()
-
+        BindTheGridview()
     End Sub
 
+    Private Sub BindTheGridview()
+        Dim connStr As String = ConfigurationManager.ConnectionStrings("AccessConnectionString").ToString()
+
+        Dim dbPath As String = myFileListBox.SelectedItem.Text
+
+        connStr = connStr.Replace("wpm-demo.mdb", dbPath)
+        Using conn As New OleDbConnection(connStr)
+            Dim query As String = "SELECT [CompanyID], [CompanyName], [SiteURL] FROM [Company] order by [CompanyName] asc"
+            Using adapter As New OleDbDataAdapter(query, conn)
+                Dim dataTable As New DataTable()
+                adapter.Fill(dataTable)
+                GridView1.DataSource = dataTable
+                GridView1.DataBind()
+            End Using
+        End Using
+    End Sub
 
     Protected Sub GridView1_Sorting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSortEventArgs) Handles GridView1.Sorting
-
-        AccessDataSource.DataFile = myFileListBox.SelectedValue
-        GridView1.DataBind()
-
+        BindTheGridview()
     End Sub
 
     Protected Sub GridView1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles GridView1.SelectedIndexChanged

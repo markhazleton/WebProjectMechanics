@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DomainConfigurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Configuration>
+    <AccessDatabasePath>/App_Data/ProjectMechanics.mdb</AccessDatabasePath>
+    <CompanyID>33</CompanyID>
+    <DomainName>blog.controlorigins.com</DomainName>
+    <SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|ProjectMechanics.mdb;</SQLDBConnString>
+  </Configuration>
+</DomainConfigurations>

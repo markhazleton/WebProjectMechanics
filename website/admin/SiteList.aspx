@@ -11,7 +11,7 @@
     <br />
     <br />
     <asp:gridview id="GridView1" runat="server" cellpadding="4" forecolor="#333333" gridlines="None"
-        autogeneratecolumns="False" datakeynames="CompanyID" datasourceid="AccessDataSource"
+        autogeneratecolumns="False" datakeynames="CompanyID" 
         enablemodelvalidation="True">
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <Columns>
@@ -28,9 +28,7 @@
                 <EditRowStyle BackColor="#999999" />
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             </asp:gridview>
-    <asp:accessdatasource id="AccessDataSource" runat="server" datafile="~/App_Data/wpm-demo.mdb"
-        selectcommand="SELECT [CompanyID], [CompanyName], [SiteURL] FROM [Company] order by [CompanyName] asc">
-            </asp:accessdatasource>
+
 
     <hr />
     <asp:literal id="MyHTML" runat="server" />

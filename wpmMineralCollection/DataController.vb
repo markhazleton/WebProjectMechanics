@@ -5,7 +5,7 @@ Public Class DataController
     Public Property ReturnValue As String
 
     Public Sub New()
-        MyBase.New("Data Source=controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com;Initial Catalog=MineralCollection;User ID=codb;Password=P@ssword1;Connect Timeout=30;Encrypt=False;")
+        MyBase.New("Data Source=markhazleton2.database.windows.net;Initial Catalog=markhazleton;User ID=markhazleton;Password=JustD01t!;Connect Timeout=60;Encrypt=True;")
     End Sub
 
     Public Sub New(sConnectionStr As String)

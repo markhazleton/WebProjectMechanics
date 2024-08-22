@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Company xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://projectmechanics.com">
-  <CompanyID>17</CompanyID>
-  <CompanyNM>Web Project Mechanics</CompanyNM>
-  <DomainName>wpm.controlorigins.com</DomainName>
-  <CompanyTitle>Web Project Mechanics</CompanyTitle>
-  <HomeLocationID>630</HomeLocationID>
-  <DefaultArticleID>364</DefaultArticleID>
-  <SitePrefix>wpm 1.0</SitePrefix>
-  <DefaultSitePrefix>wpm 1.0</DefaultSitePrefix>
-  <SiteGallery>/sites/webprojectmechanics/</SiteGallery>
-  <SiteCity>Keller</SiteCity>
-  <SiteState>TX</SiteState>
-  <SiteCountry>USA</SiteCountry>
-  <PostalCode>76248</PostalCode>
+  <CompanyID>29</CompanyID>
+  <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+  <DomainName>jmshawminerals.com</DomainName>
+  <CompanyTitle>J.M. Shaw Mineral Collection - &lt;PageName&gt;</CompanyTitle>
+  <HomeLocationID />
+  <DefaultArticleID>506</DefaultArticleID>
+  <SitePrefix>jmshaw3</SitePrefix>
+  <DefaultSitePrefix>jmshaw3</DefaultSitePrefix>
+  <SiteGallery>/sites/nrc</SiteGallery>
+  <SiteCity />
+  <SiteState />
+  <SiteCountry />
+  <PostalCode />
   <UseBreadCrumbURL>true</UseBreadCrumbURL>
-  <FromEmail>mark.hazleton@projectmechanics.com</FromEmail>
+  <FromEmail />
   <Locations>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>630</LocationID>
-      <ArticleID>364</ArticleID>
+      <LocationID>767</LocationID>
+      <ArticleID>506</ArticleID>
       <ImageID>0</ImageID>
       <LocationTypeCD>Main</LocationTypeCD>
       <LocationTypeID>26</LocationTypeID>
       <GroupID>4</GroupID>
-      <LocationName>Web Project Mechanics</LocationName>
-      <LocationTitle>Web Project Mechanics</LocationTitle>
-      <LocationDescription>Web Project Mechanics</LocationDescription>
-      <LocationKeywords>Web Project Mechanics</LocationKeywords>
+      <LocationName>J.M. Shaw Mineral Collection</LocationName>
+      <LocationTitle>J.M. Shaw Mineral Collection</LocationTitle>
+      <LocationDescription>J.M. Shaw Mineral Collection</LocationDescription>
+      <LocationKeywords>J.M. Shaw Mineral Collection</LocationKeywords>
       <ImageFileName />
       <LocationFileName />
-      <LocationBody>Web Project Mechanics is a Web Content Management System built using the ASP.Net framework.&amp;nbsp; WPM is written in Visual Basic and uses XML and MS-Access for data storage.&amp;nbsp; It is currently being developed for release on CodePlex. &lt;br&gt;
-
-
-
-</LocationBody>
-      <LocationSummary>Web Project Mechanics</LocationSummary>
+      <LocationBody />
+      <LocationSummary>J.M. Shaw Mineral Collection</LocationSummary>
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
       <ParentLocationID />
@@ -49,47 +45,47 @@
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
       <LevelNBR>1</LevelNBR>
-      <TransferURL>/default.aspx?c=630</TransferURL>
-      <BreadCrumbURL>/web-project-mechanics</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Web Project Mechanics&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <TransferURL>/default.aspx?c=767</TransferURL>
+      <BreadCrumbURL>/j.m.-shaw-mineral-collection</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;J.M. Shaw Mineral Collection&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>630</LocationID>
-          <Name>Web Project Mechanics</Name>
-          <Description>Web Project Mechanics</Description>
+          <LocationID>767</LocationID>
+          <Name>J.M. Shaw Mineral Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
           <DisplayURL />
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
+      <ModifiedDT>2021-03-08T16:05:46</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>635</LocationID>
+      <LocationID>776</LocationID>
       <ArticleID>0</ArticleID>
       <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Frequently Asked Questions</LocationName>
-      <LocationTitle>Frequently Asked Questions</LocationTitle>
-      <LocationDescription>Frequently Asked Questions</LocationDescription>
-      <LocationKeywords>Frequently Asked Questions</LocationKeywords>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Manage Collection Data</LocationName>
+      <LocationTitle>Manage Collection Data</LocationTitle>
+      <LocationDescription>Manage Collection Data</LocationDescription>
+      <LocationKeywords>Manage Collection Data</LocationKeywords>
       <ImageFileName />
-      <LocationFileName />
+      <LocationFileName>/MineralCollection/admin.aspx?c=776&amp;a=0</LocationFileName>
       <LocationBody />
       <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>630</ParentLocationID>
+      <ParentLocationID>774</ParentLocationID>
       <DefaultOrder>1</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
@@ -97,302 +93,265 @@
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
       <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=635&amp;a=0</TransferURL>
-      <BreadCrumbURL>/web-project-mechanics/frequently-asked-questions</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/web-project-mechanics" title="Web Project Mechanics"&gt;Web Project Mechanics&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Frequently Asked Questions&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <TransferURL>/MineralCollection/admin.aspx?c=776&amp;a=0</TransferURL>
+      <BreadCrumbURL>/manage-collection-data</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/MineralCollection/admin.aspx?c=776&amp;a=0" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Manage Collection Data&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>630</LocationID>
-          <Name>Web Project Mechanics</Name>
-          <Description>Web Project Mechanics</Description>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/web-project-mechanics</DisplayURL>
+          <DisplayURL>/the-collection</DisplayURL>
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>635</LocationID>
-          <Name>Frequently Asked Questions</Name>
-          <Description>Frequently Asked Questions</Description>
-          <ParentLocationID>630</ParentLocationID>
+          <LocationID>776</LocationID>
+          <Name>Manage Collection Data</Name>
+          <Description>Manage Collection Data</Description>
+          <ParentLocationID>774</ParentLocationID>
           <DisplayURL />
           <LevelNBR>2</LevelNBR>
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
+      <ModifiedDT>2015-02-25T05:36:34</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>631</LocationID>
-      <ArticleID>495</ArticleID>
+      <LocationID>788</LocationID>
+      <ArticleID>511</ArticleID>
       <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Features</LocationName>
-      <LocationTitle>Features</LocationTitle>
-      <LocationDescription>Features</LocationDescription>
-      <LocationKeywords>Features</LocationKeywords>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>3</GroupID>
+      <LocationName>Featured Specimens</LocationName>
+      <LocationTitle>Featured Specimens</LocationTitle>
+      <LocationDescription>Featured Specimens</LocationDescription>
+      <LocationKeywords>Featured Specimens</LocationKeywords>
       <ImageFileName />
-      <LocationFileName />
-      <LocationBody>Description of the features of Web Project Mechanics is coming soon. &amp;#160;&lt;br type="_moz" /&gt;</LocationBody>
-      <LocationSummary>Web Project Mechanics Features</LocationSummary>
+      <LocationFileName>/MineralCollection/view-collection.aspx?CollectionID=2&amp;c=774</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>630</ParentLocationID>
+      <ParentLocationID />
       <DefaultOrder>2</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
-      <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=631</TransferURL>
-      <BreadCrumbURL>/web-project-mechanics/features</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/web-project-mechanics" title="Web Project Mechanics"&gt;Web Project Mechanics&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Features&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/MineralCollection/view-collection.aspx?CollectionID=2&amp;c=774</TransferURL>
+      <BreadCrumbURL>/featured-specimens</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Featured Specimens&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>630</LocationID>
-          <Name>Web Project Mechanics</Name>
-          <Description>Web Project Mechanics</Description>
+          <LocationID>788</LocationID>
+          <Name>Featured Specimens</Name>
+          <Description>Featured Specimens</Description>
           <ParentLocationID />
-          <DisplayURL>/web-project-mechanics</DisplayURL>
+          <DisplayURL />
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
-        <LocationTrail>
-          <LocationID>631</LocationID>
-          <Name>Features</Name>
-          <Description>Features</Description>
-          <ParentLocationID>630</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>2</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
+      <ModifiedDT>2016-11-27T07:55:36</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>766</LocationID>
-      <ArticleID>0</ArticleID>
+      <LocationID>770</LocationID>
+      <ArticleID>509</ArticleID>
       <ImageID>0</ImageID>
-      <LocationTypeCD>CATALOG</LocationTypeCD>
-      <LocationTypeID>29</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Image Gallery</LocationName>
-      <LocationTitle>Image Gallery</LocationTitle>
-      <LocationDescription>Image Gallery</LocationDescription>
-      <LocationKeywords>Image Gallery</LocationKeywords>
+      <LocationTypeCD>Main</LocationTypeCD>
+      <LocationTypeID>26</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Links</LocationName>
+      <LocationTitle>Links</LocationTitle>
+      <LocationDescription>Links</LocationDescription>
+      <LocationKeywords>Links</LocationKeywords>
       <ImageFileName />
       <LocationFileName />
-      <LocationBody />
-      <LocationSummary />
+      <LocationBody>&lt;h2&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;Here are some links to Mineral Related Sites:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://mindat.org" target="_blank"&gt;MinDat.org&lt;/a&gt; - the world&amp;#39;s largest public database of mineral information&lt;/li&gt;
+&lt;/ul&gt;</LocationBody>
+      <LocationSummary>Links</LocationSummary>
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>740</ParentLocationID>
+      <ParentLocationID />
       <DefaultOrder>3</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
-      <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=766&amp;a=0</TransferURL>
-      <BreadCrumbURL>/examples/image-gallery</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Image Gallery&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/default.aspx?c=770</TransferURL>
+      <BreadCrumbURL>/links</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Links&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
+          <LocationID>770</LocationID>
+          <Name>Links</Name>
+          <Description>Links</Description>
           <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
+          <DisplayURL />
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
-        <LocationTrail>
-          <LocationID>766</LocationID>
-          <Name>Image Gallery</Name>
-          <Description>Image Gallery</Description>
-          <ParentLocationID>740</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>2</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2012-07-14T00:00:00</ModifiedDT>
+      <ModifiedDT>2021-03-08T16:14:59</ModifiedDT>
     </Location>
     <Location>
-      <RecordSource>Image</RecordSource>
-      <LocationID>IMG-13</LocationID>
-      <ArticleID>0</ArticleID>
-      <ImageID>13</ImageID>
-      <LocationTypeCD>CATALOG</LocationTypeCD>
-      <LocationTypeID>29</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Image Gallery-louisiiana---lake-claiborne-snake-island</LocationName>
-      <LocationTitle>Image Gallery-louisiiana---lake-claiborne-snake-island</LocationTitle>
-      <LocationDescription>Louisiiana - Lake Claiborne Snake Island</LocationDescription>
-      <LocationKeywords>Image Gallery</LocationKeywords>
+      <RecordSource>Page</RecordSource>
+      <LocationID>774</LocationID>
+      <ArticleID>512</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>2</GroupID>
+      <LocationName>The Collection</LocationName>
+      <LocationTitle>The J.M. Shaw Mineral Collection</LocationTitle>
+      <LocationDescription>J.M. Shaw Mineral Collection</LocationDescription>
+      <LocationKeywords />
       <ImageFileName />
-      <LocationFileName />
+      <LocationFileName>/MineralCollection/CollectionItemView.aspx?CollectionID=2&amp;c=774</LocationFileName>
       <LocationBody />
       <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>766</ParentLocationID>
+      <ParentLocationID />
       <DefaultOrder>4</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
-      <LevelNBR>3</LevelNBR>
-      <TransferURL>/default.aspx?a=0&amp;c=766</TransferURL>
-      <BreadCrumbURL>/examples/image-gallery/image-gallery-louisiiana---lake-claiborne-snake-island</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/examples/image-gallery" title="Image Gallery"&gt;Image Gallery&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Image Gallery-louisiiana---lake-claiborne-snake-island&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/MineralCollection/CollectionItemView.aspx?CollectionID=2&amp;c=774</TransferURL>
+      <BreadCrumbURL>/the-collection</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;The Collection&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>766</LocationID>
-          <Name>Image Gallery</Name>
-          <Description>Image Gallery</Description>
-          <ParentLocationID>740</ParentLocationID>
-          <DisplayURL>/examples/image-gallery</DisplayURL>
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
-          <LevelNBR>2</LevelNBR>
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
-        <LocationTrail>
-          <LocationID>IMG-13</LocationID>
-          <Name>Image Gallery-louisiiana---lake-claiborne-snake-island</Name>
-          <Description>Louisiiana - Lake Claiborne Snake Island</Description>
-          <ParentLocationID>766</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>3</LevelNBR>
-          <MenuLevelNBR>3</MenuLevelNBR>
-        </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2012-07-14T00:00:00</ModifiedDT>
+      <ModifiedDT>2016-11-26T22:32:29</ModifiedDT>
     </Location>
     <Location>
-      <RecordSource>Image</RecordSource>
-      <LocationID>IMG-11</LocationID>
+      <RecordSource>Page</RecordSource>
+      <LocationID>784</LocationID>
       <ArticleID>0</ArticleID>
-      <ImageID>11</ImageID>
-      <LocationTypeCD>CATALOG</LocationTypeCD>
-      <LocationTypeID>29</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Image Gallery-poland---sleeping-giant-mountains</LocationName>
-      <LocationTitle>Image Gallery-poland---sleeping-giant-mountains</LocationTitle>
-      <LocationDescription>The famous Sleeping Giant is near Zakopane, in south Poland. The legend sais that the sleeping giant gets up and protects the town from the big storms and the strangers attacks. In fact it is a big mountain ridge coverd with snow and has a shape of a sleeping giant.</LocationDescription>
-      <LocationKeywords>Image Gallery</LocationKeywords>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Blog</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Documentation</LocationName>
+      <LocationTitle>Documentation</LocationTitle>
+      <LocationDescription>The documentation for how to use the Mineral Collection Site</LocationDescription>
+      <LocationKeywords>Documentation</LocationKeywords>
       <ImageFileName />
       <LocationFileName />
       <LocationBody />
       <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>766</ParentLocationID>
+      <ParentLocationID>774</ParentLocationID>
       <DefaultOrder>5</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
-      <LevelNBR>3</LevelNBR>
-      <TransferURL>/default.aspx?a=0&amp;c=766</TransferURL>
-      <BreadCrumbURL>/examples/image-gallery/image-gallery-poland---sleeping-giant-mountains</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/examples/image-gallery" title="Image Gallery"&gt;Image Gallery&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Image Gallery-poland---sleeping-giant-mountains&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/default.aspx?c=784&amp;a=0</TransferURL>
+      <BreadCrumbURL>/the-collection/documentation</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/the-collection" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>766</LocationID>
-          <Name>Image Gallery</Name>
-          <Description>Image Gallery</Description>
-          <ParentLocationID>740</ParentLocationID>
-          <DisplayURL>/examples/image-gallery</DisplayURL>
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
-          <LevelNBR>2</LevelNBR>
+          <DisplayURL>/the-collection</DisplayURL>
+          <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>IMG-11</LocationID>
-          <Name>Image Gallery-poland---sleeping-giant-mountains</Name>
-          <Description>The famous Sleeping Giant is near Zakopane, in south Poland. The legend sais that the sleeping giant gets up and protects the town from the big storms and the strangers attacks. In fact it is a big mountain ridge coverd with snow and has a shape of a sleeping giant.</Description>
-          <ParentLocationID>766</ParentLocationID>
+          <LocationID>784</LocationID>
+          <Name>Documentation</Name>
+          <Description>The documentation for how to use the Mineral Collection Site</Description>
+          <ParentLocationID>774</ParentLocationID>
           <DisplayURL />
-          <LevelNBR>3</LevelNBR>
-          <MenuLevelNBR>3</MenuLevelNBR>
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2012-07-14T00:00:00</ModifiedDT>
+      <ModifiedDT>2016-11-27T07:55:12</ModifiedDT>
     </Location>
     <Location>
-      <RecordSource>Image</RecordSource>
-      <LocationID>IMG-12</LocationID>
-      <ArticleID>0</ArticleID>
-      <ImageID>12</ImageID>
-      <LocationTypeCD>CATALOG</LocationTypeCD>
-      <LocationTypeID>29</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Image Gallery-texas-=-inks-lake-sunset</LocationName>
-      <LocationTitle>Image Gallery-texas-=-inks-lake-sunset</LocationTitle>
-      <LocationDescription>Texas = Inks Lake Sunset</LocationDescription>
-      <LocationKeywords>Image Gallery</LocationKeywords>
+      <RecordSource>Article</RecordSource>
+      <LocationID>ART-510</LocationID>
+      <ArticleID>510</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Blog</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>YouTube Documentation Playlist</LocationName>
+      <LocationTitle>YouTube Documentation Playlist</LocationTitle>
+      <LocationDescription>YouTube Documentation Playlist</LocationDescription>
+      <LocationKeywords>Documentation</LocationKeywords>
       <ImageFileName />
       <LocationFileName />
-      <LocationBody />
-      <LocationSummary />
+      <LocationBody>&lt;h2&gt;This is a YouTube playlist of documentation videos for the Mineral Collection site&lt;/h2&gt;
+
+&lt;div class="flex-video"&gt;&lt;iframe frameborder="0" height="600px" src="https://www.youtube.com/embed/videoseries?list=PL6VizbnCZRx_iU_wMgycOXkqCFV5a_L7a" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;</LocationBody>
+      <LocationSummary>YouTube Documentation Playlist</LocationSummary>
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
-      <LocationAuthor />
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor>Mark Hazleton</LocationAuthor>
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>766</ParentLocationID>
+      <ParentLocationID>784</ParentLocationID>
       <DefaultOrder>6</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
@@ -400,65 +359,65 @@
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
       <LevelNBR>3</LevelNBR>
-      <TransferURL>/default.aspx?a=0&amp;c=766</TransferURL>
-      <BreadCrumbURL>/examples/image-gallery/image-gallery-texas-=-inks-lake-sunset</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/examples/image-gallery" title="Image Gallery"&gt;Image Gallery&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Image Gallery-texas-=-inks-lake-sunset&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <TransferURL>/default.aspx?a=510&amp;c=784</TransferURL>
+      <BreadCrumbURL>/the-collection/documentation/youtube-documentation-playlist</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/the-collection" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/the-collection/documentation" title="The documentation for how to use the Mineral Collection Site"&gt;Documentation&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;YouTube Documentation Playlist&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>766</LocationID>
-          <Name>Image Gallery</Name>
-          <Description>Image Gallery</Description>
-          <ParentLocationID>740</ParentLocationID>
-          <DisplayURL>/examples/image-gallery</DisplayURL>
+          <LocationID>784</LocationID>
+          <Name>Documentation</Name>
+          <Description>The documentation for how to use the Mineral Collection Site</Description>
+          <ParentLocationID>774</ParentLocationID>
+          <DisplayURL>/the-collection/documentation</DisplayURL>
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
+          <DisplayURL>/the-collection</DisplayURL>
           <LevelNBR>2</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>IMG-12</LocationID>
-          <Name>Image Gallery-texas-=-inks-lake-sunset</Name>
-          <Description>Texas = Inks Lake Sunset</Description>
-          <ParentLocationID>766</ParentLocationID>
+          <LocationID>ART-510</LocationID>
+          <Name>YouTube Documentation Playlist</Name>
+          <Description>YouTube Documentation Playlist</Description>
+          <ParentLocationID>784</ParentLocationID>
           <DisplayURL />
           <LevelNBR>3</LevelNBR>
           <MenuLevelNBR>3</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2012-07-14T00:00:00</ModifiedDT>
+      <ModifiedDT>2015-02-23T13:51:54</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>633</LocationID>
-      <ArticleID>496</ArticleID>
+      <LocationID>775</LocationID>
+      <ArticleID>0</ArticleID>
       <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>How To Install</LocationName>
-      <LocationTitle>How To Install</LocationTitle>
-      <LocationDescription>How To Install</LocationDescription>
-      <LocationKeywords>How To Install</LocationKeywords>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Minerals</LocationName>
+      <LocationTitle>Minerals</LocationTitle>
+      <LocationDescription>Find By Minerals</LocationDescription>
+      <LocationKeywords />
       <ImageFileName />
-      <LocationFileName />
-      <LocationBody>Instructions on how to install Web Project Mechanics is coming soon. &amp;#160;&lt;br type="_moz" /&gt;</LocationBody>
-      <LocationSummary>Web Project Mechanics How to Install Instructions</LocationSummary>
+      <LocationFileName>/MineralCollection/minerals.aspx?c=775</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>630</ParentLocationID>
+      <ParentLocationID>774</ParentLocationID>
       <DefaultOrder>7</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
@@ -466,439 +425,235 @@
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
       <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=633</TransferURL>
-      <BreadCrumbURL>/web-project-mechanics/how-to-install</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/web-project-mechanics" title="Web Project Mechanics"&gt;Web Project Mechanics&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;How To Install&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <TransferURL>/MineralCollection/minerals.aspx?c=775</TransferURL>
+      <BreadCrumbURL>/minerals</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/MineralCollection/minerals.aspx?c=775" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Minerals&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>630</LocationID>
-          <Name>Web Project Mechanics</Name>
-          <Description>Web Project Mechanics</Description>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/web-project-mechanics</DisplayURL>
+          <DisplayURL>/the-collection</DisplayURL>
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>633</LocationID>
-          <Name>How To Install</Name>
-          <Description>How To Install</Description>
-          <ParentLocationID>630</ParentLocationID>
+          <LocationID>775</LocationID>
+          <Name>Minerals</Name>
+          <Description>Find By Minerals</Description>
+          <ParentLocationID>774</ParentLocationID>
           <DisplayURL />
           <LevelNBR>2</LevelNBR>
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
+      <ModifiedDT>2015-03-02T17:32:50</ModifiedDT>
     </Location>
     <Location>
       <RecordSource>Page</RecordSource>
-      <LocationID>634</LocationID>
-      <ArticleID>505</ArticleID>
+      <LocationID>790</LocationID>
+      <ArticleID>513</ArticleID>
       <ImageID>0</ImageID>
       <LocationTypeCD>Main</LocationTypeCD>
       <LocationTypeID>26</LocationTypeID>
       <GroupID>4</GroupID>
-      <LocationName>Documentation</LocationName>
-      <LocationTitle>Documentation</LocationTitle>
-      <LocationDescription>Documentation</LocationDescription>
-      <LocationKeywords>Documentation</LocationKeywords>
+      <LocationName>Terms Of Use</LocationName>
+      <LocationTitle>Terms Of Use</LocationTitle>
+      <LocationDescription>Terms Of Use</LocationDescription>
+      <LocationKeywords>Terms Of Use</LocationKeywords>
       <ImageFileName />
       <LocationFileName />
-      <LocationBody>Documentation</LocationBody>
-      <LocationSummary>Documentation</LocationSummary>
+      <LocationBody>&lt;h2&gt;Terms of Use ("Terms")&lt;/h2&gt;
+&lt;h3&gt;Last updated: November 27, 2016&lt;/h3&gt;
+​&lt;blockquote&gt;
+Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the
+http://JMSHawMinerals.com website (the "Service").
+​&lt;/blockquote&gt;
+&lt;p&gt;
+Your access to and use of the Service is conditioned on your acceptance of and compliance with
+these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+By accessing or using the Service you agree to be bound by these Terms. If you disagree with
+any part of the terms then you may not access the Service.
+&lt;/p&gt;
+&lt;h4&gt;Termination&lt;/h4&gt;
+&lt;p&gt;
+We may terminate or suspend access to our Service immediately, without prior notice or liability,
+for any reason whatsoever, including without limitation if you breach the Terms.
+All provisions of the Terms which by their nature should survive termination shall survive
+termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity
+and limitations of liability.
+&lt;/p&gt;
+&lt;h4&gt;
+Links To Other Web Sites
+&lt;/h4&gt;
+&lt;p&gt;
+Our Service may contain links to third­party web sites or services that are not owned or controlled
+by Us.  We have no control over, and assumes no responsibility for, the content, privacy policies, 
+or practices of any third party web sites or services. You further acknowledge and agree that we 
+shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged 
+to be caused by or in connection with use of or reliance on any such content, goods or services 
+available on or through any such web sites or services.
+&lt;/p&gt;
+&lt;p&gt;
+We strongly advise you to read the terms and conditions and privacy policies of any third­party
+web sites or services that you visit.
+&lt;/p&gt;
+&lt;h4&gt;
+Governing Law&lt;/h4&gt;
+&lt;p&gt;
+These Terms shall be governed and construed in accordance with the laws of the United States of America.
+, without regard to its conflict of law provisions.
+&lt;/p&gt;&lt;p&gt;
+Our failure to enforce any right or provision of these Terms will not be considered a waiver of
+those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the
+remaining provisions of these Terms will remain in effect. These Terms constitute the entire
+agreement between us regarding our Service, and supersede and replace any prior agreements
+we might have between us regarding the Service.
+&lt;/p&gt;
+&lt;h4&gt;
+Changes&lt;h4&gt;
+&lt;p&gt;
+We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a
+revision is material we will try to provide at least 30 days notice prior to any new
+terms taking effect. What constitutes a material change will be determined at our sole discretion.
+&lt;/p&gt;
+&lt;p&gt;
+
+By continuing to access or use our Service after those revisions become effective, you agree to
+be bound by the revised terms. If you do not agree to the new terms, please stop using the
+Service.
+&lt;/p&gt;
+&lt;h4&gt;Contact Us&lt;/h4&gt;
+&lt;p&gt;
+If you have any questions about these Terms, please contact us.
+&lt;/p&gt;</LocationBody>
+      <LocationSummary />
       <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
       <LocationAuthor />
       <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID />
+      <ParentLocationID>767</ParentLocationID>
       <DefaultOrder>8</DefaultOrder>
       <SiteCategoryID />
       <SiteCategoryName />
       <LocationGroupID />
       <LocationGroupNM />
       <ActiveFL>true</ActiveFL>
-      <LevelNBR>1</LevelNBR>
-      <TransferURL>/default.aspx?c=634</TransferURL>
-      <BreadCrumbURL>/documentation</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>634</LocationID>
-          <Name>Documentation</Name>
-          <Description>Documentation</Description>
-          <ParentLocationID />
-          <DisplayURL />
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>636</LocationID>
-      <ArticleID>484</ArticleID>
-      <ImageID>0</ImageID>
-      <LocationTypeCD>FORM</LocationTypeCD>
-      <LocationTypeID>27</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Contact</LocationName>
-      <LocationTitle>Contact</LocationTitle>
-      <LocationDescription>Contact</LocationDescription>
-      <LocationKeywords>Contact</LocationKeywords>
-      <ImageFileName />
-      <LocationFileName />
-      <LocationBody>&lt;form action="/ProjectMechanics/form.aspx" method="post"&gt;&lt;fieldset&gt; &lt;legend&gt; Contact Web Project Mechanics &lt;/legend&gt; &lt;p&gt;Thanks for your interest in Web Project Mechanics.&amp;#160;&lt;/p&gt;      &lt;label for="Name"&gt;Name:&lt;/label&gt;&lt;br /&gt;     &lt;input title="Your Name" name="Name" type="text" /&gt;&lt;br /&gt;     &lt;br /&gt;&lt;label for="Email"&gt;Email:&lt;/label&gt;&lt;br /&gt;     &lt;input title="Email Address" name="Email" type="text" /&gt;&lt;br /&gt;     &lt;br /&gt;&lt;label for="Phone"&gt;Phone:&lt;/label&gt;&lt;br /&gt;     &lt;input title="Your phone number" name="Phone" type="text" /&gt;&lt;br /&gt;     &lt;br /&gt;     &lt;label for="Subject"&gt;Subject:&lt;/label&gt;&lt;br /&gt;     &lt;input title="Message Subject" name="Subject" type="text" /&gt;&lt;br /&gt;     &lt;br /&gt;     &lt;label for="" message=""&gt;Message:&lt;/label&gt;&lt;br /&gt;     &lt;textarea rows="3" cols="40" name="Message"&gt;&lt;/textarea&gt;&lt;br /&gt;     &lt;br clear="all" /&gt;     &lt;br /&gt;     &lt;input type="submit" name="Submit" value="Submit" /&gt;&lt;br /&gt;     &lt;input type="hidden" name="subject" value="Contact Us" /&gt; &lt;input type="hidden" name="redirect" value="/" /&gt; &lt;input type="hidden" name="email" value="website@webprojectmechanics.com" /&gt;  &lt;br /&gt; &lt;/fieldset&gt;&lt;/form&gt;</LocationBody>
-      <LocationSummary>Contact Web Project Mechanics</LocationSummary>
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
-      <LocationAuthor />
-      <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID />
-      <DefaultOrder>9</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>1</LevelNBR>
-      <TransferURL>/runtime/Form.aspx?c=636</TransferURL>
-      <BreadCrumbURL>/contact</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Contact&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>636</LocationID>
-          <Name>Contact</Name>
-          <Description>Contact</Description>
-          <ParentLocationID />
-          <DisplayURL />
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2009-09-17T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>740</LocationID>
-      <ArticleID>0</ArticleID>
-      <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Examples</LocationName>
-      <LocationTitle>Examples</LocationTitle>
-      <LocationDescription>Web Project Mechanics Examples</LocationDescription>
-      <LocationKeywords>Web Project Mechanics Examples</LocationKeywords>
-      <ImageFileName />
-      <LocationFileName />
-      <LocationBody />
-      <LocationSummary />
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
-      <LocationAuthor />
-      <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID />
-      <DefaultOrder>10</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>1</LevelNBR>
-      <TransferURL>/default.aspx?c=740&amp;a=0</TransferURL>
-      <BreadCrumbURL>/examples</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Examples&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
-          <ParentLocationID />
-          <DisplayURL />
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>741</LocationID>
-      <ArticleID>0</ArticleID>
-      <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>DHTML</LocationName>
-      <LocationTitle>DHTML</LocationTitle>
-      <LocationDescription>Web Project Mechanics Examples DHTML</LocationDescription>
-      <LocationKeywords>Web Project Mechanics Examples DHTML</LocationKeywords>
-      <ImageFileName />
-      <LocationFileName />
-      <LocationBody />
-      <LocationSummary />
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
-      <LocationAuthor />
-      <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>740</ParentLocationID>
-      <DefaultOrder>11</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ActiveFL>true</ActiveFL>
       <LevelNBR>2</LevelNBR>
-      <TransferURL>/default.aspx?c=741&amp;a=0</TransferURL>
-      <BreadCrumbURL>/examples/dhtml</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;DHTML&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <TransferURL>/default.aspx?c=790</TransferURL>
+      <BreadCrumbURL>/j.m.-shaw-mineral-collection/terms-of-use</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/j.m.-shaw-mineral-collection" title="J.M. Shaw Mineral Collection"&gt;J.M. Shaw Mineral Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Terms Of Use&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
       <MainMenuURL />
       <MainMenuLocationID />
       <MainMenuLocationName />
       <LocationTrailList>
         <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
+          <LocationID>767</LocationID>
+          <Name>J.M. Shaw Mineral Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
           <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
+          <DisplayURL>/j.m.-shaw-mineral-collection</DisplayURL>
           <LevelNBR>1</LevelNBR>
           <MenuLevelNBR>1</MenuLevelNBR>
         </LocationTrail>
         <LocationTrail>
-          <LocationID>741</LocationID>
-          <Name>DHTML</Name>
-          <Description>Web Project Mechanics Examples DHTML</Description>
-          <ParentLocationID>740</ParentLocationID>
+          <LocationID>790</LocationID>
+          <Name>Terms Of Use</Name>
+          <Description>Terms Of Use</Description>
+          <ParentLocationID>767</ParentLocationID>
           <DisplayURL />
           <LevelNBR>2</LevelNBR>
           <MenuLevelNBR>2</MenuLevelNBR>
         </LocationTrail>
       </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>742</LocationID>
-      <ArticleID>483</ArticleID>
-      <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Hover Techniques</LocationName>
-      <LocationTitle>Hover Techniques</LocationTitle>
-      <LocationDescription>Web Project Mechanics Examples DHTML Hover Techniques</LocationDescription>
-      <LocationKeywords>Web Project Mechanics Examples DHTML Hover Techniques</LocationKeywords>
-      <ImageFileName />
-      <LocationFileName />
-      <LocationBody>&lt;style type="text/css"&gt;
-   div.exDiv   {width:90px;}
-  a.exLink     {position:relative; color:orange; font-weight:bold;}
-  a.exLink span {position:absolute; display:none; text-decoration:none;
-                color:black; background-color:yellow; border:5px solid green;
-                padding:5px; margin:3px;z-index:5;top:20px; left:15px; width:200px;height:75px;}
-  a.exLink:hover span {display:block;}
-&lt;/style&gt;  &lt;p&gt;This example shows how to utilize css hovering Hover the cursor over the day links to see additional content appear View source to see the HTML and CSS being used&lt;/p&gt; &lt;p&gt;&lt;strong&gt;CSS Used in this Example&lt;/strong&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;pre&gt;   div.exDiv   {width:90px;}
-  a.exLink     {position:relative; color:orange; font-weight:bold;}
-  a.exLink span {position:absolute; display:none; text-decoration:none;
-                color:black; background-color:yellow; border:5px solid green;
-                padding:5px; margin:3px;z-index:5;top:20px; left:15px; width:200px;height:75px;}
-  a.exLink:hover span {display:block;}
- 
-&lt;/pre&gt; &lt;/blockquote&gt; &lt;p&gt;&lt;strong&gt;HTML Used in this Example&lt;/strong&gt;&lt;/p&gt; &lt;blockquote&gt; &lt;pre&gt;  &amp;lt;div class="exDiv"&amp;gt;
-    &amp;lt;a class="exLink" href="#"&amp;gt;John F Kennedy
-      &amp;lt;span&amp;gt;Ask Not what your country can do for you, ask what you can do 
-            for your country
-      &amp;lt;/span&amp;gt;
-    &amp;lt;/a&amp;gt;
-  &amp;lt;/div&amp;gt;
-&lt;/pre&gt; &lt;/blockquote&gt;  &lt;h1&gt;Hover over JFK link to see it working&lt;/h1&gt;  &lt;div class="exDiv"&gt;&lt;a class="exLink" href="#"&gt;John F Kennedy&lt;span&gt;Ask Not what your country can do for you, ask what you can do for your country&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;style&gt;.adslot-overlay {position: absolute; font-family: arial, sans-serif; background-color: rgba(0,0,0,0.65); border: 2px solid rgba(0,0,0,0.65); color: white !important; margin: 0; z-index: 2147483647; text-decoration: none; box-sizing: border-box; text-align: left;}.adslot-overlay-iframed {top: 0; left: 0; right: 0; bottom: 0;}.slotname {position: absolute; top: 0; left: 0; right: 0; font-size: 13px; font-weight: bold; padding: 3px 0 3px 6px; vertical-align: middle; background-color: rgba(0,0,0,0.45); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}.slotname span {text-align: left; text-decoration: none; text-transform: capitalize;}.revenue {position: absolute; bottom: 0; left: 0; right: 0; font-size: 11px; padding: 3px 0 3px 6px; vertial-align: middle; text-align: left; background-color: rgba(0,0,0,0.45); font-weight: bold; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}.revenue .name {color: #ccc;}.revenue .horizontal .metric {display: inline-block; padding-right: 1.5em;}.revenue .horizontal .name {padding-right: 0.5em;}.revenue .vertical .metric {display: block; line-height: 1.5em; margin-bottom: 0.5em;}.revenue .vertical .name, .revenue .vertical .value {display: block;}.revenue .square .metric, .revenue .button .metric {display: table-row;}.revenue .square .metric {line-height: 1.5em;}.revenue .square .name, .revenue .square .value, .revenue .button .value {display: table-cell;}.revenue .square .name {padding-right: 1.5em;}.revenue .button .name {display: block; margin-right: 0.5em; width: 1em; overflow: hidden; text-overflow: clip;}.revenue .button .name:first-letter {margin-right: 1.5em;}a.adslot-overlay:hover {border: 2px solid rgba(58,106,173,0.9);}a.adslot-overlay:hover .slotname {border-bottom: 1px solid rgba(81,132,210,0.9); background-color: rgba(58,106,173,0.9);}a.adslot-overlay:hover .revenue {border-top: 1px solid rgba(81,132,210,0.9); background-color: rgba(58,106,173,0.9);}div.adslot-overlay:hover {cursor: not-allowed; border: 2px solid rgba(64,64,64,0.9);}div.adslot-overlay:hover .slotname {border-bottom: 1px solid rgba(128,128,128,0.9); background-color: rgba(64,64,64,0.9);}div.adslot-overlay:hover .revenue {border-top: 1px solid rgba(128,128,128,0.9); background-color: rgba(64,64,64,0.9);}&lt;/style&gt;&lt;/div&gt;</LocationBody>
-      <LocationSummary>Hover Techniques</LocationSummary>
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>3</RowsPerPage>
-      <ImagesPerRow>3</ImagesPerRow>
-      <LocationAuthor />
-      <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID>741</ParentLocationID>
-      <DefaultOrder>12</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>3</LevelNBR>
-      <TransferURL>/default.aspx?c=742</TransferURL>
-      <BreadCrumbURL>/examples/dhtml/hover-techniques</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/examples" title="Web Project Mechanics Examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/examples/dhtml" title="Web Project Mechanics Examples DHTML"&gt;DHTML&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Hover Techniques&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>741</LocationID>
-          <Name>DHTML</Name>
-          <Description>Web Project Mechanics Examples DHTML</Description>
-          <ParentLocationID>740</ParentLocationID>
-          <DisplayURL>/examples/dhtml</DisplayURL>
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>2</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>740</LocationID>
-          <Name>Examples</Name>
-          <Description>Web Project Mechanics Examples</Description>
-          <ParentLocationID />
-          <DisplayURL>/examples</DisplayURL>
-          <LevelNBR>2</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-        <LocationTrail>
-          <LocationID>742</LocationID>
-          <Name>Hover Techniques</Name>
-          <Description>Web Project Mechanics Examples DHTML Hover Techniques</Description>
-          <ParentLocationID>741</ParentLocationID>
-          <DisplayURL />
-          <LevelNBR>3</LevelNBR>
-          <MenuLevelNBR>3</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2008-10-27T00:00:00</ModifiedDT>
-    </Location>
-    <Location>
-      <RecordSource>Page</RecordSource>
-      <LocationID>632</LocationID>
-      <ArticleID>498</ArticleID>
-      <ImageID>0</ImageID>
-      <LocationTypeCD>Main</LocationTypeCD>
-      <LocationTypeID>26</LocationTypeID>
-      <GroupID>4</GroupID>
-      <LocationName>Download</LocationName>
-      <LocationTitle>Download</LocationTitle>
-      <LocationDescription>Download</LocationDescription>
-      <LocationKeywords>Download</LocationKeywords>
-      <ImageFileName />
-      <LocationFileName />
-      <LocationBody>&lt;p&gt;Web Project Mechanics source code is hosted on GitHub at &lt;a href="https://github.com/markhazleton/webprojectmechanics"&gt;https://github.com/markhazleton/webprojectmechanics&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;You can download the latest code from GitHub&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;</LocationBody>
-      <LocationSummary>&lt;p&gt;Web Project Mechanics How to Download&lt;/p&gt;</LocationSummary>
-      <IncludeInNavigation>false</IncludeInNavigation>
-      <RowsPerPage>0</RowsPerPage>
-      <ImagesPerRow>0</ImagesPerRow>
-      <LocationAuthor />
-      <HideGlobalContent>false</HideGlobalContent>
-      <ParentLocationID />
-      <DefaultOrder>13</DefaultOrder>
-      <SiteCategoryID />
-      <SiteCategoryName />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ActiveFL>true</ActiveFL>
-      <LevelNBR>1</LevelNBR>
-      <TransferURL>/default.aspx?c=632</TransferURL>
-      <BreadCrumbURL>/download</BreadCrumbURL>
-      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
-      <MainMenuURL />
-      <MainMenuLocationID />
-      <MainMenuLocationName />
-      <LocationTrailList>
-        <LocationTrail>
-          <LocationID>632</LocationID>
-          <Name>Download</Name>
-          <Description>Download</Description>
-          <ParentLocationID />
-          <DisplayURL />
-          <LevelNBR>1</LevelNBR>
-          <MenuLevelNBR>1</MenuLevelNBR>
-        </LocationTrail>
-      </LocationTrailList>
-      <ModifiedDT>2024-03-20T18:40:56</ModifiedDT>
+      <ModifiedDT>2016-11-27T08:12:36</ModifiedDT>
     </Location>
   </Locations>
   <Parts>
     <Part>
-      <Title>Left Navigation</Title>
-      <URL>~~MainSubTree~~</URL>
-      <Description>Left Navigation</Description>
-      <PartCategoryID>18</PartCategoryID>
-      <PartTypeCD>NAV</PartTypeCD>
-      <PartCategoryTitle>LeftColumnLinks</PartCategoryTitle>
-      <PartID>545</PartID>
+      <Title>HeroGraphic</Title>
+      <URL>&lt;section id="home" class="overflow-hidden slider-banner"&gt;
+&lt;div class="main-slider"&gt;
+&lt;ul class="slides"&gt;
+&lt;li class="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"&gt;
+&lt;img src="/sites/xone-v1.3/jms157.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class=""&gt;
+&lt;img src="/sites/xone-v1.3/jms245.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide"&gt;
+&lt;img src="/sites/xone-v1.3/jms806.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="flex-direction-nav"&gt;&lt;li class="flex-nav-prev"&gt;&lt;a class="flex-prev" href="#"&gt;&lt;i class="ion-chevron-left"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class="flex-nav-next"&gt;&lt;a class="flex-next" href="#"&gt;&lt;i class="ion-chevron-right"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/section&gt;</URL>
+      <Description>HeroGraphic</Description>
+      <PartCategoryID>40</PartCategoryID>
+      <PartTypeCD>Affiliate</PartTypeCD>
+      <PartCategoryTitle>CenterColumnLinks</PartCategoryTitle>
+      <PartID>2</PartID>
       <View>true</View>
-      <ModifiedDT>2012-07-14T23:21:36</ModifiedDT>
+      <ModifiedDT>2021-03-08T16:05:24</ModifiedDT>
       <PartSortOrder>0</PartSortOrder>
-      <UserID>635</UserID>
+      <UserID>647</UserID>
       <AmazonIndex />
-      <CompanyID>17</CompanyID>
-      <CompanyNM>Web Project Mechanics</CompanyNM>
-      <LocationNM />
-      <LocationID />
+      <CompanyID>29</CompanyID>
+      <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+      <LocationNM>J.M. Shaw Mineral Collection</LocationNM>
+      <LocationID>767</LocationID>
+    </Part>
+    <Part>
+      <Title>AboutUs</Title>
+      <URL />
+      <Description>AboutUs</Description>
+      <PartCategoryID>40</PartCategoryID>
+      <PartTypeCD>Affiliate</PartTypeCD>
+      <PartCategoryTitle>CenterColumnLinks</PartCategoryTitle>
+      <PartID>1</PartID>
+      <View>true</View>
+      <ModifiedDT>2021-03-10T13:04:03</ModifiedDT>
+      <PartSortOrder>10</PartSortOrder>
+      <UserID>647</UserID>
+      <AmazonIndex />
+      <CompanyID>29</CompanyID>
+      <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+      <LocationNM>J.M. Shaw Mineral Collection</LocationNM>
+      <LocationID>767</LocationID>
     </Part>
   </Parts>
   <Parameters>
-    <Parameter>
-      <RecordSource>SiteParameterType</RecordSource>
-      <SortOrder>999</SortOrder>
-      <ParameterTypeID>6</ParameterTypeID>
-      <ParameterTypeNM>QuantcastTracking</ParameterTypeNM>
-      <ParameterTypeDS>QuantcastTracking Code</ParameterTypeDS>
-      <ParameterTypeOrder>0</ParameterTypeOrder>
-      <CompanySiteParameterID>0</CompanySiteParameterID>
-      <CompanyID />
-      <CompanyNM />
-      <LocationID />
-      <LocationNM />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ParameterValue>&lt;!-- Start Quantcast tag --&gt;
-&lt;script type="text/javascript" src="http://edge.quantserve.com/quant.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;_qacct="p-f7RziPGcZHFac";quantserve();&lt;/script&gt;
-&lt;noscript&gt;
-&lt;a href="http://www.quantcast.com/p-f7RziPGcZHFac" target="_blank"&gt;&lt;img src="http://pixel.quantserve.com/pixel/p-f7RziPGcZHFac.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/&gt;&lt;/a&gt;
-&lt;/noscript&gt;
-&lt;!-- End Quantcast tag --&gt;
-</ParameterValue>
-      <ParameterID>PT-6</ParameterID>
-      <ParameterNM>QuantcastTracking</ParameterNM>
-    </Parameter>
-    <Parameter>
-      <RecordSource>SiteParameterType</RecordSource>
-      <SortOrder>10</SortOrder>
-      <ParameterTypeID>4</ParameterTypeID>
-      <ParameterTypeNM>MyBlogLogTracking</ParameterTypeNM>
-      <ParameterTypeDS>MyBlogLog Tracking Javascript</ParameterTypeDS>
-      <ParameterTypeOrder>0</ParameterTypeOrder>
-      <CompanySiteParameterID>0</CompanySiteParameterID>
-      <CompanyID />
-      <CompanyNM />
-      <LocationID />
-      <LocationNM />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ParameterValue />
-      <ParameterID>PT-4</ParameterID>
-      <ParameterNM>MyBlogLogTracking</ParameterNM>
-    </Parameter>
     <Parameter>
       <RecordSource>SiteParameterType</RecordSource>
       <SortOrder>3</SortOrder>
@@ -1003,23 +758,7 @@
       <LocationNM />
       <LocationGroupID />
       <LocationGroupNM />
-      <ParameterValue>&lt;script src="/sites/MechanicsOfMotherhood/lib/headerRotator.js" type="text/javascript"&gt;&lt;/script&gt; &lt;script type="text/javascript"&gt;
-
-window.addEvent('load', function(){
-  var headers = [];
-  headers.push('/sites/MechanicsOfMotherhood/images/header03.jpg');
-  headers.push('/sites/MechanicsOfMotherhood/images/header03.jpg');
-  headers.push('/sites/MechanicsOfMotherhood/images/header03.jpg');
-
-  var rok = new headerRotator('header', headers, {
-    'duration': 1000,
-    'delay': 3000,
-    'start': 0,
-    'autoplay': 0
-    });
-});
-
-&lt;/script&gt;</ParameterValue>
+      <ParameterValue />
       <ParameterID>PT-7</ParameterID>
       <ParameterNM>HeaderScript</ParameterNM>
     </Parameter>
@@ -1040,26 +779,6 @@ window.addEvent('load', function(){
       <ParameterValue />
       <ParameterID>PT-1</ParameterID>
       <ParameterNM>google_analytics_uacct</ParameterNM>
-    </Parameter>
-    <Parameter>
-      <RecordSource>SiteParameterType</RecordSource>
-      <SortOrder>0</SortOrder>
-      <ParameterTypeID>13</ParameterTypeID>
-      <ParameterTypeNM>mark</ParameterTypeNM>
-      <ParameterTypeDS>mark</ParameterTypeDS>
-      <ParameterTypeOrder>0</ParameterTypeOrder>
-      <CompanySiteParameterID>0</CompanySiteParameterID>
-      <CompanyID />
-      <CompanyNM />
-      <LocationID />
-      <LocationNM />
-      <LocationGroupID />
-      <LocationGroupNM />
-      <ParameterValue> ~~CurrentPageName~~
-&lt;br/&gt;
-~~PageKeywords~~</ParameterValue>
-      <ParameterID>PT-13</ParameterID>
-      <ParameterNM>mark</ParameterNM>
     </Parameter>
     <Parameter>
       <RecordSource>SiteParameterType</RecordSource>
@@ -1093,36 +812,40 @@ window.addEvent('load', function(){
       <LocationNM />
       <LocationGroupID />
       <LocationGroupNM />
-      <ParameterValue>&amp;#160;</ParameterValue>
+      <ParameterValue />
       <ParameterID>PT-8</ParameterID>
       <ParameterNM>PageLevelCSS</ParameterNM>
     </Parameter>
   </Parameters>
-  <Articles />
+  <Articles>
+    <Article>
+      <ArticleAuthor>Mark Hazleton</ArticleAuthor>
+      <ArticleBody>&lt;h2&gt;This is a YouTube playlist of documentation videos for the Mineral Collection site&lt;/h2&gt;
+
+&lt;div class="flex-video"&gt;&lt;iframe frameborder="0" height="600px" src="https://www.youtube.com/embed/videoseries?list=PL6VizbnCZRx_iU_wMgycOXkqCFV5a_L7a" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;</ArticleBody>
+      <ArticleDescription>YouTube Documentation Playlist</ArticleDescription>
+      <ArticleID>510</ArticleID>
+      <ArticleModDate>2015-02-23T13:51:54</ArticleModDate>
+      <ArticleName>YouTube Documentation Playlist</ArticleName>
+      <ArticlePageID>784</ArticlePageID>
+      <ArticleSummary>YouTube Documentation Playlist</ArticleSummary>
+      <ArticleURL>/youtube-documentation-playlist</ArticleURL>
+      <CompanyID>29</CompanyID>
+      <ContactID>1</ContactID>
+      <IsArticleActive>true</IsArticleActive>
+      <IsArticleDefault>false</IsArticleDefault>
+      <PageName>YouTube Documentation Playlist</PageName>
+      <RowsPerPage>0</RowsPerPage>
+    </Article>
+  </Articles>
   <PartCategories>
-    <PartCategory>
-      <ID>16</ID>
-      <Name>Project Management Sites</Name>
-      <Description>Sites with content for project managers</Description>
-      <ParentID />
-      <LocationID>440</LocationID>
-      <PartCount>0</PartCount>
-    </PartCategory>
-    <PartCategory>
-      <ID>17</ID>
-      <Name>PMP Certification</Name>
-      <Description>Here are the links used in my preparation for taking the PMP test in April 2005. </Description>
-      <ParentID />
-      <LocationID>440</LocationID>
-      <PartCount>0</PartCount>
-    </PartCategory>
     <PartCategory>
       <ID>18</ID>
       <Name>LeftColumnLinks</Name>
       <Description>Links to display in the LeftColumn Used by MHWCM ONLY</Description>
       <ParentID />
       <LocationID />
-      <PartCount>1</PartCount>
+      <PartCount>0</PartCount>
     </PartCategory>
     <PartCategory>
       <ID>19</ID>
@@ -1133,93 +856,51 @@ window.addEvent('load', function(){
       <PartCount>0</PartCount>
     </PartCategory>
     <PartCategory>
-      <ID>36</ID>
-      <Name>MyLinks</Name>
-      <Description>A collection of personal links for a page</Description>
-      <ParentID />
-      <LocationID>581</LocationID>
-      <PartCount>0</PartCount>
-    </PartCategory>
-    <PartCategory>
-      <ID>38</ID>
-      <Name>Small Business Providers</Name>
-      <Description>Here is a list of companies which ProjectMechanics.com reccomends.</Description>
-      <ParentID />
-      <LocationID>440</LocationID>
-      <PartCount>0</PartCount>
-    </PartCategory>
-    <PartCategory>
-      <ID>39</ID>
-      <Name>Project Manager Resources</Name>
-      <Description>Here are resources for the project manager.  I have developed these over 14 years of experience in IT management. </Description>
-      <ParentID />
-      <LocationID>440</LocationID>
-      <PartCount>0</PartCount>
-    </PartCategory>
-    <PartCategory>
       <ID>40</ID>
       <Name>CenterColumnLinks</Name>
       <Description>CenterColumnLinks</Description>
       <ParentID />
       <LocationID />
-      <PartCount>0</PartCount>
+      <PartCount>2</PartCount>
     </PartCategory>
   </PartCategories>
   <LocationGroups />
   <Images>
     <LocationImage>
-      <ImageID>11</ImageID>
-      <ImageName>poland---sleeping-giant-mountains</ImageName>
-      <ImageFileName>image/DSC01091.jpg</ImageFileName>
-      <ImageThumbFileName>image/DSC01091.jpg</ImageThumbFileName>
-      <ImageDescription>The famous Sleeping Giant is near Zakopane, in south Poland. The legend sais that the sleeping giant gets up and protects the town from the big storms and the strangers attacks. In fact it is a big mountain ridge coverd with snow and has a shape of a sleeping giant.</ImageDescription>
+      <ImageID>1</ImageID>
+      <ImageName>-image-0.jpg</ImageName>
+      <ImageFileName>/image/0.jpg</ImageFileName>
+      <ImageThumbFileName>/image/0.jpg</ImageThumbFileName>
+      <ImageDescription />
       <ImageComment />
-      <ImageDate>0001-01-01T00:00:00</ImageDate>
-      <Active>true</Active>
-      <ModifiedDT>0001-01-01T00:00:00</ModifiedDT>
+      <ImageDate>2021-09-19T12:53:56.433</ImageDate>
+      <Active>false</Active>
+      <ModifiedDT>2021-09-19T12:53:56.433</ModifiedDT>
       <VersionNumber>0</VersionNumber>
-      <ContactID>635</ContactID>
-      <LocationID>IMG-11</LocationID>
-      <ParentLocationID>766</ParentLocationID>
-      <Title>Poland - Sleeping Giant Mountains</Title>
-      <ImageURL>image-gallery-poland---sleeping-giant-mountains</ImageURL>
-      <DisplayOrder>1</DisplayOrder>
+      <ContactID>999</ContactID>
+      <LocationID>IMG-1</LocationID>
+      <ParentLocationID />
+      <Title>/image/0.jpg</Title>
+      <ImageURL>--image-0.jpg</ImageURL>
+      <DisplayOrder>0</DisplayOrder>
     </LocationImage>
     <LocationImage>
-      <ImageID>12</ImageID>
-      <ImageName>texas-=-inks-lake-sunset</ImageName>
-      <ImageFileName>image/DSC02078.jpg</ImageFileName>
-      <ImageThumbFileName>image/DSC02078.jpg</ImageThumbFileName>
-      <ImageDescription>Texas = Inks Lake Sunset</ImageDescription>
+      <ImageID>2</ImageID>
+      <ImageName>-image-markhazleton.jpg</ImageName>
+      <ImageFileName>/image/MarkHazleton.jpg</ImageFileName>
+      <ImageThumbFileName>/image/MarkHazleton.jpg</ImageThumbFileName>
+      <ImageDescription />
       <ImageComment />
-      <ImageDate>0001-01-01T00:00:00</ImageDate>
-      <Active>true</Active>
-      <ModifiedDT>0001-01-01T00:00:00</ModifiedDT>
+      <ImageDate>2021-09-19T12:53:56.527</ImageDate>
+      <Active>false</Active>
+      <ModifiedDT>2021-09-19T12:53:56.527</ModifiedDT>
       <VersionNumber>0</VersionNumber>
-      <ContactID>635</ContactID>
-      <LocationID>IMG-12</LocationID>
-      <ParentLocationID>766</ParentLocationID>
-      <Title>Texas = Inks Lake Sunset</Title>
-      <ImageURL>image-gallery-texas-=-inks-lake-sunset</ImageURL>
-      <DisplayOrder>2</DisplayOrder>
-    </LocationImage>
-    <LocationImage>
-      <ImageID>13</ImageID>
-      <ImageName>louisiiana---lake-claiborne-snake-island</ImageName>
-      <ImageFileName>image/lsc00579.jpg</ImageFileName>
-      <ImageThumbFileName>image/lsc00579.jpg</ImageThumbFileName>
-      <ImageDescription>Louisiiana - Lake Claiborne Snake Island</ImageDescription>
-      <ImageComment />
-      <ImageDate>0001-01-01T00:00:00</ImageDate>
-      <Active>true</Active>
-      <ModifiedDT>0001-01-01T00:00:00</ModifiedDT>
-      <VersionNumber>0</VersionNumber>
-      <ContactID>635</ContactID>
-      <LocationID>IMG-13</LocationID>
-      <ParentLocationID>766</ParentLocationID>
-      <Title>Louisiiana - Lake Claiborne Snake Island</Title>
-      <ImageURL>image-gallery-louisiiana---lake-claiborne-snake-island</ImageURL>
-      <DisplayOrder>3</DisplayOrder>
+      <ContactID>999</ContactID>
+      <LocationID>IMG-2</LocationID>
+      <ParentLocationID />
+      <Title>/image/MarkHazleton.jpg</Title>
+      <ImageURL>--image-markhazleton.jpg</ImageURL>
+      <DisplayOrder>0</DisplayOrder>
     </LocationImage>
   </Images>
   <LocationAliases />
