@@ -69,9 +69,13 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
     End Property
 
     Private Shared Function GetStringNotFound(ByVal context As HttpContext) As String
-        Dim strNotFound As String
+        Dim strNotFound As String = ExtractRequestedPath(context.Request.Url)
         Dim myURIBuilder As UriBuilder = New UriBuilder(context.Request.Url)
         context.Session("wpm_RequestURL") = context.Request.Url
+        If Not String.IsNullOrEmpty(strNotFound) Then
+            Return strNotFound
+        End If
+
         strNotFound = context.Request.Url.ToString()
         Dim strHost As String = String.Format("{0}:{1}", myURIBuilder.Host, myURIBuilder.Port)
         Dim sModuleURL As String
@@ -81,15 +85,35 @@ Public Class _404 : Implements IHttpHandler : Implements IRequiresSessionState
             sModuleURL = String.Format("{0}{1}{2}:{3}/404.ashx?404;{0}{1}{2}:{3}", myURIBuilder.Uri.Scheme, Uri.SchemeDelimiter, myURIBuilder.Host, myURIBuilder.Port)
         End If
         strNotFound = Replace(strNotFound, sModuleURL, String.Empty)
-
         If (strNotFound = context.Request.Url.ToString) Then
             strNotFound = strNotFound.Substring(strNotFound.LastIndexOf(":80/") + 3)
         End If
-
-
         strNotFound = RemoveQueryString(strNotFound)
         Return strNotFound
     End Function
+    Private Shared Function ExtractRequestedPath(requestUri As Uri) As String
+        Try
+            ' Check if the query contains the "404;" marker
+            Dim marker As String = "404;"
+            If Not String.IsNullOrEmpty(requestUri.Query) AndAlso requestUri.Query.Contains(marker) Then
+                ' Extract the portion of the query after the "404;" marker
+                Dim queryPart As String = requestUri.Query.Substring(requestUri.Query.IndexOf(marker) + marker.Length)
+
+                ' Decode the query part and create a new Uri
+                Dim extractedUri As New Uri(Uri.UnescapeDataString(queryPart))
+
+                ' Return the path part of the extracted URL
+                Return extractedUri.AbsolutePath
+            Else
+                ' If the marker is not found, return an empty string
+                Return String.Empty
+            End If
+        Catch ex As Exception
+            ' Log or handle any exceptions if necessary
+            Return String.Empty
+        End Try
+    End Function
+
 
     Private Shared Function RemoveQueryString(ByVal strPath As String) As String
         Dim iQuestionMark As Integer = InStr(strPath, "?")

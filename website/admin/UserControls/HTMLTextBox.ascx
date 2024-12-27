@@ -2,9 +2,15 @@
 
 <asp:Literal ID="litHTMLControl" runat="server"></asp:Literal>
 
-<script src="//cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+<!-- Load the CKEditor 5 Classic build -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 
 <script>
-    CKEDITOR.replace('editor1');
+    document.addEventListener('DOMContentLoaded', function () {
+        ClassicEditor
+            .create(document.querySelector('#editor1'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
 </script>
-
