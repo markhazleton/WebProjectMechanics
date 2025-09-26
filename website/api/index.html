@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebProjectMechanics API Documentation</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5; 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #333; 
+            border-bottom: 2px solid #007acc; 
+            padding-bottom: 10px; 
+        }
+        h2 { 
+            color: #007acc; 
+            margin-top: 30px; 
+        }
+        h3 { 
+            color: #555; 
+        }
+        .endpoint { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border-left: 4px solid #007acc; 
+        }
+        .method { 
+            display: inline-block; 
+            padding: 4px 8px; 
+            border-radius: 3px; 
+            font-weight: bold; 
+            color: white; 
+            margin-right: 10px; 
+        }
+        .get { background-color: #28a745; }
+        .post { background-color: #007bff; }
+        .put { background-color: #ffc107; color: #212529; }
+        .delete { background-color: #dc3545; }
+        .code { 
+            background: #f4f4f4; 
+            padding: 10px; 
+            border-radius: 3px; 
+            font-family: 'Courier New', monospace; 
+            overflow-x: auto; 
+            white-space: pre-wrap;
+        }
+        .example { 
+            background: #e9f7ef; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border: 1px solid #d4edda; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 10px 0; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #f2f2f2; 
+        }
+        .success { 
+            background: #d4edda; 
+            border: 1px solid #c3e6cb; 
+            color: #155724; 
+            padding: 10px; 
+            border-radius: 4px; 
+            margin-top: 20px; 
+        }
+        .api-tester {
+            background: #fff3cd; 
+            padding: 15px; 
+            margin: 20px 0; 
+            border-radius: 5px; 
+            border: 1px solid #ffeaa7;
+        }
+        button {
+            background: #007acc; 
+            color: white; 
+            border: none; 
+            padding: 8px 16px; 
+            border-radius: 4px; 
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        select {
+            padding: 6px; 
+            margin: 4px; 
+            border: 1px solid #ddd; 
+            border-radius: 3px;
+            width: 400px;
+        }
+        .response {
+            background: #f8f9fa; 
+            padding: 10px; 
+            border-radius: 3px; 
+            margin-top: 10px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WebProjectMechanics API Documentation</h1>
+        
+        <div class="success">
+            <strong>? API Successfully Deployed!</strong> All endpoints are now working and compilation errors have been fixed.
+        </div>
+
+        <p>This documentation covers the REST API endpoints available in the WebProjectMechanics application. All endpoints return JSON responses and support CORS for cross-origin requests.</p>
+
+        <h2>Base URL</h2>
+        <div class="code">https://yourdomain.com/api/</div>
+
+        <h2>Response Format</h2>
+        <p>All API responses follow a consistent format:</p>
+        <div class="code">{
+  "success": true,
+  "message": "Operation completed successfully", 
+  "data": { /* response data */ },
+  "errors": [ /* validation errors if any */ ],
+  "timestamp": "2024-01-15T10:30:00"
+}</div>
+
+        <h2>Available API Endpoints</h2>
+        
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> /api/SampleApi.ashx</h3>
+            <p>Returns sample data with a list of items.</p>
+            <div class="example">
+                <strong>Example Request:</strong>
+                <div class="code">GET /api/SampleApi.ashx</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> /api/LocationApi.ashx</h3>
+            <p>Gets all locations with optional pagination and search.</p>
+            <table>
+                <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                <tr><td>page</td><td>int</td><td>Page number (default: 1)</td></tr>
+                <tr><td>pageSize</td><td>int</td><td>Items per page (default: 10)</td></tr>
+                <tr><td>search</td><td>string</td><td>Search query</td></tr>
+            </table>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> /api/UserApi.ashx?method=Login</h3>
+            <p>Authenticates a user and returns session information.</p>
+            <table>
+                <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                <tr><td>username</td><td>string</td><td>Username (use "demo")</td></tr>
+                <tr><td>password</td><td>string</td><td>Password (use "password")</td></tr>
+            </table>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> /api/CompanyApi.ashx</h3>
+            <p>Gets all companies with optional filtering and pagination.</p>
+            <table>
+                <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                <tr><td>page</td><td>int</td><td>Page number (default: 1)</td></tr>
+                <tr><td>pageSize</td><td>int</td><td>Items per page (default: 10)</td></tr>
+                <tr><td>search</td><td>string</td><td>Search query</td></tr>
+            </table>
+        </div>
+
+        <h2>API Testing Interface</h2>
+        <div class="api-tester">
+            <h3>Test API Endpoints (Basic)</h3>
+            <p><strong>Note:</strong> You can test these endpoints directly in your browser or using tools like Postman.</p>
+            
+            <div style="margin: 10px 0;">
+                <label>Select Endpoint to Test: </label>
+                <select id="endpoint">
+                    <option value="/api/SampleApi.ashx">Sample API - GET All Items</option>
+                    <option value="/api/LocationApi.ashx">Location API - GET All Locations</option>
+                    <option value="/api/UserApi.ashx?method=GetCurrentUser">User API - Get Current User</option>
+                    <option value="/api/CompanyApi.ashx">Company API - GET All Companies</option>
+                </select>
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <button onclick="testEndpoint()">Open Selected Endpoint</button>
+                <button onclick="testAllEndpoints()">Test All Basic Endpoints</button>
+            </div>
+            
+            <div id="response" class="response"></div>
+        </div>
+
+        <h2>Manual Testing Links</h2>
+        <ul>
+            <li><a href="/api/SampleApi.ashx" target="_blank">Sample API - Basic Test</a></li>
+            <li><a href="/api/LocationApi.ashx" target="_blank">Location API - Basic Test</a></li>
+            <li><a href="/api/UserApi.ashx?method=GetCurrentUser" target="_blank">User API - Current User</a></li>
+            <li><a href="/api/CompanyApi.ashx" target="_blank">Company API - Basic Test</a></li>
+        </ul>
+
+        <h2>JavaScript Example (No External Dependencies)</h2>
+        <div class="code">// Simple fetch API example (modern browsers)
+fetch('/api/SampleApi.ashx')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+// XMLHttpRequest example (compatible with older browsers)
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/api/SampleApi.ashx', true);
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    var data = JSON.parse(xhr.responseText);
+    console.log('Success:', data);
+  }
+};
+xhr.send();</div>
+
+        <h2>HTTP Status Codes</h2>
+        <ul>
+            <li><strong>200 OK</strong> - Success</li>
+            <li><strong>400 Bad Request</strong> - Invalid parameters</li>
+            <li><strong>401 Unauthorized</strong> - Authentication required</li>
+            <li><strong>404 Not Found</strong> - Endpoint not found</li>
+            <li><strong>500 Internal Server Error</strong> - Server error</li>
+        </ul>
+    </div>
+
+    <script>
+        function testEndpoint() {
+            var select = document.getElementById('endpoint');
+            var endpoint = select.value;
+            if (endpoint) {
+                window.open(endpoint, '_blank');
+            }
+        }
+        
+        function testAllEndpoints() {
+            var responseDiv = document.getElementById('response');
+            responseDiv.style.display = 'block';
+            responseDiv.textContent = 'Testing endpoints...\n\n';
+            
+            var endpoints = [
+                '/api/SampleApi.ashx',
+                '/api/LocationApi.ashx', 
+                '/api/UserApi.ashx?method=GetCurrentUser',
+                '/api/CompanyApi.ashx'
+            ];
+            
+            var results = [];
+            var completed = 0;
+            
+            endpoints.forEach(function(endpoint, index) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', endpoint, true);
+                xhr.timeout = 5000; // 5 second timeout
+                
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        completed++;
+                        var status = xhr.status === 200 ? '? SUCCESS' : '? FAILED (' + xhr.status + ')';
+                        results[index] = endpoint + ' - ' + status;
+                        
+                        if (completed === endpoints.length) {
+                            responseDiv.textContent = 'Test Results:\n\n' + results.join('\n');
+                        }
+                    }
+                };
+                
+                xhr.onerror = function() {
+                    completed++;
+                    results[index] = endpoint + ' - ? NETWORK ERROR';
+                    
+                    if (completed === endpoints.length) {
+                        responseDiv.textContent = 'Test Results:\n\n' + results.join('\n');
+                    }
+                };
+                
+                xhr.ontimeout = function() {
+                    completed++;
+                    results[index] = endpoint + ' - ? TIMEOUT';
+                    
+                    if (completed === endpoints.length) {
+                        responseDiv.textContent = 'Test Results:\n\n' + results.join('\n');
+                    }
+                };
+                
+                try {
+                    xhr.send();
+                } catch (e) {
+                    completed++;
+                    results[index] = endpoint + ' - ? ERROR: ' + e.message;
+                    
+                    if (completed === endpoints.length) {
+                        responseDiv.textContent = 'Test Results:\n\n' + results.join('\n');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

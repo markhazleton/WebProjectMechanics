@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DomainConfigurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Configuration>
-		<AccessDatabasePath>/App_Data/MineralCollection.mdb</AccessDatabasePath>
-		<CompanyID>29</CompanyID>
-		<DomainName>jmshawminerals.com</DomainName>
-		<SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|MineralCollection.mdb;</SQLDBConnString>
+		<AccessDatabasePath>/App_Data/FrogsFolly-Travel.mdb</AccessDatabasePath>
+		<CompanyID>1</CompanyID>
+		<DomainName>travel.frogsfolly.com</DomainName>
+		<SQLDBConnString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|FrogsFolly-Travel.mdb;</SQLDBConnString>
 	</Configuration>
 </DomainConfigurations>
