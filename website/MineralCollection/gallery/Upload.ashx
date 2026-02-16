@@ -4,7 +4,8 @@ Imports System
 Imports System.Web
 Imports WebProjectMechanics
 Imports System.IO
-Imports ImageResizer
+Imports System.Drawing
+Imports System.Drawing.Imaging
 
 Public Class GalleryUpload : Implements IHttpHandler : Implements IRequiresSessionState
     Public Sub ProcessRequest(ByVal context As HttpContext) Implements IHttpHandler.ProcessRequest
@@ -99,13 +100,44 @@ Public Class GalleryUpload : Implements IHttpHandler : Implements IRequiresSessi
     End Property
 
     Public Function GenerateThumbnail(original As String) As String
-        Dim settings As New ImageResizer.Instructions
-        settings.Width = 200
-        settings.Height = 200
-        settings.Format = "png"
-        Dim ThumbFileNM As String = original.ToLower().Replace(".jpg", "").Replace(".jpeg", "").Replace("\images\", "\thumbnails\")
-        Dim ThumbFile As String = ImageBuilder.Current.Build(New ImageJob(original, ThumbFileNM, settings, False, True)).FinalPath
-        Return ThumbFile
+        Try
+            Dim ThumbFileNM As String = original.ToLower().Replace(".jpg", ".png").Replace(".jpeg", ".png").Replace("\images\", "\thumbnails\")
+            Dim thumbDirectory As String = Path.GetDirectoryName(ThumbFileNM)
+
+            If Not String.IsNullOrEmpty(thumbDirectory) AndAlso Not Directory.Exists(thumbDirectory) Then
+                Directory.CreateDirectory(thumbDirectory)
+            End If
+
+            Using originalImage As Image = Image.FromFile(original)
+                Dim thumbnailWidth As Integer = 200
+                Dim thumbnailHeight As Integer = 200
+
+                ' Calculate aspect ratio
+                Dim ratioX As Double = CDbl(thumbnailWidth) / originalImage.Width
+                Dim ratioY As Double = CDbl(thumbnailHeight) / originalImage.Height
+                Dim ratio As Double = Math.Min(ratioX, ratioY)
+
+                Dim newWidth As Integer = CInt(originalImage.Width * ratio)
+                Dim newHeight As Integer = CInt(originalImage.Height * ratio)
+
+                Using thumbnail As New Bitmap(newWidth, newHeight)
+                    Using g As Graphics = Graphics.FromImage(thumbnail)
+                        g.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic
+                        g.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                        g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighQuality
+                        g.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+                        g.DrawImage(originalImage, 0, 0, newWidth, newHeight)
+                    End Using
+
+                    thumbnail.Save(ThumbFileNM, ImageFormat.Png)
+                End Using
+            End Using
+
+            Return ThumbFileNM
+        Catch ex As Exception
+            ApplicationLogging.ErrorLog("MineralCollection.Gallery.Upload.ashx - GenerateThumbnail", ex.ToString)
+            Return original
+        End Try
     End Function
     
     Public Function ValidateImageFile(ByRef myFile As HttpPostedFile) As Boolean
