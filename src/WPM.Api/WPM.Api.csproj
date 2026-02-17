@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>WPM.Api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.*" />
+    <PackageReference Include="Scriban" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPM.Core\WPM.Core.csproj" />
+    <ProjectReference Include="..\WPM.Infrastructure\WPM.Infrastructure.csproj" />
+    <ProjectReference Include="..\WPM.Domain.CMS\WPM.Domain.CMS.csproj" />
+  </ItemGroup>
+
+</Project>

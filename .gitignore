@@ -318,7 +318,46 @@ ASALocalRun/
 # MSBuild Binary and Structured Log
 *.binlog
 
-# Ignore Site Specific Files
-/website/sites
-/website/App_Data/log
-/website/App_Data/sites/localhost
+# Ignore Site Specific Files (legacy, now in archive/)
+/archive/website/sites
+/archive/website/App_Data/log
+/archive/website/App_Data/sites/localhost
+
+# ============================================
+# WPM Greenfield — New project additions
+# ============================================
+
+# .NET (already covered above, but explicit for clarity)
+[Bb]in/
+[Oo]bj/
+.vs/
+
+# SQLite database files (generated at runtime, not source)
+*.db
+*.db-shm
+*.db-wal
+# Exception: keep seed data and migration output committed if desired
+# !tools/WPM.Migration/output/**/*.db
+
+# Admin SPA (React + Vite)
+admin/node_modules/
+admin/dist/
+admin/.vite/
+
+# Local dev data (runtime site folders)
+local-data/
+
+# IDE
+.idea/
+*.sln.iml
+.vscode/settings.json
+.vscode/launch.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json

@@ -1,25 +1,67 @@
-# Web Project Mechanics
+# Web Project Mechanics — Greenfield Rebuild
 
-Web Project Mechanics is a powerful web content management system developed by Mark Hazleton over the past 20+ years. This system has been designed to provide users with the ability to manage multiple websites using a single MS-Access (.mdb) database.
+A multi-tenant, multi-domain content management system that publishes static HTML websites from SQLite databases.
 
-## Features
-Single database for multiple websites
-Caching for improved performance
-Standalone system with no external dependencies
-## Project History
-Web Project Mechanics was originally developed by Mark Hazleton in 2001 as a project to learn new technologies and create websites. It was initially developed as an ASP site and over the years has been migrated from Java Server Pages (JSP) to the .Net Framework 4.8.
+**Status:** In development — migrating from a 20+ year legacy ASP.NET Web Forms / MS Access system to .NET 9 / SQLite / Caddy.
 
-Throughout the years, Web Project Mechanics has been used to manage several websites, including Frogsfolly.com, DallasInformationCenter.com, and JMShawminerals.com. Hazleton's project has not only helped him gain new skills but has also been instrumental in helping others with their websites.
+## Architecture
 
-The code for Web Project Mechanics has been hosted on various platforms over the years, including CodePlex and Azure DevOps. In 2008, it was migrated to GitHub where it remains to this day.
+- **36+ domains** served from a single application instance
+- **Plugin-based content domains** — CMS pages, Mineral Collection, Recipes
+- **Per-site SQLite databases** — no TenantId columns, physical file isolation
+- **Publish-to-static** — all public content is pre-rendered HTML served by Caddy
+- **Single VM** — ~$10/month on Azure Linux
+
+## Repository Structure
+
+```
+├── archive/             # Frozen legacy codebase (read-only reference)
+├── src/                 # New .NET 9 greenfield code
+│   ├── WPM.Core/        # Shared contracts and models
+│   ├── WPM.Infrastructure/  # Core services
+│   ├── WPM.Api/         # ASP.NET Core Minimal API host
+│   ├── WPM.Domain.CMS/  # CMS content domain
+│   ├── WPM.Domain.Minerals/  # Mineral collection domain
+│   └── WPM.Domain.Recipes/   # Recipe domain
+├── tools/WPM.Migration/ # One-time data migration tool
+├── tests/               # xUnit test projects
+├── admin/               # Admin UI (future)
+├── deploy/              # Deployment config (Caddy, systemd)
+└── .documentation/      # Architecture docs and implementation plan
+```
+
+## Documentation
+
+- **[Implementation Plan](.documentation/GREENFIELD_IMPLEMENTATION.md)** — Full technical specification and phased plan
+- **[Legacy System Spec](.documentation/MULTI_DOMAIN_ARCHITECTURE.md)** — Complete documentation of the current system
+- **[Quick Reference](.documentation/QUICK_REFERENCE.md)** — Legacy system at a glance
 
 ## Getting Started
-To get started with Web Project Mechanics, simply download the code from the GitHub repository and open the solution in Visual Studio. You will need to have .Net Framework 4.8 installed on your system.
 
-For more information on how to use Web Project Mechanics, please refer to the documentation provided in the repository.
+*Coming soon — Phase 1 (Foundation) is in progress.*
 
-## Contribution
-We welcome contributions to Web Project Mechanics. If you would like to contribute to the development of this system, please submit a pull request with your changes.
+```bash
+# Build the API
+dotnet build src/WPM.Api/
+
+# Run tests
+dotnet test
+
+# Run the API locally
+dotnet run --project src/WPM.Api/
+```
+
+## Technology Stack
+
+| Layer | Technology |
+|-------|-----------|
+| API | ASP.NET Core 9 Minimal APIs (C#) |
+| Database | SQLite via EF Core 9 |
+| Templating | Scriban |
+| Web Server | Caddy 2 (auto-SSL, static files, reverse proxy) |
+| Hosting | Azure Linux VM (Ubuntu 24.04) |
+| CI/CD | GitHub Actions |
 
 ## License
-Web Project Mechanics is released under the MIT license. See LICENSE.txt for more details.
+
+MIT — See [LICENSE](LICENSE) for details.

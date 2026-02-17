@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>WPM.Migration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WPM.Core\WPM.Core.csproj" />
+    <ProjectReference Include="..\..\src\WPM.Infrastructure\WPM.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\WPM.Domain.CMS\WPM.Domain.CMS.csproj" />
+  </ItemGroup>
+
+</Project>
