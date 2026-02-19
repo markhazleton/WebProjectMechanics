@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome to Foundation</title>
+    <!-- Included CSS Files -->
+    <link rel="stylesheet" href="/framework/foundation/stylesheets/foundation.css">
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/framework/foundation/stylesheets/ie.css">
+  <![endif]-->
+    <script src="/framework/foundation/javascripts/modernizr.foundation.js"></script>
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+    <link rel="stylesheet" href="/sites/marlis/css/custom.css">
+</head>
+<body>
+    <div class="row">
+        <div id="pageHeader" class="twelve columns">
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+            <br style="clear: both;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <hr />
+            ~~nav-bar~~
+            <div class="row">
+                <div class="three columns">
+                    <div class="panel">
+                        ~~side-nav~~
+                    </div>
+                </div>
+                <div class="nine columns">
+                    <div class="row" style="clear: both;">
+~~MainContent~~                   </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <div id="footer" >
+                        <div class="left">
+                            ~~PageAdmin~~ ~~UserOptions~~<br />
+                            &copy; 2007-~~Year~~ ~~SiteCompanyName~~. All rights reserved.</div>
+                        <div class="right">
+                            <strong>~~SiteTitle~~</strong>.</div>
+                        <br styele="clear:both;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Included JS Files -->
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.reveal.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.orbit-1.4.0.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.customforms.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/jquery.tooltips.js"></script>
+    <script type="text/javascript" src="/framework/foundation/javascripts/app.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#featured').orbit();
+        });
+    </script></body></html>

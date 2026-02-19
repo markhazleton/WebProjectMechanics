@@ -132,6 +132,23 @@ public class CmsDbContextTests : IDisposable
     }
 
     [Fact]
+    public async Task CanCreateLocationAliasWithTargetUrlOnly()
+    {
+        _db.LocationAliases.Add(new LocationAlias
+        {
+            AliasPath = "/legacy/old-page",
+            TargetUrl = "https://example.com/new-page"
+        });
+        await _db.SaveChangesAsync();
+
+        var alias = await _db.LocationAliases
+            .FirstOrDefaultAsync(a => a.AliasPath == "/legacy/old-page");
+        Assert.NotNull(alias);
+        Assert.Null(alias.LocationId);
+        Assert.Equal("https://example.com/new-page", alias.TargetUrl);
+    }
+
+    [Fact]
     public async Task DeletingLocationCascadesToArticles()
     {
         var location = new Location

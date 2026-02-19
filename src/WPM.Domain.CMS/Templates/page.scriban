@@ -1,0 +1,7 @@
+{{ for article in articles }}
+<article>
+    <h3>{{ article.Title }}</h3>
+    {{ if article.Summary }}<p class="summary">{{ article.Summary }}</p>{{ end }}
+    {{ if article.Body }}<div class="article-body">{{ article.Body }}</div>{{ end }}
+</article>
+{{ end }}

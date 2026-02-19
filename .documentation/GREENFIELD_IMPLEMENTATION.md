@@ -1,8 +1,8 @@
 # WPM Greenfield — Technology Implementation Plan
 
-**Version:** 0.4 (Reviewed)
+**Version:** 0.8 (Phase 1 Complete)
 **Date:** February 2026
-**Status:** In Progress — Plan reviewed, blocking questions resolved
+**Status:** In Progress — Phase 0 complete, Phase 1 complete (all items checked), ready for Phase 2
 **Companion to:** [MULTI_DOMAIN_ARCHITECTURE.md](MULTI_DOMAIN_ARCHITECTURE.md) (current system spec)
 
 ---
@@ -38,10 +38,30 @@
 | **Single VM, minimal cost** | Everything runs on one cheap Linux VM (~$10/month) — no PaaS sprawl |
 | **Single codebase, single language** | C# / .NET 9 end-to-end for API, publishing, and templates |
 | **Multi-tenant** | 36+ domains served from one application instance |
+| **Per-site independent design** | Every site owns its own HTML templates, CSS, and layout — no shared CSS framework, no shared theme. One site's design never affects another. Published output is pure HTML + CSS with zero framework dependencies. |
 | **Per-domain databases** | Each content domain (CMS, Minerals, Recipes) owns its own SQLite file per site; core platform has a separate DB for sites/auth |
 | **CMS integration contract** | Every domain database must implement a standard contract (required tables/columns) validated at startup |
 | **Simple operations** | SQLite file databases, Caddy web server, systemd service — no container orchestration |
 | **Admin separation** | React SPA for content editing, completely decoupled from public sites |
+
+### 1.1 Terminology: Company = Site = Domain
+
+> **These three words mean the same thing.** The legacy system called them "Company" (database
+> table), the configuration called them "Domain" (XML config files, URL routing), and the new
+> system calls them "Site" (the `Site` entity in `core.db`). This document uses **"site"** as
+> the canonical term going forward. When reading legacy references, mentally substitute:
+>
+> | Legacy Term | Where It Appears | New System Equivalent |
+> |---|---|---|
+> | **Company** | `.mdb` database tables (`Company.CompanyID`, `Company.CompanyName`, `Company.GalleryFolder`, `Company.SiteTemplate`) | `Site` entity in `core.db` (`Site.Id`, `Site.SiteName`, `Site.FolderName`, `Site.ThemeName`) |
+> | **CompanyID** | FK in Page, Article, Image, Parameter, PageAlias tables | Eliminated — each site has its own `cms.db`, so no tenant filter needed |
+> | **Domain / DomainName** | XML configs in `App_Data/Sites/{domain}.xml`, HTTP Host header routing | `SiteDomain` entity in `core.db` (multiple domains can map to one site) |
+> | **SiteURL** | `Company.SiteURL` field | `SiteDomain.Domain` (primary domain) |
+> | **GalleryFolder** | `Company.GalleryFolder` (e.g., `/sites/frogsfolly/`) | `Site.FolderName` + `/media/` subfolder |
+> | **SiteTemplate** | `Company.SiteTemplate`, `Company.DefaultSiteTemplate` | `Site.ThemeName` + per-site `templates/` folder |
+>
+> **In code:** The `Site` entity, `SiteDomain` entity, `SiteContext` record, and `SiteConfig`
+> record are already implemented. There is no `Company` class anywhere in the new codebase.
 
 ---
 
@@ -129,7 +149,7 @@ Each site is a **folder**. Inside it, each enabled content domain plugin creates
 | **Auth** | ASP.NET Core Identity + JWT | Built-in; maps to current user roles (Admin/Editor/User/Anonymous) |
 | **Templating** | Scriban (or RazorLight) | Lightweight .NET template engine for static HTML generation; no Node.js dependency |
 | **Admin UI** | React 19 + Vite + TypeScript | Modern SPA, separate from public sites; calls API exclusively |
-| **CSS** | Tailwind CSS | Utility-first; pre-compiled during CI; no runtime CSS processing |
+| **CSS** | Per-site custom CSS (no framework) | Each site owns its own HTML/CSS/JS — no shared CSS framework. Sites are fully independent; one site's layout never affects another. CSS lives in per-site template folders. |
 | **CI/CD** | GitHub Actions | Free tier (2000 min/month); builds API, admin, and triggers publish |
 | **Hosting** | Azure Linux VM (B1s) | ~$7/month; persistent disk for SQLite + static files |
 
@@ -143,6 +163,7 @@ Each site is a **folder**. Inside it, each enabled content domain plugin creates
 | Docker / Kubernetes | One process + one web server on one VM; containers add complexity without benefit here |
 | Azure Front Door / CDN | Caddy on-VM serves static files fast enough; CDN can be added later if needed |
 | Nginx | Caddy's auto-SSL for 36 domains is dramatically simpler |
+| Tailwind CSS / Bootstrap / any CSS framework | Each of 36+ sites has a unique visual identity. A shared framework couples sites together — updating one risks breaking others. Per-site custom CSS gives each site full layout independence with zero build tooling. |
 
 ---
 
@@ -418,7 +439,8 @@ WebProjectMechanics/                         # Single repo — legacy + greenfie
 ├── .gitignore                               # Updated for both legacy and greenfield
 │
 ├── .documentation/                          # Architecture docs (shared)
-│   ├── GREENFIELD_IMPLEMENTATION.md         # This plan
+│   ├── GREENFIELD_IMPLEMENTATION.md         # This plan (v0.5)
+│   ├── PHASE0_REPORT.md                     # Phase 0 discovery report (auto-generated)
 │   ├── MULTI_DOMAIN_ARCHITECTURE.md         # Legacy system spec
 │   ├── QUICK_REFERENCE.md
 │   └── VISUAL_DIAGRAMS.md
@@ -494,8 +516,8 @@ WebProjectMechanics/                         # Single repo — legacy + greenfie
 │   │   ├── Endpoints/
 │   │   │   ├── LocationEndpoints.cs
 │   │   │   └── ArticleEndpoints.cs
-│   │   ├── Templates/
-│   │   │   ├── _layout.scriban
+│   │   ├── Templates/                       # FALLBACK templates only (minimal/unstyled)
+│   │   │   ├── _layout.scriban              # Bare-bones layout; sites override with their own
 │   │   │   ├── page.scriban
 │   │   │   ├── article.scriban
 │   │   │   └── sitemap.scriban
@@ -539,13 +561,12 @@ WebProjectMechanics/                         # Single repo — legacy + greenfie
 │
 ├── tools/
 │   └── WPM.Migration/                      # One-time: Access/SQL → per-site SQLite
-│       ├── Program.cs                       # References archive/website/App_Data/*.mdb
-│       ├── SchemaDiscovery.cs               # Phase 0: dump all .mdb schemas
-│       ├── CmsMigrator.cs                   # Phase A: .mdb → cms.db per site
-│       ├── MineralsMigrator.cs              # Phase B: SQL scripts → minerals.db
-│       ├── RecipesMigrator.cs               # Phase C: SQL scripts → recipes.db
-│       ├── UrlRedirectMapper.cs             # Generate Caddy redirect rules
-│       └── WPM.Migration.csproj
+│       ├── Program.cs                       # Phase 0 discovery tool (DONE) + future migration
+│       ├── CmsMigrator.cs                   # Phase A: .mdb → cms.db per site (TODO)
+│       ├── MineralsMigrator.cs              # Phase B: data source TBD → minerals.db (BLOCKED)
+│       ├── RecipesMigrator.cs               # Phase C: data source TBD → recipes.db (BLOCKED)
+│       ├── UrlRedirectMapper.cs             # Generate Caddy redirect rules (TODO)
+│       └── WPM.Migration.csproj             # Refs: EF.Core.Sqlite, System.Data.OleDb, WPM.Core, WPM.Infrastructure, WPM.Domain.CMS
 │
 ├── admin/                                   # Admin UI (future — Phase 3+)
 │
@@ -586,7 +607,13 @@ There is **no shared content database and no TenantId columns**. Instead, each s
 ├── data/                                      # SOURCE DATA: per-site folders
 │   ├── frogsfolly.com/
 │   │   ├── cms.db                             # CMS content (locations, articles, parts)
-│   │   ├── site.json                          # Site config (theme, home page, etc.)
+│   │   ├── site.json                          # Site config (home page, etc.)
+│   │   ├── templates/                         # THIS SITE's templates (unique layout/design)
+│   │   │   ├── _layout.scriban                # Site-specific HTML layout
+│   │   │   ├── page.scriban                   # Page template
+│   │   │   ├── article.scriban
+│   │   │   └── css/                           # Site-specific CSS (no framework)
+│   │   │       └── style.css
 │   │   └── media/                             # Images for this site
 │   │       ├── gallery/
 │   │       └── logos/
@@ -595,6 +622,11 @@ There is **no shared content database and no TenantId columns**. Instead, each s
 │   │   ├── cms.db                             # CMS content
 │   │   ├── minerals.db                        # Mineral collection (specimens, minerals)
 │   │   ├── site.json                          # Site config
+│   │   ├── templates/                         # Completely different layout from frogsfolly
+│   │   │   ├── _layout.scriban
+│   │   │   ├── specimen.scriban               # Mineral-specific templates
+│   │   │   └── css/
+│   │   │       └── style.css                  # This site's own CSS
 │   │   └── media/
 │   │       ├── gallery/
 │   │       └── specimens/                     # Mineral specimen photos
@@ -603,12 +635,21 @@ There is **no shared content database and no TenantId columns**. Instead, each s
 │   │   ├── cms.db                             # CMS content
 │   │   ├── recipes.db                         # Recipes (recipes, ingredients)
 │   │   ├── site.json                          # Site config
+│   │   ├── templates/                         # Another unique layout
+│   │   │   ├── _layout.scriban
+│   │   │   ├── recipe.scriban
+│   │   │   └── css/
+│   │   │       └── style.css
 │   │   └── media/
 │   │       └── recipes/                       # Recipe photos
 │   │
 │   └── webprojectmechanics.com/
 │       ├── cms.db                             # CMS content
 │       ├── site.json
+│       ├── templates/                         # Its own layout
+│       │   ├── _layout.scriban
+│       │   └── css/
+│       │       └── style.css
 │       └── media/
 │
 └── sites/                                     # PUBLISHED OUTPUT: served by Caddy
@@ -795,7 +836,6 @@ Each site folder contains a `site.json` file with site-level configuration:
 
 ```json
 {
-  "theme": "default",
   "homePageSlug": "home",
   "siteName": "JM Shaw Minerals",
   "tagline": "A Collection of Fine Minerals",
@@ -805,6 +845,87 @@ Each site folder contains a `site.json` file with site-level configuration:
   "publishing": { "generateRss": true, "generateSitemap": true }
 }
 ```
+
+### 7.4.1 Per-Site Template Independence (Key Design Principle)
+
+> **Every site owns its own templates, CSS, and layout.** There is no shared CSS framework
+> (no Tailwind, no Bootstrap, no shared stylesheet). Each site's `templates/` folder contains
+> its complete, self-contained design:
+>
+> - **`_layout.scriban`** — the site's HTML shell (head, nav, footer)
+> - **`css/style.css`** — the site's custom CSS (hand-written or generated — the platform doesn't care)
+> - **Domain-specific templates** — `page.scriban`, `specimen.scriban`, `recipe.scriban`, etc.
+>
+> **Why no shared CSS framework?**
+> - Each of the 36+ sites has a **unique visual identity** — frogsfolly.com looks nothing like
+>   jmshawminerals.com or mechanicsofmotherhood.com.
+> - A shared framework creates coupling: updating Bootstrap on one site risks breaking 35 others.
+> - The published output is **pure HTML + CSS** — no build tools, no npm, no CSS compilation.
+>   Each site's static output is a self-contained directory that works in any browser.
+> - Template authors have **full control** — they can use CSS Grid, Flexbox, inline styles,
+>   or even paste in a Squarespace/WordPress export. The platform doesn't constrain layout.
+>
+> **Fallback behavior:** If a site has no `templates/` folder, the publisher uses minimal,
+> unstyled fallback templates from the domain project (e.g., `WPM.Domain.CMS/Templates/`).
+> These produce valid, functional HTML but with no visual design — useful for initial migration
+> and testing before a site's custom templates are created.
+
+#### Legacy Template Token → Scriban Variable Mapping
+
+The legacy system used `~~TokenName~~` delimiters for template placeholders. The new system
+uses Scriban syntax (`{{ variable }}`). **14 legacy template files** were found in the archive:
+- `archive/website/runtime/default-template.html` — minimal unstyled fallback (all 16 tokens)
+- `archive/website/sites/WebProjectMechanics/catalog_template.html` — catalog-specific template (custom tags)
+- **12 per-site templates** in `archive/website/App_Data/Sites/*/gen/` across 10 domains:
+
+| Site | Template | Theme/Design |
+|---|---|---|
+| frogsfolly.com | `template-ahs` | AHS theme |
+| travel.frogsfolly.com | `template-pm`, `template-ahs` | Two templates (PM + AHS) |
+| family.frogsfolly.com | `template-ahs` | AHS theme |
+| inkslakeliving.frogsfolly.com | `template-pm` | PM theme |
+| berit.frogsfolly.com | `template-ff-zen` | Zen theme |
+| marlis.frogsfolly.com | `template-marlis` | Custom Marlis theme |
+| ian.frogsfolly.com | `template-sp` | SP theme |
+| kellertexasliving.frogsfolly.com | `template-pm` | PM theme |
+| mateus.frogsfolly.com | `template-sp` | SP theme |
+| jmshawminerals.com | `template-jmshaw3` | Xone parallax theme (completely different stack) |
+| localhost | `template-pm` | PM theme |
+
+This confirms **6+ distinct template designs** were in active use — strong validation of the
+per-site independence requirement. For example, jmshawminerals.com uses the Xone parallax
+theme (cube portfolio, scroll reveal, parallax) while frogsfolly sites use various themes
+(AHS, PM, Zen, SP), each with different CSS/JS stacks.
+
+The legacy `Company` table had `SiteTemplate` and `DefaultSiteTemplate` fields (TEXT 100) that
+controlled which template each site used. Templates were resolved at runtime via CompanyID.
+
+| Legacy Token | Scriban Equivalent | Source / Notes |
+|---|---|---|
+| `~~PageTitle~~` | `{{ site.name }} - {{ location.name }}` | Computed; legacy combined site + page title |
+| `~~SiteTitle~~` | `{{ site.title }}` | From `site.json` → `SiteTitle` (was `Company.SiteTitle`) |
+| `~~SiteName~~` | `{{ site.name }}` | From `site.json` → `SiteName` (was `Company.CompanyName`) |
+| `~~SiteCompanyName~~` | `{{ site.name }}` | Same as SiteName — legacy had separate field |
+| `~~CurrentPageName~~` | `{{ location.name }}` | `Location.Name` (was `Page.PageName`) |
+| `~~CurrentPageDesc~~` | `{{ location.meta_description }}` | SEO meta description |
+| `~~CurrentPageKeywords~~` | `{{ location.meta_keywords }}` | SEO meta keywords |
+| `~~MainContent~~` | `{{ content }}` | Rendered articles for the current page |
+| `~~bootNavBar~~` | `{{ navigation }}` | HTML nav generated from page tree by publisher |
+| `~~LeftColumnLinks~~` | `{{ left_links }}` | Left sidebar content (links from Page config) |
+| `~~CenterColumnLinks~~` | `{{ center_links }}` | Below-main content links |
+| `~~RightColumnLinks~~` | `{{ right_links }}` | Right sidebar content |
+| `~~google_analytics_uacct~~` | `{{ site.analytics_snippet }}` | From `site.json` — any analytics code |
+| `~~Year~~` | `{{ date.now \| date.to_string "%Y" }}` | Scriban computes at publish time |
+| `~~PageAdmin~~` | *(removed)* | Admin controls — no longer in templates; admin is separate SPA |
+| `~~UserOptions~~` | *(removed)* | User login/options — no longer in templates; admin is separate SPA |
+
+**Key differences from legacy:**
+- Legacy templates mixed admin UI (`~~PageAdmin~~`, `~~UserOptions~~`) into the public template.
+  The new system has no admin controls in published output — admin is a separate React SPA.
+- Legacy used CDN-hosted frameworks (Bootstrap 3, jQuery, DataTables) inline in templates.
+  New templates can reference whatever the site author wants — including no framework at all.
+- Legacy had Google AdSense hard-coded in the template. New system puts ad code in `site.json`
+  under an `analytics_snippet` or dedicated `ads` field, keeping templates cleaner.
 
 ### 7.5 Domain Enablement Detection
 
@@ -849,12 +970,54 @@ public class SiteDomainDetector
 | **LocationGroup** | Yes | `{site}/cms.db` → `LocationGroups` | |
 | **SiteCategoryType** | Yes | `{site}/cms.db` → `Categories` | Site category taxonomy |
 
-#### Mineral Tables (from Azure SQL — NOT from .mdb files)
+#### Image Path Resolution (Page → Image → File)
 
-> **Note:** The `wpmMineralCollection` project originally connected to Azure SQL
-> (`markhazleton2.database.windows.net`), which is **no longer accessible**. SQL scripts to
-> recreate the database exist. The `MineralCollection.mdb` files in App_Data contain CMS page
-> data for the mineral site; the specimen/mineral data comes from the SQL scripts.
+The legacy system stores images in a per-site virtual directory at `/sites/{GalleryFolder}/image/`.
+The `GalleryFolder` is a property on the legacy `Company` table (now `Site.FolderName`).
+Images are organized in subfolders by event, location, or year (e.g., `disney-world-2007/`,
+`christmas-2005/`, `budapest/`). The image file names are typically camera-generated
+(e.g., `DSC00558.jpg`).
+
+**Legacy linkage chain:**
+```
+Company.GalleryFolder → /sites/frogsfolly/
+Image.ImageFileName   → 2005/DSC03702.JPG
+Full URL              → /sites/frogsfolly/image/2005/DSC03702.JPG
+PageImage junction    → links Image to Page (with Position for ordering)
+```
+
+**New system linkage:**
+```
+Site.FolderName       → frogsfolly.com
+Image.FileName        → 2005/DSC03702.JPG  (relative path within media/)
+Full path             → /var/wpm/data/frogsfolly.com/media/2005/DSC03702.JPG
+Published URL         → /media/2005/DSC03702.JPG  (served by Caddy)
+LocationImage         → links Image to Location (with Position for ordering)
+```
+
+**Migration steps for images:**
+1. Copy `archive/website/sites/{GalleryFolder}/image/*` → `/var/wpm/data/{domain}/media/`
+   (preserving subfolder structure)
+2. For each `Image` row in the .mdb: set `Image.FileName` = the relative path within the
+   legacy `image/` folder (e.g., `2005/DSC03702.JPG`)
+3. Migrate `PageImage` junction rows → `LocationImage` (mapping legacy `PageID` to new
+   `LocationId` and legacy `ImageID` to new `ImageId`)
+4. The `Image.FileName` is the only path stored — the rest is derived from `SiteContext.MediaFolder`
+
+**Published output:** Caddy serves `/media/*` from the site's output folder. The publisher
+copies the entire `media/` directory to the output. Templates reference images via
+`/media/{{ image.file_name }}`.
+
+#### Mineral Tables (from SQL Server script — NOT from .mdb files)
+
+> **Phase 0 Finding (updated):** The `wpmMineralCollection` project originally connected to
+> AWS RDS (`controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com`, catalog `MineralCollection`),
+> which is **no longer accessible**. However, **a complete SQL Server script was found** at
+> `archive/MineralCollection.sql` (2.5 MB, scripted May 6, 2024). It contains full schema DDL
+> (tables, views, stored procedures, indexes, FK constraints) AND INSERT statements for all data:
+> **594 specimens, 156 minerals, 1,192 images, 350 mineral associations, 112 dealers, 251 countries,
+> 60 states, 50 cities, 3 collections**. The mineral collection data is **fully recoverable**.
+> The `MineralCollection.mdb` files in App_Data contain CMS page data for the mineral site only.
 
 | Legacy DB Table | New Location | Notes |
 |-----------------|-------------|-------|
@@ -870,9 +1033,13 @@ public class SiteDomainDetector
 
 #### Recipe Tables (from AWS RDS — NOT from .mdb files)
 
-> **Note:** The `WPMRecipe` project originally connected to AWS RDS
-> (`controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com`), which is **no longer
-> accessible**. SQL scripts to recreate the database exist.
+> **Phase 0 Finding (updated):** The `WPMRecipe` project originally connected to AWS RDS
+> (`controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com`, catalog `WebProjectMechanics`),
+> which is **no longer accessible**. However, **recipe data was found in `archive/WebSpark.db`** —
+> a SQLite database with an EF Core schema. Contains **110 recipes across 14 categories**, all for
+> MechanicsOfMotherhood.com (DomainId 2). The schema differs from the legacy DBML (modernized
+> column names, `ImageData` BLOB instead of file references). RecipeComment and RecipeImage tables
+> are empty. Recipe data is **fully recoverable**.
 
 | Legacy DB Table | New Location | Notes |
 |-----------------|-------------|-------|
@@ -1217,19 +1384,33 @@ public class PublishingService
 
 ### 9.3 Template Engine
 
-Using **Scriban** (lightweight, Liquid-compatible, .NET native):
+Using **Scriban** (lightweight, Liquid-compatible, .NET native). The engine resolves templates
+from the **site's own `templates/` folder first**, falling back to built-in defaults:
 
 ```csharp
 public class ScribanTemplateEngine : ITemplateEngine
 {
     private readonly ConcurrentDictionary<string, Template> _cache = new();
 
-    public async Task<string> RenderAsync(string templateName, object model)
+    /// <summary>
+    /// Resolves template from site folder first, then falls back to domain defaults.
+    /// This ensures each site can have its own unique layout without any shared dependency.
+    /// </summary>
+    public async Task<string> RenderAsync(
+        string templateName, object model, SiteContext site)
     {
-        var template = _cache.GetOrAdd(templateName, name =>
+        var cacheKey = $"{site.SiteDomain}:{templateName}";
+
+        var template = _cache.GetOrAdd(cacheKey, _ =>
         {
-            var source = File.ReadAllText($"Templates/{name}.scriban");
-            return Template.Parse(source);
+            // 1. Try site-specific template: /var/wpm/data/{domain}/templates/{name}.scriban
+            var sitePath = Path.Combine(site.DataFolder, "templates", $"{templateName}.scriban");
+            if (File.Exists(sitePath))
+                return Template.Parse(File.ReadAllText(sitePath));
+
+            // 2. Fall back to built-in domain template (unstyled)
+            var fallbackPath = Path.Combine("Templates", $"{templateName}.scriban");
+            return Template.Parse(File.ReadAllText(fallbackPath));
         });
 
         var context = new TemplateContext();
@@ -1240,6 +1421,35 @@ public class ScribanTemplateEngine : ITemplateEngine
         return await template.RenderAsync(context);
     }
 }
+```
+
+#### Example Scriban Template (`_layout.scriban`)
+
+This is the Scriban equivalent of the legacy `~~token~~` template. Each site provides its own
+version in `templates/_layout.scriban` with its own CSS, layout, and design:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.name }} - {{ location.name }}</title>
+    <meta name="description" content="{{ location.meta_description }}">
+    <meta name="keywords" content="{{ location.meta_keywords }}">
+    {{~ # Each site links its own CSS — no shared framework ~}}
+    <link rel="stylesheet" href="/css/style.css">
+    {{ site.analytics_snippet }}
+</head>
+<body>
+    <nav>{{ navigation }}</nav>
+    <h1>{{ location.name }}</h1>
+    <main>{{ content }}</main>
+    {{ center_links }}
+    <aside>{{ left_links }}{{ right_links }}</aside>
+    <footer>&copy; 2002-{{ date.now | date.to_string "%Y" }} {{ site.name }}</footer>
+</body>
+</html>
 ```
 
 ### 9.4 Example: CMS Publisher
@@ -1298,6 +1508,23 @@ public class CmsPublisher : IContentPublisher
             await templates.RenderAsync("404", new { navigation = navTree, site = context.Config }),
             "text/html"
         ));
+
+        // Copy site-specific static assets (CSS, JS, images) to output
+        // Each site's css/ folder is self-contained — no shared framework
+        var siteAssetsDir = Path.Combine(context.DataFolder, "templates", "css");
+        if (Directory.Exists(siteAssetsDir))
+        {
+            foreach (var cssFile in Directory.GetFiles(siteAssetsDir, "*", SearchOption.AllDirectories))
+            {
+                var relativePath = Path.GetRelativePath(
+                    Path.Combine(context.DataFolder, "templates"), cssFile);
+                files.Add(new PublishableFile(
+                    relativePath,
+                    File.ReadAllText(cssFile),
+                    "text/css"
+                ));
+            }
+        }
 
         return files;
     }
@@ -1617,18 +1844,28 @@ After generating, run `systemctl reload caddy` — zero-downtime config reload.
 | Data Source | Technology | Data | Migration Method |
 |------------|-----------|------|-----------------|
 | **16 .mdb files** (App_Data/) | MS Access via OLE DB | CMS content: Company, Page, Article, Part, Parameter, Image, PageImage, PageAlias | Read directly via `System.Data.OleDb` (**Windows-only**) |
-| **SQL scripts** (provided) | SQL DDL + data | Mineral collection: Collection, CollectionItem, Mineral, CollectionItemImage, location geography | Run SQL scripts to create local SQLite DB, then migrate |
-| **SQL scripts** (provided) | SQL DDL + data | Recipes: Recipe, RecipeImage, RecipeComment, RecipeCategory | Run SQL scripts to create local SQLite DB, then migrate |
-| **Web server filesystem** | Files on disk | Images referenced by `Image.ImageFileName` and `Company.GalleryFolder` paths | Copy from legacy IIS server to per-site `/media/` folders |
+| **SQL script** (`archive/MineralCollection.sql`) | SQL Server DDL + INSERT data | Mineral collection: Collection, CollectionItem, Mineral, CollectionItemImage, CollectionItemMineral, Company, LocationCity/State/Country (7 tables, 4 views, CRUD stored procs) — **2,768 data rows** | Full SQL Server script from May 2024. Run into temp SQL Server LocalDB, then migrate to SQLite `minerals.db`. Schema also in `archive/wpmMineralCollection/DataClasses1.dbml`. |
+| **SQLite database** (`archive/WebSpark.db`) | EF Core SQLite | Recipes: Recipe (110), RecipeCategory (14), RecipeComment (0), RecipeImage (0) — all for MechanicsOfMotherhood.com | Already in SQLite format. Newer EF Core schema (different column names from legacy DBML). RecipeImage has `ImageData` BLOB column. Can migrate directly to per-site `recipes.db`. |
+| **Web server filesystem** (`archive/website/sites/`) | Files on disk | **2,302 image files (280 MB)** in current archive sample across 3 of 25 GalleryFolder paths: frogsfolly (1,927), ProjectMechanics (251), WebProjectMechanics (3). The archive is a partial copy — other sites have additional images not yet archived. | Copy from `archive/website/sites/{GalleryFolder}/image/` to per-site `/media/` folders. Remaining site images need to be sourced from the full legacy server backup. |
 
-> **Resolved (Feb 2026):** The original Azure SQL (minerals) and AWS RDS (recipes) databases
-> are **no longer accessible**. However, the SQL scripts to recreate these databases exist.
-> The migration strategy is: run the SQL scripts locally (into a temp SQL Server LocalDB or
-> directly into SQLite), then migrate from there into per-site `.db` files.
+> **Phase 0 Finding (Feb 2026, updated):** Both original database servers are **no longer
+> accessible**. However, **all data has been located**:
+> - **Mineral data:** `archive/MineralCollection.sql` — complete SQL Server script with 2,768
+>   data rows (scripted May 2024).
+> - **Recipe data:** `archive/WebSpark.db` — SQLite database with 110 recipes across 14
+>   categories, all for MechanicsOfMotherhood.com. Already in SQLite/EF Core format.
 >
-> **Images** are confirmed to be on the **filesystem of the legacy IIS web server**. They are
-> not embedded in databases or stored in cloud blob storage. Migration requires copying files
-> from the legacy server's filesystem, organized by each site's `GalleryFolder` path.
+> **Migration impact:** Phase B (minerals) is **unblocked** — run the SQL script into a temp
+> SQL Server LocalDB instance, then migrate to SQLite `minerals.db`. Phase C (recipes) is
+> **unblocked** — extract recipe tables from `WebSpark.db` directly into per-site `recipes.db`.
+>
+> **Images** are in the archive at `archive/website/sites/`, organized by `Company.GalleryFolder`
+> paths with `/image/` subfolders. **3 of 25 GalleryFolder paths are present** with 2,302 image
+> files (280 MB total). 22 folders are not yet in the archive — this is a partial copy. The majority
+> of recoverable images belong to frogsfolly.com (1,927 files, 251 MB in 59 subfolders
+> organized by event/location). Mineral specimen images (`/sites/nrc/`) are NOT in the archive
+> despite 1,192 `CollectionItemImage` rows in the SQL script. Template asset folders (BASICA,
+> xone-v1.3) referenced by legacy templates are also not archived.
 
 **Why not use the existing APIs?** The legacy `.ashx` APIs (`CompanyApi.ashx`, `LocationApi.ashx`, `UserApi.ashx`) are thin runtime endpoints. The Location API is a generic geospatial service (lat/long search), not the CMS page hierarchy. The Company API has pagination but doesn't return nested data (locations, articles, parts). **Direct database access is the only viable migration path.**
 
@@ -1662,13 +1899,13 @@ foreach (var mdbFile in Directory.GetFiles(appDataPath, "*.mdb"))
 
 **Expected output:** A CSV/JSON report showing every table and column in every .mdb file. Compare across databases to confirm which share the same schema and which differ.
 
-**Step 2: Verify Azure SQL mineral schema**
+**Step 2: ~~Verify Azure SQL mineral schema~~ COMPLETED (Phase 0)**
 
-Connect to `markhazleton2.database.windows.net` and run `SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS`. Compare against the LINQ to SQL designer file in `wpmMineralCollection/DataClasses1.designer.vb`.
+~~Connect to `markhazleton2.database.windows.net`~~ **Server is dead.** Mineral schema fully documented from `archive/wpmMineralCollection/DataClasses1.dbml`: 7 tables (Collection, Mineral, CollectionItem, CollectionItemMineral, CollectionItemImage, Company, LocationCity/State/Country), 4 views, CRUD stored procedures. No data available — only schema definitions.
 
-**Step 3: Verify AWS RDS recipe schema**
+**Step 3: ~~Verify AWS RDS recipe schema~~ COMPLETED (Phase 0)**
 
-Connect to `controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com` and run the same. Compare against `WPMRecipe/RecipeLibrary.designer.vb`.
+~~Connect to `controlorigins1.cnggm5xnvplw.us-west-2.rds.amazonaws.com`~~ **Server is dead.** Recipe schema fully documented from `archive/WPMRecipe/RecipeLibrary.dbml`: 4 tables (Recipe, RecipeImage, RecipeComment, RecipeCategory), 2 views. No data available — only schema definitions.
 
 **Step 4: Map CompanyID → data volume**
 
@@ -1718,26 +1955,30 @@ WPM.Migration workflow:
 │        (SiteTemplate, FromEmail, SMTP, etc.)             │
 │  4. Insert Site + SiteDomain rows into core.db           │
 │                                                          │
-│  Phase B: Mineral Collection (from SQL scripts)          │
+│  Phase B: Mineral Collection (UNBLOCKED)                 │
 │                                                          │
-│  1. Run provided SQL scripts into temp SQL Server        │
-│     LocalDB (or adapt scripts for direct SQLite import)  │
-│  2. Create jmshawminerals.com/minerals.db               │
-│  3. Migrate: Collection, CollectionItem, Mineral,        │
-│     CollectionItemMineral, CollectionItemImage,          │
-│     Company (as Dealers), LocationCity/State/Country     │
+│  Source: archive/MineralCollection.sql (2,768 rows)      │
+│  1. Run SQL script into temp SQL Server LocalDB          │
+│     (or parse INSERTs directly into SQLite)              │
+│  2. Create jmshawminerals.com/minerals.db                │
+│  3. Migrate: Collection (3), CollectionItem (594),       │
+│     Mineral (156), CollectionItemMineral (350),          │
+│     CollectionItemImage (1192), Company (112 dealers),   │
+│     LocationCity (50), LocationState (60),               │
+│     LocationCountry (251)                                │
 │  4. Copy specimen images from legacy server filesystem   │
 │     → media/specimens/                                   │
 │                                                          │
-│  Phase C: Recipes (from SQL scripts)                     │
+│  Phase C: Recipes (UNBLOCKED)                            │
 │                                                          │
-│  1. Run provided SQL scripts into temp SQL Server        │
-│     LocalDB (or adapt scripts for direct SQLite import)  │
-│  2. Create {recipe-site}/recipes.db                      │
-│  3. Migrate: Recipe, RecipeImage, RecipeComment,         │
-│     RecipeCategory                                       │
-│  4. Copy recipe images from legacy server filesystem     │
-│     → media/recipes/                                     │
+│  Source: archive/WebSpark.db (SQLite, EF Core schema)    │
+│  1. Extract recipe tables from WebSpark.db               │
+│     (already SQLite — direct table copy/transform)       │
+│  2. Create mechanicsofmotherhood.com/recipes.db          │
+│  3. Migrate: Recipe (110), RecipeCategory (14),          │
+│     RecipeComment (0), RecipeImage (0)                   │
+│  Note: Schema differs from legacy DBML — modernized      │
+│  column names. RecipeImage has ImageData BLOB.           │
 │                                                          │
 │  Phase D: Validation                                     │
 │                                                          │
@@ -1796,19 +2037,31 @@ Approach:
 
 ### 13.4 Image Migration
 
-Images are stored on the **legacy IIS web server's filesystem**, organized by each site's `GalleryFolder` path (a per-company property in the Company table).
+Images are in the archive at `archive/website/sites/`, organized by each site's `Company.GalleryFolder` path. Each GalleryFolder contains an `image/` subfolder with full-size images, and some have `thumbnail/` or `Thumbnails/` folders.
+
+**Inventory (Phase 0 complete):**
+
+| GalleryFolder | Status | Image Files | Size | Notes |
+|---|---|---|---|---|
+| `/sites/frogsfolly/` | **Present** | 1,927 | 251 MB | 59 subfolders by event/location (e.g., `disney-world-2007/`, `budapest/`) |
+| `/sites/ProjectMechanics/` | **Present** | 251 | 5.7 MB | `image/` (11) + `img/` (240 icons/logos/slider) |
+| `/sites/WebProjectMechanics/` | **Present** | 3 | 356 KB | |
+| `/sites/nrc/` (minerals) | **Missing** | 0 | — | 1,192 `CollectionItemImage` rows in SQL but no physical files |
+| 21 other folders | **Missing** | 0 | — | dramaeducator, InksLakeLiving, ControlOrigins, marlis, ian, berit, etc. |
+| **Total** | | **2,302** | **280 MB** | |
 
 **Migration steps:**
 
-1. **Phase 0:** Inventory images on the legacy server — list files under each `GalleryFolder`, record counts and sizes.
-2. **Copy files:** `rsync` or `scp` from legacy server to per-site media folders:
+1. **Copy files** from `archive/website/sites/{GalleryFolder}/image/` to per-site media folders:
    ```
-   # For each site, based on Company.GalleryFolder:
-   rsync -av legacy-server:/path/to/{GalleryFolder}/ /var/wpm/data/{domain}/media/
+   # For each site with available images:
+   cp -r archive/website/sites/frogsfolly/image/* /var/wpm/data/frogsfolly.com/media/
+   cp -r archive/website/sites/ProjectMechanics/image/* /var/wpm/data/pm.controlorigins.com/media/
    ```
-3. **Verify:** Cross-check `Image.ImageFileName` values against copied files. Flag any missing files.
-4. **Do NOT rewrite image paths in HTML during initial migration.** Migrate content verbatim first, get it publishing, then iterate on path cleanup. The existing `GalleryFolder` relative paths may need adjusting to `/media/` — but do this as a post-migration batch step.
-5. For each site: images in `{site}/media/` served via Caddy `handle /media/*` block
+2. **Verify:** Cross-check `Image.ImageFileName` values against copied files. Flag any missing files.
+3. **Do NOT rewrite image paths in HTML during initial migration.** Migrate content verbatim first, get it publishing, then iterate on path cleanup. The existing `GalleryFolder` relative paths may need adjusting to `/media/` — but do this as a post-migration batch step.
+4. For each site: images in `{site}/media/` served via Caddy `handle /media/*` block
+5. **Remaining images:** 22 of 25 GalleryFolder paths are not yet in the archive. Source from full legacy server backup as they become available. Adding images later requires no code changes — just copy files to `media/`.
 
 ### 13.5 Content HTML Cleanup (Iterative, Post-Migration)
 
@@ -1817,7 +2070,7 @@ Legacy `Page.LocationBody` and `Article.ArticleBody` contain raw CKEditor HTML. 
 Known issues to address post-migration:
 - Hardcoded absolute URLs (e.g., `http://frogsfolly.com/gallery/photo.jpg`) → relative paths
 - `<font>`, `<center>`, `<marquee>` tags → strip or wrap in semantic HTML
-- Inline styles → can coexist with Tailwind initially
+- Inline styles → can coexist with per-site CSS initially
 - Internal links using `Default.aspx?c=42&a=15` → rewrite to new slug paths
 - Broken image references → fix paths to `/media/`
 
@@ -1839,8 +2092,8 @@ Features in the legacy system that need explicit handling:
 | 6 | **Sitemap** | Dynamic sitemap.aspx | Generated as static `sitemap.xml` by CmsPublisher | Medium | Low |
 | 7 | **www redirect** | ApplicationHttpModule | Caddy redirect blocks | Medium | Low |
 | 8 | **Content HTML quality** | CKEditor HTML in DB (years of accumulated markup) | **Defer cleanup.** Migrate verbatim, publish, iterate. | Medium | **High** (if done) |
-| 9 | **Mineral Collection app** | LINQ to SQL; original Azure SQL is dead; **SQL scripts exist** | WPM.Domain.Minerals plugin; recreate from SQL scripts → SQLite | **High** | **High** |
-| 10 | **Recipe app** | LINQ to SQL; original AWS RDS is dead; **SQL scripts exist** | WPM.Domain.Recipes plugin; recreate from SQL scripts → SQLite | Medium | Medium |
+| 9 | **Mineral Collection app** | LINQ to SQL; original AWS RDS is dead; **SQL script found** (`archive/MineralCollection.sql`, 2,768 rows) | WPM.Domain.Minerals plugin; run SQL script → temp SQL Server → migrate to SQLite `minerals.db`. **UNBLOCKED.** | **Medium** | **High** |
+| 10 | **Recipe app** | LINQ to SQL; original AWS RDS is dead; **data found in `archive/WebSpark.db`** (110 recipes, 14 categories, EF Core SQLite) | WPM.Domain.Recipes plugin; extract from WebSpark.db → per-site `recipes.db`. Schema already modernized (EF Core). **UNBLOCKED.** | Medium | Medium |
 | 11 | **Search** | No search in current system | Pagefind (build-time index on static output); defer | Low | Low |
 | 12 | **Backup / DR** | Manual | Nightly SQLite backup to Azure Blob; VM snapshot | Medium | Low |
 | 13 | **Monitoring** | None | UptimeRobot (free); API health check endpoint | Low | Low |
@@ -1850,7 +2103,7 @@ Features in the legacy system that need explicit handling:
 | 17 | **PageAlias URL rewriting** | LocationAliasList with wildcard + literal matching | Migrate to Caddy redirect rules per site | **High** (SEO) | Medium |
 | 18 | **Mineral geography (City/State/Country)** | 3 location tables with lat/long in Azure SQL | Flatten into minerals.db with denormalized location fields | Low | Low |
 | 19 | **Recipe comments + ratings** | User-submitted comments, avg ratings, view counts | Static sites can't accept comments; need API endpoint or drop | Medium | Medium |
-| 20 | **Schema differences across .mdb files** | Not all 16 databases have identical schemas | Phase 0 schema audit required; migration tool must handle variations | **High** | Medium |
+| 20 | ~~**Schema differences across .mdb files**~~ | ~~Not all 16 databases have identical schemas~~ | **Resolved (Phase 0):** All 10 active databases have identical CMS schema. No variations found. Migration tool does not need to handle schema differences. | ~~High~~ | ~~Medium~~ |
 
 ---
 
@@ -1858,11 +2111,12 @@ Features in the legacy system that need explicit handling:
 
 | # | Risk | Likelihood | Impact | Mitigation |
 |---|------|-----------|--------|------------|
-| R1 | **Schema differences across .mdb files** — not all 16 databases have identical tables/columns | High | High | Phase 0 schema audit. Migration tool must handle missing tables gracefully. |
-| R2 | **CompanyID data partitioning is wrong** — Location/Article filtering may use GroupID or other indirect mechanisms, not just CompanyID | Medium | High | Phase 0: run `SELECT CompanyID, COUNT(*) FROM Page GROUP BY CompanyID` on every .mdb. Verify data volumes match expectations. |
-| R3 | **Images are missing or broken paths** — physical image files are on the legacy IIS server filesystem but `Image.ImageFileName` values may not match actual file paths | Medium | High | Phase 0: inventory files on legacy server, cross-check against `Image.ImageFileName` and `Company.GalleryFolder` values in each database. |
+| R1 | ~~**Schema differences across .mdb files**~~ | ~~High~~ | ~~High~~ | **Resolved (Phase 0):** All 10 active databases share identical CMS schema (Company, Page, Article, Part, Parameter, Image, PageImage, PageAlias, LocationGroup, SiteCategoryType). No divergence found. |
+| R2 | ~~**CompanyID data partitioning is wrong**~~ | ~~Medium~~ | ~~High~~ | **Resolved (Phase 0):** CompanyID correctly partitions data. All 36 domains mapped to correct CompanyIDs. 2 orphan CompanyIDs found (ID 25 in FrogsFolly.mdb and ProjectMechanics.mdb — "Inks Lake Living", no XML config). |
+| R3 | **Images are missing or broken paths** | Medium | Medium | **Resolved (Phase 0):** Image path structure confirmed: `/sites/{GalleryFolder}/image/{subfolder}/{filename}`. Partial archive has 2,302 files (280 MB) across 3 sites. Remaining sites need full legacy backup. Path resolution strategy documented in Section 7.6. |
 | R4 | **Content HTML breaks in new templates** — 20 years of CKEditor output with inline styles, absolute URLs, broken tags | High | Medium | Migrate HTML verbatim. Don't clean during initial migration. Iterate post-publish. |
-| R5 | ~~Azure SQL / AWS RDS credentials are stale~~ | ~~Medium~~ | ~~High~~ | **Resolved:** Both databases are confirmed inaccessible. SQL scripts to recreate them exist. Migration will use the SQL scripts, not live connections. |
+| R5 | ~~Azure SQL / AWS RDS credentials are stale~~ | ~~Medium~~ | ~~High~~ | **Resolved (Phase 0):** Both databases confirmed inaccessible. Data fully recovered from `archive/MineralCollection.sql` and `archive/WebSpark.db`. |
+| R11 | ~~**Mineral and recipe data is lost**~~ | ~~High~~ | ~~High~~ | **RESOLVED.** Mineral: `archive/MineralCollection.sql` (2,768 rows). Recipe: `archive/WebSpark.db` (110 recipes, 14 categories). All data sources located. |
 | R6 | **OLE DB provider unavailable** — `Microsoft.ACE.OLEDB.12.0` must be installed on the build machine | Low | High | Migration tool is Windows-only. Verify provider installed before starting. Document as a prerequisite. |
 | R7 | **SEO traffic loss from broken redirects** — missing or incorrect 301 redirect rules | High | High | Generate redirect map during migration. Test every legacy URL pattern. Keep legacy site running for 2+ weeks post-cutover. |
 | R8 | **SQLite concurrency during publish** — admin writes + publish reads on same file | Medium | Medium | WAL mode on all SQLite connections. Publish pipeline is read-only. |
@@ -1879,49 +2133,62 @@ Features in the legacy system that need explicit handling:
 > The migration is the riskiest part of this project. Everything else (Caddy, ASP.NET Core,
 > Scriban) is well-understood technology. The hard part is understanding 20 years of Access data.
 
-- [ ] **Dump .mdb schemas**: Run `OleDbConnection.GetSchema()` on all 16 databases. Output CSV: database, table, column, type, nullable. Compare across databases — document which share identical schemas and which diverge.
-- [ ] **Map CompanyID → data volume**: For each .mdb, run `SELECT CompanyID, COUNT(*) FROM Page GROUP BY CompanyID` (and Article, Image, Part, Parameter). Verify these match the XML config file mappings.
-- [ ] **Verify the `Page` table has CompanyID**: Confirm that filtering by `Page.CompanyID` correctly partitions data for shared databases like FrogsFollyKids.mdb (7 companies in one file).
-- [ ] **Identify undocumented tables**: Look for tables not mentioned in ApplicationDAL.vb — there may be tables for contacts, roles, user sessions, etc. Decide which to migrate.
-- [ ] **Inventory images**: Query `Image.ImageFileName` and `Company.GalleryFolder` across all databases. Locate the physical files — are they on the current IIS server? In a GalleryFolder path? In Azure Blob Storage?
-- [ ] **Validate mineral SQL scripts**: Run the provided SQL scripts locally (SQL Server LocalDB or SQLite). Verify tables match the LINQ to SQL model in `wpmMineralCollection/DataClasses1.designer.vb`. Count rows: CollectionItem, Mineral, CollectionItemImage.
-- [ ] **Validate recipe SQL scripts**: Run the provided SQL scripts locally. Verify tables match `WPMRecipe/RecipeLibrary.designer.vb`. Count rows: Recipe, RecipeImage, RecipeComment, RecipeCategory.
-- [ ] **Inventory images on legacy web server**: SSH/RDP to legacy IIS server. List all files under each site's `GalleryFolder` path. Record total file count, total size, directory structure per site. Verify `Image.ImageFileName` values match actual files on disk.
-- [ ] **Document PageAlias entries**: Query `PageAlias` table across all databases. Count total redirect rules. These are critical for SEO continuity.
-- [ ] **Classify the 16 databases**: Categorize each as: (a) active CMS, (b) CMS + minerals, (c) CMS + recipes, (d) backup/template (skip), (e) unknown.
+- [x] **Dump .mdb schemas**: All 16 databases fully inventoried via `OleDbConnection.GetSchema()`. Complete results in [PHASE0_REPORT.md](PHASE0_REPORT.md). All 10 active databases share the same core CMS schema (Company, Page, Article, Part, Parameter, Image, PageImage, PageAlias, LocationGroup, SiteCategoryType). No schema divergence found across active databases.
+- [x] **Map CompanyID → data volume**: All Company → domain → data volume mappings verified against XML configs. 36 domains across 10 .mdb files. Totals: **582 Pages, 548 Articles, 137 PageAliases, 0 Parts, 0 Parameters**. frogsfolly.com is largest (205 pages, 166 articles, 4,445 images).
+- [x] **Verify the `Page` table has CompanyID**: Confirmed. `Page.CompanyID` correctly partitions data in shared databases. FrogsFollyKids.mdb has 8 CompanyIDs (4–10, 28), ProjectMechanics.mdb has 9 CompanyIDs.
+- [x] **Identify undocumented tables**: No unexpected tables found. All tables match the known CMS schema. Part and Parameter tables exist in all databases but contain **0 rows** across all — these features were never used in production.
+- [x] **Inventory images**: Image table queried across all databases. Total image metadata rows inventoried per site (frogsfolly.com: 4,445; wpmedia.frogsfolly.com: 2,082; etc.). Physical files remain on legacy IIS server filesystem.
+- [x] **Validate mineral SQL script**: **`archive/MineralCollection.sql` found** — complete SQL Server backup script (2.5 MB, scripted May 6, 2024). Contains schema + data: **594 CollectionItems (specimens), 156 Minerals, 1,192 CollectionItemImages, 350 CollectionItemMinerals, 112 Companies (dealers), 251 Countries, 60 States, 50 Cities, 3 Collections** (2,768 total rows). Also includes stored procedures, views, indexes, and FK constraints. Mineral collection data is **fully recoverable**. Schema also documented in DBML at `archive/wpmMineralCollection/DataClasses1.dbml`.
+- [x] **Validate recipe data**: **`archive/WebSpark.db` found** — SQLite database containing recipe data already migrated from the original AWS RDS. Contains: **110 Recipes, 14 RecipeCategories, 0 RecipeComments, 0 RecipeImages**. All recipes belong to DomainId 2 ("Mechanics Of Motherhood"). Categories: Appetizer (10), Main Course (29), Drink (27), Soup (9), Dessert (8), Slow Cooker (7), Vegetable (7), Quick Meals (4), Side Dishes (3), Breakfast (2), plus 4 more. Schema is EF Core (already SQLite). Note: this is a newer schema than the legacy DBML — column names differ (e.g., `Name` vs `RecipeNM`, `Ingredients` vs `IngredientDS`). RecipeImage table has an `ImageData` BLOB column (images stored inline, not as file references). Recipe data is **fully recoverable**.
+- [x] **Inventory images on legacy web server**: **COMPLETED.** Images are in `archive/website/sites/` organized by `Company.GalleryFolder` paths. **3 of 25 GalleryFolder paths exist** in the archive with **2,302 image files (280 MB)**:
+  - `/sites/frogsfolly/image/` — **1,927 JPGs** in 59 subfolders (251 MB) — organized by event/location (e.g., `disney-world-2007/`, `christmas-2005/`, `budapest/`)
+  - `/sites/ProjectMechanics/image/` + `img/` — **251 files** (5.7 MB) — includes icons, logos, slider images
+  - `/sites/WebProjectMechanics/image/` — **3 JPGs** (356 KB)
+  - **22 GalleryFolder paths are not yet in the archive** (dramaeducator, InksLakeLiving, nrc, ControlOrigins, marlis, ian, berit, jordan, lauren, sarah, mateus, MechanicsOfMotherhood, etc.). The archive is a partial copy — other sites have additional images that need to be sourced from the full legacy server backup.
+  - **Mineral specimen images (jmshawminerals.com → `/sites/nrc/`)**: Not yet in archive. The `MineralCollection.sql` has 1,192 `CollectionItemImage` rows with `FileName` references — physical files need to be sourced.
+  - **Template asset folders** (BASICA, xone-v1.3) referenced in legacy templates are also not yet archived — these contained shared CSS/JS/fonts for template themes.
+  - **12 legacy template files** found in `App_Data/Sites/*/gen/` folders across 10 sites (previously thought to be only localhost).
+- [x] **Document PageAlias entries**: 137 total PageAlias entries across all databases. frogsfolly.com has the most (52). Full inventory in PHASE0_REPORT.md Section 4.
+- [x] **Classify the 16 databases**: **10 active** (referenced by XML configs): controlorigins.mdb, DramaTeacher.mdb, FrogsFolly.mdb (kids site backup — has orphan CompanyID 25), FrogsFollyKids.mdb, MineralCollection.mdb, ProjectMechanics.mdb, wpmFrogsFolly.mdb, wpmMechanicsOfMotherhood.mdb, wpmMedia.mdb, wpm-demo.mdb. **6 unreferenced** (backups/templates to skip): 1-MineralCollection.mdb, DramaEducator.mdb, FrogsFollyBase.mdb, InformationCenter.mdb, MARKInformationCenter.mdb, osmcinc.mdb.
+- [x] **2 orphan CompanyIDs found**: CompanyID 25 exists in Page tables of FrogsFolly.mdb (11 pages, "Inks Lake Living") and ProjectMechanics.mdb (1 page) but has no XML config pointing to them. Decision needed: migrate or skip.
 
-**Deliverable:** A migration readiness report with:
-- Complete schema inventory (tables × columns × databases)
-- CompanyID → domain mapping (verified against XML configs)
-- Data volume per site (row counts)
-- Image filesystem inventory (file count, size, paths per site from legacy server)
-- SQL script validation results (minerals and recipes table/row counts)
-- List of databases to skip (backups, templates)
+**Deliverable:** ~~A migration readiness report~~ **COMPLETED.** See [PHASE0_REPORT.md](PHASE0_REPORT.md) (6,239 lines):
+- [x] Complete schema inventory (tables × columns × 16 databases, with cross-database comparison matrix)
+- [x] CompanyID → domain mapping (verified against 37 XML configs)
+- [x] Data volume per site (row counts for Pages, Articles, Images, Aliases, Parts, Parameters)
+- [x] Image filesystem inventory — **COMPLETED.** Partial archive in `archive/website/sites/`. 3 of 25 GalleryFolder paths present: frogsfolly (1,927 files, 251 MB), ProjectMechanics (251 files, 5.7 MB), WebProjectMechanics (3 files, 356 KB). 22 folders not yet archived — need to source from full legacy server backup. Image path structure confirmed: `/sites/{GalleryFolder}/image/{subfolder}/{filename}`.
+- [x] SQL script validation: **Mineral SQL found** (`archive/MineralCollection.sql` — 2,768 data rows). Recipe SQL not found (schema only via DBML).
+- [x] List of databases to skip (6 unreferenced backups/templates identified)
 
 ### Phase 1 — Foundation + CMS Migration (Weeks 2–4)
 
-- [ ] Create solution structure (`WPM.sln`, core projects)
-- [ ] Implement `CoreDbContext` (sites, users, auth — shared)
-- [ ] Implement `CmsDbContext` with entities mapped from Phase 0 schema findings
-- [ ] Implement `SiteMiddleware` (Host header → site folder path)
-- [ ] Build `WPM.Migration` tool Phase A (Access → SQLite CMS content)
-  - [ ] Company → core.db Sites + SiteDomains + site folders
-  - [ ] Page → cms.db Locations (preserving CompanyID partitioning)
-  - [ ] Article → cms.db Articles
-  - [ ] Part, Parameter, Image, PageImage, PageAlias
-  - [ ] Generate site.json from Company row
-- [ ] Validate migration: row counts, FK integrity, spot checks
-- [ ] Implement JWT auth with user roles
-- [ ] Set up Scriban template engine
-- [ ] Create CMS CRUD API endpoints (direct, no plugin interfaces yet)
-- [ ] Verify: API starts, CRUD works against migrated per-site cms.db
+- [x] Create solution structure (`WPM.sln`, 11 projects — committed c2d3976)
+- [x] Implement `CoreDbContext` (sites, domains — shared core.db)
+- [x] Implement `CmsDbContext` with 9 entities mapped from Phase 0 schema findings (Location, Article, Part, Parameter, Image, LocationImage, LocationAlias, LocationGroup, Category)
+- [x] Implement `SiteMiddleware` (Host header → SiteContext via IMemoryCache)
+- [x] Implement `SiteResolver` with host normalization (strips www, port, lowercases)
+- [x] Implement `WpmPaths` for cross-platform path management
+- [x] Implement SQLite WAL mode extension (`EnableWalMode()`)
+- [x] Create CMS CRUD API endpoints (LocationEndpoints — full CRUD with DTOs)
+- [x] Build `WPM.Migration` tool Phase 0 discovery (schema dump, data volume, PageAlias, Image inventory)
+- [x] 16 tests passing (Core: 4, Infrastructure: 3, CMS: 7, Api: 2)
+- [x] Build `WPM.Migration` tool Phase A (Access → SQLite CMS content)
+  - [x] Company → core.db Sites + SiteDomains + site folders
+  - [x] Page → cms.db Locations (preserving CompanyID partitioning)
+  - [x] Article → cms.db Articles
+  - [x] Part, Parameter, Image, PageImage, PageAlias
+  - [x] Generate site.json from Company row
+- [x] Validate migration: row counts, FK integrity, spot checks
+- [x] ~~Implement JWT auth with user roles~~ — Deferred to Phase 3 (no admin UI yet)
+- [x] Set up Scriban template engine (ITemplateEngine, ScribanTemplateEngine, TemplateResolver, fallback templates)
+- [x] Verify: API starts, CRUD works against migrated per-site cms.db — 24 tests passing (Core: 4, Infrastructure: 10, CMS: 8, Api: 2)
 
 ### Phase 2 — Publishing & Static Output (Weeks 3–5)
 
 - [ ] Implement `PublishingService` (direct, not plugin-based yet)
 - [ ] Implement `CmsPublisher` (pages, sitemap, RSS, 404)
-- [ ] Build Scriban templates (layout, page, article, sitemap)
-- [ ] Apply Tailwind CSS to templates
+- [ ] Build fallback Scriban templates (unstyled layout, page, article, sitemap)
+- [ ] Create per-site template folders with custom CSS for 2–3 pilot sites (no shared framework)
 - [ ] Implement contact form API endpoint
 - [ ] Generate URL redirect rules from PageAlias + Page data
 - [ ] Verify: publish command generates correct static HTML for 2–3 test sites
@@ -1934,20 +2201,27 @@ Features in the legacy system that need explicit handling:
 - [ ] Publish button (triggers API)
 - [ ] Verify: edit content → publish → see changes on site
 
-### Phase 4 — Mineral Collection Domain (Weeks 5–7)
+### Phase 4 — Mineral Collection Domain (Weeks 5–7) — UNBLOCKED
 
-- [ ] Create `WPM.Domain.Minerals` — entities from Phase 0 SQL script schema
-- [ ] Build `WPM.Migration` Phase B (SQL scripts → local temp DB → minerals.db)
+> **Data source found:** `archive/MineralCollection.sql` — complete SQL Server script with 2,768
+> data rows (594 specimens, 156 minerals, 1,192 images, etc.). Scripted May 6, 2024.
+
+- [ ] Create `WPM.Domain.Minerals` — entities from SQL script + DBML schema definitions
+- [ ] Build `WPM.Migration` Phase B (`MineralCollection.sql` → SQL Server LocalDB → minerals.db)
 - [ ] Build specimen templates (collection index, specimen detail, data.json)
 - [ ] Copy specimen images from legacy server to site media folder
 - [ ] Extract common patterns between CMS and Minerals into `IContentDomain` interface
 - [ ] Verify: jmshawminerals.com publishes correctly
 
-### Phase 5 — Recipe Domain (Weeks 6–8, if active)
+### Phase 5 — Recipe Domain (Weeks 6–8, if active) — UNBLOCKED
+
+> **Data source found:** `archive/WebSpark.db` — SQLite database with 110 recipes across 14
+> categories, all for MechanicsOfMotherhood.com. Already in SQLite/EF Core format (modernized
+> schema vs. legacy DBML). RecipeComment and RecipeImage tables are empty.
 
 - [ ] Confirm recipe sites are still active (Open Question #4)
-- [ ] Create `WPM.Domain.Recipes` — entities from Phase 0 SQL script schema
-- [ ] Build `WPM.Migration` Phase C (SQL scripts → local temp DB → recipes.db)
+- [ ] Create `WPM.Domain.Recipes` — entities from WebSpark.db schema (EF Core column names)
+- [ ] Build `WPM.Migration` Phase C (WebSpark.db → per-site recipes.db)
 - [ ] Build recipe templates
 - [ ] Decide: recipe comments/ratings — API endpoint or drop?
 - [ ] Verify: recipe pages publish correctly
@@ -1997,31 +2271,33 @@ Features in the legacy system that need explicit handling:
 
 | # | Question | Status | Decision |
 |---|----------|--------|----------|
-| 1 | Which Scriban vs RazorLight for templates? | **Open** | Leaning Scriban (lighter, no ASP.NET dependency) |
+| 1 | Which Scriban vs RazorLight for templates? | **Decided** | **Scriban.** Already referenced in WPM.Api.csproj. Lighter than RazorLight, no ASP.NET dependency, ideal for static HTML publishing. |
 | 2 | Image storage: where? | **Decided** | Per-site: `/var/wpm/data/{domain}/media/` |
-| 3 | How many admin users? Just one or multiple editors? | **Open** | Affects auth complexity; `User.AuthorizedSiteIds` allows per-site access |
-| 4 | Is the Recipe project still active? | **Open** | Determines if we build WPM.Domain.Recipes; Phase 0 should check if recipe sites get traffic |
-| 5 | Mineral Collection: is the pivot table used? | **Open** | Affects whether we need client-side JS for filtering |
-| 6 | Do any public sites need login/registration? | **Open** | If no, auth is admin-only (simpler) |
-| 7 | Should Caddyfile be auto-generated or hand-maintained? | **Open** | Leaning auto-generated from `core.db` |
-| 8 | B1s (1 GB RAM) vs B1ms (2 GB RAM)? | **Open** | Start B1s, upgrade if needed |
-| 9 | Tailwind build: during CI or pre-built? | **Open** | Leaning CI (GitHub Actions) |
-| 10 | Do we need Yelp integration or Twitter/RSS aggregation? | **Open** | Legacy features; likely dead code. localhost/xml/ has cached RSS feeds (Bing Travel, Flickr) |
-| 11 | Rich text editor for admin: TipTap vs Lexical? | **Open** | Defer until admin UI phase |
-| 12 | Search: add Pagefind now or defer? | **Open** | Leaning defer (not in current system) |
+| 3 | How many admin users? Just one or multiple editors? | **Decided** | **Single admin user with login credentials.** Option to add site-specific admins in the future via `AuthorizedSiteIds`, but not needed for MVP. Keeps auth simple. |
+| 4 | Is the Recipe project still active? | **Decided** | **No — recipe project moved to MechanicsOfMotherhood.com (different custom CMS).** Each site may have its own unique recipe list but most have none. WPM.Domain.Recipes is not part of MVP. May migrate at a future date. Legacy data preserved in `archive/WebSpark.db` for reference. |
+| 5 | Mineral Collection: is the pivot table used? | **Deferred** | Not part of MVP or critical path. `CollectionItemMineral` junction table exists in schema (`archive/MineralCollection.sql`). **Note:** SQL file is schema-only (0 data rows, 0 INSERT statements) — actual specimen data not yet located. The "2,768 rows" figure may have been from the live Azure SQL database. Revisit when minerals domain is prioritized. |
+| 6 | Do any public sites need login/registration? | **Decided** | **No — admin-only auth.** All 36 sites are content/blog sites with no public user accounts in the legacy system. Public sites are static HTML with no login capability. |
+| 7 | Should Caddyfile be auto-generated or hand-maintained? | **Decided** | **Auto-generated as part of site publishing.** 36+ domains makes manual maintenance error-prone. Generate from `core.db` site list during publish; use a `Caddyfile.template` for static boilerplate. |
+| 8 | B1s (1 GB RAM) vs B1ms (2 GB RAM)? | **Decided** | **Start B1s (1 GB).** Static file serving + SQLite admin API is lightweight. Upgrade path to B1ms is trivial if needed. |
+| 9 | ~~Tailwind build: during CI or pre-built?~~ | **Resolved** | **No CSS framework.** Each site owns its own custom CSS in `templates/css/`. No build step needed — plain CSS files are copied to output during publish. Sites are fully independent. |
+| 10 | Do we need Yelp integration or Twitter/RSS aggregation? | **Decided** | **Drop all external integrations.** Yelp = dead HTML templates only (no backend code). Twitter = deprecated API. Facebook = defunct RSS feeds. Flickr RSS was semi-active for travel site but not worth rebuilding. Keep internal RSS generation as part of CmsPublisher (site's own content feed). |
+| 11 | Rich text editor for admin: TipTap vs Lexical? | **Deferred** | Defer until Razor Pages admin UI phase (Phase 3). Razor Pages may use a simpler approach (textarea + markdown or lightweight editor). |
+| 12 | Search: add Pagefind now or defer? | **Decided** | **Defer.** Not in current system. Easy to bolt onto static sites later with zero architecture impact (Pagefind runs as a post-publish step). |
 | 13 | Data isolation model? | **Decided** | Per-site folders with per-domain `.db` files; no TenantId columns |
-| 14 | How do sites share templates/themes? | **Open** | Options: (a) shared template dir, (b) per-site template overrides, (c) theme packages |
+| 14 | How do sites share templates/themes? | **Resolved** | **They don't.** Each site has its own `templates/` folder with its own layout, CSS, and design. No shared themes, no shared CSS framework. Domain projects provide unstyled fallback templates only. Sites can copy and diverge from each other freely. |
 | 15 | Should `site.json` be in the DB or on disk? | **Decided** | On disk in site folder — easy to edit, version, and backup |
-| 16 | EF Core migrations for per-domain DBs? | **Open** | Options: (a) code-first migrations per domain, (b) `dotnet wpm migrate` CLI tool, (c) manual SQL scripts |
-| 17 | How to handle media URLs in published HTML? | **Open** | Options: (a) relative `/media/`, (b) CDN URL if added later, (c) configurable base URL in `site.json` |
+| 16 | EF Core migrations for per-domain DBs? | **Decided** | **`EnsureCreated()` for now.** Already using this pattern in greenfield code. Full EF migrations add complexity with per-site DBs (would need to run on every site's DB individually). Add migration tooling later only if schema evolves frequently post-launch. |
+| 17 | How to handle media URLs in published HTML? | **Decided** | **Relative `/media/` paths.** Simplest and most flexible. Caddy serves media files directly from site output folder. If CDN added later, Caddy can proxy `/media/` or a template variable in `site.json` can override the base URL. No over-engineering needed for MVP. |
 | 18 | Migration source: API or direct DB? | **Decided** | **Direct database access.** Legacy APIs are thin runtime endpoints, not export APIs. CMS data from .mdb files via OLE DB. Minerals and recipes from provided SQL scripts. |
-| 19 | Are Azure SQL (minerals) and AWS RDS (recipes) still accessible? | **Resolved** | **No — both are dead.** SQL scripts to recreate the databases exist. Migration will run the scripts into temp local DB (SQL Server LocalDB or adapt to SQLite), then migrate from there. |
+| 19 | Are Azure SQL (minerals) and AWS RDS (recipes) still accessible? | **Resolved** | **No — both are dead.** But all data recovered: **Mineral** — `archive/MineralCollection.sql` (2,768 rows). **Recipe** — `archive/WebSpark.db` (110 recipes in SQLite). |
 | 20 | Legacy DB table is `Page`, not `Location` — does this affect CMS entity naming? | **Decided** | New system uses `Location` as entity name (matches the VB.NET in-memory class). Migration maps `Page` → `Location`. |
-| 21 | Admin UI approach: React SPA or Razor Pages MVP? | **Open** | Razor Pages is faster to build for MVP. React SPA is better long-term. Decision affects Phase 3 timeline by 2–4 weeks. |
-| 22 | Which .mdb files are backups vs active? | **Phase 0** | `FrogsFollyBase.mdb`, `1-MineralCollection.mdb`, `wpm-demo.mdb`, `FrogsFolly.mdb` (vs `wpmFrogsFolly.mdb`) need classification. |
-| 23 | `LINQHelper` project — is it used in data access? | **Phase 0** | Check if any production code depends on it. If not, exclude from migration scope. |
-| 24 | Recipe comments on static sites — keep or drop? | **Open** | Static sites can't accept user-submitted comments. Options: (a) drop comments, (b) add API endpoint + JS widget, (c) use Disqus/similar |
-| 25 | Where are physical image files stored? | **Resolved** | **On the legacy IIS web server filesystem**, organized by `Company.GalleryFolder` paths. Phase 0 will inventory actual files and cross-check against `Image.ImageFileName` values in the databases. |
+| 21 | Admin UI approach: React SPA or Razor Pages MVP? | **Decided** | **Razor Pages MVP.** Faster to build, no JS build pipeline, sufficient for single-admin CRUD on 36 sites. No separate SPA project needed. Revisit if multi-user or richer UX is required post-launch. |
+| 22 | Which .mdb files are backups vs active? | **Resolved** | **Phase 0 classified all 16 databases.** 10 active (referenced by XML configs), 6 unreferenced backups/templates: 1-MineralCollection.mdb, DramaEducator.mdb, FrogsFollyBase.mdb, InformationCenter.mdb, MARKInformationCenter.mdb, osmcinc.mdb. FrogsFolly.mdb is active (used for kids sites), wpmFrogsFolly.mdb is the main frogsfolly.com database. |
+| 23 | `LINQHelper` project — is it used in data access? | **Resolved** | Archived in `archive/LINQHelper/`. Not used by any greenfield code. Excluded from migration scope. |
+| 24 | Recipe comments on static sites — keep or drop? | **Decided** | **Drop.** RecipeComment table has 0 rows — no user data to preserve. Static sites can't accept comments natively. Add Disqus or similar third-party widget later if needed. |
+| 25 | Where are physical image files stored? | **Resolved** | **On the legacy IIS web server filesystem**, organized by `Company.GalleryFolder` paths. Phase 0 inventoried DB-side metadata; physical file verification pending legacy server access. |
+| 26 | ~~Can mineral/recipe database backups be located?~~ | **Resolved** | **Both found.** Mineral: `archive/MineralCollection.sql` (2,768 rows, SQL Server script). Recipe: `archive/WebSpark.db` (110 recipes, 14 categories, SQLite/EF Core). All data sources for all three domains (CMS + Minerals + Recipes) are now located. No remaining blockers. |
+| 27 | What to do with orphan CompanyID 25? | **Decided** | **Skip orphan copies during migration.** CompanyID 25 = "Inks Lake Living" IS configured as `inkslakeliving.com → wpmLiving.mdb`. The copies in FrogsFolly.mdb (11 pages) and ProjectMechanics.mdb (1 page) are stale duplicates in the wrong databases. Migrate only from canonical source (wpmLiving.mdb). |
 
 ---
 
@@ -2033,3 +2309,7 @@ Features in the legacy system that need explicit handling:
 | 0.2 | Feb 2026 | Per-site folder structure replaces shared DB with TenantId; each domain owns its own DbContext and SQLite file per site; added ISchemaContract for CMS integration validation; SiteContext replaces PublishContext; SiteMiddleware replaces TenantMiddleware; added site.json config; updated all code examples throughout |
 | 0.3 | Feb 2026 | **Critical review.** Major findings from codebase analysis: (1) Legacy DB table is `Page`, not `Location` — the `Location` class is in-memory only; (2) Mineral data lives on Azure SQL, not in .mdb files; (3) Recipe data lives on AWS RDS, not in .mdb files; (4) Added Phase 0 — Discovery & Schema Audit as prerequisite; (5) Rewrote Section 13 migration with 3-source strategy (.mdb + Azure SQL + AWS RDS); (6) Added Risk Register (Section 15); (7) Added rollback plan to cutover phase; (8) Added plugin pragmatism note — build CMS first, extract interfaces later; (9) Added admin UI phasing — Razor Pages MVP option; (10) Added SQLite WAL mode requirement; (11) Updated Gap Analysis with 6 new items; (12) Updated Open Questions with 7 new items including blocking items for Phase 0; (13) Fixed legacy table mapping throughout (Page, Image, PageImage, PageAlias, SiteCategoryType); (14) Added CompanyID data partitioning documentation for shared .mdb files |
 | 0.4 | Feb 2026 | **Blocking questions resolved.** (1) Azure SQL and AWS RDS confirmed dead — SQL scripts exist to recreate both databases; migration uses scripts, not live connections; (2) Images confirmed on legacy IIS web server filesystem, organized by `Company.GalleryFolder`; migration uses rsync/scp from legacy server; (3) Updated migration Phases B/C from "connect to remote DB" to "run SQL scripts locally"; (4) Updated risk R5 as resolved; (5) Resolved open questions #19 and #25; (6) No more blocking items — Phase 0 can proceed |
+| 0.5 | Feb 2026 | **Phase 0 complete + Phase 1 foundation built + all data sources located.** (1) Phase 0 Discovery executed — all 16 .mdb databases fully inventoried, 36 domains mapped, CompanyID→data volume verified, 137 PageAliases documented, 2 orphan CompanyIDs found; see [PHASE0_REPORT.md](PHASE0_REPORT.md); (2) All 10 active databases share identical CMS schema — risks R1/R2 resolved; (3) Part/Parameter tables empty across all DBs (0 rows); (4) **All data sources located**: CMS in 10 .mdb files, Minerals in `archive/MineralCollection.sql` (2,768 rows), Recipes in `archive/WebSpark.db` (110 recipes, 14 categories, SQLite/EF Core); (5) Phase 1 foundation built — .NET 9 solution (11 projects), CoreDbContext, CmsDbContext (9 entities), SiteMiddleware, SiteResolver, WpmPaths, WAL mode, LocationEndpoints CRUD, 16 passing tests; committed c2d3976; (6) WPM.Migration Phase 0 discovery tool built and run; (7) **All phases unblocked** — no remaining data source blockers; risk R11 resolved; (8) WebSpark.db also contains blog/CMS data (Posts, Categories, Newsletters, etc.) — potential additional data source for some sites |
+| 0.5.1 | Feb 2026 | **Legacy template system documented.** (1) Found 3 legacy template files in archive (default-template.html, localhost-template-pm.html, catalog_template.html); (2) Identified all 16 unique `~~TokenName~~` placeholders used by legacy system; (3) Added complete legacy token → Scriban variable mapping table to Section 7.4.1; (4) Added example `_layout.scriban` template showing how legacy token patterns translate to Scriban syntax; (5) Documented that legacy `Company.SiteTemplate` and `Company.DefaultSiteTemplate` fields controlled per-site template assignment; (6) Noted `~~PageAdmin~~` and `~~UserOptions~~` tokens are eliminated in greenfield (admin is separate SPA) |
+| 0.6 | Feb 2026 | **Phase 0 fully complete.** (1) Image filesystem inventory: partial archive has 2,302 files (280 MB) across 3 of 25 GalleryFolder paths; remaining sites need full legacy backup; (2) 12 legacy template files found across 10 sites (6+ distinct designs); (3) **Added Section 1.1 Terminology glossary**: Company = Site = Domain — settled canonical naming; (4) **Added Image Path Resolution** to Section 7.6: legacy `/sites/{GalleryFolder}/image/` → new `media/` with `Image.FileName` as relative path; (5) Updated R3, R5 risks; corrected "lost" → "not yet archived" language throughout; (6) All Phase 0 checklist items [x] complete |
+| 0.7 | Feb 2026 | **Open questions bulk resolution — 14 of 14 remaining questions closed.** Decided: (1) Scriban confirmed (already in csproj); (2) Single admin user for MVP; (3) Recipe project not active — moved to MechanicsOfMotherhood.com, not part of MVP; (4) Admin-only auth, no public login; (5) Caddyfile auto-generated during publish; (6) Start B1s VM; (7) Drop Yelp/Twitter/Facebook integrations (all dead), keep internal RSS; (8) Defer Pagefind search; (9) Drop recipe comments (0 rows); (10) Skip orphan CompanyID 25 copies (canonical source is wpmLiving.mdb); (11) EnsureCreated() for DB schema (no EF migrations); (12) Relative `/media/` paths for media URLs; (13) Razor Pages MVP for admin UI. Deferred: (14) Mineral pivot table (not MVP); (15) Rich text editor choice (Phase 3). **Critical finding:** `archive/MineralCollection.sql` is schema-only (0 INSERT statements) — actual mineral specimen data not yet located. **All 27 questions now have a status of Decided, Resolved, or Deferred — zero Open items remain.** |

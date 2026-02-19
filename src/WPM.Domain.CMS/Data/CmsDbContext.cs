@@ -101,9 +101,11 @@ public class CmsDbContext : DbContext
             e.HasKey(a => a.Id);
             e.Property(a => a.AliasPath).IsRequired().HasMaxLength(1000);
             e.HasIndex(a => a.AliasPath);
+            e.Property(a => a.TargetUrl).HasMaxLength(1000);
             e.HasOne(a => a.Location)
                 .WithMany(l => l.Aliases)
                 .HasForeignKey(a => a.LocationId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
         });
 

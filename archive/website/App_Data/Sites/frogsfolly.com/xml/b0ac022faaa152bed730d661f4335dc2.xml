@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Funny Quote of the Day</title>
+    <link>https://www.brainyquote.com/feeds/funny</link>
+    <description>Funny Quote of the Day from BrainyQuote.com</description>
+    <language>en-us</language>
+    <webMaster>bqrss@brainyquote.com (Web Master)</webMaster>
+    <managingEditor>bqrss@brainyquote.com (Web Master)</managingEditor>
+    <pubDate>Tue, 17 Feb 2026 00:00:00 CST</pubDate>
+    <lastBuildDate>Tue, 17 Feb 2026 00:00:00 CST</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <title>Funny Quote of the Day</title>
+      <url>https://www.brainyquote.com/images/rss_brainyquote.gif</url>
+      <link>https://www.brainyquote.com/feeds/funny</link>
+      <width>88</width>
+      <height>31</height>
+      <description>logo</description>
+    </image>
+    <item>
+      <title>J. D. Salinger</title>
+      <description>"I am a kind of paranoid in reverse. I suspect people of plotting to make me happy."</description>
+      <link>https://www.brainyquote.com/authors/j-d-salinger-quotes</link>
+      <guid isPermaLink="false">https://www.brainyquote.com/quote-20260217-0</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 CST</pubDate>
+    </item>
+    <item>
+      <title>Clint Eastwood</title>
+      <description>"There's only one way to have a happy marriage and as soon as I learn what it is I'll get married again."</description>
+      <link>https://www.brainyquote.com/authors/clint-eastwood-quotes</link>
+      <guid isPermaLink="false">https://www.brainyquote.com/quote-20260217-1</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 CST</pubDate>
+    </item>
+    <item>
+      <title>Alfred Hitchcock</title>
+      <description>"A good film is when the price of the dinner, the theatre admission and the babysitter were worth it."</description>
+      <link>https://www.brainyquote.com/authors/alfred-hitchcock-quotes</link>
+      <guid isPermaLink="false">https://www.brainyquote.com/quote-20260217-2</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 CST</pubDate>
+    </item>
+    <item>
+      <title>Lily Tomlin</title>
+      <description>"If love is the answer, could you please rephrase the question?"</description>
+      <link>https://www.brainyquote.com/authors/lily-tomlin-quotes</link>
+      <guid isPermaLink="false">https://www.brainyquote.com/quote-20260217-3</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 CST</pubDate>
+    </item>
+  </channel>
+</rss>
+

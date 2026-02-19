@@ -19,4 +19,8 @@
     <ProjectReference Include="..\WPM.Core\WPM.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Templates\**\*.scriban" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

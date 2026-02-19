@@ -23,6 +23,7 @@ builder.Services.AddDbContext<CoreDbContext>(options =>
 // Services
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ISiteResolver, SiteResolver>();
+builder.Services.AddSingleton<ITemplateEngine, ScribanTemplateEngine>();
 
 var app = builder.Build();
 

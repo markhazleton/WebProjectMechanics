@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Company xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://projectmechanics.com">
+  <CompanyID>29</CompanyID>
+  <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+  <DomainName>jmshawminerals.com</DomainName>
+  <CompanyTitle>J.M. Shaw Mineral Collection - &lt;PageName&gt;</CompanyTitle>
+  <HomeLocationID />
+  <DefaultArticleID>506</DefaultArticleID>
+  <SitePrefix>jmshaw3</SitePrefix>
+  <DefaultSitePrefix>jmshaw3</DefaultSitePrefix>
+  <SiteGallery>/sites/nrc</SiteGallery>
+  <SiteCity />
+  <SiteState />
+  <SiteCountry />
+  <PostalCode />
+  <UseBreadCrumbURL>true</UseBreadCrumbURL>
+  <FromEmail />
+  <Locations>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>767</LocationID>
+      <ArticleID>506</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Main</LocationTypeCD>
+      <LocationTypeID>26</LocationTypeID>
+      <GroupID>4</GroupID>
+      <LocationName>J.M. Shaw Mineral Collection</LocationName>
+      <LocationTitle>J.M. Shaw Mineral Collection</LocationTitle>
+      <LocationDescription>J.M. Shaw Mineral Collection</LocationDescription>
+      <LocationKeywords>J.M. Shaw Mineral Collection</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName />
+      <LocationBody />
+      <LocationSummary>J.M. Shaw Mineral Collection</LocationSummary>
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID />
+      <DefaultOrder>0</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/default.aspx?c=767</TransferURL>
+      <BreadCrumbURL>/j.m.-shaw-mineral-collection</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;J.M. Shaw Mineral Collection&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>767</LocationID>
+          <Name>J.M. Shaw Mineral Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2021-03-08T16:05:46</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>776</LocationID>
+      <ArticleID>0</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Manage Collection Data</LocationName>
+      <LocationTitle>Manage Collection Data</LocationTitle>
+      <LocationDescription>Manage Collection Data</LocationDescription>
+      <LocationKeywords>Manage Collection Data</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName>/MineralCollection/admin.aspx?c=776&amp;a=0</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID>774</ParentLocationID>
+      <DefaultOrder>1</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/MineralCollection/admin.aspx?c=776&amp;a=0</TransferURL>
+      <BreadCrumbURL>/manage-collection-data</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/MineralCollection/admin.aspx?c=776&amp;a=0" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Manage Collection Data&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL>/the-collection</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>776</LocationID>
+          <Name>Manage Collection Data</Name>
+          <Description>Manage Collection Data</Description>
+          <ParentLocationID>774</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-02-25T05:36:34</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>788</LocationID>
+      <ArticleID>511</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>3</GroupID>
+      <LocationName>Featured Specimens</LocationName>
+      <LocationTitle>Featured Specimens</LocationTitle>
+      <LocationDescription>Featured Specimens</LocationDescription>
+      <LocationKeywords>Featured Specimens</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName>/MineralCollection/view-collection.aspx?CollectionID=2&amp;c=774</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID />
+      <DefaultOrder>2</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/MineralCollection/view-collection.aspx?CollectionID=2&amp;c=774</TransferURL>
+      <BreadCrumbURL>/featured-specimens</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Featured Specimens&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>788</LocationID>
+          <Name>Featured Specimens</Name>
+          <Description>Featured Specimens</Description>
+          <ParentLocationID />
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2016-11-27T07:55:36</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>770</LocationID>
+      <ArticleID>509</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Main</LocationTypeCD>
+      <LocationTypeID>26</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Links</LocationName>
+      <LocationTitle>Links</LocationTitle>
+      <LocationDescription>Links</LocationDescription>
+      <LocationKeywords>Links</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName />
+      <LocationBody>&lt;h2&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;Here are some links to Mineral Related Sites:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="http://mindat.org" target="_blank"&gt;MinDat.org&lt;/a&gt; - the world&amp;#39;s largest public database of mineral information&lt;/li&gt;
+&lt;/ul&gt;</LocationBody>
+      <LocationSummary>Links</LocationSummary>
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID />
+      <DefaultOrder>3</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/default.aspx?c=770</TransferURL>
+      <BreadCrumbURL>/links</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Links&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>770</LocationID>
+          <Name>Links</Name>
+          <Description>Links</Description>
+          <ParentLocationID />
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2021-03-08T16:14:59</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>774</LocationID>
+      <ArticleID>512</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>2</GroupID>
+      <LocationName>The Collection</LocationName>
+      <LocationTitle>The J.M. Shaw Mineral Collection</LocationTitle>
+      <LocationDescription>J.M. Shaw Mineral Collection</LocationDescription>
+      <LocationKeywords />
+      <ImageFileName />
+      <LocationFileName>/MineralCollection/CollectionItemView.aspx?CollectionID=2&amp;c=774</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID />
+      <DefaultOrder>4</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>1</LevelNBR>
+      <TransferURL>/MineralCollection/CollectionItemView.aspx?CollectionID=2&amp;c=774</TransferURL>
+      <BreadCrumbURL>/the-collection</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;The Collection&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL />
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2016-11-26T22:32:29</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>784</LocationID>
+      <ArticleID>0</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Blog</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Documentation</LocationName>
+      <LocationTitle>Documentation</LocationTitle>
+      <LocationDescription>The documentation for how to use the Mineral Collection Site</LocationDescription>
+      <LocationKeywords>Documentation</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName />
+      <LocationBody />
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID>774</ParentLocationID>
+      <DefaultOrder>5</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/default.aspx?c=784&amp;a=0</TransferURL>
+      <BreadCrumbURL>/the-collection/documentation</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/the-collection" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL>/the-collection</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>784</LocationID>
+          <Name>Documentation</Name>
+          <Description>The documentation for how to use the Mineral Collection Site</Description>
+          <ParentLocationID>774</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2016-11-27T07:55:12</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Article</RecordSource>
+      <LocationID>ART-510</LocationID>
+      <ArticleID>510</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Blog</LocationTypeCD>
+      <LocationTypeID>21</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>YouTube Documentation Playlist</LocationName>
+      <LocationTitle>YouTube Documentation Playlist</LocationTitle>
+      <LocationDescription>YouTube Documentation Playlist</LocationDescription>
+      <LocationKeywords>Documentation</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName />
+      <LocationBody>&lt;h2&gt;This is a YouTube playlist of documentation videos for the Mineral Collection site&lt;/h2&gt;
+
+&lt;div class="flex-video"&gt;&lt;iframe frameborder="0" height="600px" src="https://www.youtube.com/embed/videoseries?list=PL6VizbnCZRx_iU_wMgycOXkqCFV5a_L7a" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;</LocationBody>
+      <LocationSummary>YouTube Documentation Playlist</LocationSummary>
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor>Mark Hazleton</LocationAuthor>
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID>784</ParentLocationID>
+      <DefaultOrder>6</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>3</LevelNBR>
+      <TransferURL>/default.aspx?a=510&amp;c=784</TransferURL>
+      <BreadCrumbURL>/the-collection/documentation/youtube-documentation-playlist</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/the-collection" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="/the-collection/documentation" title="The documentation for how to use the Mineral Collection Site"&gt;Documentation&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;YouTube Documentation Playlist&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>784</LocationID>
+          <Name>Documentation</Name>
+          <Description>The documentation for how to use the Mineral Collection Site</Description>
+          <ParentLocationID>774</ParentLocationID>
+          <DisplayURL>/the-collection/documentation</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL>/the-collection</DisplayURL>
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>ART-510</LocationID>
+          <Name>YouTube Documentation Playlist</Name>
+          <Description>YouTube Documentation Playlist</Description>
+          <ParentLocationID>784</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>3</LevelNBR>
+          <MenuLevelNBR>3</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-02-23T13:51:54</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>775</LocationID>
+      <ArticleID>0</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>NOFILENAME</LocationTypeCD>
+      <LocationTypeID>17</LocationTypeID>
+      <GroupID>1</GroupID>
+      <LocationName>Minerals</LocationName>
+      <LocationTitle>Minerals</LocationTitle>
+      <LocationDescription>Find By Minerals</LocationDescription>
+      <LocationKeywords />
+      <ImageFileName />
+      <LocationFileName>/MineralCollection/minerals.aspx?c=775</LocationFileName>
+      <LocationBody />
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID>774</ParentLocationID>
+      <DefaultOrder>7</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/MineralCollection/minerals.aspx?c=775</TransferURL>
+      <BreadCrumbURL>/minerals</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/MineralCollection/minerals.aspx?c=775" title="J.M. Shaw Mineral Collection"&gt;The Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Minerals&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>774</LocationID>
+          <Name>The Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL>/the-collection</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>775</LocationID>
+          <Name>Minerals</Name>
+          <Description>Find By Minerals</Description>
+          <ParentLocationID>774</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2015-03-02T17:32:50</ModifiedDT>
+    </Location>
+    <Location>
+      <RecordSource>Page</RecordSource>
+      <LocationID>790</LocationID>
+      <ArticleID>513</ArticleID>
+      <ImageID>0</ImageID>
+      <LocationTypeCD>Main</LocationTypeCD>
+      <LocationTypeID>26</LocationTypeID>
+      <GroupID>4</GroupID>
+      <LocationName>Terms Of Use</LocationName>
+      <LocationTitle>Terms Of Use</LocationTitle>
+      <LocationDescription>Terms Of Use</LocationDescription>
+      <LocationKeywords>Terms Of Use</LocationKeywords>
+      <ImageFileName />
+      <LocationFileName />
+      <LocationBody>&lt;h2&gt;Terms of Use ("Terms")&lt;/h2&gt;
+&lt;h3&gt;Last updated: November 27, 2016&lt;/h3&gt;
+​&lt;blockquote&gt;
+Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the
+http://JMSHawMinerals.com website (the "Service").
+​&lt;/blockquote&gt;
+&lt;p&gt;
+Your access to and use of the Service is conditioned on your acceptance of and compliance with
+these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+By accessing or using the Service you agree to be bound by these Terms. If you disagree with
+any part of the terms then you may not access the Service.
+&lt;/p&gt;
+&lt;h4&gt;Termination&lt;/h4&gt;
+&lt;p&gt;
+We may terminate or suspend access to our Service immediately, without prior notice or liability,
+for any reason whatsoever, including without limitation if you breach the Terms.
+All provisions of the Terms which by their nature should survive termination shall survive
+termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity
+and limitations of liability.
+&lt;/p&gt;
+&lt;h4&gt;
+Links To Other Web Sites
+&lt;/h4&gt;
+&lt;p&gt;
+Our Service may contain links to third­party web sites or services that are not owned or controlled
+by Us.  We have no control over, and assumes no responsibility for, the content, privacy policies, 
+or practices of any third party web sites or services. You further acknowledge and agree that we 
+shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged 
+to be caused by or in connection with use of or reliance on any such content, goods or services 
+available on or through any such web sites or services.
+&lt;/p&gt;
+&lt;p&gt;
+We strongly advise you to read the terms and conditions and privacy policies of any third­party
+web sites or services that you visit.
+&lt;/p&gt;
+&lt;h4&gt;
+Governing Law&lt;/h4&gt;
+&lt;p&gt;
+These Terms shall be governed and construed in accordance with the laws of the United States of America.
+, without regard to its conflict of law provisions.
+&lt;/p&gt;&lt;p&gt;
+Our failure to enforce any right or provision of these Terms will not be considered a waiver of
+those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the
+remaining provisions of these Terms will remain in effect. These Terms constitute the entire
+agreement between us regarding our Service, and supersede and replace any prior agreements
+we might have between us regarding the Service.
+&lt;/p&gt;
+&lt;h4&gt;
+Changes&lt;h4&gt;
+&lt;p&gt;
+We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a
+revision is material we will try to provide at least 30 days notice prior to any new
+terms taking effect. What constitutes a material change will be determined at our sole discretion.
+&lt;/p&gt;
+&lt;p&gt;
+
+By continuing to access or use our Service after those revisions become effective, you agree to
+be bound by the revised terms. If you do not agree to the new terms, please stop using the
+Service.
+&lt;/p&gt;
+&lt;h4&gt;Contact Us&lt;/h4&gt;
+&lt;p&gt;
+If you have any questions about these Terms, please contact us.
+&lt;/p&gt;</LocationBody>
+      <LocationSummary />
+      <IncludeInNavigation>false</IncludeInNavigation>
+      <RowsPerPage>0</RowsPerPage>
+      <ImagesPerRow>0</ImagesPerRow>
+      <LocationAuthor />
+      <HideGlobalContent>false</HideGlobalContent>
+      <ParentLocationID>767</ParentLocationID>
+      <DefaultOrder>8</DefaultOrder>
+      <SiteCategoryID />
+      <SiteCategoryName />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ActiveFL>true</ActiveFL>
+      <LevelNBR>2</LevelNBR>
+      <TransferURL>/default.aspx?c=790</TransferURL>
+      <BreadCrumbURL>/j.m.-shaw-mineral-collection/terms-of-use</BreadCrumbURL>
+      <BreadCrumbHTML>&lt;ul&gt;&lt;li&gt;&lt;a href="/j.m.-shaw-mineral-collection" title="J.M. Shaw Mineral Collection"&gt;J.M. Shaw Mineral Collection&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Terms Of Use&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</BreadCrumbHTML>
+      <MainMenuURL />
+      <MainMenuLocationID />
+      <MainMenuLocationName />
+      <LocationTrailList>
+        <LocationTrail>
+          <LocationID>767</LocationID>
+          <Name>J.M. Shaw Mineral Collection</Name>
+          <Description>J.M. Shaw Mineral Collection</Description>
+          <ParentLocationID />
+          <DisplayURL>/j.m.-shaw-mineral-collection</DisplayURL>
+          <LevelNBR>1</LevelNBR>
+          <MenuLevelNBR>1</MenuLevelNBR>
+        </LocationTrail>
+        <LocationTrail>
+          <LocationID>790</LocationID>
+          <Name>Terms Of Use</Name>
+          <Description>Terms Of Use</Description>
+          <ParentLocationID>767</ParentLocationID>
+          <DisplayURL />
+          <LevelNBR>2</LevelNBR>
+          <MenuLevelNBR>2</MenuLevelNBR>
+        </LocationTrail>
+      </LocationTrailList>
+      <ModifiedDT>2016-11-27T08:12:36</ModifiedDT>
+    </Location>
+  </Locations>
+  <Parts>
+    <Part>
+      <Title>HeroGraphic</Title>
+      <URL>&lt;section id="home" class="overflow-hidden slider-banner"&gt;
+&lt;div class="main-slider"&gt;
+&lt;ul class="slides"&gt;
+&lt;li class="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"&gt;
+&lt;img src="/sites/xone-v1.3/jms157.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class=""&gt;
+&lt;img src="/sites/xone-v1.3/jms245.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide"&gt;
+&lt;img src="/sites/xone-v1.3/jms806.jpg" alt="" class="img-responsive" draggable="false"&gt;
+&lt;div class="slider-overlay"&gt;
+&lt;div class="slider-table"&gt;
+&lt;div class="slider-vm"&gt;
+&lt;div class="container text-center"&gt;
+&lt;h1&gt;J.M. Shaw Mineral Collection&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="flex-direction-nav"&gt;&lt;li class="flex-nav-prev"&gt;&lt;a class="flex-prev" href="#"&gt;&lt;i class="ion-chevron-left"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class="flex-nav-next"&gt;&lt;a class="flex-next" href="#"&gt;&lt;i class="ion-chevron-right"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/section&gt;</URL>
+      <Description>HeroGraphic</Description>
+      <PartCategoryID>40</PartCategoryID>
+      <PartTypeCD>Affiliate</PartTypeCD>
+      <PartCategoryTitle>CenterColumnLinks</PartCategoryTitle>
+      <PartID>2</PartID>
+      <View>true</View>
+      <ModifiedDT>2021-03-08T16:05:24</ModifiedDT>
+      <PartSortOrder>0</PartSortOrder>
+      <UserID>647</UserID>
+      <AmazonIndex />
+      <CompanyID>29</CompanyID>
+      <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+      <LocationNM>J.M. Shaw Mineral Collection</LocationNM>
+      <LocationID>767</LocationID>
+    </Part>
+    <Part>
+      <Title>AboutUs</Title>
+      <URL />
+      <Description>AboutUs</Description>
+      <PartCategoryID>40</PartCategoryID>
+      <PartTypeCD>Affiliate</PartTypeCD>
+      <PartCategoryTitle>CenterColumnLinks</PartCategoryTitle>
+      <PartID>1</PartID>
+      <View>true</View>
+      <ModifiedDT>2021-03-10T13:04:03</ModifiedDT>
+      <PartSortOrder>10</PartSortOrder>
+      <UserID>647</UserID>
+      <AmazonIndex />
+      <CompanyID>29</CompanyID>
+      <CompanyNM>J.M. Shaw Mineral Collection</CompanyNM>
+      <LocationNM>J.M. Shaw Mineral Collection</LocationNM>
+      <LocationID>767</LocationID>
+    </Part>
+  </Parts>
+  <Parameters>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>3</SortOrder>
+      <ParameterTypeID>3</ParameterTypeID>
+      <ParameterTypeNM>AmazonAssociatesTag</ParameterTypeNM>
+      <ParameterTypeDS>Amazon Associates Token</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue />
+      <ParameterID>PT-3</ParameterID>
+      <ParameterNM>AmazonAssociatesTag</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>2</SortOrder>
+      <ParameterTypeID>2</ParameterTypeID>
+      <ParameterTypeNM>google_ad_client</ParameterTypeNM>
+      <ParameterTypeDS>Google Adsense Code</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue />
+      <ParameterID>PT-2</ParameterID>
+      <ParameterNM>google_ad_client</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>1</SortOrder>
+      <ParameterTypeID>12</ParameterTypeID>
+      <ParameterTypeNM>GoogleVideoRSS</ParameterTypeNM>
+      <ParameterTypeDS>GoogleVideoRSS</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue>http://video.google.com/videosearch?q=~~PageKeywords~~&amp;hl=Den&amp;output=rss</ParameterValue>
+      <ParameterID>PT-12</ParameterID>
+      <ParameterNM>GoogleVideoRSS</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>1</SortOrder>
+      <ParameterTypeID>11</ParameterTypeID>
+      <ParameterTypeNM>GoogleNewsRSS</ParameterTypeNM>
+      <ParameterTypeDS>GoogleNewsRSS</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue>http://news.google.com/news?pz=1&amp;cf=all&amp;ned=us&amp;hl=en&amp;q=~~PageKeywords~~&amp;cf=all&amp;output=rss</ParameterValue>
+      <ParameterID>PT-11</ParameterID>
+      <ParameterNM>GoogleNewsRSS</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>1</SortOrder>
+      <ParameterTypeID>10</ParameterTypeID>
+      <ParameterTypeNM>FlickrRSSFeed</ParameterTypeNM>
+      <ParameterTypeDS>FlickrRSSFeed</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue>http://api.flickr.com/services/feeds/photos_public.gne?format=rss_200&amp;tags=~~PageKeywords~~</ParameterValue>
+      <ParameterID>PT-10</ParameterID>
+      <ParameterNM>FlickrRSSFeed</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>1</SortOrder>
+      <ParameterTypeID>7</ParameterTypeID>
+      <ParameterTypeNM>HeaderScript</ParameterTypeNM>
+      <ParameterTypeDS>HeaderScript</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue />
+      <ParameterID>PT-7</ParameterID>
+      <ParameterNM>HeaderScript</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>1</SortOrder>
+      <ParameterTypeID>1</ParameterTypeID>
+      <ParameterTypeNM>google_analytics_uacct</ParameterTypeNM>
+      <ParameterTypeDS>Google Analytics Code</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue />
+      <ParameterID>PT-1</ParameterID>
+      <ParameterNM>google_analytics_uacct</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>0</SortOrder>
+      <ParameterTypeID>9</ParameterTypeID>
+      <ParameterTypeNM>TwitterSearch</ParameterTypeNM>
+      <ParameterTypeDS>Twitter Search Q Parameter</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue>http://search.twitter.com/search.rss?q=~~CurrentPageName~~+filter%3Alinks&amp;rpp=5&amp;lang=en</ParameterValue>
+      <ParameterID>PT-9</ParameterID>
+      <ParameterNM>TwitterSearch</ParameterNM>
+    </Parameter>
+    <Parameter>
+      <RecordSource>SiteParameterType</RecordSource>
+      <SortOrder>0</SortOrder>
+      <ParameterTypeID>8</ParameterTypeID>
+      <ParameterTypeNM>PageLevelCSS</ParameterTypeNM>
+      <ParameterTypeDS>PageLevelCSS</ParameterTypeDS>
+      <ParameterTypeOrder>0</ParameterTypeOrder>
+      <CompanySiteParameterID>0</CompanySiteParameterID>
+      <CompanyID />
+      <CompanyNM />
+      <LocationID />
+      <LocationNM />
+      <LocationGroupID />
+      <LocationGroupNM />
+      <ParameterValue />
+      <ParameterID>PT-8</ParameterID>
+      <ParameterNM>PageLevelCSS</ParameterNM>
+    </Parameter>
+  </Parameters>
+  <Articles>
+    <Article>
+      <ArticleAuthor>Mark Hazleton</ArticleAuthor>
+      <ArticleBody>&lt;h2&gt;This is a YouTube playlist of documentation videos for the Mineral Collection site&lt;/h2&gt;
+
+&lt;div class="flex-video"&gt;&lt;iframe frameborder="0" height="600px" src="https://www.youtube.com/embed/videoseries?list=PL6VizbnCZRx_iU_wMgycOXkqCFV5a_L7a" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;</ArticleBody>
+      <ArticleDescription>YouTube Documentation Playlist</ArticleDescription>
+      <ArticleID>510</ArticleID>
+      <ArticleModDate>2015-02-23T13:51:54</ArticleModDate>
+      <ArticleName>YouTube Documentation Playlist</ArticleName>
+      <ArticlePageID>784</ArticlePageID>
+      <ArticleSummary>YouTube Documentation Playlist</ArticleSummary>
+      <ArticleURL>/youtube-documentation-playlist</ArticleURL>
+      <CompanyID>29</CompanyID>
+      <ContactID>1</ContactID>
+      <IsArticleActive>true</IsArticleActive>
+      <IsArticleDefault>false</IsArticleDefault>
+      <PageName>YouTube Documentation Playlist</PageName>
+      <RowsPerPage>0</RowsPerPage>
+    </Article>
+  </Articles>
+  <PartCategories>
+    <PartCategory>
+      <ID>18</ID>
+      <Name>LeftColumnLinks</Name>
+      <Description>Links to display in the LeftColumn Used by MHWCM ONLY</Description>
+      <ParentID />
+      <LocationID />
+      <PartCount>0</PartCount>
+    </PartCategory>
+    <PartCategory>
+      <ID>19</ID>
+      <Name>RightColumnLinks</Name>
+      <Description>Links to display in the right column used by Web Project Mechanics</Description>
+      <ParentID />
+      <LocationID />
+      <PartCount>0</PartCount>
+    </PartCategory>
+    <PartCategory>
+      <ID>40</ID>
+      <Name>CenterColumnLinks</Name>
+      <Description>CenterColumnLinks</Description>
+      <ParentID />
+      <LocationID />
+      <PartCount>2</PartCount>
+    </PartCategory>
+  </PartCategories>
+  <LocationGroups />
+  <Images>
+    <LocationImage>
+      <ImageID>1</ImageID>
+      <ImageName>-image-0.jpg</ImageName>
+      <ImageFileName>/image/0.jpg</ImageFileName>
+      <ImageThumbFileName>/image/0.jpg</ImageThumbFileName>
+      <ImageDescription />
+      <ImageComment />
+      <ImageDate>2021-09-19T12:53:56.433</ImageDate>
+      <Active>false</Active>
+      <ModifiedDT>2021-09-19T12:53:56.433</ModifiedDT>
+      <VersionNumber>0</VersionNumber>
+      <ContactID>999</ContactID>
+      <LocationID>IMG-1</LocationID>
+      <ParentLocationID />
+      <Title>/image/0.jpg</Title>
+      <ImageURL>--image-0.jpg</ImageURL>
+      <DisplayOrder>0</DisplayOrder>
+    </LocationImage>
+    <LocationImage>
+      <ImageID>2</ImageID>
+      <ImageName>-image-markhazleton.jpg</ImageName>
+      <ImageFileName>/image/MarkHazleton.jpg</ImageFileName>
+      <ImageThumbFileName>/image/MarkHazleton.jpg</ImageThumbFileName>
+      <ImageDescription />
+      <ImageComment />
+      <ImageDate>2021-09-19T12:53:56.527</ImageDate>
+      <Active>false</Active>
+      <ModifiedDT>2021-09-19T12:53:56.527</ModifiedDT>
+      <VersionNumber>0</VersionNumber>
+      <ContactID>999</ContactID>
+      <LocationID>IMG-2</LocationID>
+      <ParentLocationID />
+      <Title>/image/MarkHazleton.jpg</Title>
+      <ImageURL>--image-markhazleton.jpg</ImageURL>
+      <DisplayOrder>0</DisplayOrder>
+    </LocationImage>
+  </Images>
+  <LocationAliases />
+</Company>

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.*" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.*" />
   </ItemGroup>
 
   <ItemGroup>

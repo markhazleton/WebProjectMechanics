@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.SiteName }} - {{ location.Title }}</title>
+    {{ if location.Description }}<meta name="description" content="{{ location.Description }}">{{ end }}
+    {{ if location.Keywords }}<meta name="keywords" content="{{ location.Keywords }}">{{ end }}
+    {{ if site.AnalyticsSnippet }}{{ site.AnalyticsSnippet }}{{ end }}
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 960px; margin: 0 auto; padding: 1rem; }
+        nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; }
+        nav a { text-decoration: none; }
+        footer { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; color: #666; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/">{{ site.SiteName }}</a></h1>
+        <nav>{{ navigation }}</nav>
+    </header>
+    <main>
+        <h2>{{ location.Title }}</h2>
+        {{ content }}
+    </main>
+    <footer>
+        <p>&copy; {{ date.now | date.to_string "%Y" }} {{ site.SiteName }}</p>
+    </footer>
+</body>
+</html>
