@@ -364,3 +364,6 @@ Thumbs.db
 appsettings.*.json
 !appsettings.json
 !appsettings.Development.json
+
+# DevSpark — personal overrides (never commit)
+.documentation/*/commands/
