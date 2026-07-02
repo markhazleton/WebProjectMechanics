@@ -33,6 +33,7 @@ jobs:
         with:
           name: ASP-app
           path: '/published/**'
+          retention-days: 1
 
   deploy:
     runs-on: windows-latest
